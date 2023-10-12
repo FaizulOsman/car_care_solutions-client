@@ -1,9 +1,8 @@
-import RootLayout from "@/layouts/RootLayout";
 import { useSignUpMutation } from "@/redux/user/userApi";
 import { saveToLocalStorage } from "@/utils/localstorage";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { toast } from "react-hot-toast";
 
 const SignUp = () => {
@@ -186,7 +185,3 @@ const SignUp = () => {
 };
 
 export default SignUp;
-
-SignUp.getLayout = function getLayout(page) {
-  return <RootLayout>{page}</RootLayout>;
-};
