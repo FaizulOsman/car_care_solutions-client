@@ -16,37 +16,40 @@ const CreateService = () => {
     authorization: accessToken,
   };
 
-  const [createBlog, { data, isError, isLoading, isSuccess, error, status }] =
-    useCreateServiceMutation();
+  const [
+    createService,
+    { data, isError, isLoading, isSuccess, error, status },
+  ] = useCreateServiceMutation();
   const { data: getMyProfile } = useGetMyProfileQuery({ headers });
 
   // Protect Route
   useProtectedRoute(decodedToken?.role || "guest");
 
-  const handleCreateBlog = (e) => {
+  const handleCreateService = (e) => {
     e.preventDefault();
     const data = {
-      imageUrl: e.target.imageUrl.value,
-      videoUrl: e.target.videoUrl.value,
       title: e.target.title.value,
       description: e.target.description.value,
-      email: getMyProfile?.data?.email,
+      location: e.target.location.value,
+      price: parseInt(e.target.price.value),
+      image: e.target.image.value,
     };
 
-    createBlog({ data, headers });
-    e.target.imageUrl.value = "";
-    e.target.videoUrl.value = "";
+    createService({ data, headers });
+    e.target.image.value = "";
     e.target.title.value = "";
+    e.target.price.value = 0;
+    e.target.location.value = "";
     e.target.description.value = "";
   };
 
   useEffect(() => {
     if (isError) {
-      toast.error(`${error?.data?.message}` || "Blog Creation Failed!");
+      toast.error(`${error?.data?.message}` || "Service Creation Failed!");
     }
 
     if (isSuccess) {
-      toast.success("Blog Created Successfully!");
+      toast.success("Service Created Successfully!");
     }
   }, [isLoading, isSuccess, isError, error]);
 
@@ -57,12 +60,12 @@ const CreateService = () => {
           Create A Service
         </h3>
         <form
-          onSubmit={(e) => handleCreateBlog(e)}
+          onSubmit={(e) => handleCreateService(e)}
           className="grid grid-cols-1 justify-between gap-6 mt-4"
         >
           <input
             type="text"
-            name="imageUrl"
+            name="image"
             placeholder="Image URL"
             className="input input-bordered input-primary input-sm w-full bg-[#1d1836]"
             required
@@ -82,7 +85,7 @@ const CreateService = () => {
             required
           />
           <input
-            type="number"
+            type="text"
             name="location"
             placeholder="Location"
             className="input input-bordered input-primary input-sm w-full bg-[#1d1836]"
