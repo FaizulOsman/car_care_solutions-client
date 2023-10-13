@@ -1,6 +1,7 @@
 import React from "react";
 import { useGetAllServiceQuery } from "../../redux/service/serviceApi";
 import { TiTick } from "react-icons/ti";
+import RootLayout from "../../layouts/RootLayout";
 
 const ServicesPage = () => {
   const { data: allService } = useGetAllServiceQuery();
@@ -57,3 +58,7 @@ const ServicesPage = () => {
 };
 
 export default ServicesPage;
+
+ServicesPage.getLayout = function getLayout(page) {
+  return <RootLayout>{page}</RootLayout>;
+};
