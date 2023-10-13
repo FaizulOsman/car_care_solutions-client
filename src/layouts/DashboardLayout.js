@@ -101,8 +101,8 @@ const routes = [
     ],
   },
   {
-    path: "/dashboard/saved",
-    name: "Saved",
+    path: "/dashboard/cart",
+    name: "Cart",
     icon: <AiFillHeart />,
     permission1: "user",
     permission2: "admin",

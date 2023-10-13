@@ -12,8 +12,8 @@ const addToCartApi = apiSlice.injectEndpoints({
       invalidatesTags: ["carCare"],
     }),
     getAllAddToCart: builder.query({
-      query: ({ headers }) => ({
-        url: `/addToCart/ `,
+      query: (headers) => ({
+        url: `/addToCart `,
         headers: headers,
       }),
       providesTags: ["carCare"],

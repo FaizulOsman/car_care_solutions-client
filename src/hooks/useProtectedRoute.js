@@ -10,7 +10,12 @@ const useProtectedRoute = (role) => {
   const path = router.pathname;
 
   // Define the pages that each role can access
-  const userPages = ["/", "/dashboard", "/dashboard/my-profile", "/dashboard/"];
+  const userPages = [
+    "/",
+    "/dashboard",
+    "/dashboard/my-profile",
+    "/dashboard/cart",
+  ];
   const adminPages = [
     "/exam/[...segments]",
     "/dashboard",
@@ -19,12 +24,7 @@ const useProtectedRoute = (role) => {
     "/dashboard/service/update/[serviceId]",
     "/dashboard/service/all-service",
     "/dashboard/service/create-service",
-    "/dashboard/test",
-    "/dashboard/test/create-test",
-    "/dashboard/test/all-test",
-    "/dashboard/exam",
-    "/dashboard/exam/create-exam",
-    "/dashboard/exam/all-exam",
+    "/dashboard/cart",
   ];
   const superAdminPages = [
     "/exam/[...segments]",
@@ -34,12 +34,7 @@ const useProtectedRoute = (role) => {
     "/dashboard/service/all-service",
     "/dashboard/service/create-service",
     "/dashboard/my-profile",
-    "/dashboard/test",
-    "/dashboard/test/create-test",
-    "/dashboard/test/all-test",
-    "/dashboard/exam",
-    "/dashboard/exam/create-exam",
-    "/dashboard/exam/all-exam",
+    "/dashboard/cart",
   ];
   const guestPages = ["/"];
 
