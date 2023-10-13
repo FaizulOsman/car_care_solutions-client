@@ -41,20 +41,20 @@ const routes = [
     permission2: "",
   },
   {
-    path: "/dashboard/test",
-    name: "Test",
+    path: "/dashboard/service",
+    name: "Service",
     icon: <AiTwotoneFileExclamation />,
     permission1: "",
     permission2: "admin",
     subRoutes: [
       {
-        path: "/dashboard/test/create-test",
-        name: "Create Test",
+        path: "/dashboard/service/create-service",
+        name: "Create Service",
         icon: <FaUser />,
       },
       {
-        path: "/dashboard/test/all-test",
-        name: "All Test",
+        path: "/dashboard/test/all-services",
+        name: "All Services",
         icon: <AiTwotoneFileExclamation />,
       },
     ],
