@@ -1,8 +1,13 @@
 import RootLayout from "@/layouts/RootLayout";
 import React from "react";
+import ServicesPage from "./services";
 
 const HomePage = () => {
-  return <div>Hello</div>;
+  return (
+    <div>
+      <ServicesPage />
+    </div>
+  );
 };
 
 export default HomePage;
