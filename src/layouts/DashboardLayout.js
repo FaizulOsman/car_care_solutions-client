@@ -58,7 +58,7 @@ const routes = [
         icon: <FaUser />,
       },
       {
-        path: "/dashboard/test/all-services",
+        path: "/dashboard/service/all-service",
         name: "All Services",
         icon: <AiTwotoneFileExclamation />,
       },
@@ -161,8 +161,7 @@ const DashboardLayout = ({ children }) => {
         : null;
     if (accessToken) {
       try {
-        const url =
-          "https://CarCareSolutions-server.vercel.app/api/v1/users/my-profile";
+        const url = "http://localhost:5000/api/v1/users/my-profile";
         const options = {
           headers: {
             authorization: accessToken,
