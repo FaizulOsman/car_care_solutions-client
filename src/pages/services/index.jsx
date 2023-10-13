@@ -1,11 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useGetAllServiceQuery } from "../../redux/service/serviceApi";
 import { TiTick } from "react-icons/ti";
 import RootLayout from "../../layouts/RootLayout";
+import toast from "react-hot-toast";
+import { useCreateAddToCartMutation } from "../../redux/addToCart/addToCartApi";
 
 const ServicesPage = () => {
+  const accessToken =
+    typeof window !== "undefined" ? localStorage.getItem("access-token") : null;
+
+  const headers = {
+    authorization: accessToken,
+  };
+
   const { data: allService } = useGetAllServiceQuery();
-  console.log(allService?.data);
+  const [createAddToCart, { isSuccess: createAddToCartIsSuccess }] =
+    useCreateAddToCartMutation();
+
+  const handleAddToCart = (id) => {
+    const data = {
+      serviceId: id,
+    };
+    createAddToCart({ data, headers });
+  };
+
+  useEffect(() => {
+    if (createAddToCartIsSuccess) {
+      toast.success("Service added to cart successfully!");
+    }
+  }, [createAddToCartIsSuccess]);
+
   return (
     <div>
       <div>
@@ -45,7 +69,10 @@ const ServicesPage = () => {
                 ))}
               </div>
               <div className="absolute bottom-0 left-0 border-t w-full text-center p-4">
-                <button className="btn btn-md bg-[#19457c] hover:bg-[#0f2b4e] text-white rounded-full px-10">
+                <button
+                  onClick={() => handleAddToCart(service?.id)}
+                  className="btn btn-md bg-[#19457c] hover:bg-[#0f2b4e] text-white rounded-full px-10"
+                >
                   Add To Cart
                 </button>
               </div>
