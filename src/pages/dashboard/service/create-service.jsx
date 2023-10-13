@@ -1,9 +1,9 @@
-import useProtectedRoute from "@/hooks/useProtectedRoute";
-import DashboardLayout from "@/layouts/DashboardLayout";
 import { useCreateServiceMutation } from "@/redux/service/serviceApi";
 import { useGetMyProfileQuery } from "@/redux/user/userApi";
 import { useEffect } from "react";
 import { toast } from "react-hot-toast";
+import DashboardLayout from "../../../layouts/DashboardLayout";
+import useProtectedRoute from "../../../hooks/useProtectedRoute";
 
 const jwt = require("jsonwebtoken");
 

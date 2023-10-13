@@ -12,10 +12,25 @@ const useProtectedRoute = (role) => {
   // Define the pages that each role can access
   const userPages = ["/", "/dashboard", "/dashboard/my-profile", "/dashboard/"];
   const adminPages = [
-    "/",
     "/exam/[...segments]",
     "/dashboard",
     "/dashboard/users",
+    "/dashboard/my-profile",
+    "/dashboard/service/all-service",
+    "/dashboard/service/create-service",
+    "/dashboard/test",
+    "/dashboard/test/create-test",
+    "/dashboard/test/all-test",
+    "/dashboard/exam",
+    "/dashboard/exam/create-exam",
+    "/dashboard/exam/all-exam",
+  ];
+  const superAdminPages = [
+    "/exam/[...segments]",
+    "/dashboard",
+    "/dashboard/users",
+    "/dashboard/service/all-service",
+    "/dashboard/service/create-service",
     "/dashboard/my-profile",
     "/dashboard/test",
     "/dashboard/test/create-test",
@@ -38,6 +53,9 @@ const useProtectedRoute = (role) => {
       // If not, redirect them to the home page
       redirect();
     } else if (role === "admin" && !adminPages.includes(path)) {
+      // If not, redirect them to the home page
+      redirect();
+    } else if (role === "super_admin" && !superAdminPages.includes(path)) {
       // If not, redirect them to the home page
       redirect();
     } else if (role === "guest" && !guestPages.includes(path)) {

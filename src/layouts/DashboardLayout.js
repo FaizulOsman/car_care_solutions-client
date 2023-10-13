@@ -18,6 +18,7 @@ const routes = [
     icon: <FaHome />,
     permission1: "user",
     permission2: "admin",
+    permission3: "super_admin",
   },
   {
     path: "/dashboard/users",
@@ -25,6 +26,7 @@ const routes = [
     icon: <FaUsers />,
     permission1: "",
     permission2: "admin",
+    permission3: "super_admin",
   },
   {
     path: "/dashboard/my-profile",
@@ -32,6 +34,7 @@ const routes = [
     icon: <FaUser />,
     permission1: "user",
     permission2: "admin",
+    permission3: "super_admin",
   },
   {
     path: "/dashboard/results",
@@ -39,6 +42,7 @@ const routes = [
     icon: <FaChartLine />,
     permission1: "user",
     permission2: "",
+    permission3: "",
   },
   {
     path: "/dashboard/service",
@@ -46,6 +50,7 @@ const routes = [
     icon: <AiTwotoneFileExclamation />,
     permission1: "",
     permission2: "admin",
+    permission3: "super_admin",
     subRoutes: [
       {
         path: "/dashboard/service/create-service",
@@ -65,6 +70,7 @@ const routes = [
     icon: <AiTwotoneFileExclamation />,
     permission1: "",
     permission2: "admin",
+    permission3: "super_admin",
     subRoutes: [
       {
         path: "/dashboard/exam/create-exam",
@@ -85,6 +91,7 @@ const routes = [
     exact: true,
     permission1: "",
     permission2: "admin",
+    permission3: "super_admin",
     subRoutes: [
       {
         path: "/dashboard/my-profile",
@@ -99,6 +106,7 @@ const routes = [
     icon: <AiFillHeart />,
     permission1: "user",
     permission2: "admin",
+    permission3: "super_admin",
   },
 ];
 
@@ -235,7 +243,8 @@ const DashboardLayout = ({ children }) => {
             {routes.map((route, index) => (
               <div key={index}>
                 {(route?.permission1 === myProfile?.role ||
-                  route?.permission2 === myProfile?.role) && (
+                  route?.permission2 === myProfile?.role ||
+                  route?.permission3 === myProfile?.role) && (
                   <>
                     {route.subRoutes ? (
                       <SidebarMenu
