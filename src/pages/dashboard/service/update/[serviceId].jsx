@@ -23,7 +23,6 @@ const UpdateService = () => {
   };
 
   const { data: getSingleService } = useGetSingleServiceQuery(id);
-  console.log(getSingleService?.data);
 
   const [
     updateService,
