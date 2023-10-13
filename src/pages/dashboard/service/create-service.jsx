@@ -32,7 +32,6 @@ const CreateService = () => {
     setServiceData({ ...serviceData, facilities: [...facilities, facility] });
     e.target.facility.value = "";
   };
-  console.log(serviceData);
 
   const handleAddServiceData = (e) => {
     e.preventDefault();

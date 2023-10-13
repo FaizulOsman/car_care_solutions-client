@@ -35,7 +35,7 @@ const UpdateService = () => {
   const handleUpdateService = (e) => {
     e.preventDefault();
     const data = {
-      title: e.target.title.value,
+      type: e.target.type.value,
       description: e.target.description.value,
       location: e.target.location.value,
       price: parseInt(e.target.price.value),
@@ -75,10 +75,10 @@ const UpdateService = () => {
           />
           <input
             type="text"
-            name="title"
-            placeholder="Title"
+            name="type"
+            placeholder="Type"
             className="input input-bordered input-primary input-sm w-full bg-[#1d1836]"
-            defaultValue={getSingleService?.data?.title}
+            defaultValue={getSingleService?.data?.type}
             required
           />
           <input

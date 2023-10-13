@@ -29,9 +29,7 @@ const AllServices = () => {
     useDeleteServiceMutation();
 
   const handleDeleteService = (service) => {
-    const isConfirm = window.confirm(
-      `Do you want to delete: ${service?.title}`
-    );
+    const isConfirm = window.confirm(`Do you want to delete: ${service?.type}`);
     if (isConfirm) {
       deleteService({ id: service?.id, headers });
     }
@@ -51,13 +49,8 @@ const AllServices = () => {
                 <h4 className="text-md font-semibold">
                   {service?.subject} {service?.serial}
                 </h4>
-                <p>Title: {service?.title}</p>
-                <p>
-                  Description:{" "}
-                  {service?.description.length > 20
-                    ? `${service?.description?.slice(0, 20)}...`
-                    : service?.description}
-                </p>
+                <p>Type: {service?.type}</p>
+                <p>Price: ${service?.price}</p>
               </div>
               <div className="flex flex-col items-center justify-between gap-4">
                 <Link href={`/dashboard/service/update/${service?.id}`}>
