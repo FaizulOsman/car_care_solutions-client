@@ -1,53 +1,80 @@
 import React, { useEffect, useState } from "react";
 import DashboardLayout from "../../../layouts/DashboardLayout";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { format } from "date-fns";
 import {
   useCreateBookingMutation,
   useGetMyBookingsQuery,
 } from "../../../redux/booking/bookingApi";
 import toast from "react-hot-toast";
+import { useAddReviewMutation } from "../../../redux/service/serviceApi";
+import { useCreateReviewMutation } from "../../../redux/review/reviewApi";
+import { useGetMyProfileQuery } from "../../../redux/user/userApi";
+
+const jwt = require("jsonwebtoken");
 
 const BookingsPage = () => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [timeSlot, setTimeSlot] = useState("");
+  const [rating, setRating] = useState(5);
+  console.log(rating);
 
   const accessToken =
     typeof window !== "undefined" ? localStorage.getItem("access-token") : null;
+
+  const decodedToken = jwt.decode(accessToken);
 
   const headers = {
     authorization: accessToken,
   };
 
+  const { data: myProfile } = useGetMyProfileQuery({ headers });
   const { data: getMyBookings } = useGetMyBookingsQuery(headers);
-
   const [
-    createBooking,
+    createReview,
     {
-      isSuccess: createBookingIsSuccess,
-      error: createBookingError,
-      isError: createBookingIsError,
+      isSuccess: createReviewIsSuccess,
+      isError: createReviewIsError,
+      error: createReviewError,
     },
-  ] = useCreateBookingMutation();
+  ] = useCreateReviewMutation();
+  const [addReview] = useAddReviewMutation();
 
-  const handleBookService = (cart) => {
+  const handleReviewSubmit = ({ e, cart }) => {
+    e.preventDefault();
     const data = {
       serviceId: cart?.id,
-      date: format(startDate, "MM-dd-yyyy"),
-      timeSlot: timeSlot,
+      type: cart?.type,
+      price: cart?.price,
+      name: myProfile?.data?.name,
+      email: decodedToken?.email,
+      rating: rating,
+      review: e.target.review.value,
     };
-    createBooking({ data, headers });
+    const addReviewData = {
+      reviews: [
+        {
+          name: myProfile?.data?.name,
+          email: decodedToken?.email,
+          rating: rating,
+          review: e.target.review.value,
+        },
+      ],
+    };
+    createReview({ data, headers });
+    addReview({ id: cart?.serviceId, data: addReviewData });
   };
 
   useEffect(() => {
-    if (createBookingIsSuccess) {
-      toast.success("Service booked successfully!");
+    if (createReviewIsSuccess) {
+      toast.success("Review added successfully");
     }
-    if (createBookingIsError) {
-      toast.error(createBookingError?.data?.message || "Something went wrong");
+  }, [createReviewIsSuccess]);
+
+  useEffect(() => {
+    if (createReviewIsError) {
+      toast.success(
+        createReviewError?.data?.message || "Review added successfully"
+      );
     }
-  }, [createBookingIsSuccess, createBookingError, createBookingIsError]);
+  }, [createReviewIsError, createReviewError]);
 
   return (
     <div>
@@ -70,12 +97,12 @@ const BookingsPage = () => {
                   <p>Time Slot: {cart?.timeSlot}</p>
                 </div>
                 <div className="flex flex-col items-center justify-between gap-4">
-                  {/* <button
-                  className="btn btn-primary btn-sm"
-                  onClick={() => document.getElementById(index).showModal()}
-                >
-                  Book Now
-                </button> */}
+                  <button
+                    className="btn btn-primary btn-sm"
+                    onClick={() => document.getElementById(index).showModal()}
+                  >
+                    Place a Review
+                  </button>
                   <dialog id={index} className="modal">
                     <div className="modal-box bg-[#1d1836]">
                       <div className="flex justify-between items-center">
@@ -83,45 +110,57 @@ const BookingsPage = () => {
                         <p className="">${cart?.price}</p>
                       </div>
                       <div className="py-4">
-                        <div className="sm:flex sm:justify-between sm:gap-4">
-                          <div className="w-full sm:w-1/2">
-                            <DatePicker
-                              selected={startDate}
-                              onChange={(date) => setStartDate(date)}
-                              dateFormat="MM-dd-yyyy"
-                              className="bg-[#1d1836] border border-primary w-full select mb-4"
+                        <div className="flex items-center gap-4">
+                          <span>Rating:</span>
+                          <div className="rating rating-xs">
+                            <input
+                              type="radio"
+                              name="rating-5"
+                              className="mask mask-star-2 bg-orange-400"
+                              onClick={() => setRating(1)}
+                            />
+                            <input
+                              type="radio"
+                              name="rating-5"
+                              className="mask mask-star-2 bg-orange-400"
+                              onClick={() => setRating(2)}
+                            />
+                            <input
+                              type="radio"
+                              name="rating-5"
+                              className="mask mask-star-2 bg-orange-400"
+                              onClick={() => setRating(3)}
+                            />
+                            <input
+                              type="radio"
+                              name="rating-5"
+                              className="mask mask-star-2 bg-orange-400"
+                              onClick={() => setRating(4)}
+                            />
+                            <input
+                              type="radio"
+                              name="rating-5"
+                              className="mask mask-star-2 bg-orange-400"
+                              onClick={() => setRating(5)}
                             />
                           </div>
-
-                          <select
-                            onChange={(e) => setTimeSlot(e.target.value)}
-                            className="select select-primary w-full sm:w-1/2 bg-[#1d1836]"
-                          >
-                            <option disabled selected>
-                              Select A Time Slot
-                            </option>
-                            <option value="10:00AM-12:00PM">
-                              10:00AM - 12:00PM
-                            </option>
-                            <option value="12:00PM-02:00PM">
-                              12:00PM - 02:00PM
-                            </option>
-                            <option value="02:00PM-04:00PM">
-                              02:00PM - 04:00PM
-                            </option>
-                            <option value="04:00PM-06:00PM">
-                              04:00PM - 06:00PM
-                            </option>
-                          </select>
                         </div>
-                        <div className="text-center">
-                          <button
-                            className="btn btn-primary btn-sm"
-                            onClick={() => handleBookService(cart)}
-                          >
-                            Book Now
-                          </button>
-                        </div>
+                        <form onSubmit={(e) => handleReviewSubmit({ e, cart })}>
+                          <textarea
+                            className="textarea first-letter:input input-bordered input-primary input-sm w-full h-[100px] bg-[#1d1836] my-4"
+                            name="review"
+                            placeholder="Review"
+                            required
+                          ></textarea>
+                          <div className="text-center">
+                            <button
+                              type="submit"
+                              className="btn btn-primary btn-sm"
+                            >
+                              Submit
+                            </button>
+                          </div>
+                        </form>
                       </div>
                     </div>
                     <form method="dialog" className="modal-backdrop">

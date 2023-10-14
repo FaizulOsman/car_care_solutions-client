@@ -36,12 +36,11 @@ const serviceApi = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["carCare"],
     }),
-    addResult: builder.mutation({
-      query: ({ options, headers }) => ({
-        url: `/services/add-result/${options.id}`,
+    addReview: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `/services/add-review/${id}`,
         method: "PATCH",
-        body: options.data,
-        headers: headers,
+        body: data,
       }),
       invalidatesTags: ["carCare"],
     }),
@@ -54,5 +53,5 @@ export const {
   useGetSingleServiceQuery,
   useDeleteServiceMutation,
   useUpdateServiceMutation,
-  useAddResultMutation,
+  useAddReviewMutation,
 } = serviceApi;
