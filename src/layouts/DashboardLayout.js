@@ -108,6 +108,14 @@ const routes = [
     permission2: "admin",
     permission3: "super_admin",
   },
+  {
+    path: "/dashboard/bookings",
+    name: "Bookings",
+    icon: <AiFillHeart />,
+    permission1: "user",
+    permission2: "admin",
+    permission3: "super_admin",
+  },
 ];
 
 const DashboardLayout = ({ children }) => {

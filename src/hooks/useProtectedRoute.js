@@ -15,6 +15,7 @@ const useProtectedRoute = (role) => {
     "/dashboard",
     "/dashboard/my-profile",
     "/dashboard/cart",
+    "/dashboard/bookings",
   ];
   const adminPages = [
     "/exam/[...segments]",
@@ -25,6 +26,7 @@ const useProtectedRoute = (role) => {
     "/dashboard/service/all-service",
     "/dashboard/service/create-service",
     "/dashboard/cart",
+    "/dashboard/bookings",
   ];
   const superAdminPages = [
     "/exam/[...segments]",
@@ -35,6 +37,7 @@ const useProtectedRoute = (role) => {
     "/dashboard/service/create-service",
     "/dashboard/my-profile",
     "/dashboard/cart",
+    "/dashboard/bookings",
   ];
   const guestPages = ["/"];
 

@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import DashboardLayout from "../../../layouts/DashboardLayout";
-import { useGetAllAddToCartQuery } from "../../../redux/addToCart/addToCartApi";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
-import { useCreateBookingMutation } from "../../../redux/booking/bookingApi";
+import {
+  useCreateBookingMutation,
+  useGetMyBookingsQuery,
+} from "../../../redux/booking/bookingApi";
 import toast from "react-hot-toast";
 
-const jwt = require("jsonwebtoken");
-
-const CartPage = () => {
+const BookingsPage = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [timeSlot, setTimeSlot] = useState("");
 
@@ -20,9 +20,8 @@ const CartPage = () => {
     authorization: accessToken,
   };
 
-  const decodedToken = jwt.decode(accessToken);
-
-  const { data: getAllAddToCart } = useGetAllAddToCartQuery(headers);
+  const { data: getMyBookings } = useGetMyBookingsQuery(headers);
+  console.log(getMyBookings?.data);
   const [
     createBooking,
     {
@@ -35,7 +34,6 @@ const CartPage = () => {
   const handleBookService = (cart) => {
     const data = {
       serviceId: cart?.id,
-      email: decodedToken?.email,
       date: format(startDate, "MM-dd-yyyy"),
       timeSlot: timeSlot,
     };
@@ -54,9 +52,9 @@ const CartPage = () => {
   return (
     <div>
       <div className="my-20 w-11/12 md:w-10/12 mx-auto">
-        <h1 className="text-3xl font-semibold text-center my-8">Cart</h1>
+        <h1 className="text-3xl font-semibold text-center my-8">Bookings</h1>
         <div className="mt-10 flex flex-col gap-5">
-          {getAllAddToCart?.data?.map((cart, index) => (
+          {getMyBookings?.data?.map((cart, index) => (
             <div
               key={index}
               className="flex justify-between items-center  bg-[#1d1836] p-2 rounded-md"
@@ -136,8 +134,8 @@ const CartPage = () => {
   );
 };
 
-export default CartPage;
+export default BookingsPage;
 
-CartPage.getLayout = function getLayout(page) {
+BookingsPage.getLayout = function getLayout(page) {
   return <DashboardLayout>{page}</DashboardLayout>;
 };

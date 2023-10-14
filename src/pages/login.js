@@ -1,9 +1,9 @@
-import { useLoginMutation } from "@/redux/user/userApi";
-import { saveToLocalStorage } from "@/utils/localstorage";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { toast } from "react-hot-toast";
+import { useLoginMutation } from "../redux/user/userApi";
+import { saveToLocalStorage } from "../utils/localstorage";
 
 const Login = () => {
   const router = useRouter();

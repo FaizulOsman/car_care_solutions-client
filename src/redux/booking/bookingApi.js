@@ -12,8 +12,14 @@ const bookingApi = apiSlice.injectEndpoints({
       invalidatesTags: ["carCare"],
     }),
     getAllBooking: builder.query({
-      query: ({ page, limit, sortOrder }) =>
-        `/bookings?page=${page}&limit=${limit}&sortOrder=${sortOrder}`,
+      query: ({ page, limit, sortOrder }) => `/bookings`,
+      providesTags: ["carCare"],
+    }),
+    getMyBookings: builder.query({
+      query: (headers) => ({
+        url: `/bookings/my-bookings`,
+        headers: headers,
+      }),
       providesTags: ["carCare"],
     }),
     getSingleBooking: builder.query({
@@ -42,6 +48,7 @@ const bookingApi = apiSlice.injectEndpoints({
 export const {
   useCreateBookingMutation,
   useGetAllBookingQuery,
+  useGetMyBookingsQuery,
   useGetSingleBookingQuery,
   useDeleteBookingMutation,
   useUpdateBookingMutation,
