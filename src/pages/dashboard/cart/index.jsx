@@ -77,9 +77,6 @@ const CartPage = () => {
                 className="flex justify-between items-center  bg-[#1d1836] p-2 rounded-md"
               >
                 <div>
-                  <h4 className="text-md font-semibold">
-                    {cart?.subject} {cart?.serial}
-                  </h4>
                   <p>Type: {cart?.type}</p>
                   <p>Price: ${cart?.price}</p>
                 </div>

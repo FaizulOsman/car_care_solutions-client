@@ -6,7 +6,7 @@ import {
   AiTwotoneFileExclamation,
 } from "react-icons/ai";
 import { BsFillCartCheckFill } from "react-icons/bs";
-import { FcServices } from "react-icons/fc";
+import { FcFeedback, FcServices } from "react-icons/fc";
 import {
   MdCreateNewFolder,
   MdOutlineMiscellaneousServices,
@@ -78,6 +78,14 @@ const routes = [
     name: "Bookings",
     icon: <BsFillCartCheckFill />,
     permission1: "user",
+    permission2: "admin",
+    permission3: "super_admin",
+  },
+  {
+    path: "/dashboard/feedbacks",
+    name: "Feedbacks",
+    icon: <FcFeedback />,
+    permission1: "",
     permission2: "admin",
     permission3: "super_admin",
   },

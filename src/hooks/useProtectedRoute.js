@@ -27,6 +27,7 @@ const useProtectedRoute = (role) => {
     "/dashboard/service/create-service",
     "/dashboard/cart",
     "/dashboard/bookings",
+    "/dashboard/feedbacks",
   ];
   const superAdminPages = [
     "/exam/[...segments]",
@@ -38,6 +39,7 @@ const useProtectedRoute = (role) => {
     "/dashboard/my-profile",
     "/dashboard/cart",
     "/dashboard/bookings",
+    "/dashboard/feedbacks",
   ];
   const guestPages = ["/"];
 
