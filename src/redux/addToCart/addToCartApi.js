@@ -26,11 +26,9 @@ const addToCartApi = apiSlice.injectEndpoints({
       providesTags: ["carCare"],
     }),
     deleteAddToCart: builder.mutation({
-      query: ({ data, headers }) => ({
-        url: `/addToCart/delete-addToCart`,
+      query: (id) => ({
+        url: `/addToCart/${id}`,
         method: "DELETE",
-        body: data,
-        headers: headers,
       }),
       invalidatesTags: ["carCare"],
     }),

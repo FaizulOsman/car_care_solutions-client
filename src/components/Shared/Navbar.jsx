@@ -38,7 +38,7 @@ const Navbar = () => {
         };
         const res = await fetch(url, options);
         const data = await res.json();
-        console.log(data);
+
         setMyProfile(data?.data);
       } catch (error) {
         console.error("Error fetching data:", error);
