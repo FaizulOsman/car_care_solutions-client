@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DashboardLayout from "../../../layouts/DashboardLayout";
 import { useGetAllAddToCartQuery } from "../../../redux/addToCart/addToCartApi";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { format } from "date-fns";
+import { useCreateBookingMutation } from "../../../redux/booking/bookingApi";
+import toast from "react-hot-toast";
 
 const CartPage = () => {
   const [startDate, setStartDate] = useState(new Date());
+  const [timeSlot, setTimeSlot] = useState("");
 
   const accessToken =
     typeof window !== "undefined" ? localStorage.getItem("access-token") : null;
@@ -15,8 +19,32 @@ const CartPage = () => {
   };
 
   const { data: getAllAddToCart } = useGetAllAddToCartQuery(headers);
+  const [
+    createBooking,
+    {
+      isSuccess: createBookingIsSuccess,
+      error: createBookingError,
+      isError: createBookingIsError,
+    },
+  ] = useCreateBookingMutation();
 
-  const handleBookService = (service) => {};
+  const handleBookService = (cart) => {
+    const data = {
+      serviceId: cart?.id,
+      date: format(startDate, "MM-dd-yyyy"),
+      timeSlot: timeSlot,
+    };
+    createBooking({ data, headers });
+  };
+
+  useEffect(() => {
+    if (createBookingIsSuccess) {
+      toast.success("Service booked successfully!");
+    }
+    if (createBookingIsError) {
+      toast.error(createBookingError?.data?.message || "Something went wrong");
+    }
+  }, [createBookingIsSuccess, createBookingError, createBookingIsError]);
 
   return (
     <div>
@@ -54,19 +82,39 @@ const CartPage = () => {
                           <DatePicker
                             selected={startDate}
                             onChange={(date) => setStartDate(date)}
+                            dateFormat="MM-dd-yyyy"
                             className="bg-[#1d1836] border border-primary w-full select mb-4"
                           />
                         </div>
 
-                        <select className="select select-primary w-full sm:w-1/2 bg-[#1d1836]">
+                        <select
+                          onChange={(e) => setTimeSlot(e.target.value)}
+                          className="select select-primary w-full sm:w-1/2 bg-[#1d1836]"
+                        >
                           <option disabled selected>
                             Select A Time Slot
                           </option>
-                          <option>Game of Thrones</option>
-                          <option>Lost</option>
-                          <option>Breaking Bad</option>
-                          <option>Walking Dead</option>
+                          <option value="10:00AM-12:00PM">
+                            10:00AM - 12:00PM
+                          </option>
+                          <option value="12:00PM-02:00PM">
+                            12:00PM - 02:00PM
+                          </option>
+                          <option value="02:00PM-04:00PM">
+                            02:00PM - 04:00PM
+                          </option>
+                          <option value="04:00PM-06:00PM">
+                            04:00PM - 06:00PM
+                          </option>
                         </select>
+                      </div>
+                      <div className="text-center">
+                        <button
+                          className="btn btn-primary btn-sm"
+                          onClick={() => handleBookService(cart)}
+                        >
+                          Book Now
+                        </button>
                       </div>
                     </div>
                   </div>

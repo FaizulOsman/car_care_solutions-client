@@ -3,10 +3,11 @@ import apiSlice from "../api/apiSlice";
 const bookingApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     createBooking: builder.mutation({
-      query: (data) => ({
+      query: ({ data, headers }) => ({
         url: `/bookings/create-booking`,
         method: "POST",
         body: data,
+        headers: headers,
       }),
       invalidatesTags: ["carCare"],
     }),
