@@ -185,7 +185,7 @@ const DashboardLayout = ({ children }) => {
               <Image
                 alt="Logo"
                 className="w-12"
-                src="https://i.ibb.co/5MHLgQW/images-removebg-preview.png"
+                src="https://i.ibb.co/qWMN38d/png-clipart-hyundai-santa-fe-car-audi-car-compact-car-headlamp-thumbnail-removebg-preview.png"
                 decoding="async"
                 loading="lazy"
                 width={300}

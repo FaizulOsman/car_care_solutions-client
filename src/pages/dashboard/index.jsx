@@ -4,6 +4,7 @@ import CartPage from "./cart";
 import BookingsPage from "./bookings";
 import Users from "./users";
 import AllServices from "./service/all-service";
+import MyProfile from "./my-profile";
 
 const jwt = require("jsonwebtoken");
 
@@ -19,11 +20,11 @@ const DashboardPage = () => {
       {decodedToken?.role === "admin" ||
         (decodedToken?.role === "super_admin" && (
           <>
-            <AllServices />
             <Users />
+            <AllServices />
           </>
         ))}
-
+      <MyProfile />
       <CartPage />
       <BookingsPage />
     </div>

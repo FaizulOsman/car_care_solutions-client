@@ -77,8 +77,8 @@ const Navbar = () => {
             <Link href="/">
               <Image
                 alt="Logo"
-                className="w-10 h-8"
-                src="https://i.ibb.co/S33Tq0K/logo-nobg-n.png"
+                className="w-16 h-8"
+                src="https://i.ibb.co/qWMN38d/png-clipart-hyundai-santa-fe-car-audi-car-compact-car-headlamp-thumbnail-removebg-preview.png"
                 decoding="async"
                 loading="lazy"
                 width={300}
@@ -91,8 +91,8 @@ const Navbar = () => {
               <Link href="/">
                 <Image
                   alt="Logo"
-                  className="w-12 h-10"
-                  src="https://i.ibb.co/S33Tq0K/logo-nobg-n.png"
+                  className="w-16 h-8"
+                  src="https://i.ibb.co/qWMN38d/png-clipart-hyundai-santa-fe-car-audi-car-compact-car-headlamp-thumbnail-removebg-preview.png"
                   decoding="async"
                   loading="lazy"
                   width={300}
@@ -182,8 +182,8 @@ const Navbar = () => {
                   <Link href="/">
                     <Image
                       alt="Logo"
-                      className="w-10 h-8"
-                      src="https://i.ibb.co/S33Tq0K/logo-nobg-n.png"
+                      className="w-16 h-8"
+                      src="https://i.ibb.co/qWMN38d/png-clipart-hyundai-santa-fe-car-audi-car-compact-car-headlamp-thumbnail-removebg-preview.png"
                       decoding="async"
                       loading="lazy"
                       width={300}
