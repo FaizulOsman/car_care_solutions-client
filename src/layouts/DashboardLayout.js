@@ -1,7 +1,16 @@
 import { FaHome, FaUser, FaUsers, FaChartLine } from "react-icons/fa";
 import { BiSearch } from "react-icons/bi";
 import { BiCog } from "react-icons/bi";
-import { AiFillHeart, AiTwotoneFileExclamation } from "react-icons/ai";
+import {
+  AiOutlineShoppingCart,
+  AiTwotoneFileExclamation,
+} from "react-icons/ai";
+import { BsFillCartCheckFill } from "react-icons/bs";
+import { FcServices } from "react-icons/fc";
+import {
+  MdCreateNewFolder,
+  MdOutlineMiscellaneousServices,
+} from "react-icons/md";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
@@ -47,7 +56,7 @@ const routes = [
   {
     path: "/dashboard/service",
     name: "Service",
-    icon: <AiTwotoneFileExclamation />,
+    icon: <FcServices />,
     permission1: "",
     permission2: "admin",
     permission3: "super_admin",
@@ -55,55 +64,19 @@ const routes = [
       {
         path: "/dashboard/service/create-service",
         name: "Create Service",
-        icon: <FaUser />,
+        icon: <MdCreateNewFolder />,
       },
       {
         path: "/dashboard/service/all-service",
         name: "All Services",
-        icon: <AiTwotoneFileExclamation />,
-      },
-    ],
-  },
-  {
-    path: "/dashboard/exam",
-    name: "Exam",
-    icon: <AiTwotoneFileExclamation />,
-    permission1: "",
-    permission2: "admin",
-    permission3: "super_admin",
-    subRoutes: [
-      {
-        path: "/dashboard/exam/create-exam",
-        name: "Create Exam",
-        icon: <FaUser />,
-      },
-      {
-        path: "/dashboard/exam/all-exam",
-        name: "All Exam",
-        icon: <AiTwotoneFileExclamation />,
-      },
-    ],
-  },
-  {
-    path: "/dashboard/settings",
-    name: "Settings",
-    icon: <BiCog />,
-    exact: true,
-    permission1: "",
-    permission2: "admin",
-    permission3: "super_admin",
-    subRoutes: [
-      {
-        path: "/dashboard/my-profile",
-        name: "Profile ",
-        icon: <FaUser />,
+        icon: <MdOutlineMiscellaneousServices />,
       },
     ],
   },
   {
     path: "/dashboard/cart",
     name: "Cart",
-    icon: <AiFillHeart />,
+    icon: <AiOutlineShoppingCart />,
     permission1: "user",
     permission2: "admin",
     permission3: "super_admin",
@@ -111,7 +84,7 @@ const routes = [
   {
     path: "/dashboard/bookings",
     name: "Bookings",
-    icon: <AiFillHeart />,
+    icon: <BsFillCartCheckFill />,
     permission1: "user",
     permission2: "admin",
     permission3: "super_admin",

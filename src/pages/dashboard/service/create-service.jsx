@@ -1,4 +1,4 @@
-import { useCreateServiceMutation } from "@/redux/service/serviceApi";
+import { useCreateServiceMutation } from "../../../redux/service/serviceApi";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import DashboardLayout from "../../../layouts/DashboardLayout";

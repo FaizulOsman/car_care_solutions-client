@@ -21,7 +21,7 @@ const BookingsPage = () => {
   };
 
   const { data: getMyBookings } = useGetMyBookingsQuery(headers);
-  console.log(getMyBookings?.data);
+
   const [
     createBooking,
     {

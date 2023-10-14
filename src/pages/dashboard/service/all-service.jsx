@@ -1,7 +1,7 @@
 import {
   useDeleteServiceMutation,
   useGetAllServiceQuery,
-} from "@/redux/service/serviceApi";
+} from "../../../redux/service/serviceApi";
 import Link from "next/link";
 import React from "react";
 import { FaRegEdit } from "react-icons/fa";

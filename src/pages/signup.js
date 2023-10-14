@@ -1,5 +1,5 @@
-import { useSignUpMutation } from "@/redux/user/userApi";
-import { saveToLocalStorage } from "@/utils/localstorage";
+import { useSignUpMutation } from "../redux/user/userApi";
+import { saveToLocalStorage } from "../utils/localstorage";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
