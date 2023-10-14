@@ -35,6 +35,8 @@ const CartPage = () => {
   const handleBookService = (cart) => {
     const data = {
       serviceId: cart?.id,
+      type: cart?.type,
+      price: cart?.price,
       email: decodedToken?.email,
       date: format(startDate, "MM-dd-yyyy"),
       timeSlot: timeSlot,

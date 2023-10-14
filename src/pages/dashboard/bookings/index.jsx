@@ -65,14 +65,16 @@ const BookingsPage = () => {
                 </h4>
                 <p>Type: {cart?.type}</p>
                 <p>Price: ${cart?.price}</p>
+                <p>Date: {cart?.date}</p>
+                <p>Time Slot: {cart?.timeSlot}</p>
               </div>
               <div className="flex flex-col items-center justify-between gap-4">
-                <button
+                {/* <button
                   className="btn btn-primary btn-sm"
                   onClick={() => document.getElementById(index).showModal()}
                 >
                   Book Now
-                </button>
+                </button> */}
                 <dialog id={index} className="modal">
                   <div className="modal-box bg-[#1d1836]">
                     <div className="flex justify-between items-center">
