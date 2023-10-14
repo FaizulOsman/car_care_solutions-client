@@ -46,14 +46,6 @@ const routes = [
     permission3: "super_admin",
   },
   {
-    path: "/dashboard/results",
-    name: "Results",
-    icon: <FaChartLine />,
-    permission1: "user",
-    permission2: "",
-    permission3: "",
-  },
-  {
     path: "/dashboard/service",
     name: "Service",
     icon: <FcServices />,
