@@ -1,11 +1,11 @@
 import { SessionProvider } from "next-auth/react";
 import { Provider } from "react-redux";
-import { store } from "@/redux/store";
 import { Toaster } from "react-hot-toast";
 // Imported Styles
-import "@/styles/globals.css";
-import "@/styles/components/navbar.css";
-import "@/styles/components/hero.css";
+import "../styles/globals.css";
+import "../styles/components/navbar.css";
+import "../styles/components/hero.css";
+import { store } from "../redux/store";
 
 export default function App({ Component, pageProps }) {
   const getLayout = Component.getLayout || ((page) => page);

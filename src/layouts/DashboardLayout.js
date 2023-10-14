@@ -7,9 +7,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { removeFromLocalStorage } from "@/utils/localstorage";
-import SidebarMenu from "@/components/Dashboard/SidebarMenu";
-import DashboardHeader from "@/components/Dashboard/DashboardHeader";
+import { removeFromLocalStorage } from "../utils/localstorage";
+import SidebarMenu from "../components/Dashboard/SidebarMenu";
+import DashboardHeader from "../components/Dashboard/DashboardHeader";
 
 const routes = [
   {

@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import DashboardLayout from "../../../layouts/DashboardLayout";
 import { useGetAllAddToCartQuery } from "../../../redux/addToCart/addToCartApi";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const CartPage = () => {
+  const [startDate, setStartDate] = useState(new Date());
+
   const accessToken =
     typeof window !== "undefined" ? localStorage.getItem("access-token") : null;
 
@@ -45,15 +49,25 @@ const CartPage = () => {
                       <p className="">${cart?.price}</p>
                     </div>
                     <div className="py-4">
-                      <select className="select select-primary w-full bg-[#1d1836]">
-                        <option disabled selected>
-                          Select A Time Slot
-                        </option>
-                        <option>Game of Thrones</option>
-                        <option>Lost</option>
-                        <option>Breaking Bad</option>
-                        <option>Walking Dead</option>
-                      </select>
+                      <div className="sm:flex sm:justify-between sm:gap-4">
+                        <div className="w-full sm:w-1/2">
+                          <DatePicker
+                            selected={startDate}
+                            onChange={(date) => setStartDate(date)}
+                            className="bg-[#1d1836] border border-primary w-full select mb-4"
+                          />
+                        </div>
+
+                        <select className="select select-primary w-full sm:w-1/2 bg-[#1d1836]">
+                          <option disabled selected>
+                            Select A Time Slot
+                          </option>
+                          <option>Game of Thrones</option>
+                          <option>Lost</option>
+                          <option>Breaking Bad</option>
+                          <option>Walking Dead</option>
+                        </select>
+                      </div>
                     </div>
                   </div>
                   <form method="dialog" className="modal-backdrop">

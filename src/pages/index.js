@@ -1,6 +1,6 @@
-import RootLayout from "@/layouts/RootLayout";
 import React from "react";
 import ServicesPage from "./services";
+import RootLayout from "../layouts/RootLayout";
 
 const HomePage = () => {
   return (

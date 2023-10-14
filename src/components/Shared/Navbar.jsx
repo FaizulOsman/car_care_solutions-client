@@ -1,7 +1,7 @@
 import {
   getFromLocalStorage,
   removeFromLocalStorage,
-} from "@/utils/localstorage";
+} from "../../utils/localstorage";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
