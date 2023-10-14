@@ -2,12 +2,14 @@ import React from "react";
 import ServicesPage from "./services";
 import RootLayout from "../layouts/RootLayout";
 import Hero from "../components/UI/Hero";
+import FeedbackPage from "./feedback";
 
 const HomePage = () => {
   return (
     <div>
       <Hero />
       <ServicesPage />
+      <FeedbackPage />
     </div>
   );
 };
