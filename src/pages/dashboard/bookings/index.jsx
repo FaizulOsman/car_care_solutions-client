@@ -135,43 +135,42 @@ const BookingsPage = () => {
                   <h4 className="text-md font-semibold">
                     {booking?.subject} {booking?.serial}
                   </h4>
+                  {(booking?.isAccepted || booking?.isRejected) && (
+                    <button
+                      className={`btn ${
+                        booking?.isAccepted ? "btn-primary" : "btn-error"
+                      } btn-outline btn-xs mb-2`}
+                    >
+                      {booking?.isAccepted && "Accepted"}
+                      {booking?.isRejected && "Rejected"}
+                    </button>
+                  )}
                   <p>Type: {booking?.type}</p>
                   <p>Price: ${booking?.price}</p>
+                  <p>Email: {booking?.email}</p>
                   <p>Date: {booking?.date}</p>
                   <p>Time Slot: {booking?.timeSlot}</p>
                 </div>
                 <div className="flex flex-col items-center justify-between gap-4">
-                  {decodedToken?.role === "user" && (
-                    <>
-                      <button
-                        className="btn btn-error text-white btn-xs"
-                        onClick={() => handleCancelBooking(booking?.id)}
-                      >
-                        Cancel Booking
-                      </button>
-                      <button
-                        className="btn btn-primary btn-xs"
-                        onClick={() =>
-                          document.getElementById(index).showModal()
-                        }
-                      >
-                        Place a Review
-                      </button>
-                    </>
-                  )}
+                  {/* {decodedToken?.role === "user" && ( */}
+                  <>
+                    <button
+                      className="btn btn-error text-white btn-xs"
+                      onClick={() => handleCancelBooking(booking?.id)}
+                    >
+                      Cancel Booking
+                    </button>
+                    <button
+                      className="btn btn-primary btn-xs"
+                      onClick={() => document.getElementById(index).showModal()}
+                    >
+                      Place a Review
+                    </button>
+                  </>
+                  {/* )} */}
                   {(decodedToken?.role === "admin" ||
                     decodedToken?.role === "super_admin") && (
                     <>
-                      {(booking?.isAccepted || booking?.isRejected) && (
-                        <button
-                          className={`btn ${
-                            booking?.isAccepted ? "btn-primary" : "btn-error"
-                          } btn-outline btn-xs`}
-                        >
-                          {booking?.isAccepted && "Accepted"}
-                          {booking?.isRejected && "Rejected"}
-                        </button>
-                      )}
                       <button
                         className="btn btn-primary btn-xs"
                         onClick={() =>
