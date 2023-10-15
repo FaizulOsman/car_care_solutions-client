@@ -48,17 +48,17 @@ const Footer = () => {
                       <li>
                         <Link
                           className="font-semibold block pb-2 text-sm"
-                          href="/exam"
+                          href="/services"
                         >
-                          Exam
+                          Services
                         </Link>
                       </li>
                       <li>
                         <Link
                           className="font-semibold block pb-2 text-sm"
-                          href="/test"
+                          href="/feedback"
                         >
-                          Test
+                          Feedback
                         </Link>
                       </li>
                       <li>
@@ -79,25 +79,25 @@ const Footer = () => {
                       <li>
                         <Link
                           className="font-semibold block pb-2 text-sm"
-                          href="/random-question"
+                          href="/dashboard/my-profile"
                         >
-                          Random Questions
+                          Update Profile
                         </Link>
                       </li>
                       <li>
                         <Link
                           className="font-semibold block pb-2 text-sm"
-                          href="discussion"
+                          href="/dashboard/cart"
                         >
-                          Discuss
+                          Cart
                         </Link>
                       </li>
                       <li>
                         <Link
                           className="font-semibold block pb-2 text-sm"
-                          href="/be-a-premium-user"
+                          href="/dashboard/bookings"
                         >
-                          Be a premium user
+                          Bookings
                         </Link>
                       </li>
                     </ul>
