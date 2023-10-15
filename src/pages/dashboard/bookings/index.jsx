@@ -5,6 +5,7 @@ import {
   useCreateBookingMutation,
   useDeleteBookingMutation,
   useGetMyBookingsQuery,
+  useUpdateBookingMutation,
 } from "../../../redux/booking/bookingApi";
 import toast from "react-hot-toast";
 import { useAddReviewMutation } from "../../../redux/service/serviceApi";
@@ -27,6 +28,8 @@ const BookingsPage = () => {
 
   const { data: myProfile } = useGetMyProfileQuery({ headers });
   const { data: getMyBookings } = useGetMyBookingsQuery(headers);
+  const [updateBooking, { isSuccess: updateBookingIsSuccess }] =
+    useUpdateBookingMutation();
   const [deleteBooking, { isSuccess, isError, error }] =
     useDeleteBookingMutation();
   const [
@@ -71,6 +74,23 @@ const BookingsPage = () => {
     }
   };
 
+  const handleUpdateBookingStatus = (value, booking) => {
+    console.log(value, booking);
+    let data = {};
+    if (value) {
+      data = {
+        isAccepted: true,
+        isRejected: false,
+      };
+    } else {
+      data = {
+        isAccepted: false,
+        isRejected: true,
+      };
+    }
+    updateBooking({ id: booking?.id, data });
+  };
+
   useEffect(() => {
     if (createReviewIsSuccess) {
       toast.success("Review added successfully");
@@ -95,6 +115,12 @@ const BookingsPage = () => {
     }
   }, [isError, error]);
 
+  useEffect(() => {
+    if (updateBookingIsSuccess) {
+      toast.success("Booking status updated successfully");
+    }
+  }, [updateBookingIsSuccess]);
+
   return (
     <div>
       <div className="my-20 w-11/12 md:w-10/12 mx-auto">
@@ -116,18 +142,84 @@ const BookingsPage = () => {
                   <p>Time Slot: {booking?.timeSlot}</p>
                 </div>
                 <div className="flex flex-col items-center justify-between gap-4">
-                  <button
-                    className="btn btn-error text-white btn-sm"
-                    onClick={() => handleCancelBooking(booking?.id)}
-                  >
-                    Cancel Booking
-                  </button>
-                  <button
-                    className="btn btn-primary btn-sm"
-                    onClick={() => document.getElementById(index).showModal()}
-                  >
-                    Place a Review
-                  </button>
+                  {decodedToken?.email === "user" && (
+                    <>
+                      <button
+                        className="btn btn-error text-white btn-xs"
+                        onClick={() => handleCancelBooking(booking?.id)}
+                      >
+                        Cancel Booking
+                      </button>
+                      <button
+                        className="btn btn-primary btn-xs"
+                        onClick={() =>
+                          document.getElementById(index).showModal()
+                        }
+                      >
+                        Place a Review
+                      </button>
+                    </>
+                  )}
+                  {(decodedToken?.email === "admin" ||
+                    decodedToken?.email === "super_admin") && (
+                    <>
+                      {(booking?.isAccepted || booking?.isRejected) && (
+                        <button
+                          className={`btn ${
+                            booking?.isAccepted ? "btn-primary" : "btn-error"
+                          } btn-outline btn-xs`}
+                        >
+                          {booking?.isAccepted && "Accepted"}
+                          {booking?.isRejected && "Rejected"}
+                        </button>
+                      )}
+                      <button
+                        className="btn btn-primary btn-xs"
+                        onClick={() =>
+                          document.getElementById(`${index}-review`).showModal()
+                        }
+                      >
+                        Update Status
+                      </button>
+                      <dialog id={`${index}-review`} className="modal">
+                        <div className="modal-box bg-[#1d1836]">
+                          <div className="flex justify-between items-center">
+                            <h3 className="font-bold text-lg">
+                              {booking?.type}
+                            </h3>
+                            <p className="">${booking?.price}</p>
+                          </div>
+                          <div className="py-4">
+                            <h4 className="text-center">
+                              Do you want to accept this booking?
+                            </h4>
+                            <div className="flex w-1/2 justify-between mx-auto mt-10">
+                              <button
+                                onClick={() =>
+                                  handleUpdateBookingStatus(true, booking)
+                                }
+                                className="btn btn-sm btn-primary"
+                              >
+                                Yes
+                              </button>
+                              <button
+                                onClick={() =>
+                                  handleUpdateBookingStatus(false, booking)
+                                }
+                                className="btn btn-sm btn-error text-white"
+                              >
+                                No
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                        <form method="dialog" className="modal-backdrop">
+                          <button>close</button>
+                        </form>
+                      </dialog>
+                    </>
+                  )}
+
                   <dialog id={index} className="modal">
                     <div className="modal-box bg-[#1d1836]">
                       <div className="flex justify-between items-center">
