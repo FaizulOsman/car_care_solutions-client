@@ -59,14 +59,14 @@ const CertifiedSection = () => {
         ))}
       </div>
       <div className="mt-4 text-center">
-        <p className="text-primary font-bold cursor-pointer">
+        <div className="text-primary font-bold cursor-pointer">
           <div className="flex gap-4 items-center justify-center">
             <span className="mr-2 hover:tracking-wider duration-300">
               Show All Certified Pre-Owned Programs
             </span>
             <BsArrowRight />
           </div>
-        </p>
+        </div>
       </div>
     </div>
   );
