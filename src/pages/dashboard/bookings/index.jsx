@@ -75,7 +75,6 @@ const BookingsPage = () => {
   };
 
   const handleUpdateBookingStatus = (value, booking) => {
-    console.log(value, booking);
     let data = {};
     if (value) {
       data = {
@@ -142,7 +141,7 @@ const BookingsPage = () => {
                   <p>Time Slot: {booking?.timeSlot}</p>
                 </div>
                 <div className="flex flex-col items-center justify-between gap-4">
-                  {decodedToken?.email === "user" && (
+                  {decodedToken?.role === "user" && (
                     <>
                       <button
                         className="btn btn-error text-white btn-xs"
@@ -160,8 +159,8 @@ const BookingsPage = () => {
                       </button>
                     </>
                   )}
-                  {(decodedToken?.email === "admin" ||
-                    decodedToken?.email === "super_admin") && (
+                  {(decodedToken?.role === "admin" ||
+                    decodedToken?.role === "super_admin") && (
                     <>
                       {(booking?.isAccepted || booking?.isRejected) && (
                         <button

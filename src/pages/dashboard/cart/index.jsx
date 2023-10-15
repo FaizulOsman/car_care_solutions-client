@@ -45,6 +45,8 @@ const CartPage = () => {
       email: decodedToken?.email,
       date: format(startDate, "MM-dd-yyyy"),
       timeSlot: timeSlot,
+      isAccepted: false,
+      isRejected: false,
     };
     createBooking({ data, headers });
   };
