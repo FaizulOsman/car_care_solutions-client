@@ -11,6 +11,13 @@ const reviewApi = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["carCare"],
     }),
+    getMyReviews: builder.query({
+      query: (headers) => ({
+        url: `/reviews/my-reviews`,
+        headers: headers,
+      }),
+      providesTags: ["carCare"],
+    }),
     getAllReview: builder.query({
       query: (headers) => ({
         url: `/reviews`,
@@ -24,11 +31,20 @@ const reviewApi = apiSlice.injectEndpoints({
         headers: headers,
       }),
     }),
+    deleteReview: builder.mutation({
+      query: (id) => ({
+        url: `/reviews/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["carCare"],
+    }),
   }),
 });
 
 export const {
   useCreateReviewMutation,
+  useGetMyReviewsQuery,
   useGetAllReviewQuery,
   useGetSingleReviewQuery,
+  useDeleteReviewMutation,
 } = reviewApi;

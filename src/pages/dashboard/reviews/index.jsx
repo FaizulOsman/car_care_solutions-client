@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import DashboardLayout from "../../../layouts/DashboardLayout";
-import { useGetAllReviewQuery } from "../../../redux/review/reviewApi";
+import {
+  useDeleteReviewMutation,
+  useGetMyReviewsQuery,
+} from "../../../redux/review/reviewApi";
+import toast from "react-hot-toast";
 
 const AllReviewsPage = () => {
   const accessToken =
@@ -10,7 +14,30 @@ const AllReviewsPage = () => {
     authorization: accessToken,
   };
 
-  const { data } = useGetAllReviewQuery(headers);
+  const { data } = useGetMyReviewsQuery(headers);
+  const [deleteReview, { isSuccess, isError, error }] =
+    useDeleteReviewMutation();
+
+  const handleDeleteReview = (id) => {
+    const isConfirm = window.confirm(
+      "Are you sure you want to delete this review?"
+    );
+    if (isConfirm) {
+      deleteReview(id);
+    }
+  };
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("Review deleted successfully");
+    }
+  }, [isSuccess]);
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(error?.data?.message || "Something went wrong");
+    }
+  }, [isError, error]);
 
   return (
     <div>
@@ -22,11 +49,12 @@ const AllReviewsPage = () => {
               {data?.data?.map((review, index) => (
                 <div
                   key={index}
-                  className="grid grid-cols-2 items-center  bg-[#1d1836] p-2 rounded-md"
+                  className="grid grid-cols-2 items-center gap-3 bg-[#1d1836] p-2 rounded-md"
                 >
                   <p>
                     <strong className="text-primary">Service:</strong>{" "}
-                    {review?.type} - ${review?.price}
+                    {review?.type} -{" "}
+                    <span className="text-green-500">${review?.price}</span>
                   </p>
                   <p>
                     <strong className="text-primary">Name:</strong>{" "}
@@ -44,6 +72,12 @@ const AllReviewsPage = () => {
                     <strong className="text-primary">Review:</strong>{" "}
                     {review?.review}
                   </p>
+                  <button
+                    onClick={() => handleDeleteReview(review?.id)}
+                    className="btn btn-xs btn-error"
+                  >
+                    Delete
+                  </button>
                 </div>
               ))}
             </div>
