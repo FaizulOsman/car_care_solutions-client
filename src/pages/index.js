@@ -5,6 +5,7 @@ import Hero from "../components/UI/Hero";
 import FeedbackPage from "./feedback";
 import LatestNewsPage from "./latest-news";
 import CertifiedSection from "./certified";
+import ClientReviewsPage from "./client-reviews";
 
 const HomePage = () => {
   return (
@@ -13,6 +14,7 @@ const HomePage = () => {
       <ServicesPage />
       <LatestNewsPage />
       <CertifiedSection />
+      <ClientReviewsPage />
       <FeedbackPage />
     </div>
   );
