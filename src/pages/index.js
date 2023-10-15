@@ -4,6 +4,7 @@ import RootLayout from "../layouts/RootLayout";
 import Hero from "../components/UI/Hero";
 import FeedbackPage from "./feedback";
 import LatestNewsPage from "./latest-news";
+import CertifiedSection from "./certified";
 
 const HomePage = () => {
   return (
@@ -11,6 +12,7 @@ const HomePage = () => {
       <Hero />
       <ServicesPage />
       <LatestNewsPage />
+      <CertifiedSection />
       <FeedbackPage />
     </div>
   );
