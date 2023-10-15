@@ -27,10 +27,9 @@ const bookingApi = apiSlice.injectEndpoints({
       providesTags: ["carCare"],
     }),
     deleteBooking: builder.mutation({
-      query: ({ id, headers }) => ({
+      query: ({ id }) => ({
         url: `/bookings/${id}`,
         method: "DELETE",
-        headers: headers,
       }),
       invalidatesTags: ["carCare"],
     }),

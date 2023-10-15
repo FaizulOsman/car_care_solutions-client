@@ -3,6 +3,7 @@ import DashboardLayout from "../../../layouts/DashboardLayout";
 import "react-datepicker/dist/react-datepicker.css";
 import {
   useCreateBookingMutation,
+  useDeleteBookingMutation,
   useGetMyBookingsQuery,
 } from "../../../redux/booking/bookingApi";
 import toast from "react-hot-toast";
@@ -14,7 +15,6 @@ const jwt = require("jsonwebtoken");
 
 const BookingsPage = () => {
   const [rating, setRating] = useState(5);
-  console.log(rating);
 
   const accessToken =
     typeof window !== "undefined" ? localStorage.getItem("access-token") : null;
@@ -27,6 +27,8 @@ const BookingsPage = () => {
 
   const { data: myProfile } = useGetMyProfileQuery({ headers });
   const { data: getMyBookings } = useGetMyBookingsQuery(headers);
+  const [deleteBooking, { isSuccess, isError, error }] =
+    useDeleteBookingMutation();
   const [
     createReview,
     {
@@ -62,12 +64,18 @@ const BookingsPage = () => {
     addReview({ id: cart?.serviceId, data: addReviewData });
   };
 
+  const handleCancelBooking = (id) => {
+    const isConfirm = window.confirm("Are you sure you want to delete?");
+    if (isConfirm) {
+      deleteBooking({ id });
+    }
+  };
+
   useEffect(() => {
     if (createReviewIsSuccess) {
       toast.success("Review added successfully");
     }
   }, [createReviewIsSuccess]);
-
   useEffect(() => {
     if (createReviewIsError) {
       toast.success(
@@ -76,27 +84,44 @@ const BookingsPage = () => {
     }
   }, [createReviewIsError, createReviewError]);
 
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("Review canceled successfully");
+    }
+  }, [isSuccess]);
+  useEffect(() => {
+    if (isError) {
+      toast.success(error?.data?.message || "Something went wrong");
+    }
+  }, [isError, error]);
+
   return (
     <div>
       <div className="my-20 w-11/12 md:w-10/12 mx-auto">
         <h1 className="text-3xl font-semibold text-center my-8">Bookings</h1>
         {getMyBookings?.data?.length > 0 ? (
           <div className="mt-10 flex flex-col gap-5">
-            {getMyBookings?.data?.map((cart, index) => (
+            {getMyBookings?.data?.map((booking, index) => (
               <div
                 key={index}
                 className="flex justify-between items-center  bg-[#1d1836] p-2 rounded-md"
               >
                 <div>
                   <h4 className="text-md font-semibold">
-                    {cart?.subject} {cart?.serial}
+                    {booking?.subject} {booking?.serial}
                   </h4>
-                  <p>Type: {cart?.type}</p>
-                  <p>Price: ${cart?.price}</p>
-                  <p>Date: {cart?.date}</p>
-                  <p>Time Slot: {cart?.timeSlot}</p>
+                  <p>Type: {booking?.type}</p>
+                  <p>Price: ${booking?.price}</p>
+                  <p>Date: {booking?.date}</p>
+                  <p>Time Slot: {booking?.timeSlot}</p>
                 </div>
                 <div className="flex flex-col items-center justify-between gap-4">
+                  <button
+                    className="btn btn-error text-white btn-sm"
+                    onClick={() => handleCancelBooking(booking?.id)}
+                  >
+                    Cancel Booking
+                  </button>
                   <button
                     className="btn btn-primary btn-sm"
                     onClick={() => document.getElementById(index).showModal()}
@@ -106,8 +131,8 @@ const BookingsPage = () => {
                   <dialog id={index} className="modal">
                     <div className="modal-box bg-[#1d1836]">
                       <div className="flex justify-between items-center">
-                        <h3 className="font-bold text-lg">{cart?.type}</h3>
-                        <p className="">${cart?.price}</p>
+                        <h3 className="font-bold text-lg">{booking?.type}</h3>
+                        <p className="">${booking?.price}</p>
                       </div>
                       <div className="py-4">
                         <div className="flex items-center gap-4">
@@ -145,7 +170,11 @@ const BookingsPage = () => {
                             />
                           </div>
                         </div>
-                        <form onSubmit={(e) => handleReviewSubmit({ e, cart })}>
+                        <form
+                          onSubmit={(e) =>
+                            handleReviewSubmit({ e, cart: booking })
+                          }
+                        >
                           <textarea
                             className="textarea first-letter:input input-bordered input-primary input-sm w-full h-[100px] bg-[#1d1836] my-4"
                             name="review"
