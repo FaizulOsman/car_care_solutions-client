@@ -10,6 +10,7 @@ import { FcFeedback, FcServices } from "react-icons/fc";
 import {
   MdCreateNewFolder,
   MdOutlineMiscellaneousServices,
+  MdReviews,
 } from "react-icons/md";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -77,6 +78,14 @@ const routes = [
     path: "/dashboard/bookings",
     name: "Bookings",
     icon: <BsFillCartCheckFill />,
+    permission1: "user",
+    permission2: "admin",
+    permission3: "super_admin",
+  },
+  {
+    path: "/dashboard/reviews",
+    name: "Reviews",
+    icon: <MdReviews />,
     permission1: "user",
     permission2: "admin",
     permission3: "super_admin",

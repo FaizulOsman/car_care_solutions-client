@@ -12,7 +12,10 @@ const reviewApi = apiSlice.injectEndpoints({
       invalidatesTags: ["carCare"],
     }),
     getAllReview: builder.query({
-      query: () => `/reviews`,
+      query: (headers) => ({
+        url: `/reviews`,
+        headers: headers,
+      }),
       providesTags: ["carCare"],
     }),
     getSingleReview: builder.query({
