@@ -30,7 +30,8 @@ const Navbar = () => {
     const accessToken = getFromLocalStorage("access-token");
     if (accessToken) {
       try {
-        const url = "http://localhost:5000/api/v1/users/my-profile";
+        const url =
+          "https://car-care-solutions-server.vercel.app/api/v1/users/my-profile";
         const options = {
           headers: {
             authorization: accessToken,
