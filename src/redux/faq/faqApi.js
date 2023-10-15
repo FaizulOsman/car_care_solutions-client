@@ -20,10 +20,9 @@ const faqApi = apiSlice.injectEndpoints({
       providesTags: ["carCare"],
     }),
     deleteFaq: builder.mutation({
-      query: ({ id, headers }) => ({
+      query: ({ id }) => ({
         url: `/faq/${id}`,
         method: "DELETE",
-        headers: headers,
       }),
       invalidatesTags: ["carCare"],
     }),

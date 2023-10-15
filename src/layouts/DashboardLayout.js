@@ -81,7 +81,7 @@ const routes = [
     permission3: "super_admin",
     subRoutes: [
       {
-        path: "/dashboard/faq/create-faq",
+        path: "/dashboard/faq/create",
         name: "Create FAQ",
         icon: <MdCreateNewFolder />,
       },

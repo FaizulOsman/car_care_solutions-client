@@ -4,7 +4,7 @@ import { useGetAllFaqQuery } from "../../redux/faq/faqApi";
 
 const FAQPage = () => {
   const { data: allFaq } = useGetAllFaqQuery();
-  console.log(allFaq?.data);
+
   return (
     <div>
       <h2 className="text-2xl md:text-3xl font-semibold text-center pb-10">
