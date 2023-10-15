@@ -1,4 +1,10 @@
-import { FaHome, FaUser, FaUsers, FaChartLine } from "react-icons/fa";
+import {
+  FaHome,
+  FaUser,
+  FaUsers,
+  FaChartLine,
+  FaQuestionCircle,
+} from "react-icons/fa";
 import { BiSearch } from "react-icons/bi";
 import { BiCog } from "react-icons/bi";
 import {
@@ -6,7 +12,7 @@ import {
   AiTwotoneFileExclamation,
 } from "react-icons/ai";
 import { BsFillCartCheckFill } from "react-icons/bs";
-import { FcFeedback, FcServices } from "react-icons/fc";
+import { FcFaq, FcFeedback, FcServices } from "react-icons/fc";
 import {
   MdCreateNewFolder,
   MdOutlineMiscellaneousServices,
@@ -63,6 +69,26 @@ const routes = [
         path: "/dashboard/service/all-service",
         name: "All Services",
         icon: <MdOutlineMiscellaneousServices />,
+      },
+    ],
+  },
+  {
+    path: "/dashboard/faq",
+    name: "FAQ",
+    icon: <FcFaq />,
+    permission1: "",
+    permission2: "admin",
+    permission3: "super_admin",
+    subRoutes: [
+      {
+        path: "/dashboard/faq/create-faq",
+        name: "Create FAQ",
+        icon: <MdCreateNewFolder />,
+      },
+      {
+        path: "/dashboard/faq",
+        name: "All FAQ",
+        icon: <FaQuestionCircle />,
       },
     ],
   },

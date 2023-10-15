@@ -90,6 +90,7 @@ const FeedbackPage = () => {
 };
 
 export default FeedbackPage;
+
 FeedbackPage.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
 };

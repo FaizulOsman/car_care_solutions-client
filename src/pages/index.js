@@ -6,6 +6,7 @@ import FeedbackPage from "./feedback";
 import LatestNewsPage from "./latest-news";
 import CertifiedSection from "./certified";
 import ClientReviewsPage from "./client-reviews";
+import FAQPage from "./faq";
 
 const HomePage = () => {
   return (
@@ -15,6 +16,7 @@ const HomePage = () => {
       <LatestNewsPage />
       <CertifiedSection />
       <ClientReviewsPage />
+      <FAQPage />
       <FeedbackPage />
     </div>
   );
