@@ -105,7 +105,7 @@ const BookingsPage = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      toast.success("Review canceled successfully");
+      toast.success("Booking canceled successfully");
     }
   }, [isSuccess]);
   useEffect(() => {
@@ -147,7 +147,10 @@ const BookingsPage = () => {
                   )}
                   <p>Type: {booking?.type}</p>
                   <p>Price: ${booking?.price}</p>
-                  <p>Email: {booking?.email}</p>
+                  {(decodedToken?.role === "admin" ||
+                    decodedToken?.role === "super_admin") && (
+                    <p>Email: {booking?.email}</p>
+                  )}
                   <p>Date: {booking?.date}</p>
                   <p>Time Slot: {booking?.timeSlot}</p>
                 </div>
