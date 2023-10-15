@@ -152,7 +152,6 @@ const BookingsPage = () => {
                   <p>Time Slot: {booking?.timeSlot}</p>
                 </div>
                 <div className="flex flex-col items-center justify-between gap-4">
-                  {/* {decodedToken?.role === "user" && ( */}
                   <>
                     <button
                       className="btn btn-error text-white btn-xs"
@@ -160,14 +159,17 @@ const BookingsPage = () => {
                     >
                       Cancel Booking
                     </button>
-                    <button
-                      className="btn btn-primary btn-xs"
-                      onClick={() => document.getElementById(index).showModal()}
-                    >
-                      Place a Review
-                    </button>
+                    {decodedToken?.email === booking?.email && (
+                      <button
+                        className="btn btn-primary btn-xs"
+                        onClick={() =>
+                          document.getElementById(index).showModal()
+                        }
+                      >
+                        Place a Review
+                      </button>
+                    )}
                   </>
-                  {/* )} */}
                   {(decodedToken?.role === "admin" ||
                     decodedToken?.role === "super_admin") && (
                     <>
