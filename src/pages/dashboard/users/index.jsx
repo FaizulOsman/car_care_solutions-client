@@ -12,6 +12,7 @@ import {
   useGetMyProfileQuery,
   useUpdateUserMutation,
 } from "../../../redux/user/userApi";
+import Link from "next/link";
 
 const jwt = require("jsonwebtoken");
 
@@ -311,7 +312,8 @@ const Users = () => {
                                 </button>
                               </td>
                               <td className="sm:p-3 py-2 hidden sm:table-cell">
-                                <button
+                                <Link
+                                  href={`/dashboard/users/update/${user?.id}`}
                                   disabled={
                                     user?.email === getMyProfile?.data?.email
                                       ? true
@@ -324,7 +326,7 @@ const Users = () => {
                                   }`}
                                 >
                                   <FaRegEdit className="w-4 h-4" />
-                                </button>
+                                </Link>
                               </td>
                             </tr>
                           ))}
