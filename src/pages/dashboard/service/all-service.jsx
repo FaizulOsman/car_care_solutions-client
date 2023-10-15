@@ -38,7 +38,9 @@ const AllServices = () => {
   return (
     <div>
       <div className="my-20 w-11/12 md:w-10/12 mx-auto">
-        <h1 className="text-3xl font-semibold text-center my-8">Services</h1>
+        <h1 className="text-2xl md:text-3xl font-semibold text-center my-8">
+          Services
+        </h1>
         <div className="mt-10 flex flex-col gap-5">
           {allService?.data?.map((service, index) => (
             <div

@@ -3,12 +3,14 @@ import ServicesPage from "./services";
 import RootLayout from "../layouts/RootLayout";
 import Hero from "../components/UI/Hero";
 import FeedbackPage from "./feedback";
+import LatestNewsPage from "./latest-news";
 
 const HomePage = () => {
   return (
     <div>
       <Hero />
       <ServicesPage />
+      <LatestNewsPage />
       <FeedbackPage />
     </div>
   );
