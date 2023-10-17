@@ -12,8 +12,8 @@ const Event = () => {
           <Image
             src="https://i.ibb.co/VHSBpMm/event.jpg"
             className="w-full"
-            width={300}
-            height={300}
+            width={1000}
+            height={400}
             alt="event"
           />
         </div>
