@@ -16,7 +16,7 @@ const ClientReviewsPage = () => {
 
   return (
     <div className="mx-auto md:px-6">
-      <section className="text-center">
+      <section className="text-center h-[400px]">
         <h2 className="text-2xl md:text-3xl font-semibold text-center mb-12">
           Client Reviews
         </h2>

@@ -6,6 +6,7 @@ import FeedbackPage from "./feedback";
 import LatestNewsPage from "./latest-news";
 import CertifiedSection from "./certified";
 import ClientReviewsPage from "./client-reviews";
+import Survey from "../components/UI/Survey";
 import FAQPage from "./faq";
 
 const HomePage = () => {
@@ -16,6 +17,7 @@ const HomePage = () => {
       <LatestNewsPage />
       <CertifiedSection />
       <ClientReviewsPage />
+      <Survey />
       <FAQPage />
       <FeedbackPage />
     </div>
