@@ -8,6 +8,7 @@ import CertifiedSection from "./certified";
 import ClientReviewsPage from "./client-reviews";
 import Survey from "../components/UI/Survey";
 import FAQPage from "./faq";
+import Event from "../components/UI/Event";
 
 const HomePage = () => {
   return (
@@ -17,6 +18,7 @@ const HomePage = () => {
       <LatestNewsPage />
       <CertifiedSection />
       <ClientReviewsPage />
+      <Event />
       <Survey />
       <FAQPage />
       <FeedbackPage />
