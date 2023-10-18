@@ -35,6 +35,10 @@ const ServicesPage = () => {
     createAddToCart({ data, headers });
   };
 
+  let ongoingServices = allService?.data?.filter(
+    (data) => data.status === "ongoing"
+  );
+
   useEffect(() => {
     if (createAddToCartIsSuccess) {
       toast.success("Service added to cart successfully!");
@@ -56,7 +60,7 @@ const ServicesPage = () => {
           Services
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-10">
-          {allService?.data?.map((service, index) => (
+          {ongoingServices?.map((service, index) => (
             <div
               key={index}
               className="border rounded-sm relative pb-24 hover:shadow-lg"

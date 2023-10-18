@@ -39,7 +39,7 @@ const UpdateService = () => {
       description: e.target.description.value,
       location: e.target.location.value,
       price: parseInt(e.target.price.value),
-      image: e.target.image.value,
+      status: e.target.status.value,
     };
 
     updateService({ id, data, headers });
@@ -65,14 +65,23 @@ const UpdateService = () => {
           onSubmit={(e) => handleUpdateService(e)}
           className="grid grid-cols-1 justify-between gap-6 mt-4"
         >
-          <input
-            type="text"
-            name="image"
-            placeholder="Image URL"
-            className="input input-bordered input-primary input-sm w-full bg-[#1d1836]"
-            defaultValue={getSingleService?.data?.image}
-            required
-          />
+          <select
+            name="status"
+            className="select select-sm select-primary w-full bg-[#1d1836]"
+          >
+            <option
+              value="ongoing"
+              selected={getSingleService?.data?.status === "ongoing" && true}
+            >
+              Ongoing
+            </option>
+            <option
+              value="upcoming"
+              selected={getSingleService?.data?.status === "upcoming" && true}
+            >
+              Upcoming
+            </option>
+          </select>
           <input
             type="text"
             name="type"

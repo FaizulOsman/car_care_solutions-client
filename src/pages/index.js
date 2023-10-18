@@ -9,12 +9,14 @@ import ClientReviewsPage from "./client-reviews";
 import Survey from "../components/UI/Survey";
 import FAQPage from "./faq";
 import Event from "../components/UI/Event";
+import UpcomingServicesPage from "./services/upcoming-services";
 
 const HomePage = () => {
   return (
     <div>
       <Hero />
       <ServicesPage />
+      <UpcomingServicesPage />
       <LatestNewsPage />
       <CertifiedSection />
       <ClientReviewsPage />

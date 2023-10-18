@@ -37,21 +37,20 @@ const CreateService = () => {
     e.preventDefault();
     const data = {
       type: e.target.type.value,
+      status: e.target.status.value,
       description: e.target.description.value,
       location: e.target.location.value,
       price: parseInt(e.target.price.value),
-      image: e.target.image.value,
     };
     setServiceData({
       ...serviceData,
       type: e.target.type.value,
+      status: e.target.status.value,
       description: e.target.description.value,
       location: e.target.location.value,
       price: parseInt(e.target.price.value),
-      image: e.target.image.value,
     });
 
-    e.target.image.value = "";
     e.target.type.value = "";
     e.target.price.value = 0;
     e.target.location.value = "";
@@ -86,6 +85,12 @@ const CreateService = () => {
                 {serviceData?.type}
               </li>
             )}
+            {serviceData?.status && (
+              <li className="list-disc">
+                <strong className="text-blue-500">Status: </strong>
+                {serviceData?.status}
+              </li>
+            )}
             {serviceData?.price && (
               <li className="list-disc">
                 <strong className="text-blue-500">Price: </strong>
@@ -96,12 +101,6 @@ const CreateService = () => {
               <li className="list-disc">
                 <strong className="text-blue-500">Location: </strong>
                 {serviceData?.location}
-              </li>
-            )}
-            {serviceData?.image && (
-              <li className="list-disc">
-                <strong className="text-blue-500">Image: </strong>
-                {serviceData?.image}
               </li>
             )}
           </div>
@@ -116,34 +115,38 @@ const CreateService = () => {
           onSubmit={(e) => handleAddServiceData(e)}
           className="grid grid-cols-1 justify-between gap-6 mt-4"
         >
-          <input
-            type="text"
-            name="type"
-            placeholder="Type"
-            className="input input-bordered input-primary input-sm w-full bg-[#1d1836]"
-            required
-          />
-          <input
-            type="number"
-            name="price"
-            placeholder="Price"
-            className="input input-bordered input-primary input-sm w-full bg-[#1d1836]"
-            required
-          />
-          <input
-            type="text"
-            name="location"
-            placeholder="Location"
-            className="input input-bordered input-primary input-sm w-full bg-[#1d1836]"
-            required
-          />
-          <input
-            type="text"
-            name="image"
-            placeholder="Image URL"
-            className="input input-bordered input-primary input-sm w-full bg-[#1d1836]"
-            required
-          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-4">
+            <input
+              type="text"
+              name="type"
+              placeholder="Type"
+              className="input input-bordered input-primary input-sm w-full bg-[#1d1836]"
+              required
+            />
+            <select
+              name="status"
+              className="select select-sm select-primary w-full bg-[#1d1836]"
+            >
+              <option value="ongoing" selected>
+                Ongoing
+              </option>
+              <option value="upcoming">Upcoming</option>
+            </select>
+            <input
+              type="number"
+              name="price"
+              placeholder="Price"
+              className="input input-bordered input-primary input-sm w-full bg-[#1d1836]"
+              required
+            />
+            <input
+              type="text"
+              name="location"
+              placeholder="Location"
+              className="input input-bordered input-primary input-sm w-full bg-[#1d1836]"
+              required
+            />
+          </div>
           <textarea
             className="textarea first-letter:input input-bordered input-primary input-sm w-full h-[150px] bg-[#1d1836]"
             name="description"
