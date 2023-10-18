@@ -17,11 +17,11 @@ const HomePage = () => {
       <Hero />
       <ServicesPage />
       <UpcomingServicesPage />
-      <LatestNewsPage />
-      <CertifiedSection />
       <ClientReviewsPage />
       <Event />
+      <LatestNewsPage />
       <Survey />
+      <CertifiedSection />
       <FAQPage />
       <FeedbackPage />
     </div>

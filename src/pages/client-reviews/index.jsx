@@ -15,9 +15,9 @@ const ClientReviewsPage = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className="mx-auto md:px-6">
+    <div className="mx-auto md:px-6 mt-20">
       <section className="text-center h-[400px]">
-        <h2 className="text-2xl md:text-3xl font-semibold text-center mb-12">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-center mb-12">
           Client Reviews
         </h2>
 
