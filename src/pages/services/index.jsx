@@ -19,7 +19,7 @@ const ServicesPage = () => {
     authorization: accessToken,
   };
 
-  const { data: allService } = useGetAllServiceQuery({ searchValue });
+  const { data: allService } = useGetAllServiceQuery(searchValue);
   const [
     createAddToCart,
     {
