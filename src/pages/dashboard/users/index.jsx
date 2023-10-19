@@ -282,25 +282,35 @@ const Users = () => {
                                   type="checkbox"
                                   className="toggle toggle-sm toggle-primary"
                                   checked={
-                                    user?.role === "admin" ? true : false
+                                    user?.role === "admin" ||
+                                    user?.role === "super_admin"
+                                      ? true
+                                      : false
                                   }
                                   onClick={(e) => handleSetRole({ user, e })}
                                   disabled={
-                                    user?.email === getMyProfile?.data?.email
+                                    (user?.email === getMyProfile?.data?.email
                                       ? true
-                                      : false
+                                      : false) ||
+                                    (user?.role === "super_admin"
+                                      ? true
+                                      : false)
                                   }
                                 />
                               </td>
                               <td className="sm:p-3 py-2">
                                 <button
                                   disabled={
-                                    user?.email === getMyProfile?.data?.email
+                                    (user?.email === getMyProfile?.data?.email
                                       ? true
-                                      : false
+                                      : false) ||
+                                    (user?.role === "super_admin"
+                                      ? true
+                                      : false)
                                   }
                                   className={`${
-                                    user?.email === getMyProfile?.data?.email
+                                    user?.email === getMyProfile?.data?.email ||
+                                    user?.role === "super_admin"
                                       ? "cursor-not-allowed text-red-400"
                                       : "cursor-pointer text-red-600"
                                   }`}
@@ -313,14 +323,23 @@ const Users = () => {
                               </td>
                               <td className="sm:p-3 py-2 hidden sm:table-cell">
                                 <Link
-                                  href={`/dashboard/users/update/${user?.id}`}
+                                  href={
+                                    user?.email === getMyProfile?.data?.email ||
+                                    user?.role === "super_admin"
+                                      ? ""
+                                      : `/dashboard/users/update/${user?.id}`
+                                  }
                                   disabled={
-                                    user?.email === getMyProfile?.data?.email
+                                    (user?.email === getMyProfile?.data?.email
                                       ? true
-                                      : false
+                                      : false) ||
+                                    (user?.role === "super_admin"
+                                      ? true
+                                      : false)
                                   }
                                   className={`${
-                                    user?.email === getMyProfile?.data?.email
+                                    user?.email === getMyProfile?.data?.email ||
+                                    user?.role === "super_admin"
                                       ? "cursor-not-allowed text-green-400"
                                       : "cursor-pointer text-green-600"
                                   }`}

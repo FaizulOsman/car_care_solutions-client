@@ -45,7 +45,7 @@ const Login = () => {
           <div className="flex justify-around mt-5">
             <div className="dropdown dropdown-hover">
               <label tabIndex={0} className="btn btn-xs m-1 btn-primary">
-                Admin
+                Super Admin
               </label>
               <ul
                 tabIndex={0}
