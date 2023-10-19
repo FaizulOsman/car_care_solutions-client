@@ -12,7 +12,8 @@ const serviceApi = apiSlice.injectEndpoints({
       invalidatesTags: ["carCare"],
     }),
     getAllService: builder.query({
-      query: () => `/services`,
+      query: ({ searchValue }) =>
+        `/services${searchValue && `?searchTerm=${searchValue}`}`,
       providesTags: ["carCare"],
     }),
     getSingleService: builder.query({

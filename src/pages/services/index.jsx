@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useGetAllServiceQuery } from "../../redux/service/serviceApi";
 import { TiTick } from "react-icons/ti";
 import RootLayout from "../../layouts/RootLayout";
@@ -8,6 +8,8 @@ import { useCreateAddToCartMutation } from "../../redux/addToCart/addToCartApi";
 const jwt = require("jsonwebtoken");
 
 const ServicesPage = () => {
+  const [searchValue, setSearchValue] = useState("");
+
   const accessToken =
     typeof window !== "undefined" ? localStorage.getItem("access-token") : null;
 
@@ -17,7 +19,7 @@ const ServicesPage = () => {
     authorization: accessToken,
   };
 
-  const { data: allService } = useGetAllServiceQuery();
+  const { data: allService } = useGetAllServiceQuery({ searchValue });
   const [
     createAddToCart,
     {
@@ -59,6 +61,14 @@ const ServicesPage = () => {
         <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-center pb-10">
           Services
         </h1>
+        <div className="pb-7 sm:pb-10 text-center">
+          <input
+            type="text"
+            onChange={(e) => setSearchValue(e.target.value)}
+            placeholder="Search for services"
+            className="input input-sm sm:input-md input-bordered input-primary w-full max-w-xs"
+          />
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-10">
           {ongoingServices?.map((service, index) => (
             <div
