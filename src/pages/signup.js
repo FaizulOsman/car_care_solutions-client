@@ -2,33 +2,52 @@ import { useSignUpMutation } from "../redux/user/userApi";
 import { saveToLocalStorage } from "../utils/localstorage";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 
 const SignUp = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const [signUp, { data, isError, isLoading, isSuccess, error }] =
     useSignUpMutation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (e.target.password.value !== e.target.confirmPassword.value) {
-      toast.error("Password doesn't matched!");
-    } else {
-      const newData = {
-        name: e.target.name.value,
-        email: e.target.email.value,
-        password: e.target.password.value,
-        role: "user",
-        phone: e.target.phone.value,
-      };
+    const newData = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      password: e.target.password.value,
+      role: "user",
+      phone: e.target.phone.value,
+    };
 
-      try {
-        await signUp(newData);
-        saveToLocalStorage("access-token", data?.data?.accessToken);
-        saveToLocalStorage("user-info", JSON.stringify(data?.data?.userData));
-      } catch (error) {
-        toast.error(`${error?.data?.message}` || "Something went wrong");
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    if (!emailPattern.test(newData?.email)) {
+      toast.error("Please enter a valid email");
+    }
+
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$!%*?&])[A-Za-z\d@#$!%*?&]{8,}$/;
+    if (!passwordRegex.test(newData?.password)) {
+      toast.error(
+        "Please enter valid password including: [a-z], [A-Z], [0-9], [@#$!%*?&]"
+      );
+    }
+
+    if (
+      emailPattern.test(newData?.email) &&
+      passwordRegex.test(newData?.password)
+    ) {
+      if (e.target.password.value !== e.target.confirmPassword.value) {
+        toast.error("Password doesn't matched!");
+      } else {
+        try {
+          await signUp(newData);
+          saveToLocalStorage("access-token", data?.data?.accessToken);
+          saveToLocalStorage("user-info", JSON.stringify(data?.data?.userData));
+        } catch (error) {
+          toast.error(`${error?.data?.message}` || "Something went wrong");
+        }
       }
     }
   };
@@ -66,6 +85,7 @@ const SignUp = () => {
               name="name"
               placeholder="Name"
               className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              required
             />
           </div>
           <div className="mb-2">
@@ -74,6 +94,7 @@ const SignUp = () => {
               name="email"
               placeholder="Email"
               className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              required
             />
           </div>
           <div className="mb-2">
@@ -82,24 +103,35 @@ const SignUp = () => {
               name="phone"
               placeholder="Phone"
               className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              required
             />
           </div>
           <div className="mb-2">
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               name="password"
               placeholder="Password"
               className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              required
             />
           </div>
           <div className="mb-2">
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               name="confirmPassword"
               placeholder="Confirm Password"
               className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              required
             />
           </div>
+          <label className="cursor-pointer flex items-center gap-4">
+            <input
+              type="checkbox"
+              onClick={() => setShowPassword(!showPassword)}
+              className="checkbox checkbox-xs checkbox-primary"
+            />
+            <span className="label-text">Show Password</span>
+          </label>
           <div className="mt-6">
             <button
               type="submit"
