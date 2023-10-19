@@ -38,6 +38,7 @@ const useProtectedRoute = (role) => {
     "/exam/[...segments]",
     "/dashboard",
     "/dashboard/users",
+    "/dashboard/add-new-admin",
     "/dashboard/users/update/[userId]",
     "/dashboard/service/update/[serviceId]",
     "/dashboard/service/all-service",

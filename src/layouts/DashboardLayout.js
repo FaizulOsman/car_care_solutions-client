@@ -5,7 +5,7 @@ import {
   FaChartLine,
   FaQuestionCircle,
 } from "react-icons/fa";
-import { BiSearch } from "react-icons/bi";
+import { BiSearch, BiSolidUserPlus } from "react-icons/bi";
 import { BiCog } from "react-icons/bi";
 import {
   AiOutlineShoppingCart,
@@ -50,6 +50,14 @@ const routes = [
     icon: <FaUser />,
     permission1: "user",
     permission2: "admin",
+    permission3: "super_admin",
+  },
+  {
+    path: "/dashboard/add-new-admin",
+    name: "Add new admin",
+    icon: <BiSolidUserPlus />,
+    permission1: "",
+    permission2: "",
     permission3: "super_admin",
   },
   {
