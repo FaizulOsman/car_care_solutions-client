@@ -97,6 +97,7 @@ const MyProfile = () => {
                     className="input-sm input-primary w-full py-3 px-4 border rounded-lg focus:outline-none focus:border-blue-500 bg-[#1d1836]"
                     autoComplete="off"
                     defaultValue={MyProfile?.email}
+                    disabled={true}
                   />
                   <label
                     htmlFor="email"
