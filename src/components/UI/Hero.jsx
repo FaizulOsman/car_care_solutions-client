@@ -1,76 +1,93 @@
 import Link from "next/link";
 import React from "react";
 
-const Hero = () => {
+const Banner = () => {
   return (
-    <div>
-      <div className="mb-20 relative bg-gradient-to-b from-[#00bbea] to-[#19457c]">
-        <div className="absolute inset-x-0 bottom-0">
-          <svg
-            viewBox="0 0 224 12"
-            fill="currentColor"
-            className="w-full -mb-1 text-white"
-            preserveAspectRatio="none"
-          >
-            <path d="M0,0 C48.8902582,6.27314026 86.2235915,9.40971039 112,9.40971039 C137.776408,9.40971039 175.109742,6.27314026 224,0 L224,12.0441132 L0,12.0441132 L0,0 Z" />
-          </svg>
-        </div>
-        <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-          <div className="relative max-w-2xl sm:mx-auto sm:max-w-xl md:max-w-2xl sm:text-center">
-            <h2 className="mb-6 font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none">
-              Revitalize Your Ride:
-              <br className="hidden md:block" />
-              Your Cars{" "}
-              <span className="relative inline-block px-2">
-                <div className="absolute inset-0 transform -skew-x-12 bg-teal-accent-400" />
-                <span className="relative text-teal-900">
-                  Ultimate Care Destination
-                </span>
-              </span>
-            </h2>
-            <p className="mb-6 text-base text-indigo-100 md:text-lg">
-              Discover the perfect oasis for your vehicle at our car care
-              center. We provide top-notch services to pamper your car and keep
-              it shining. Visit us today!
-            </p>
-            <form className="flex flex-col items-center w-full mb-4 md:flex-row md:px-16">
-              <input
-                placeholder="Email"
-                required
-                type="text"
-                className="flex-grow w-full h-12 px-4 mb-3 text-black transition duration-200 border-2 border-transparent rounded appearance-none md:mr-2 md:mb-0 bg-deep-purple-900 focus:border-teal-accent-700 focus:outline-none focus:shadow-outline"
-              />
-              <Link
-                href="/"
-                className="inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto hover:text-deep-purple-900 bg-teal-accent-400 hover:bg-teal-accent-700 focus:shadow-outline focus:outline-none border"
-              >
-                Subscribe
-              </Link>
-            </form>
-            <p className="max-w-md mb-10 text-xs tracking-wide text-indigo-100 sm:text-sm sm:mx-auto md:mb-16">
-              At our car care center, we are dedicated to preserving your cars
-              beauty, performance, and value. Trust us with your vehicle today.
-            </p>
-            <Link
-              href="/"
-              aria-label="Scroll down"
-              className="flex items-center justify-center w-10 h-10 mx-auto text-white duration-300 transform border border-gray-400 rounded-full hover:text-teal-accent-400 hover:border-teal-accent-400 hover:shadow hover:scale-110"
+    <div className="pb-20 -mt-14">
+      <div
+        className="h-[260px] md:h-[300px] lg:h-[460px]"
+        style={{
+          background: `url(https://i.ibb.co/3S5dnds/banner.jpg)`,
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "100% 100%",
+        }}
+      >
+        <h3
+          style={{
+            textShadow: "0 8px 4px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.6)",
+          }}
+          className="text-3xl sm:text-4xl lg:text-5xl text-center text-white pt-20 font-bold hover:tracking-widest duration-300"
+        >
+          Reliable Care <br />
+          for Your Auto Needs
+        </h3>
+      </div>
+
+      <div
+        data-aos="fade-up"
+        className="border-4 bg-base-100 mt-10 lg:-mt-24 lg:w-8/12 mx-auto rounded-lg"
+      >
+        <h3 className="text-3xl font-semibold text-center text-blue-500 mt-5">
+          Tell us what you are looking for
+        </h3>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-center mt-5 px-10 pb-10">
+          <select className="select select-bordered w-full">
+            <option>Select a Make</option>
+            <option>Ultimate Paint Correction</option>
+            <option>Executive</option>
+            <option>Deluxe</option>
+            <option>Premium</option>
+            <option>Classic</option>
+            <option>Basic</option>
+            <option>WAX</option>
+            <option>Interior Car Detailing</option>
+          </select>
+          <select disabled className="select select-bordered w-full">
+            <option>Select a Model</option>
+            <option>Han Solo</option>
+            <option>Greedo</option>
+          </select>
+          <input
+            type="text"
+            placeholder="Zip Code"
+            className="input input-bordered w-full"
+          />
+          <Link href="/services">
+            <button
+              className={`bg-gradient-to-r from-green-500 to-blue-500 hover:bg-gradient-to-r hover:from-blue-500 hover:to-green-500 text-white w-full px-8 py-3 font-semibold rounded-md bg-gray-900 hover:bg-gray-700 hover:text-white`}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="currentColor"
-              >
-                <path d="M10.293,3.293,6,7.586,1.707,3.293A1,1,0,0,0,.293,4.707l5,5a1,1,0,0,0,1.414,0l5-5a1,1,0,1,0-1.414-1.414Z" />
-              </svg>
-            </Link>
-          </div>
+              Let{"'"}s Go
+            </button>
+          </Link>
+        </div>
+
+        <div className="border-t bg-gray-100 p-4 flex flex-wrap justify-around gap-3">
+          <Link href="/services">
+            <button className="p-2 border bg-white text-blue-400 font-semibold">
+              Browse by Price or Payments
+            </button>
+          </Link>
+          <Link href="/services">
+            <button className="p-2 border bg-white text-blue-400 font-semibold">
+              Browse by Brand
+            </button>
+          </Link>
+          <Link href="/services">
+            <button className="p-2 border bg-white text-blue-400 font-semibold">
+              See Services Near You
+            </button>
+          </Link>
+          <Link href="/services">
+            <button className="p-2 border bg-white text-blue-400 font-semibold">
+              Articles & Tips
+            </button>
+          </Link>
         </div>
       </div>
     </div>
   );
 };
 
-export default Hero;
+export default Banner;
