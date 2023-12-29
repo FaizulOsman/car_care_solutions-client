@@ -15,6 +15,16 @@ const ClientReviewsPage = () => {
 
   const [activeIndex, setActiveIndex] = useState(0);
 
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setActiveIndex(
+        (prevIndex) => (prevIndex + 1) % getAllReview?.data?.length
+      );
+    }, 2000); // Change slide every 1000 milliseconds (1 second)
+
+    return () => clearInterval(intervalId); // Clear the interval on component unmount
+  }, [getAllReview?.data?.length]);
+
   return (
     <div className="mx-auto md:px-6 mt-20">
       <section className="text-center h-[400px]">
