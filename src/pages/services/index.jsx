@@ -6,11 +6,13 @@ import toast from "react-hot-toast";
 import { useCreateAddToCartMutation } from "../../redux/addToCart/addToCartApi";
 import Loader from "../../components/UI/Loader";
 import { RxCross2 } from "react-icons/rx";
+import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 
 const jwt = require("jsonwebtoken");
 
 const ServicesPage = () => {
   const [searchValue, setSearchValue] = useState("");
+  const [limit, setLimit] = useState(6);
 
   const accessToken =
     typeof window !== "undefined" ? localStorage.getItem("access-token") : null;
@@ -22,6 +24,7 @@ const ServicesPage = () => {
   };
 
   const { data: allService } = useGetAllServiceQuery(searchValue);
+  console.log(allService);
   const [
     createAddToCart,
     {
@@ -48,9 +51,16 @@ const ServicesPage = () => {
     "Deep Leather Cleaning",
   ];
 
-  let ongoingServices = allService?.data?.filter(
-    (data) => data.status === "ongoing"
-  );
+  let ongoingServices = allService?.data
+    ?.filter((data) => data.status === "ongoing")
+    .slice(0, limit);
+
+  useEffect(() => {
+    // Update the limit based on the length of ongoingServices
+    if (ongoingServices && ongoingServices.length < limit) {
+      setLimit(ongoingServices.length);
+    }
+  }, [ongoingServices, limit]);
 
   useEffect(() => {
     if (createAddToCartIsSuccess) {
@@ -72,13 +82,60 @@ const ServicesPage = () => {
         <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-center pb-10">
           Services
         </h1>
-        <div className="pb-7 sm:pb-10 text-center">
-          <input
-            type="text"
-            onChange={(e) => setSearchValue(e.target.value)}
-            placeholder="Search for services"
-            className="input input-sm sm:input-md input-bordered border-blue-500 w-full max-w-xs"
-          />
+        <div className="flex flex-col sm:flex-row justify-between gap-4 mb-7">
+          <div className="max-w-7xl mx-auto sm:mx-0">
+            <input
+              className="bg-transparent shadow appearance-none border border-blue-500 rounded max-w-4xl py-2 px-3 text-blue-500 leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              placeholder="Search for services"
+              onChange={(e) => setSearchValue(e.target.value)}
+            />
+          </div>
+          <div className="max-w-7xl mx-auto sm:mx-0 flex flex-col gap-2">
+            <select
+              onChange={(e) => {
+                setSearchValue(e.target.value);
+              }}
+              className="select select-bordered border border-blue-500 rounded px-3 text-gray-400 font-normal select-xs sm:select-sm max-w-xs"
+            >
+              <option value="">Find Service</option>
+              <option value="BASIC">Basic</option>
+              <option value="CLASSIC">Classic</option>
+              <option value="PREMIUM">Premium</option>
+              <option value="DELUXE">Deluxe</option>
+              <option value="EXECUTIVE">Executive</option>
+              <option value="ULTIMATE PAINT CORRECTION">
+                Ultimate Paint Correction
+              </option>
+            </select>
+            <div className="ml-auto text-xs inline-flex items-center">
+              <span className="mr-3 hidden sm:inline-block text-gray-400">
+                Limit {limit}
+              </span>
+              <button
+                onClick={() => setLimit(limit - 1)}
+                className={`mr-3 inline-flex items-center h-6 w-6 sm:h-8 sm:w-8 justify-center rounded-md shadow border border-gray-500 text-gray-500 ${
+                  limit === 1
+                    ? "opacity-50 cursor-not-allowed"
+                    : "border-gray-500 text-gray-500"
+                } leading-none`}
+                disabled={limit === 1}
+              >
+                <BiChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={() => setLimit(limit + 1)}
+                className={`inline-flex items-center h-6 w-6 sm:h-8 sm:w-8 justify-center rounded-md shadow border border-gray-500 text-gray-500 leading-none ${
+                  ongoingServices && ongoingServices.length < limit
+                    ? "opacity-50 cursor-not-allowed"
+                    : "border-gray-500 text-gray-500"
+                } `}
+                disabled={ongoingServices && ongoingServices.length < limit}
+              >
+                <BiChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
         </div>
         {ongoingServices?.length > 0 ? (
           <>
@@ -103,8 +160,7 @@ const ServicesPage = () => {
                         {service?.facilities?.map((facility, index) => (
                           <li key={index} class="flex items-center gap-4">
                             <span class="p-1 border rounded-full border-white/20 bg-white/20">
-                              <TiTick />
-                              {/* <RxCross2 /> */}
+                              <TiTick className="text-blue-500" />
                             </span>
                             <p class="block font-sans text-base antialiased font-normal leading-relaxed text-inherit">
                               {facility}
@@ -116,7 +172,7 @@ const ServicesPage = () => {
                             !service?.facilities?.includes(f) && (
                               <li key={index} class="flex items-center gap-4">
                                 <span class="p-1 border rounded-full border-white/20 bg-white/20">
-                                  <RxCross2 />
+                                  <RxCross2 className="text-red-500" />
                                 </span>
                                 <p class="block font-sans text-base antialiased font-normal leading-relaxed text-inherit">
                                   {f}
