@@ -24,7 +24,7 @@ const ServicesPage = () => {
   };
 
   const { data: allService } = useGetAllServiceQuery(searchValue);
-  console.log(allService);
+
   const [
     createAddToCart,
     {
