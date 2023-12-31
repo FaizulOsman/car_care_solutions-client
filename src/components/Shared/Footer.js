@@ -3,19 +3,19 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer class="flex flex-col bg-gray-100 items-center text-center">
-      <div class="container px-6 pt-6">
-        <div class="mb-6 flex justify-center">
+    <footer className="flex flex-col bg-gray-100 items-center text-center">
+      <div className="container px-6 pt-6">
+        <div className="mb-6 flex justify-center">
           <Link
             href="#!"
             type="button"
-            class="m-1 h-9 w-9 rounded-full border-2 border-black uppercase leading-normal transition duration-150 ease-in-out hover:text-blue-600 hover:bg-white focus:outline-none focus:ring-0"
+            className="m-1 h-9 w-9 rounded-full border-2 border-black uppercase leading-normal transition duration-150 ease-in-out hover:text-blue-600 hover:bg-white focus:outline-none focus:ring-0"
             data-te-ripple-init
             data-te-ripple-color="light"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="mx-auto h-full w-4"
+              className="mx-auto h-full w-4"
               fill="currentColor"
               viewBox="0 0 24 24"
             >
@@ -26,13 +26,13 @@ const Footer = () => {
           <Link
             href="#!"
             type="button"
-            class="m-1 h-9 w-9 rounded-full border-2 border-black uppercase leading-normal transition duration-150 ease-in-out hover:text-blue-600 hover:bg-white focus:outline-none focus:ring-0"
+            className="m-1 h-9 w-9 rounded-full border-2 border-black uppercase leading-normal transition duration-150 ease-in-out hover:text-blue-600 hover:bg-white focus:outline-none focus:ring-0"
             data-te-ripple-init
             data-te-ripple-color="light"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="mx-auto h-full w-4"
+              className="mx-auto h-full w-4"
               fill="currentColor"
               viewBox="0 0 24 24"
             >
@@ -43,13 +43,13 @@ const Footer = () => {
           <Link
             href="#!"
             type="button"
-            class="m-1 h-9 w-9 rounded-full border-2 border-black uppercase leading-normal transition duration-150 ease-in-out hover:text-red-500 hover:bg-white focus:outline-none focus:ring-0"
+            className="m-1 h-9 w-9 rounded-full border-2 border-black uppercase leading-normal transition duration-150 ease-in-out hover:text-red-500 hover:bg-white focus:outline-none focus:ring-0"
             data-te-ripple-init
             data-te-ripple-color="light"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="mx-auto h-full w-4"
+              className="mx-auto h-full w-4"
               fill="currentColor"
               viewBox="0 0 24 24"
             >
@@ -64,13 +64,13 @@ const Footer = () => {
           <Link
             href="#!"
             type="button"
-            class="m-1 h-9 w-9 rounded-full border-2 border-black uppercase leading-normal transition duration-150 ease-in-out hover:text-[#f223d8] hover:bg-white focus:outline-none focus:ring-0"
+            className="m-1 h-9 w-9 rounded-full border-2 border-black uppercase leading-normal transition duration-150 ease-in-out hover:text-[#f223d8] hover:bg-white focus:outline-none focus:ring-0"
             data-te-ripple-init
             data-te-ripple-color="light"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="mx-auto h-full w-4"
+              className="mx-auto h-full w-4"
               fill="currentColor"
               viewBox="0 0 24 24"
             >
@@ -81,13 +81,13 @@ const Footer = () => {
           <Link
             href="#!"
             type="button"
-            class="m-1 h-9 w-9 rounded-full border-2 border-black uppercase leading-normal transition duration-150 ease-in-out hover:text-blue-600 hover:bg-white focus:outline-none focus:ring-0"
+            className="m-1 h-9 w-9 rounded-full border-2 border-black uppercase leading-normal transition duration-150 ease-in-out hover:text-blue-600 hover:bg-white focus:outline-none focus:ring-0"
             data-te-ripple-init
             data-te-ripple-color="light"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="mx-auto h-full w-4"
+              className="mx-auto h-full w-4"
               fill="currentColor"
               viewBox="0 0 24 24"
             >
@@ -98,13 +98,13 @@ const Footer = () => {
           <Link
             href="#!"
             type="button"
-            class="m-1 h-9 w-9 rounded-full border-2 border-black uppercase leading-normal transition duration-150 ease-in-out hover:text-black hover:bg-white focus:outline-none focus:ring-0"
+            className="m-1 h-9 w-9 rounded-full border-2 border-black uppercase leading-normal transition duration-150 ease-in-out hover:text-black hover:bg-white focus:outline-none focus:ring-0"
             data-te-ripple-init
             data-te-ripple-color="light"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="mx-auto h-full w-4"
+              className="mx-auto h-full w-4"
               fill="currentColor"
               viewBox="0 0 24 24"
             >
@@ -113,7 +113,7 @@ const Footer = () => {
           </Link>
         </div>
 
-        <div class="mb-6 max-w-3xl mx-auto">
+        <div className="mb-6 max-w-3xl mx-auto">
           <p>
             Drive confidently into the future with Car Care Solutions. Our
             commitment to excellence extends to every detail, ensuring your
@@ -121,11 +121,11 @@ const Footer = () => {
           </p>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-4">
-          <div class="mb-6">
-            <h5 class="mb-2.5 font-bold uppercase">USEFUL LINKS</h5>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4">
+          <div className="mb-6">
+            <h5 className="mb-2.5 font-bold uppercase">USEFUL LINKS</h5>
 
-            <ul class="mb-0 list-none ">
+            <ul className="mb-0 list-none ">
               <li className="mb-1">
                 <Link className="left-menus__menu" href="/services">
                   Services
@@ -152,10 +152,10 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div class="mb-6">
-            <h5 class="mb-2.5 font-bold uppercase">USEFUL LINKS</h5>
+          <div className="mb-6">
+            <h5 className="mb-2.5 font-bold uppercase">USEFUL LINKS</h5>
 
-            <ul class=" mb-0 list-none">
+            <ul className=" mb-0 list-none">
               <li className="mb-1">
                 <Link className="left-menus__menu" href="/feedback">
                   Feedback
@@ -179,10 +179,10 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div class="mb-6">
-            <h5 class="mb-2.5 font-bold uppercase">OTHER RESOURCES</h5>
+          <div className="mb-6">
+            <h5 className="mb-2.5 font-bold uppercase">OTHER RESOURCES</h5>
 
-            <ul class=" mb-0 list-none">
+            <ul className=" mb-0 list-none">
               <li className="mb-1">
                 <Link className="left-menus__menu" href="/dashboard">
                   Dashboard
@@ -206,18 +206,18 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div class="mb-6">
-            <h5 class="mb-2.5 font-bold uppercase">CONTACT</h5>
+          <div className="mb-6">
+            <h5 className="mb-2.5 font-bold uppercase">CONTACT</h5>
 
-            <ul class="mb-0 list-none">
+            <ul className="mb-0 list-none">
               <li>
-                <Link href="#!" class="">
-                  <p class="mb-1 flex items-center justify-center md:justify-start">
+                <Link href="#!" className="">
+                  <p className="mb-1 flex items-center justify-center md:justify-start">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       fill="currentColor"
-                      class="mr-3 h-5 w-5"
+                      className="mr-3 h-5 w-5"
                     >
                       <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
                       <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
@@ -227,13 +227,13 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="#!" class="">
-                  <p class="mb-1 flex items-center justify-center md:justify-start">
+                <Link href="#!" className="">
+                  <p className="mb-1 flex items-center justify-center md:justify-start">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       fill="currentColor"
-                      class="mr-3 h-5 w-5"
+                      className="mr-3 h-5 w-5"
                     >
                       <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
                       <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
@@ -243,13 +243,13 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="#!" class="">
-                  <p class="mb-1 flex items-center justify-center md:justify-start">
+                <Link href="#!" className="">
+                  <p className="mb-1 flex items-center justify-center md:justify-start">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       fill="currentColor"
-                      class="mr-3 h-5 w-5"
+                      className="mr-3 h-5 w-5"
                     >
                       <path
                         fill-rule="evenodd"
@@ -262,13 +262,13 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="#!" class="">
-                  <p class="flex items-center justify-center md:justify-start">
+                <Link href="#!" className="">
+                  <p className="flex items-center justify-center md:justify-start">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       fill="currentColor"
-                      class="mr-3 h-5 w-5"
+                      className="mr-3 h-5 w-5"
                     >
                       <path
                         fill-rule="evenodd"
@@ -285,7 +285,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div class="w-full p-4 text-center">
+      <div className="w-full p-4 text-center">
         © 2023 Copyright:
         <Link href="/" className="left-menus__menu" target="_blank">
           Car Care Solutions
