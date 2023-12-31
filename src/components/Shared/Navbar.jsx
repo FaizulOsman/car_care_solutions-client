@@ -65,7 +65,7 @@ const Navbar = () => {
       className={`z-50 border-b-1 border-solid border-blue-200 z-999 fixed w-full top-0 ${
         stickyNav
           ? "sticky shadow-md border-b-0 sticky__body bg-white"
-          : "bg-gradient-to-r from-green-500 to-blue-500"
+          : "bg-blue-400"
       }`}
     >
       <div className="w-11/12 max-w-[1200px] mx-auto">
@@ -78,8 +78,8 @@ const Navbar = () => {
             <Link href="/">
               <Image
                 alt="Logo"
-                className="w-16 h-8"
-                src="https://i.ibb.co/qWMN38d/png-clipart-hyundai-santa-fe-car-audi-car-compact-car-headlamp-thumbnail-removebg-preview.png"
+                className="w-8 h-8"
+                src="https://i.ibb.co/wsk3b5s/pngegg-2.png"
                 decoding="async"
                 loading="lazy"
                 width={300}
@@ -92,8 +92,8 @@ const Navbar = () => {
               <Link href="/">
                 <Image
                   alt="Logo"
-                  className="w-16 h-8"
-                  src="https://i.ibb.co/qWMN38d/png-clipart-hyundai-santa-fe-car-audi-car-compact-car-headlamp-thumbnail-removebg-preview.png"
+                  className="w-8 h-8"
+                  src="https://i.ibb.co/wsk3b5s/pngegg-2.png"
                   decoding="async"
                   loading="lazy"
                   width={300}
@@ -197,8 +197,8 @@ const Navbar = () => {
                   <Link href="/">
                     <Image
                       alt="Logo"
-                      className="w-16 h-8"
-                      src="https://i.ibb.co/qWMN38d/png-clipart-hyundai-santa-fe-car-audi-car-compact-car-headlamp-thumbnail-removebg-preview.png"
+                      className="w-8 h-8"
+                      src="https://i.ibb.co/wsk3b5s/pngegg-2.png"
                       decoding="async"
                       loading="lazy"
                       width={300}
