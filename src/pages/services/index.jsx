@@ -55,6 +55,9 @@ const ServicesPage = () => {
     "Shampoo Seats",
     "Interior Wipe Down",
     "Deep Leather Cleaning",
+    "Deluxe Wax Protection",
+    "Executive Interior Detailing",
+    "Full exterior body clay treatment",
   ];
 
   useEffect(() => {
