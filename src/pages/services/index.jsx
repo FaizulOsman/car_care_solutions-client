@@ -30,7 +30,6 @@ const ServicesPage = () => {
     status,
     limit,
   });
-  console.log(limit, allService?.data);
 
   const [
     createAddToCart,
