@@ -238,8 +238,8 @@ const DashboardLayout = ({ children }) => {
             <div className="cursor-pointer">
               <Image
                 alt="Logo"
-                className={`w-9 h-9 ${isOpen ? "hidden sm:block" : ""}`}
-                src={LOGO}
+                className={`w-7 h-7 mx-2 ${isOpen ? "hidden sm:block" : ""}`}
+                src="https://i.ibb.co/wsk3b5s/pngegg-2.png"
                 decoding="async"
                 loading="lazy"
                 width={300}
