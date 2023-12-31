@@ -36,7 +36,7 @@
   min-width: fit-content;
   list-style: none;
   font-size: 16px;
-  color: white;
+  /* color: white; */
 }
 .left-menus__menu {
   /* display: inline-block; */
