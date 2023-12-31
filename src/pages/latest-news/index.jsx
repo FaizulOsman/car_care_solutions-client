@@ -4,7 +4,7 @@ import RootLayout from "../../layouts/RootLayout";
 
 const LatestNewsPage = () => {
   return (
-    <div className="mt-28">
+    <div className="w-11/12 max-w-[1200px] mx-auto mb-20">
       <div data-aos="flip-left">
         <h2 className="text-2xl md:text-3xl font-semibold text-center">
           Latest News

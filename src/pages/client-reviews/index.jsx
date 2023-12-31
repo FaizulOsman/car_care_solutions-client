@@ -26,7 +26,7 @@ const ClientReviewsPage = () => {
   }, [getAllReview?.data?.length]);
 
   return (
-    <div className="mx-auto md:px-6 mt-20">
+    <div className="w-11/12 max-w-[1200px] mx-auto md:px-6 mb-20">
       <section className="text-center h-[400px]">
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-center mb-12">
           Client Reviews

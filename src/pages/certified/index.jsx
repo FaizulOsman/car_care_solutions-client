@@ -42,7 +42,7 @@ const CertifiedSection = () => {
     { img: "https://i.ibb.co/9wgySxV/Certified15.png", name: "Ram Certified" },
   ];
   return (
-    <div className="w-11/12 max-w-[1400px] mx-auto my-28">
+    <div className="w-11/12 max-w-[1200px] mx-auto mb-20">
       <div data-aos="flip-right">
         <h2 className="text-2xl md:text-3xl font-semibold text-center">
           Certified Pre-Owned Cars

@@ -4,7 +4,7 @@ import CountUp from "react-countup";
 const Statistic = () => {
   return (
     <div
-      className="statistic text-white my-32 h-[600px]"
+      className="statistic text-white mb-20 h-[600px]"
       style={{
         backgroundImage:
           'url("https://ar.happyvalentinesday2020.online/pics/cardetailingshop.ca/wp-content/uploads/2018/07/car-detailing-shop.jpg")',

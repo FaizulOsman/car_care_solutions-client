@@ -7,7 +7,7 @@ const FAQPage = () => {
   const { data: allFaq } = useGetAllFaqQuery();
 
   return (
-    <div>
+    <div className="w-11/12 max-w-[1200px] mx-auto mb-20">
       <h2 className="text-2xl md:text-3xl font-semibold text-center pb-10">
         Frequently Asked Questions
       </h2>
