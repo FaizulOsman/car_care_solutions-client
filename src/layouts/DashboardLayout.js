@@ -231,7 +231,7 @@ const DashboardLayout = ({ children }) => {
                   exit="hidden"
                   className="text-lg leading-[0px] pl-2"
                 >
-                  LearnLeap
+                  CarCare
                 </motion.h1>
               )}
             </AnimatePresence>
@@ -312,7 +312,10 @@ const DashboardLayout = ({ children }) => {
             <div style={{ minHeight: "calc(100vh - 100px)" }}>{children}</div>
             <footer className="footer footer-center p-4 bg-[#00073d] text-white">
               <div>
-                <p>Copyright © 2023 - All right reserved by LearnLeap Ltd.</p>
+                <p>
+                  Copyright © 2024 - All right reserved by Car Care Solutions
+                  Ltd.
+                </p>
               </div>
             </footer>
           </div>
