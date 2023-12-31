@@ -149,6 +149,7 @@ const UpcomingServicesPage = () => {
                       <button
                         onClick={() => handleAddToCart(service?.id)}
                         class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-sm py-3.5 px-7 rounded-lg bg-blue-600 hover:bg-blue-700 shadow-md shadow-blue-gray-500/10 hover:shadow-lg hover:shadow-blue-gray-500/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none block w-full hover:scale-[1.02] focus:scale-[1.02] active:scale-100"
+                        disabled={true}
                       >
                         Book Now
                       </button>
