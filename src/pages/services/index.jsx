@@ -169,7 +169,7 @@ const ServicesPage = () => {
                     <div class="p-0 mt-12">
                       <button
                         onClick={() => handleAddToCart(service?.id)}
-                        class="w-full btn border bg-white border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white"
+                        class="w-full btn border hover:bg-white hover:border-blue-500 hover:text-blue-500 bg-blue-500 text-white"
                       >
                         Book Now
                       </button>
