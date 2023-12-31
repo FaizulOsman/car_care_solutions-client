@@ -4,6 +4,7 @@ import {
   FaUsers,
   FaChartLine,
   FaQuestionCircle,
+  FaBars,
 } from "react-icons/fa";
 import { BiSearch, BiSolidUserPlus } from "react-icons/bi";
 import { BiCog } from "react-icons/bi";
@@ -26,6 +27,7 @@ import Image from "next/image";
 import { removeFromLocalStorage } from "../utils/localstorage";
 import SidebarMenu from "../components/Dashboard/SidebarMenu";
 import DashboardHeader from "../components/Dashboard/DashboardHeader";
+import LOGO from "../../public/logo.png";
 
 const routes = [
   {
@@ -217,9 +219,9 @@ const DashboardLayout = ({ children }) => {
               damping: 10,
             },
           }}
-          className={`h-screen bg-[#00073d] text-white min-h-[100vh] overflow-y-auto`}
+          className={`h-screen bg-[#00073d] text-white min-h-[100vh] overflow-y-auto absolute sm:static left-0 top-0 z-50`}
         >
-          <div className="flex items-center justify-between py-2">
+          <div className="flex items-center justify-between py-[6px]">
             <AnimatePresence>
               {isOpen && (
                 <motion.h1
@@ -229,41 +231,28 @@ const DashboardLayout = ({ children }) => {
                   exit="hidden"
                   className="text-lg leading-[0px] pl-2"
                 >
-                  CarCare
+                  LearnLeap
                 </motion.h1>
               )}
             </AnimatePresence>
             <div className="cursor-pointer">
               <Image
                 alt="Logo"
-                className="w-12"
-                src="https://i.ibb.co/qWMN38d/png-clipart-hyundai-santa-fe-car-audi-car-compact-car-headlamp-thumbnail-removebg-preview.png"
+                className={`w-9 h-9 ${isOpen ? "hidden sm:block" : ""}`}
+                src={LOGO}
                 decoding="async"
                 loading="lazy"
                 width={300}
                 height={300}
               />
-            </div>
-          </div>
-          <div className="flex items-center my-[10px] mx-0 h-4 p-2">
-            <div className="search_icon">
-              <BiSearch />
-            </div>
-            <AnimatePresence>
               {isOpen && (
-                <motion.input
-                  initial="hidden"
-                  animate="show"
-                  exit="hidden"
-                  variants={inputAnimation}
-                  type="text"
-                  placeholder="Search"
-                  className="border-none ml-2 rounded-md bg-white text-black p-0"
-                />
+                <div className="sm:hidden flex justify-center w-[43px] cursor-pointer hover:text-blue-500 py-[10px]">
+                  <FaBars className="w-4 h-4" onClick={toggle} />
+                </div>
               )}
-            </AnimatePresence>
+            </div>
           </div>
-          <section className="mt-4 flex flex-col gap-[5px]">
+          <section className="flex flex-col gap-[5px]">
             {routes.map((route, index) => (
               <div key={index}>
                 {(route?.permission1 === myProfile?.role ||
@@ -312,8 +301,9 @@ const DashboardLayout = ({ children }) => {
 
         <div
           className={`${
-            isOpen ? "w-[calc(100vw-200px)]" : "w-full"
-          } flex flex-col`}
+            // isOpen ? "w-[calc(100vw-200px)]" : "w-full"
+            isOpen ? "w-full sm:w-[calc(100vw-200px)]" : "w-full"
+          } flex flex-col ml-[45px] sm:ml-0`}
         >
           <div className="sticky top-0">
             <DashboardHeader toggle={toggle} handleLogOut={handleLogOut} />
@@ -322,10 +312,7 @@ const DashboardLayout = ({ children }) => {
             <div style={{ minHeight: "calc(100vh - 100px)" }}>{children}</div>
             <footer className="footer footer-center p-4 bg-[#00073d] text-white">
               <div>
-                <p>
-                  Copyright © 2023 - All right reserved by Car Care Solutions
-                  Ltd.
-                </p>
+                <p>Copyright © 2023 - All right reserved by LearnLeap Ltd.</p>
               </div>
             </footer>
           </div>
