@@ -56,7 +56,7 @@ const Banner = () => {
           />
           <Link href="/services">
             <button
-              className={`bg-gradient-to-r from-green-500 to-blue-500 hover:bg-gradient-to-r hover:from-blue-500 hover:to-green-500 text-white w-full px-8 py-3 font-semibold rounded-md bg-gray-900 hover:bg-gray-700 hover:text-white`}
+              className={`bg-gradient-to-r from-green-400 to-blue-400 hover:bg-gradient-to-r hover:from-blue-500 hover:to-green-500 text-white w-full px-8 py-3 font-semibold rounded-md bg-gray-900 hover:bg-gray-700 hover:text-white`}
             >
               Let{"'"}s Go
             </button>
@@ -66,22 +66,22 @@ const Banner = () => {
         <div className="border-t bg-gray-100 p-4 flex flex-wrap justify-around gap-3">
           <Link href="/services">
             <button className="p-2 border bg-white text-blue-400 font-semibold">
-              Browse by Price or Payments
+              Browse All Ongoing Services
             </button>
           </Link>
-          <Link href="/services">
+          <Link href="/services/upcoming-services">
             <button className="p-2 border bg-white text-blue-400 font-semibold">
-              Browse by Brand
+              Upcoming Services
             </button>
           </Link>
-          <Link href="/services">
+          <Link href="/faq">
             <button className="p-2 border bg-white text-blue-400 font-semibold">
-              See Services Near You
+              See FAQ
             </button>
           </Link>
-          <Link href="/services">
+          <Link href="/latest-news">
             <button className="p-2 border bg-white text-blue-400 font-semibold">
-              Articles & Tips
+              Latest News
             </button>
           </Link>
         </div>
