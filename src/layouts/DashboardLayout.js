@@ -275,7 +275,9 @@ const DashboardLayout = ({ children }) => {
                               : ""
                           }`}
                         >
-                          <div className="icon">{route.icon}</div>
+                          <div className={`icon ${!isOpen && "mx-auto"}`}>
+                            {route.icon}
+                          </div>
                           <AnimatePresence>
                             {isOpen && (
                               <motion.div
