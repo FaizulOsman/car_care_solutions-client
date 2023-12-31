@@ -82,8 +82,12 @@ const ServicesPage = () => {
       <div className="mb-20">
         <SectionHeader
           title="Services"
-          styles="text-2xl sm:text-3xl lg:text-4xl text-center text-blue-500 pb-10"
+          styles="text-2xl sm:text-3xl lg:text-4xl text-center text-ble-500 pb-5"
         />
+        <p className="text-center max-w-lg mx-auto pb-5">
+          Feel free to contact us at any time. We have a dedicated team to
+          provide you the best support.
+        </p>
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-7">
           <div className="w-56 sm:w-64 mx-auto sm:mx-0">
             <input
