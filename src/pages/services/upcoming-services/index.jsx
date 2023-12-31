@@ -35,7 +35,7 @@ const UpcomingServicesPage = () => {
   return (
     <div>
       <div>
-        <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-center pb-10 pt-20">
+        <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-center pb-10">
           Upcoming Services
         </h1>
         <div className="flex flex-col sm:flex-row justify-between gap-4 mb-7">
