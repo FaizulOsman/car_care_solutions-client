@@ -9,7 +9,7 @@ const Footer = () => {
           <Link
             href="#!"
             type="button"
-            className="m-1 h-9 w-9 rounded-full border-2 border-black uppercase leading-normal transition duration-150 ease-in-out hover:text-blue-600 hover:bg-white focus:outline-none focus:ring-0"
+            className="m-1 h-9 w-9 rounded-full border-2 border-blue-500 uppercase leading-normal transition duration-150 ease-in-out text-blue-600 hover:bg-white focus:outline-none focus:ring-0"
             data-te-ripple-init
             data-te-ripple-color="light"
           >
@@ -26,7 +26,7 @@ const Footer = () => {
           <Link
             href="#!"
             type="button"
-            className="m-1 h-9 w-9 rounded-full border-2 border-black uppercase leading-normal transition duration-150 ease-in-out hover:text-blue-600 hover:bg-white focus:outline-none focus:ring-0"
+            className="m-1 h-9 w-9 rounded-full border-2 border-blue-500 uppercase leading-normal transition duration-150 ease-in-out text-blue-600 hover:bg-white focus:outline-none focus:ring-0"
             data-te-ripple-init
             data-te-ripple-color="light"
           >
@@ -43,7 +43,7 @@ const Footer = () => {
           <Link
             href="#!"
             type="button"
-            className="m-1 h-9 w-9 rounded-full border-2 border-black uppercase leading-normal transition duration-150 ease-in-out hover:text-red-500 hover:bg-white focus:outline-none focus:ring-0"
+            className="m-1 h-9 w-9 rounded-full border-2 border-red-500 uppercase leading-normal transition duration-150 ease-in-out text-red-500 hover:bg-white focus:outline-none focus:ring-0"
             data-te-ripple-init
             data-te-ripple-color="light"
           >
@@ -64,7 +64,7 @@ const Footer = () => {
           <Link
             href="#!"
             type="button"
-            className="m-1 h-9 w-9 rounded-full border-2 border-black uppercase leading-normal transition duration-150 ease-in-out hover:text-[#f223d8] hover:bg-white focus:outline-none focus:ring-0"
+            className="m-1 h-9 w-9 rounded-full border-2 border-[#f223d8] uppercase leading-normal transition duration-150 ease-in-out text-[#f223d8] hover:bg-white focus:outline-none focus:ring-0"
             data-te-ripple-init
             data-te-ripple-color="light"
           >
@@ -81,7 +81,7 @@ const Footer = () => {
           <Link
             href="#!"
             type="button"
-            className="m-1 h-9 w-9 rounded-full border-2 border-black uppercase leading-normal transition duration-150 ease-in-out hover:text-blue-600 hover:bg-white focus:outline-none focus:ring-0"
+            className="m-1 h-9 w-9 rounded-full border-2 border-blue-500 uppercase leading-normal transition duration-150 ease-in-out text-blue-600 hover:bg-white focus:outline-none focus:ring-0"
             data-te-ripple-init
             data-te-ripple-color="light"
           >
@@ -98,7 +98,7 @@ const Footer = () => {
           <Link
             href="#!"
             type="button"
-            className="m-1 h-9 w-9 rounded-full border-2 border-black uppercase leading-normal transition duration-150 ease-in-out hover:text-black hover:bg-white focus:outline-none focus:ring-0"
+            className="m-1 h-9 w-9 rounded-full border-2 border-gray-800 uppercase leading-normal transition duration-150 ease-in-out text-black hover:bg-white focus:outline-none focus:ring-0"
             data-te-ripple-init
             data-te-ripple-color="light"
           >
@@ -287,11 +287,15 @@ const Footer = () => {
 
       <div className="w-full p-4 text-center">
         © 2023 Copyright:
-        <Link href="/" className="left-menus__menu" target="_blank">
+        <Link
+          href="/"
+          className="left-menus__menu text-blue-500"
+          target="_blank"
+        >
           Car Care Solutions
         </Link>
         Online
-        <Link href="/services" className="left-menus__menu">
+        <Link href="/services" className="left-menus__menu text-blue-500">
           Service
         </Link>
       </div>
