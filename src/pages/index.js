@@ -22,7 +22,7 @@ const HomePage = () => {
       <Survey />
       <CertifiedSection />
       <FAQPage />
-      <FeedbackPage />
+      {/* <FeedbackPage /> */}
     </div>
   );
 };
