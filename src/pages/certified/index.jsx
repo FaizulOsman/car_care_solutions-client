@@ -1,8 +1,13 @@
 import React from "react";
 import { BsArrowRight } from "react-icons/bs";
 import RootLayout from "../../layouts/RootLayout";
+import Link from "next/link";
+import Image from "next/image";
+import { useRouter } from "next/router";
 
 const CertifiedSection = () => {
+  const { route } = useRouter();
+
   const certifiedData = [
     { img: "https://i.ibb.co/DW6SrYJ/Certified1.png", name: "Acura Certified" },
     { img: "https://i.ibb.co/t3PwntQ/Certified2.png", name: "Audi Certified" },
@@ -52,22 +57,33 @@ const CertifiedSection = () => {
         {certifiedData.map((data, i) => (
           <div data-aos="fade-up" key={i}>
             <div className="border rounded-lg hover:bg-gray-100 hover:scale-110 duration-300 p-5 flex flex-col justify-center items-center">
-              <img className="w-24 h-16" src={data?.img} alt="" />
+              <Image
+                className="w-24 h-16"
+                src={data?.img}
+                alt=""
+                width={300}
+                height={300}
+              />
               <p className="text-primary font-bold">{data?.name}</p>
             </div>
           </div>
         ))}
       </div>
-      <div className="mt-4 text-center">
-        <div className="text-primary font-bold cursor-pointer">
-          <div className="flex gap-4 items-center justify-center">
-            <span className="mr-2 hover:tracking-wider duration-300">
-              Show All Certified Pre-Owned Programs
-            </span>
-            <BsArrowRight />
+      {route === "/certified" || (
+        <div className="mt-4 text-center">
+          <div className="text-primary font-bold cursor-pointer">
+            <Link
+              href="/certified"
+              className="flex gap-4 items-center justify-center"
+            >
+              <span className="mr-2 hover:tracking-wider duration-300">
+                Show All Certified Pre-Owned Programs
+              </span>
+              <BsArrowRight />
+            </Link>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
