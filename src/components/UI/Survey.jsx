@@ -19,7 +19,7 @@ const Statistic = () => {
         <div>
           <SectionHeader
             title="Survey Information"
-            styles="text-3xl md:text-5xl text-center text-ble-500 pb-10 border-b-4 border-white"
+            styles="text-3xl md:text-5xl text-center pb-10 border-b-4 border-white"
           />
           <div className="grid grid-cols-2 lg:grid-cols-4">
             <div className="text-center mt-16">

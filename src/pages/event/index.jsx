@@ -8,7 +8,7 @@ const Event = () => {
     <div className="w-11/12 max-w-[1200px] mx-auto mb-20">
       <SectionHeader
         title="Event"
-        styles="text-2xl sm:text-3xl lg:text-4xl text-center text-ble-500 pb-10"
+        styles="text-2xl sm:text-3xl lg:text-4xl text-center pb-10"
       />
       <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-6 md:gap-10">
         <div>

@@ -11,7 +11,7 @@ const FAQPage = () => {
     <div className="w-11/12 max-w-[1200px] mx-auto mb-20">
       <SectionHeader
         title="Frequently Asked Questions"
-        styles="text-2xl sm:text-3xl lg:text-4xl text-center text-ble-500 pb-10"
+        styles="text-2xl sm:text-3xl lg:text-4xl text-center pb-10"
       />
       {allFaq?.data?.length > 0 ? (
         <>

@@ -78,7 +78,7 @@ const ServicesPage = () => {
     <div className="w-11/12 max-w-[1200px] mx-auto mb-20">
       <SectionHeader
         title="Our Services"
-        styles="text-2xl sm:text-3xl lg:text-4xl text-center text-ble-500 pb-5"
+        styles="text-2xl sm:text-3xl lg:text-4xl text-center pb-5"
       />
       <p className="text-center max-w-lg mx-auto pb-5">
         Feel free to contact us at any time. We have a dedicated team to provide

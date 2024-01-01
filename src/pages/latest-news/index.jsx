@@ -9,7 +9,7 @@ const LatestNewsPage = () => {
       <div data-aos="flip-left">
         <SectionHeader
           title="Latest News"
-          styles="text-2xl sm:text-3xl lg:text-4xl text-center text-ble-500 pb-10"
+          styles="text-2xl sm:text-3xl lg:text-4xl text-center pb-10"
         />
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">

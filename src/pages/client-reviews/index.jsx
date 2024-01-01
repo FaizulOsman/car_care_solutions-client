@@ -28,7 +28,7 @@ const ClientReviewsPage = () => {
       <div className="flex items-center justify-center flex-col pb-10">
         <SectionHeader
           title="Client Reviews"
-          styles="text-2xl sm:text-3xl lg:text-4xl text-center text-ble-500 pb-5"
+          styles="text-2xl sm:text-3xl lg:text-4xl text-center pb-5"
         />
         <p className="text-center max-w-lg mx-auto pb-10">
           Client Testimonials Highlighting the Unmatched Quality and Exceptional

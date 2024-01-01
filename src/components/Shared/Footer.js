@@ -4,7 +4,7 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <footer className="flex flex-col bg-gray-100 items-center text-center">
-      <div className="container px-6 pt-6">
+      <div className="w-11/12 max-w-[1200px] mx-auto pt-5">
         <div className="mb-6 flex justify-center">
           <Link
             href="#!"
@@ -113,7 +113,7 @@ const Footer = () => {
           </Link>
         </div>
 
-        <div className="mb-6 max-w-3xl mx-auto">
+        <div className="mb-6 w-[60%] mx-auto">
           <p>
             Drive confidently into the future with Car Care Solutions. Our
             commitment to excellence extends to every detail, ensuring your
