@@ -54,7 +54,7 @@ const ClientReviewsPage = () => {
         >
           {getAllReview?.data.map((review, index) => (
             <SwiperSlide key={index}>
-              <div className="relative bg-gray-200 flex flex-col mb-20 group shadow-lg rounded-xl px-6 pt-8 pb-10 cursor-pointer">
+              <div className="relative bg-gray-100 hover:bg-gray-200 border flex flex-col mb-20 group shadow-lg rounded-xl px-6 pt-8 pb-10 cursor-pointer">
                 <div
                   className="absolute inset-0 bg-cover bg-center"
                   style={{ backgroundImage: `url(${review.backgroundImage})` }}
