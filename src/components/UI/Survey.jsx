@@ -4,7 +4,7 @@ import CountUp from "react-countup";
 const Statistic = () => {
   return (
     <div
-      className="statistic text-white mb-20 h-[600px]"
+      className="statistic text-white mb-20 h-[540px] flex"
       style={{
         backgroundImage:
           'url("https://i.ibb.co/QkFMDj0/360-F-507626852-0-Cx-Os-URq-Wos-Gu-BBp-NLa6-El-At3hg1-AWL0.jpg")',
@@ -15,8 +15,8 @@ const Statistic = () => {
       }}
     >
       <div className="w-2/3 mx-auto flex items-center justify-center">
-        <div className="h-full">
-          <h2 className="text-center text-3xl md:text-5xl pb-10 mt-20 md:mt-24 lg:mt-32 font-bold border-b-4 border-white">
+        <div>
+          <h2 className="text-center text-3xl md:text-5xl pb-10 font-bold border-b-4 border-white">
             Survey Information
           </h2>
           <div className="grid grid-cols-2 lg:grid-cols-4">
