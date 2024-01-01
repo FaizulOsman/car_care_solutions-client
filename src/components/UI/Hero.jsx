@@ -7,7 +7,8 @@ const Banner = () => {
       <div
         className="h-[260px] md:h-[300px] lg:h-[460px]"
         style={{
-          background: `url(https://i.ibb.co/3S5dnds/banner.jpg)`,
+          // background: `url(https://i.ibb.co/3S5dnds/banner.jpg)`,
+          background: `url(https://used-carz.web.app/static/media/banner.991105296df5663f9e18.jpg)`,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "100% 100%",

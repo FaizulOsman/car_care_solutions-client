@@ -7,7 +7,7 @@ const Statistic = () => {
       className="statistic text-white mb-20 h-[600px]"
       style={{
         backgroundImage:
-          'url("https://ar.happyvalentinesday2020.online/pics/cardetailingshop.ca/wp-content/uploads/2018/07/car-detailing-shop.jpg")',
+          'url("https://i.ibb.co/QkFMDj0/360-F-507626852-0-Cx-Os-URq-Wos-Gu-BBp-NLa6-El-At3hg1-AWL0.jpg")',
         backgroundRepeat: "no-repeat",
         backgroundAttachment: "fixed",
         backgroundSize: "100% 100%",
@@ -21,26 +21,26 @@ const Statistic = () => {
           </h2>
           <div className="grid grid-cols-2 lg:grid-cols-4">
             <div className="text-center mt-16">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-warning">
-                <CountUp scrollSpyDelay={2} enableScrollSpy={true} end={6} />+
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-green-500">
+                <CountUp scrollSpyDelay={2} enableScrollSpy={true} end={9} />+
               </h1>
               <p className="mt-3">Total Services</p>
             </div>
             <div className="text-center mt-16">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-warning">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-green-500">
                 <CountUp scrollSpyDelay={2} enableScrollSpy={true} end={1200} />
                 +
               </h1>
               <p className="mt-3">Total Users</p>
             </div>
             <div className="text-center mt-16">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-warning">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-green-500">
                 <CountUp scrollSpyDelay={2} enableScrollSpy={true} end={90} />%
               </h1>
               <p className="mt-3">Clients are from references</p>
             </div>
             <div className="text-center mt-16">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-warning">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-green-500">
                 <CountUp scrollSpyDelay={2} enableScrollSpy={true} end={100} />+
               </h1>
               <p className="mt-3">Booked Services</p>
