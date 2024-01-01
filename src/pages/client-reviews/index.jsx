@@ -1,7 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import RootLayout from "../../layouts/RootLayout";
 import { useGetAllReviewQuery } from "../../redux/review/reviewApi";
-import Loader from "../../components/UI/Loader";
+
+// import Swiper core and required modules
+import { Pagination, FreeMode } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+import "swiper/css/free-mode";
 import SectionHeader from "../../components/UI/SectionHeader";
 
 const ClientReviewsPage = () => {
@@ -14,161 +23,108 @@ const ClientReviewsPage = () => {
 
   const { data: getAllReview } = useGetAllReviewQuery(headers);
 
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setActiveIndex(
-        (prevIndex) => (prevIndex + 1) % getAllReview?.data?.length
-      );
-    }, 2000); // Change slide every 1000 milliseconds (1 second)
-
-    return () => clearInterval(intervalId); // Clear the interval on component unmount
-  }, [getAllReview?.data?.length]);
-
   return (
-    <div className="w-11/12 max-w-[1200px] mx-auto md:px-6 mb-20">
-      <section className="text-center h-[400px]">
+    <div className="w-11/12 max-w-[1200px] mx-auto">
+      <div className="flex items-center justify-center flex-col pb-10">
         <SectionHeader
           title="Client Reviews"
-          styles="text-2xl sm:text-3xl lg:text-4xl text-center text-ble-500 pb-10"
+          styles="text-2xl sm:text-3xl lg:text-4xl text-center text-ble-500 pb-5"
         />
-        {getAllReview?.data?.length > 0 ? (
-          <>
-            {getAllReview?.data?.length > 0 ? (
-              <div
-                id="carouselExampleCaptions"
-                className="relative"
-                data-te-carousel-init
-                data-te-carousel-slide
-              >
-                {getAllReview?.data?.map((review, index) => (
-                  <div
-                    key={index}
-                    className={`mb-32 relative float-left ${
-                      index === activeIndex ? "" : "-mr-[100%] hidden"
-                    } w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none`}
-                    data-te-carousel-active={index === activeIndex}
-                    data-te-carousel-item
-                    style={{ backfaceVisibility: "hidden" }}
-                  >
-                    <img
-                      className="mx-auto mb-6 rounded-full shadow-lg dark:shadow-black/20 w-[150px]"
-                      src={`https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(${
-                        index + 1
-                      }).jpg`}
-                      alt="avatar"
-                    />
-                    <div className="flex flex-wrap justify-center">
-                      <div className="w-full shrink-0 grow-0 basis-auto px-3 lg:w-8/12">
-                        <h5 className="mb-2 text-lg font-bold">
-                          {review.name}
-                        </h5>
-                        <p className="mb-4 font-medium text-neutral-700 dark:text-neutral-400">
-                          {review.type} - ${review?.price}
-                        </p>
-                        <p className="mb-6 ">
-                          {review.review}
+        <p className="text-center max-w-lg mx-auto pb-10">
+          Client Testimonials Highlighting the Unmatched Quality and Exceptional
+          Service in Car Maintenance.
+        </p>
+        <Swiper
+          breakpoints={{
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 15,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 15,
+            },
+          }}
+          freeMode={true}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[FreeMode, Pagination]}
+          className="max-w-[100%]"
+        >
+          {getAllReview?.data.map((review, index) => (
+            <SwiperSlide key={index}>
+              <div className="relative bg-gray-200 flex flex-col mb-20 group shadow-lg rounded-xl px-6 pt-8 pb-10 cursor-pointer">
+                <div
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${review.backgroundImage})` }}
+                />
+                <div className="relative flex flex-col gap-3 justify-center items-center">
+                  <img
+                    className="absolute -bottom-[60%] rounded-full w-[90px] h-[90px] border-2 border-white"
+                    src={`https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(${
+                      index + 1
+                    }).jpg`}
+                    alt="avatar"
+                  />
+                  <div className="text-center w-full shrink-0 grow-0 basis-auto px-3">
+                    <p className="mb-2 font-bold">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 96 960 960"
+                        className="inline-block w-8 text-blue-500"
+                      >
+                        <path
+                          fill="currentColor"
+                          d="M580 556h160V396H580v160Zm-360 0h160V396H220v160Zm406 220 80-160H520V336h280v288l-76 152h-98Zm-360 0 80-160H160V336h280v288l-76 152h-98Zm34-300Zm360 0Z"
+                        />
+                      </svg>
+                    </p>
+                    <p className="mb-2">
+                      {'"'}
+                      {review.review}
+                      {'"'}
+                    </p>
+                    <ul className="mb-8 flex justify-center">
+                      {Array.from({ length: review?.rating }).map((_, i) => (
+                        <li key={i}>
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 96 960 960"
-                            className="inline-block w-6"
+                            className="w-5 text-warning"
                           >
                             <path
                               fill="currentColor"
-                              d="M580 556h160V396H580v160Zm-360 0h160V396H220v160Zm406 220 80-160H520V336h280v288l-76 152h-98Zm-360 0 80-160H160V336h280v288l-76 152h-98Zm34-300Zm360 0Z"
+                              d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"
                             />
                           </svg>
-                        </p>
-                        <ul className="mb-0 flex justify-center">
-                          {Array.from({ length: review?.rating }).map(
-                            (_, i) => (
-                              <li key={i}>
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  viewBox="0 96 960 960"
-                                  className="w-5 text-warning"
-                                >
-                                  <path
-                                    fill="currentColor"
-                                    d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"
-                                  />
-                                </svg>
-                              </li>
-                            )
-                          )}
-                        </ul>
-                      </div>
-                    </div>
+                        </li>
+                      ))}
+                      {Array.from({ length: 5 - review?.rating }).map(
+                        (_, i) => (
+                          <li key={i}>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 96 960 960"
+                              className="w-5 text-gray-400"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"
+                              />
+                            </svg>
+                          </li>
+                        )
+                      )}
+                    </ul>
+                    {/* <h5 className="text-lg font-bold">{review.name}</h5> */}
                   </div>
-                ))}
-
-                <button
-                  className="absolute top-32 bottom-0 left-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
-                  type="button"
-                  onClick={() =>
-                    setActiveIndex(
-                      (prevIndex) =>
-                        (prevIndex - 1 + getAllReview?.data?.length) %
-                        getAllReview?.data?.length
-                    )
-                  }
-                >
-                  <span className="inline-block h-8 w-8">
-                    <svg
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 16 16"
-                      className="text-neutral-600 dark:text-neutral-300"
-                    >
-                      <path
-                        fill="currentColor"
-                        d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
-                      />
-                    </svg>
-                  </span>
-                  <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
-                    Previous
-                  </span>
-                </button>
-                <button
-                  className="absolute top-32 bottom-0 right-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
-                  type="button"
-                  onClick={() =>
-                    setActiveIndex(
-                      (prevIndex) =>
-                        (prevIndex + 1) % getAllReview?.data?.length
-                    )
-                  }
-                >
-                  <span className="inline-block h-8 w-8">
-                    <svg
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 16 16"
-                      className="text-neutral-600 dark:text-neutral-300"
-                    >
-                      <path
-                        fill="currentColor"
-                        d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-                      />
-                    </svg>
-                  </span>
-                  <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
-                    Next
-                  </span>
-                </button>
+                </div>
               </div>
-            ) : (
-              <h1 className="text-xl sm:text-2xl py-20 text-center text-red-500">
-                No data found
-              </h1>
-            )}
-          </>
-        ) : (
-          <Loader />
-        )}
-      </section>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </div>
   );
 };
