@@ -1,16 +1,18 @@
 import React from "react";
 import { BsArrowRight } from "react-icons/bs";
 import RootLayout from "../../layouts/RootLayout";
+import SectionHeader from "../../components/UI/SectionHeader";
 
 const LatestNewsPage = () => {
   return (
     <div className="w-11/12 max-w-[1200px] mx-auto mb-20">
       <div data-aos="flip-left">
-        <h2 className="text-2xl md:text-3xl font-semibold text-center">
-          Latest News
-        </h2>
+        <SectionHeader
+          title="Latest News"
+          styles="text-2xl sm:text-3xl lg:text-4xl text-center text-ble-500 pb-10"
+        />
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         <div className="border rounded-md" data-aos="fade-right">
           <img
             className="w-full h-44"

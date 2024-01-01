@@ -1,5 +1,6 @@
 import React from "react";
 import CountUp from "react-countup";
+import SectionHeader from "./SectionHeader";
 
 const Statistic = () => {
   return (
@@ -16,9 +17,10 @@ const Statistic = () => {
     >
       <div className="w-2/3 mx-auto flex items-center justify-center">
         <div>
-          <h2 className="text-center text-3xl md:text-5xl pb-10 font-bold border-b-4 border-white">
-            Survey Information
-          </h2>
+          <SectionHeader
+            title="Survey Information"
+            styles="text-3xl md:text-5xl text-center text-ble-500 pb-10 border-b-4 border-white"
+          />
           <div className="grid grid-cols-2 lg:grid-cols-4">
             <div className="text-center mt-16">
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-green-500">

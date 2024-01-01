@@ -2,15 +2,17 @@ import React from "react";
 import RootLayout from "../../layouts/RootLayout";
 import { useGetAllFaqQuery } from "../../redux/faq/faqApi";
 import Loader from "../../components/UI/Loader";
+import SectionHeader from "../../components/UI/SectionHeader";
 
 const FAQPage = () => {
   const { data: allFaq } = useGetAllFaqQuery();
 
   return (
     <div className="w-11/12 max-w-[1200px] mx-auto mb-20">
-      <h2 className="text-2xl md:text-3xl font-semibold text-center pb-10">
-        Frequently Asked Questions
-      </h2>
+      <SectionHeader
+        title="Frequently Asked Questions"
+        styles="text-2xl sm:text-3xl lg:text-4xl text-center text-ble-500 pb-10"
+      />
       {allFaq?.data?.length > 0 ? (
         <>
           {allFaq?.data?.length > 0 ? (

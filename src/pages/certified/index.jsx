@@ -4,6 +4,7 @@ import RootLayout from "../../layouts/RootLayout";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import SectionHeader from "../../components/UI/SectionHeader";
 
 const CertifiedSection = () => {
   const { route } = useRouter();
@@ -49,11 +50,12 @@ const CertifiedSection = () => {
   return (
     <div className="w-11/12 max-w-[1200px] mx-auto mb-20">
       <div data-aos="flip-right">
-        <h2 className="text-2xl md:text-3xl font-semibold text-center">
-          Certified Pre-Owned Cars
-        </h2>
+        <SectionHeader
+          title="Certified Pre-Owned Cars"
+          styles="text-2xl sm:text-3xl lg:text-4xl text-center pb-10"
+        />
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-14 border-b-2 pb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 border-b-2 pb-6">
         {certifiedData.map((data, i) => (
           <div data-aos="fade-up" key={i}>
             <div className="border rounded-lg hover:bg-gray-100 hover:scale-110 duration-300 p-5 flex flex-col justify-center items-center">

@@ -1,12 +1,15 @@
 import Image from "next/image";
 import React from "react";
+import SectionHeader from "../../components/UI/SectionHeader";
+import RootLayout from "../../layouts/RootLayout";
 
 const Event = () => {
   return (
-    <div>
-      <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-center pb-10">
-        Event
-      </h1>
+    <div className="w-11/12 max-w-[1200px] mx-auto mb-20">
+      <SectionHeader
+        title="Event"
+        styles="text-2xl sm:text-3xl lg:text-4xl text-center text-ble-500 pb-10"
+      />
       <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-6 md:gap-10">
         <div>
           <Image
@@ -48,3 +51,7 @@ const Event = () => {
 };
 
 export default Event;
+
+Event.getLayout = function getLayout(page) {
+  return <RootLayout>{page}</RootLayout>;
+};

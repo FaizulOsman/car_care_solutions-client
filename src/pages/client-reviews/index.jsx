@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import RootLayout from "../../layouts/RootLayout";
 import { useGetAllReviewQuery } from "../../redux/review/reviewApi";
 import Loader from "../../components/UI/Loader";
+import SectionHeader from "../../components/UI/SectionHeader";
 
 const ClientReviewsPage = () => {
   const accessToken =
@@ -28,10 +29,10 @@ const ClientReviewsPage = () => {
   return (
     <div className="w-11/12 max-w-[1200px] mx-auto md:px-6 mb-20">
       <section className="text-center h-[400px]">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-center mb-12">
-          Client Reviews
-        </h2>
-
+        <SectionHeader
+          title="Client Reviews"
+          styles="text-2xl sm:text-3xl lg:text-4xl text-center text-ble-500 pb-10"
+        />
         {getAllReview?.data?.length > 0 ? (
           <>
             {getAllReview?.data?.length > 0 ? (
