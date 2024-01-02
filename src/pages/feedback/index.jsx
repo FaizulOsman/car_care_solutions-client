@@ -41,7 +41,7 @@ const FeedbackPage = () => {
   }, [isError, error]);
 
   return (
-    <div>
+    <div className="pb-10">
       <div className="max-w-xl mx-auto mt-16 flex w-full flex-col border rounded-lg bg-white p-8">
         <h2 className="title-font mb-1 text-lg font-medium text-gray-900">
           Feedback
