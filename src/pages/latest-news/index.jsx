@@ -14,7 +14,7 @@ const LatestNewsPage = () => {
         "https://di-uploads-pod5.s3.amazonaws.com/mccluskeychevy/uploads/2014/06/2013-Chevy-Volt.jpg",
       creator: "Roni chowdhury",
       creatorImg: `https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(${1}).jpg`,
-      title: "CAR BUYING TIPS",
+      title: "Finding the Best Value for Your Car",
       description:
         "The sorts of machines, process, and materials that are used in industry, transport.",
       date: "12-Dec-23",
@@ -25,7 +25,7 @@ const LatestNewsPage = () => {
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzR874OEF2PMj9bPjgvrVESO0Z3blT6f-mwT3DFLa704ixSdFzbL8c421oj8IoRhBqnhI&usqp=CAU",
       creator: "Shuvo Khan",
       creatorImg: `https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(${1}).jpg`,
-      title: "CAR BUYING TIPS",
+      title: "How to Assess the Value of your Car",
       description:
         "The sorts of machines, process, and materials that are used in industry, transport.",
       date: "16-Dec-23",
@@ -40,7 +40,7 @@ const LatestNewsPage = () => {
         "https://images.unsplash.com/photo-1506610654-064fbba4780c?w=420&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXRodW1ibmFpbHx8MTA3NTQ0MDR8fGVufDB8fHx8fA%3D%3D",
       creator: "Amin Khan",
       creatorImg: `https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(${1}).jpg`,
-      title: "CAR BUYING TIPS",
+      title: "Why EVs Could Cost Less in the Long Run",
       description:
         "The sorts of machines, process, and materials that are used in industry, transport.",
       date: "18-Dec-23",
@@ -51,7 +51,7 @@ const LatestNewsPage = () => {
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs3usDcFrjfL-pd5QXtUJH2PZ9Y2DFOSCAMh_3RMEhpoartrPlNmMzQgAZZ0BU9bijPqY&usqp=CAU",
       creator: "Kahaf Khan",
       creatorImg: `https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(${1}).jpg`,
-      title: "CAR BUYING TIPS",
+      title: "CAR SERVICING TIPS",
       description:
         "The sorts of machines, process, and materials that are used in industry, transport.",
       date: "22-Dec-23",
@@ -75,7 +75,7 @@ const LatestNewsPage = () => {
         {newsData?.map((news, index) => (
           <div
             key={index}
-            className="single-news border rounded-md flex flex-col sm:flex-row justify-between gap-4 p-4"
+            className="single-news border rounded-md flex flex-col sm:flex-row justify-between gap-4 p-3 hover:shadow-lg hover:scale-105 duration-200"
           >
             <div className="w-full sm:w-[50%] relative">
               <div className="w-full h-full">
@@ -89,7 +89,7 @@ const LatestNewsPage = () => {
                 <span className="bg-red-500 py-1 px-2">
                   {news?.date?.slice(0, 2)}
                 </span>
-                <span className="bg-gray-400 py-1 px-2">
+                <span className="bg-[#7a7a7a] py-1 px-2">
                   {" "}
                   {news?.date?.slice(3, 6)} {news?.date?.slice(7, 9)}
                 </span>
@@ -127,7 +127,7 @@ const LatestNewsPage = () => {
                     </div>
                   </div>
                 </div>
-                <p className="command pr-2 hover:hidden font-semibold">
+                <p className="text-sm command pr-2 hover:hidden">
                   Command {news?.commands?.length}
                 </p>
               </div>
@@ -139,22 +139,18 @@ const LatestNewsPage = () => {
       <div className="mt-8">
         <h5 className="text-gray-400 text-sm font-semibold">Recent Articles</h5>
         <div className="px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-8 border-b-2 pb-6">
-          <h4 className="text-xl cursor-pointer hover:text-primary font-semibold text-gray-600">
-            Finding the Best Value for Your Used Truck
-          </h4>
-          <h4 className="text-xl cursor-pointer hover:text-primary font-semibold text-gray-600">
-            How to Assess the Value of your Used Car
-          </h4>
-          <h4 className="text-xl cursor-pointer hover:text-primary font-semibold text-gray-600">
-            Why EVs Could Cost Less in the Long Run
-          </h4>
-          <h4 className="text-xl cursor-pointer hover:text-primary font-semibold text-gray-600">
-            What Not to Say When Buying a Car
-          </h4>
+          {newsData?.map((data, index) => (
+            <h4
+              key={index}
+              className="text-xl cursor-pointer hover:text-primary font-semibold text-gray-600"
+            >
+              {data?.title}
+            </h4>
+          ))}
         </div>
         {route === "/latest-news" || (
           <div className="mt-4 text-center">
-            <div className="text-primary font-bold cursor-pointer">
+            <div className="text-[#fc4949] font-bold cursor-pointer">
               <Link
                 href="/latest-news"
                 className="flex gap-4 items-center justify-center"
