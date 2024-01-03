@@ -64,8 +64,12 @@ const LatestNewsPage = () => {
       <div data-aos="flip-left">
         <SectionHeader
           title="Latest News"
-          styles="text-2xl sm:text-3xl lg:text-4xl text-center pb-10"
+          styles="text-2xl sm:text-3xl lg:text-4xl text-center pb-5"
         />
+        <p className="max-w-[500px] mx-auto mb-5 leading-relaxed text-gray-600 text-center pb-5">
+          The sorts of machines, processes, and materials that are used in
+          industry, transport, and communication{" "}
+        </p>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {newsData?.map((news, index) => (
@@ -76,7 +80,7 @@ const LatestNewsPage = () => {
             <div className="w-full sm:w-[50%] relative">
               <div className="w-full h-full">
                 <img
-                  className="news-image w-full h-full hover:scale-110 duration-300"
+                  className="news-image w-full h-full"
                   src={news?.image}
                   alt=""
                 />
