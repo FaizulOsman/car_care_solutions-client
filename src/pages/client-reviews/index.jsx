@@ -72,7 +72,7 @@ const ClientReviewsPage = () => {
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 96 960 960"
-                        className="inline-block w-8 text-blue-500"
+                        className="inline-block w-8 text-[#fc4949]"
                       >
                         <path
                           fill="currentColor"
