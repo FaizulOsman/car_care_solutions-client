@@ -13,12 +13,9 @@
   width: 120px;
   padding: 5px;
   text-decoration: none;
-  background: #fc4949;
   text-align: center;
-  color: #fff;
   text-transform: uppercase;
   letter-spacing: 1px;
-  border: 3px solid #fc4949;
   transition: all 0.35s;
   border-radius: 0 5px 5px 0;
 }
@@ -41,20 +38,17 @@
   top: calc(50% - 10px);
   left: calc(50% - 15px);
   transform: rotate(-45deg);
-  fill: #fc4949;
   transition: all 0.35s;
 }
 
 .next-button a:hover {
   width: 140px;
-  border: 3px solid #fc4949;
   background: transparent;
   border-radius: 0;
-  color: #fc4949;
 }
 
 .next-button a:hover + .icon {
-  border: 3px solid #fc4949;
+  border: 3px solid #3b82f6;
   right: 35%;
 }
 

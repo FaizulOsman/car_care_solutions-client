@@ -72,7 +72,7 @@ const ClientReviewsPage = () => {
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 96 960 960"
-                        className="inline-block w-8 text-[#fc4949]"
+                        className="inline-block w-8 text-blue-500"
                       >
                         <path
                           fill="currentColor"
@@ -117,7 +117,6 @@ const ClientReviewsPage = () => {
                         )
                       )}
                     </ul>
-                    {/* <h5 className="text-lg font-bold">{review.name}</h5> */}
                   </div>
                 </div>
               </div>

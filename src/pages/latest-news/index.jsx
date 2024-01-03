@@ -86,7 +86,7 @@ const LatestNewsPage = () => {
                 />
               </div>
               <div className="absolute bottom-0 right-0 flex text-white">
-                <span className="bg-red-500 py-1 px-2">
+                <span className="bg-blue-500 py-1 px-2">
                   {news?.date?.slice(0, 2)}
                 </span>
                 <span className="bg-[#7a7a7a] py-1 px-2">
@@ -116,11 +116,17 @@ const LatestNewsPage = () => {
               <div className="read-more rounded-md flex justify-between items-center mt-3">
                 <div class="next-button">
                   <div class="link_wrapper">
-                    <Link href="#">Read More</Link>
+                    <Link
+                      href="#"
+                      className="bg-blue-500 border-[3px] border-blue-500 text-white hover:border-[3px] hover:text-blue-500"
+                    >
+                      Read More
+                    </Link>
                     <div class="icon">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 268.832 268.832"
+                        className="fill-blue-500"
                       >
                         <path d="M265.17 125.577l-80-80c-4.88-4.88-12.796-4.88-17.677 0-4.882 4.882-4.882 12.796 0 17.678l58.66 58.66H12.5c-6.903 0-12.5 5.598-12.5 12.5 0 6.903 5.597 12.5 12.5 12.5h213.654l-58.66 58.662c-4.88 4.882-4.88 12.796 0 17.678 2.44 2.44 5.64 3.66 8.84 3.66s6.398-1.22 8.84-3.66l79.997-80c4.883-4.882 4.883-12.796 0-17.678z" />
                       </svg>
@@ -150,7 +156,7 @@ const LatestNewsPage = () => {
         </div>
         {route === "/latest-news" || (
           <div className="mt-4 text-center">
-            <div className="text-[#fc4949] font-bold cursor-pointer">
+            <div className="text-blue-500 font-bold cursor-pointer">
               <Link
                 href="/latest-news"
                 className="flex gap-4 items-center justify-center"

@@ -182,7 +182,7 @@ const ServicesPage = () => {
                       className="w-full btn border hover:bg-white hover:border-blue-500 hover:text-blue-500 bg-blue-500 text-white"
                       disabled={status === "upcoming" && true}
                     >
-                      Book Now
+                      Add To Cart
                     </button>
                   </div>
                 </div>

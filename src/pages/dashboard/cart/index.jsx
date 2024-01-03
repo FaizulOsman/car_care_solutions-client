@@ -72,7 +72,7 @@ const CartPage = () => {
     <div>
       <div className="my-20 w-11/12 md:w-10/12 mx-auto">
         <h1 className="text-3xl font-semibold text-center my-8">Cart</h1>
-        {getAllAddToCart?.data?.length > 0 ? (
+        {getAllAddToCart ? (
           <>
             {getAllAddToCart?.data?.length > 0 ? (
               <div className="mt-10 flex flex-col gap-5">
