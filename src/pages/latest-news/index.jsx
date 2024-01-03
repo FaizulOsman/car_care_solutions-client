@@ -8,6 +8,57 @@ import { useRouter } from "next/router";
 const LatestNewsPage = () => {
   const { route } = useRouter();
 
+  const newsData = [
+    {
+      image:
+        "https://di-uploads-pod5.s3.amazonaws.com/mccluskeychevy/uploads/2014/06/2013-Chevy-Volt.jpg",
+      creator: "Roni chowdhury",
+      creatorImg: `https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(${1}).jpg`,
+      title: "CAR BUYING TIPS",
+      description:
+        "The sorts of machines, process, and materials that are used in industry, transport.",
+      date: "12-Dec-23",
+      commands: ["Thanks for the information", "Thanks"],
+    },
+    {
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzR874OEF2PMj9bPjgvrVESO0Z3blT6f-mwT3DFLa704ixSdFzbL8c421oj8IoRhBqnhI&usqp=CAU",
+      creator: "Shuvo Khan",
+      creatorImg: `https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(${1}).jpg`,
+      title: "CAR BUYING TIPS",
+      description:
+        "The sorts of machines, process, and materials that are used in industry, transport.",
+      date: "16-Dec-23",
+      commands: [
+        "Thanks for the information",
+        "I appreciate the information",
+        "Wow!",
+      ],
+    },
+    {
+      image:
+        "https://images.unsplash.com/photo-1506610654-064fbba4780c?w=420&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXRodW1ibmFpbHx8MTA3NTQ0MDR8fGVufDB8fHx8fA%3D%3D",
+      creator: "Amin Khan",
+      creatorImg: `https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(${1}).jpg`,
+      title: "CAR BUYING TIPS",
+      description:
+        "The sorts of machines, process, and materials that are used in industry, transport.",
+      date: "18-Dec-23",
+      commands: ["Thanks for the information"],
+    },
+    {
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs3usDcFrjfL-pd5QXtUJH2PZ9Y2DFOSCAMh_3RMEhpoartrPlNmMzQgAZZ0BU9bijPqY&usqp=CAU",
+      creator: "Kahaf Khan",
+      creatorImg: `https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(${1}).jpg`,
+      title: "CAR BUYING TIPS",
+      description:
+        "The sorts of machines, process, and materials that are used in industry, transport.",
+      date: "22-Dec-23",
+      commands: ["Thanks for the information", "Good information"],
+    },
+  ];
+
   return (
     <div className="w-11/12 max-w-[1200px] mx-auto mb-20">
       <div data-aos="flip-left">
@@ -16,77 +67,69 @@ const LatestNewsPage = () => {
           styles="text-2xl sm:text-3xl lg:text-4xl text-center pb-10"
         />
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        <div className="border rounded-md" data-aos="fade-right">
-          <img
-            className="w-full h-44"
-            src="https://used-carz.web.app/static/media/pros-and-cons.59178ef52f80da879a13.png"
-            alt=""
-          />
-          <div className="pl-3 mt-3 hover:scale-105 duration-300">
-            <h5 className="text-gray-600 text-xs font-semibold">
-              CAR BUYING TIPS
-            </h5>
-            <h4 className="text-xl font-semibold my-4">
-              Pros and Cons of Buying a Used Hybrid
-            </h4>
-            <button className="btn btn-sm btn-primary btn-outline mb-4">
-              Read Article
-            </button>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {newsData?.map((news, index) => (
+          <div
+            key={index}
+            className="single-news border rounded-md flex flex-col sm:flex-row justify-between gap-4 p-4"
+          >
+            <div className="w-full sm:w-[50%] relative">
+              <div className="w-full h-full">
+                <img
+                  className="news-image w-full h-full hover:scale-110 duration-300"
+                  src={news?.image}
+                  alt=""
+                />
+              </div>
+              <div className="absolute bottom-0 right-0 flex text-white">
+                <span className="bg-red-500 py-1 px-2">
+                  {news?.date?.slice(0, 2)}
+                </span>
+                <span className="bg-gray-400 py-1 px-2">
+                  {" "}
+                  {news?.date?.slice(3, 6)} {news?.date?.slice(7, 9)}
+                </span>
+              </div>
+            </div>
+            <div className="w-full sm:w-[50%] flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-4 pb-4">
+                  <img
+                    className="w-[60px] h-[60px] border-2 border-white"
+                    src={`https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(${
+                      index + 1
+                    }).jpg`}
+                    alt="avatar"
+                  />
+                  <div>
+                    <p>by-</p>
+                    <h4 className="font-semibold">{news?.creator}</h4>
+                  </div>
+                </div>
+                <h5 className="font-semibold pb-2">{news?.title}</h5>
+                <p className="">{news?.description}</p>
+              </div>
+              <div className="read-more rounded-md flex justify-between items-center mt-3">
+                <div class="next-button">
+                  <div class="link_wrapper">
+                    <Link href="#">Read More</Link>
+                    <div class="icon">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 268.832 268.832"
+                      >
+                        <path d="M265.17 125.577l-80-80c-4.88-4.88-12.796-4.88-17.677 0-4.882 4.882-4.882 12.796 0 17.678l58.66 58.66H12.5c-6.903 0-12.5 5.598-12.5 12.5 0 6.903 5.597 12.5 12.5 12.5h213.654l-58.66 58.662c-4.88 4.882-4.88 12.796 0 17.678 2.44 2.44 5.64 3.66 8.84 3.66s6.398-1.22 8.84-3.66l79.997-80c4.883-4.882 4.883-12.796 0-17.678z" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <p className="command pr-2 hover:hidden font-semibold">
+                  Command {news?.commands?.length}
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="border rounded-md" data-aos="fade-up">
-          <img
-            className="w-full h-44"
-            src="https://used-carz.web.app/static/media/batteries.18cb86e5fa379bcddc2f.png"
-            alt=""
-          />
-          <div className="pl-3 mt-3 hover:scale-105 duration-300">
-            <h5 className="text-gray-600 text-xs font-semibold">
-              CAR BUYING TIPS
-            </h5>
-            <h4 className="text-xl font-semibold my-4">
-              How Much Do EV Batteries Cost?
-            </h4>
-            <button className="btn btn-sm btn-primary btn-outline mb-4">
-              Read Article
-            </button>
-          </div>
-        </div>
-        <div className="border rounded-md" data-aos="fade-up">
-          <img
-            className="w-full h-44"
-            src="https://used-carz.web.app/static/media/distance.bd8fc41ad99e45a53c49.png"
-            alt=""
-          />
-          <div className="pl-3 mt-3 hover:scale-105 duration-300">
-            <h5 className="text-gray-600 text-xs font-semibold">CAR TIPS</h5>
-            <h4 className="text-xl font-semibold my-4">
-              How Many Miles Is Too High for a Used Car?
-            </h4>
-            <button className="btn btn-sm btn-primary btn-outline mb-4">
-              Read Article
-            </button>
-          </div>
-        </div>
-        <div className="border rounded-md" data-aos="fade-left">
-          <img
-            className="w-full h-44"
-            src="https://used-carz.web.app/static/media/awd-vs-4wd.962bd88fe92130127239.png"
-            alt=""
-          />
-          <div className="pl-3 mt-3 hover:scale-105 duration-300">
-            <h5 className="text-gray-600 text-sm font-semibold">
-              CAR SHOPPING
-            </h5>
-            <h4 className="text-xl font-semibold my-4">
-              AWD vs. 4WD: What is the Difference Between Them
-            </h4>
-            <button className="btn btn-sm btn-primary btn-outline mb-4">
-              Read Article
-            </button>
-          </div>
-        </div>
+        ))}
       </div>
 
       <div className="mt-8">

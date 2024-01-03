@@ -5,6 +5,7 @@ import { Toaster } from "react-hot-toast";
 import "../styles/globals.css";
 import "../styles/components/navbar.css";
 import "../styles/components/hero.css";
+import "../styles/components/latest-news.css";
 import { store } from "../redux/store";
 
 export default function App({ Component, pageProps }) {
