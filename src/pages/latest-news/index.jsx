@@ -2,8 +2,12 @@ import React from "react";
 import { BsArrowRight } from "react-icons/bs";
 import RootLayout from "../../layouts/RootLayout";
 import SectionHeader from "../../components/UI/SectionHeader";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const LatestNewsPage = () => {
+  const { route } = useRouter();
+
   return (
     <div className="w-11/12 max-w-[1200px] mx-auto mb-20">
       <div data-aos="flip-left">
@@ -101,13 +105,21 @@ const LatestNewsPage = () => {
             What Not to Say When Buying a Car
           </h4>
         </div>
-        <div className="text-center mt-4">
-          <button className="text-primary hover:text-secondary text-xl font-semibold">
-            <div className="flex items-center gap-4">
-              Read More Articles <BsArrowRight />
+        {route === "/latest-news" || (
+          <div className="mt-4 text-center">
+            <div className="text-primary font-bold cursor-pointer">
+              <Link
+                href="/latest-news"
+                className="flex gap-4 items-center justify-center"
+              >
+                <span className="mr-2 hover:tracking-wider duration-300">
+                  Read More Articles
+                </span>
+                <BsArrowRight />
+              </Link>
             </div>
-          </button>
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );
