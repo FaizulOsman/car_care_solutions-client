@@ -7,6 +7,7 @@ import { useGetAllUsersQuery } from "../../redux/user/userApi";
 import { useGetAllServiceQuery } from "../../redux/service/serviceApi";
 import { useGetMyBookingsQuery } from "../../redux/booking/bookingApi";
 import { useGetMyReviewsQuery } from "../../redux/review/reviewApi";
+import { useGetAllAddToCartQuery } from "../../redux/addToCart/addToCartApi";
 
 const jwt = require("jsonwebtoken");
 
@@ -24,6 +25,7 @@ const DashboardPage = () => {
   const { data: getAllServices } = useGetAllServiceQuery();
   const { data: getMyBookings } = useGetMyBookingsQuery(headers);
   const { data: getReviews } = useGetMyReviewsQuery(headers);
+  const { data: getAllAddToCart } = useGetAllAddToCartQuery(headers);
 
   return (
     <div>
@@ -81,6 +83,40 @@ const DashboardPage = () => {
             <p>Total Service</p>
           </div>
         </div>
+        {decodedToken?.role === "admin" ||
+          decodedToken?.role === "super_admin" || (
+            <div className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-900 font-medium group">
+              <div className="flex justify-center items-center w-14 h-14 bg-blue-900 rounded-full transition-all duration-300 transform group-hover:rotate-12">
+                <svg
+                  width="30"
+                  height="30"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  className="stroke-current text-white transform transition-transform duration-500 ease-in-out"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                  ></path>
+                </svg>
+              </div>
+              <div className="text-right">
+                <p className="text-2xl">
+                  {getAllAddToCart?.data ? getAllAddToCart?.data?.length : 0}
+                </p>
+                <p>
+                  {decodedToken?.role === "admin" ||
+                  decodedToken?.role === "super_admin"
+                    ? "All"
+                    : "My"}{" "}
+                  Wishlists
+                </p>
+              </div>
+            </div>
+          )}
         <div className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-900 font-medium group">
           <div className="flex justify-center items-center w-14 h-14 bg-blue-900 rounded-full transition-all duration-300 transform group-hover:rotate-12">
             <svg
