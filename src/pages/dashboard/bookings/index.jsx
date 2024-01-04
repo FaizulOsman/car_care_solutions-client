@@ -12,6 +12,7 @@ import { useAddReviewMutation } from "../../../redux/service/serviceApi";
 import { useCreateReviewMutation } from "../../../redux/review/reviewApi";
 import { useGetMyProfileQuery } from "../../../redux/user/userApi";
 import Loader from "../../../components/UI/Loader";
+import Modal from "../../../components/UI/Modal/Modal";
 
 const jwt = require("jsonwebtoken");
 
@@ -69,10 +70,7 @@ const BookingsPage = () => {
   };
 
   const handleCancelBooking = (id) => {
-    const isConfirm = window.confirm("Are you sure you want to delete?");
-    if (isConfirm) {
-      deleteBooking({ id });
-    }
+    deleteBooking({ id });
   };
 
   const handleUpdateBookingStatus = (value, booking) => {
@@ -125,7 +123,7 @@ const BookingsPage = () => {
     <div>
       <div className="my-20 w-11/12 md:w-10/12 mx-auto">
         <h1 className="text-3xl font-semibold text-center my-8">Bookings</h1>
-        {getMyBookings?.data?.length > 0 ? (
+        {getMyBookings ? (
           <>
             {getMyBookings?.data?.length > 0 ? (
               <div className="mt-10 flex flex-col gap-5">
@@ -159,12 +157,56 @@ const BookingsPage = () => {
                     </div>
                     <div className="flex flex-col items-center justify-between gap-4">
                       <>
-                        <button
-                          className="btn btn-error text-white btn-xs"
-                          onClick={() => handleCancelBooking(booking?.id)}
-                        >
-                          Cancel Booking
-                        </button>
+                        <Modal
+                          Button={
+                            <button className="btn btn-error text-white btn-xs">
+                              Cancel Booking
+                            </button>
+                          }
+                          data={booking}
+                          modalBody={
+                            <>
+                              <h3 className="font-semibold text-md sm:text-lg text-white pb-5 text-center">
+                                Do you want to delete:{" "}
+                                <span className="text-error font-bold">
+                                  {'"'}
+                                  {booking?.type}
+                                  {'"'}
+                                </span>
+                                ?
+                              </h3>
+                              <div className="py-4 text-center flex justify-around">
+                                <button
+                                  onClick={() => {
+                                    handleCancelBooking(booking?.id);
+                                    const modal = document.getElementById(
+                                      booking?.id
+                                    );
+                                    if (modal) {
+                                      modal.close();
+                                    }
+                                  }}
+                                  className="btn btn-error btn-xs sm:btn-sm text-white"
+                                >
+                                  Yes
+                                </button>
+                                <button
+                                  onClick={() => {
+                                    const modal = document.getElementById(
+                                      booking?.id
+                                    );
+                                    if (modal) {
+                                      modal.close();
+                                    }
+                                  }}
+                                  className="btn btn-primary btn-xs sm:btn-sm"
+                                >
+                                  No
+                                </button>
+                              </div>
+                            </>
+                          }
+                        />
                         {decodedToken?.email === booking?.email && (
                           <button
                             className="btn btn-primary btn-xs"
