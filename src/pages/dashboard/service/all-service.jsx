@@ -13,7 +13,11 @@ import Loader from "../../../components/UI/Loader";
 const jwt = require("jsonwebtoken");
 
 const AllServices = () => {
-  const { data: allService } = useGetAllServiceQuery();
+  const { data: allService } = useGetAllServiceQuery({
+    searchValue: "",
+    status: "",
+    limit: 10,
+  });
 
   const accessToken =
     typeof window !== "undefined" ? localStorage.getItem("access-token") : null;
