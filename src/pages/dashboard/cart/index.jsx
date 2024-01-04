@@ -9,12 +9,17 @@ import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
 import { useCreateBookingMutation } from "../../../redux/booking/bookingApi";
 import toast from "react-hot-toast";
-import { AiFillDelete } from "react-icons/ai";
-import Loader from "../../../components/UI/Loader";
+import Table from "../../../components/UI/Table/Table";
+import Modal from "../../../components/UI/Modal/Modal";
+import { MdDeleteOutline } from "react-icons/md";
 
 const jwt = require("jsonwebtoken");
 
 const CartPage = () => {
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(10);
+  const [meta, setMeta] = useState({});
+  const [sortOrder, setSortOrder] = useState("desc");
   const [startDate, setStartDate] = useState(new Date());
   const [timeSlot, setTimeSlot] = useState("");
 
@@ -28,7 +33,10 @@ const CartPage = () => {
   const decodedToken = jwt.decode(accessToken);
 
   const { data: getAllAddToCart } = useGetAllAddToCartQuery(headers);
-  const [deleteAddToCart] = useDeleteAddToCartMutation();
+  const [
+    deleteAddToCart,
+    { isSuccess: deleteAddToCartIsSuccess, isError: deleteAddToCartIsError },
+  ] = useDeleteAddToCartMutation();
   const [
     createBooking,
     {
@@ -53,10 +61,7 @@ const CartPage = () => {
   };
 
   const handleDeleteCart = (id) => {
-    const isConfirm = window.confirm("Are you sure you want to delete?");
-    if (isConfirm) {
-      deleteAddToCart(id);
-    }
+    deleteAddToCart(id);
   };
 
   useEffect(() => {
@@ -68,106 +73,156 @@ const CartPage = () => {
     }
   }, [createBookingIsSuccess, createBookingError, createBookingIsError]);
 
+  useEffect(() => {
+    if (deleteAddToCartIsSuccess) {
+      toast.success("Service removed from wishlist!");
+    }
+    if (deleteAddToCartIsError) {
+      toast.error(
+        deleteAddToCartIsError?.data?.message || "Something went wrong"
+      );
+    }
+  }, [deleteAddToCartIsSuccess, deleteAddToCartIsError]);
+
   return (
     <div>
-      <div className="my-20 w-11/12 md:w-10/12 mx-auto">
-        <h1 className="text-3xl font-semibold text-center my-8">Cart</h1>
-        {getAllAddToCart ? (
-          <>
-            {getAllAddToCart?.data?.length > 0 ? (
-              <div className="mt-10 flex flex-col gap-5">
-                {getAllAddToCart?.data?.map((cart, index) => (
-                  <div
-                    key={index}
-                    className="flex justify-between items-center  bg-[#1d1836] p-2 rounded-md"
-                  >
-                    <div>
-                      <p>Type: {cart?.type}</p>
-                      <p>Price: ${cart?.price}</p>
-                    </div>
-                    <div className="flex flex-col items-center justify-between gap-4">
-                      <div className="flex gap-4 items-center">
+      <Table
+        tableTitle={`My Wishlists (${
+          getAllAddToCart?.data?.length > 0 ? getAllAddToCart?.data?.length : 0
+        })`}
+        page={page}
+        setPage={setPage}
+        limit={limit}
+        setLimit={setLimit}
+        meta={meta}
+        allData={getAllAddToCart?.data}
+        sortOrder={sortOrder}
+        setSortOrder={setSortOrder}
+        tableHeadData={[
+          <th key="type" className="px-3 pt-0 pb-3">
+            Type
+          </th>,
+          <th key="price" className="px-3 pt-0 pb-3">
+            Price
+          </th>,
+          <th key="delete" className="px-3 pt-0 pb-3">
+            Delete
+          </th>,
+          <th key="booking" className="px-3 pt-0 pb-3">
+            Book Now
+          </th>,
+        ]}
+        tableBodyData={getAllAddToCart?.data?.map((data, index) => (
+          <tr key={index} className="border-b border-gray-800">
+            <td className="px-3 py-2">{data?.type}</td>
+            <td className="px-3 py-2">${data?.price}</td>
+            <td className="px-3 py-2">
+              <div className="cursor-pointer text-red-600">
+                <Modal
+                  Button={<MdDeleteOutline className={`w-5 h-5`} />}
+                  data={data}
+                  modalBody={
+                    <>
+                      <h3 className="font-semibold text-md sm:text-lg text-white pb-5 text-center">
+                        Are you sure you want to remove{" "}
+                        <span className="text-error font-bold">
+                          {data?.type}
+                        </span>
+                        ?
+                      </h3>
+                      <div className="py-4 text-center flex justify-around">
                         <button
-                          onClick={() => handleDeleteCart(cart?.id)}
-                          className="btn btn-sm btn-error text-white"
+                          onClick={() => {
+                            handleDeleteCart(data?.id);
+                            const modal = document.getElementById(data?.id);
+                            if (modal) {
+                              modal.close();
+                            }
+                          }}
+                          className="btn btn-error btn-xs sm:btn-sm text-white"
                         >
-                          Remove
+                          Yes
                         </button>
                         <button
-                          className="btn btn-primary btn-sm"
-                          onClick={() =>
-                            document.getElementById(index).showModal()
-                          }
+                          onClick={() => {
+                            const modal = document.getElementById(data?.id);
+                            if (modal) {
+                              modal.close();
+                            }
+                          }}
+                          className="btn btn-primary btn-xs sm:btn-sm"
                         >
-                          Book Now
+                          No
                         </button>
                       </div>
-                      <dialog id={index} className="modal">
-                        <div className="modal-box bg-[#1d1836]">
-                          <div className="flex justify-between items-center">
-                            <h3 className="font-bold text-lg">{cart?.type}</h3>
-                            <p className="">${cart?.price}</p>
-                          </div>
-                          <div className="py-4">
-                            <div className="sm:flex sm:justify-between sm:gap-4">
-                              <div className="w-full sm:w-1/2">
-                                <DatePicker
-                                  selected={startDate}
-                                  onChange={(date) => setStartDate(date)}
-                                  dateFormat="MM-dd-yyyy"
-                                  className="bg-[#1d1836] border border-primary w-full select mb-4"
-                                />
-                              </div>
+                    </>
+                  }
+                />
+              </div>
+            </td>
+            <td className="px-3 py-2 ">
+              <button
+                className="btn btn-primary btn-xs"
+                onClick={() => document.getElementById(index).showModal()}
+              >
+                Book
+              </button>
+              <dialog id={index} className="modal">
+                <div className="modal-box bg-[#1d1836]">
+                  <div className="flex justify-between items-center">
+                    <h3 className="font-bold text-lg">{data?.type}</h3>
+                    <p className="">${data?.price}</p>
+                  </div>
+                  <div className="py-4">
+                    <div className="sm:flex sm:justify-between sm:gap-4">
+                      <div className="w-full sm:w-1/2">
+                        <DatePicker
+                          selected={startDate}
+                          onChange={(date) => setStartDate(date)}
+                          dateFormat="MM-dd-yyyy"
+                          className="bg-[#1d1836] border border-primary w-full select mb-4"
+                        />
+                      </div>
 
-                              <select
-                                onChange={(e) => setTimeSlot(e.target.value)}
-                                className="select select-primary w-full sm:w-1/2 bg-[#1d1836]"
-                              >
-                                <option disabled selected>
-                                  Select A Time Slot
-                                </option>
-                                <option value="10:00AM-12:00PM">
-                                  10:00AM - 12:00PM
-                                </option>
-                                <option value="12:00PM-02:00PM">
-                                  12:00PM - 02:00PM
-                                </option>
-                                <option value="02:00PM-04:00PM">
-                                  02:00PM - 04:00PM
-                                </option>
-                                <option value="04:00PM-06:00PM">
-                                  04:00PM - 06:00PM
-                                </option>
-                              </select>
-                            </div>
-                            <div className="text-center">
-                              <button
-                                className="btn btn-primary btn-sm"
-                                onClick={() => handleBookService(cart)}
-                              >
-                                Book Now
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                        <form method="dialog" className="modal-backdrop">
-                          <button>close</button>
-                        </form>
-                      </dialog>
+                      <select
+                        onChange={(e) => setTimeSlot(e.target.value)}
+                        className="select select-primary w-full sm:w-1/2 bg-[#1d1836]"
+                      >
+                        <option disabled selected>
+                          Select A Time Slot
+                        </option>
+                        <option value="10:00AM-12:00PM">
+                          10:00AM - 12:00PM
+                        </option>
+                        <option value="12:00PM-02:00PM">
+                          12:00PM - 02:00PM
+                        </option>
+                        <option value="02:00PM-04:00PM">
+                          02:00PM - 04:00PM
+                        </option>
+                        <option value="04:00PM-06:00PM">
+                          04:00PM - 06:00PM
+                        </option>
+                      </select>
+                    </div>
+                    <div className="text-center">
+                      <button
+                        className="btn btn-primary btn-sm"
+                        onClick={() => handleBookService(data)}
+                      >
+                        Book Now
+                      </button>
                     </div>
                   </div>
-                ))}
-              </div>
-            ) : (
-              <h2 className="text-2xl font-bold text-red-500 text-center py-10">
-                No Data Found
-              </h2>
-            )}
-          </>
-        ) : (
-          <Loader />
-        )}
-      </div>
+                </div>
+                <form method="dialog" className="modal-backdrop">
+                  <button>close</button>
+                </form>
+              </dialog>
+            </td>
+          </tr>
+        ))}
+      />
     </div>
   );
 };

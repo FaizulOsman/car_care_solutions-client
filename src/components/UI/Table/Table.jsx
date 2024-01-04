@@ -40,43 +40,47 @@ const Table = ({
               </div>
               <div className="sm:p-7 p-4 w-[90%] sm:w-full">
                 <div className="flex w-full items-center mb-7">
-                  <select
-                    onChange={(e) => {
-                      const selectedValue = e.target.value;
-                      setSortOrder(selectedValue);
-                    }}
-                    className="select select-bordered border-gray-800 font-normal select-xs sm:select-sm max-w-xs bg-[#080925]"
-                  >
-                    <option value="desc">Newest</option>
-                    <option value="asc">Oldest</option>
-                  </select>
-                  <div className="ml-auto text-xs inline-flex items-center">
-                    <span className="mr-3 hidden sm:inline-block">
-                      Limit {limit}
-                    </span>
-                    <button
-                      onClick={() => setLimit(limit - 1)}
-                      className={`mr-3 inline-flex items-center h-6 w-6 sm:h-8 sm:w-8 justify-center rounded-md shadow border ${
-                        limit === 1
-                          ? "opacity-50 cursor-not-allowed"
-                          : "border-gray-800"
-                      } leading-none`}
-                      disabled={limit === 1}
+                  {!!totalPage && (
+                    <select
+                      onChange={(e) => {
+                        const selectedValue = e.target.value;
+                        setSortOrder(selectedValue);
+                      }}
+                      className="select select-bordered border-gray-800 font-normal select-xs sm:select-sm max-w-xs bg-[#080925]"
                     >
-                      <BiChevronLeft className="w-5 h-5" />
-                    </button>
-                    <button
-                      onClick={() => setLimit(limit + 1)}
-                      className={`inline-flex items-center h-6 w-6 sm:h-8 sm:w-8 justify-center rounded-md shadow border ${
-                        page === totalPage
-                          ? "opacity-50 cursor-not-allowed"
-                          : "border-gray-800"
-                      } leading-none`}
-                      disabled={limit === parseInt(meta?.total)}
-                    >
-                      <BiChevronRight className="w-5 h-5" />
-                    </button>
-                  </div>
+                      <option value="desc">Newest</option>
+                      <option value="asc">Oldest</option>
+                    </select>
+                  )}
+                  {!!totalPage && (
+                    <div className="ml-auto text-xs inline-flex items-center">
+                      <span className="mr-3 hidden sm:inline-block">
+                        Limit {limit}
+                      </span>
+                      <button
+                        onClick={() => setLimit(limit - 1)}
+                        className={`mr-3 inline-flex items-center h-6 w-6 sm:h-8 sm:w-8 justify-center rounded-md shadow border ${
+                          limit === 1
+                            ? "opacity-50 cursor-not-allowed"
+                            : "border-gray-800"
+                        } leading-none`}
+                        disabled={limit === 1}
+                      >
+                        <BiChevronLeft className="w-5 h-5" />
+                      </button>
+                      <button
+                        onClick={() => setLimit(limit + 1)}
+                        className={`inline-flex items-center h-6 w-6 sm:h-8 sm:w-8 justify-center rounded-md shadow border ${
+                          page === totalPage
+                            ? "opacity-50 cursor-not-allowed"
+                            : "border-gray-800"
+                        } leading-none`}
+                        disabled={limit === parseInt(meta?.total)}
+                      >
+                        <BiChevronRight className="w-5 h-5" />
+                      </button>
+                    </div>
+                  )}
                 </div>
                 {allData ? (
                   <div style={{ overflowX: "auto" }}>
@@ -101,43 +105,45 @@ const Table = ({
                     <Loader />
                   </div>
                 )}
-                <div className="flex flex-wrap w-full mt-5 gap-2 justify-end">
-                  <button
-                    onClick={() => handlePageChange(page - 1)}
-                    className={`inline-flex items-center h-6 w-6 sm:h-8 sm:w-8 justify-center rounded-md shadow border ${
-                      page === 1
-                        ? "opacity-50 cursor-not-allowed"
-                        : "border-gray-800"
-                    } leading-none`}
-                    disabled={page === 1}
-                  >
-                    <BiChevronLeft className="w-5 h-5" />
-                  </button>
-                  {Array.from({ length: totalPage }, (_, index) => (
+                {!!totalPage && (
+                  <div className="flex flex-wrap w-full mt-5 gap-2 justify-end">
                     <button
-                      key={index}
-                      onClick={() => handlePageChange(index + 1)}
+                      onClick={() => handlePageChange(page - 1)}
                       className={`inline-flex items-center h-6 w-6 sm:h-8 sm:w-8 justify-center rounded-md shadow border ${
-                        page === index + 1
-                          ? "bg-gray-800 border-gray-800"
+                        page === 1
+                          ? "opacity-50 cursor-not-allowed"
                           : "border-gray-800"
                       } leading-none`}
+                      disabled={page === 1}
                     >
-                      {index + 1}
+                      <BiChevronLeft className="w-5 h-5" />
                     </button>
-                  ))}
-                  <button
-                    onClick={() => handlePageChange(page + 1)}
-                    className={`inline-flex items-center h-6 w-6 sm:h-8 sm:w-8 justify-center rounded-md shadow border ${
-                      page === totalPage
-                        ? "opacity-50 cursor-not-allowed"
-                        : "border-gray-800"
-                    } leading-none`}
-                    disabled={page === totalPage}
-                  >
-                    <BiChevronRight className="w-5 h-5" />
-                  </button>
-                </div>
+                    {Array.from({ length: totalPage }, (_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => handlePageChange(index + 1)}
+                        className={`inline-flex items-center h-6 w-6 sm:h-8 sm:w-8 justify-center rounded-md shadow border ${
+                          page === index + 1
+                            ? "bg-gray-800 border-gray-800"
+                            : "border-gray-800"
+                        } leading-none`}
+                      >
+                        {index + 1}
+                      </button>
+                    ))}
+                    <button
+                      onClick={() => handlePageChange(page + 1)}
+                      className={`inline-flex items-center h-6 w-6 sm:h-8 sm:w-8 justify-center rounded-md shadow border ${
+                        page === totalPage
+                          ? "opacity-50 cursor-not-allowed"
+                          : "border-gray-800"
+                      } leading-none`}
+                      disabled={page === totalPage}
+                    >
+                      <BiChevronRight className="w-5 h-5" />
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </div>

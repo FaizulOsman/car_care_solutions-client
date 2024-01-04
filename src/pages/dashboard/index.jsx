@@ -8,6 +8,7 @@ import { useGetAllServiceQuery } from "../../redux/service/serviceApi";
 import { useGetMyBookingsQuery } from "../../redux/booking/bookingApi";
 import { useGetMyReviewsQuery } from "../../redux/review/reviewApi";
 import { useGetAllAddToCartQuery } from "../../redux/addToCart/addToCartApi";
+import CartPage from "./cart";
 
 const jwt = require("jsonwebtoken");
 
@@ -187,6 +188,7 @@ const DashboardPage = () => {
             <AllServices />
           </>
         ))}
+      {decodedToken?.role === "user" && <CartPage />}
       <MyProfile />
     </div>
   );
