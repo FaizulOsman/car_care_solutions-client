@@ -163,11 +163,13 @@ const CartPage = () => {
             <td className="px-3 py-2 ">
               <button
                 className="btn btn-primary btn-xs"
-                onClick={() => document.getElementById(index).showModal()}
+                onClick={() =>
+                  document.getElementById(`book-${index}`).showModal()
+                }
               >
                 Book
               </button>
-              <dialog id={index} className="modal">
+              <dialog id={`book-${index}`} className="modal">
                 <div className="modal-box bg-[#1d1836]">
                   <div className="flex justify-between items-center">
                     <h3 className="font-bold text-lg">{data?.type}</h3>
