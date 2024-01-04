@@ -37,7 +37,7 @@ const Table = ({
                 </div>
               </div>
             </div>
-            <div className="sm:p-7 p-4 w-[90%] sm:w-full">
+            <div className="sm:p-7 p-4 w-full">
               <div className="flex w-full items-center mb-7">
                 {!!totalPage && (
                   <select
