@@ -3,22 +3,31 @@ import {
   useGetAllServiceQuery,
 } from "../../../redux/service/serviceApi";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import useProtectedRoute from "../../../hooks/useProtectedRoute";
 import DashboardLayout from "../../../layouts/DashboardLayout";
-import Loader from "../../../components/UI/Loader";
+import Table from "../../../components/UI/Table/Table";
+import Modal from "../../../components/UI/Modal/Modal";
+import toast from "react-hot-toast";
 
 const jwt = require("jsonwebtoken");
 
 const AllServices = () => {
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(10);
+  const [meta, setMeta] = useState({});
+  const [sortOrder, setSortOrder] = useState("desc");
+
   const { data: allService } = useGetAllServiceQuery({
     searchValue: "",
     status: "",
-    limit: 10,
+    limit,
+    page,
+    sortOrder,
   });
-
+  console.log(page, allService);
   const accessToken =
     typeof window !== "undefined" ? localStorage.getItem("access-token") : null;
   const decodedToken = jwt.decode(accessToken);
@@ -30,64 +39,113 @@ const AllServices = () => {
     authorization: accessToken,
   };
 
-  const [deleteService, { isError, isLoading, isSuccess, error }] =
+  const [deleteService, { isError, isSuccess, error }] =
     useDeleteServiceMutation();
 
   const handleDeleteService = (service) => {
-    const isConfirm = window.confirm(`Do you want to delete: ${service?.type}`);
-    if (isConfirm) {
-      deleteService({ id: service?.id, headers });
-    }
+    deleteService({ id: service?.id, headers });
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("Service deleted successfully!");
+    }
+    if (isError) {
+      toast.error(error?.data?.message || "Something went wrong");
+    }
+  }, [isSuccess, isError, error]);
+
+  useEffect(() => {
+    setMeta(allService?.meta);
+    setLimit(allService?.meta?.limit);
+  }, [allService?.meta]);
 
   return (
     <div>
-      <div className="my-20 w-11/12 md:w-10/12 mx-auto">
-        <h1 className="text-2xl md:text-3xl font-semibold text-center my-8">
-          Services
-        </h1>
-        {allService?.data?.length > 0 ? (
-          <>
-            {allService?.data?.length > 0 ? (
-              <div className="mt-10 flex flex-col gap-5">
-                {allService?.data?.map((service, index) => (
-                  <div
-                    key={index}
-                    className="flex justify-between items-center  bg-[#1d1836] p-2 rounded-md"
-                  >
-                    <div>
-                      <h4 className="text-md font-semibold">
-                        {service?.subject} {service?.serial}
-                      </h4>
-                      <p>Type: {service?.type}</p>
-                      <p>Price: ${service?.price}</p>
-                    </div>
-                    <div className="flex flex-col items-center justify-between gap-4">
-                      <Link href={`/dashboard/service/update/${service?.id}`}>
-                        <button className="text-lg border-none text-primary hover:text-blue-600">
-                          <FaRegEdit />
+      <Table
+        tableTitle={`All Services (${
+          allService?.meta?.total > 0 ? allService?.meta?.total : 0
+        })`}
+        page={page}
+        setPage={setPage}
+        limit={limit}
+        setLimit={setLimit}
+        meta={meta}
+        allData={allService?.data}
+        sortOrder={sortOrder}
+        setSortOrder={setSortOrder}
+        tableHeadData={[
+          <th key="type" className="px-3 pt-0 pb-3">
+            Service Type
+          </th>,
+          <th key="price" className="px-3 pt-0 pb-3">
+            Price
+          </th>,
+          <th key="delete" className="px-3 pt-0 pb-3">
+            Delete
+          </th>,
+          <th key="update" className="px-3 pt-0 pb-3">
+            Update
+          </th>,
+        ]}
+        tableBodyData={allService?.data?.map((data, index) => (
+          <tr key={index} className="border-b border-gray-800">
+            <td className="px-3 py-2">{data?.type}</td>
+            <td className="px-3 py-2">${data?.price}</td>
+            <td className="px-3 py-2">
+              <div className="cursor-pointer text-red-600">
+                <Modal
+                  Button={<MdDeleteOutline className={`w-5 h-5`} />}
+                  data={data}
+                  modalBody={
+                    <>
+                      <h3 className="font-semibold text-md sm:text-lg text-white pb-5 text-center">
+                        Are you sure you want to delete{" "}
+                        <span className="text-error font-bold">
+                          {data?.type}
+                        </span>
+                        ?
+                      </h3>
+                      <div className="py-4 text-center flex justify-around">
+                        <button
+                          onClick={() => {
+                            handleDeleteService(data);
+                            const modal = document.getElementById(data?.id);
+                            if (modal) {
+                              modal.close();
+                            }
+                          }}
+                          className="btn btn-error btn-xs sm:btn-sm text-white"
+                        >
+                          Yes
                         </button>
-                      </Link>
-                      <button
-                        onClick={() => handleDeleteService(service)}
-                        className="text-2xl border-none  text-red-500 hover:text-red-600"
-                      >
-                        <MdDeleteOutline />
-                      </button>
-                    </div>
-                  </div>
-                ))}
+                        <button
+                          onClick={() => {
+                            const modal = document.getElementById(data?.id);
+                            if (modal) {
+                              modal.close();
+                            }
+                          }}
+                          className="btn btn-primary btn-xs sm:btn-sm"
+                        >
+                          No
+                        </button>
+                      </div>
+                    </>
+                  }
+                />
               </div>
-            ) : (
-              <h2 className="text-2xl font-bold text-red-500 text-center py-10">
-                No Data Found
-              </h2>
-            )}
-          </>
-        ) : (
-          <Loader />
-        )}
-      </div>
+            </td>
+            <td className="px-3 py-2 ">
+              <Link href={`/dashboard/service/update/${data?.id}`}>
+                <button className="text-lg border-none text-primary hover:text-blue-600">
+                  <FaRegEdit />
+                </button>
+              </Link>
+            </td>
+          </tr>
+        ))}
+      />
     </div>
   );
 };
