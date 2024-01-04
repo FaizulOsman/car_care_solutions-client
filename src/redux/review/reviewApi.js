@@ -30,6 +30,7 @@ const reviewApi = apiSlice.injectEndpoints({
         url: `/reviews/${id}`,
         headers: headers,
       }),
+      providesTags: ["carCare"],
     }),
     deleteReview: builder.mutation({
       query: (id) => ({
