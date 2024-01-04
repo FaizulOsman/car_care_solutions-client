@@ -38,13 +38,8 @@ const Table = ({
                   </div>
                 </div>
               </div>
-              <div className="sm:p-7 p-4">
+              <div className="sm:p-7 p-4 w-[90%] sm:w-full">
                 <div className="flex w-full items-center mb-7">
-                  {/* <button className="hidden sm:inline-flex gap-2 mr-3 items-center h-8 pl-2.5 pr-2 rounded-md shadow dark:border-gray-800 border border-gray-200 leading-none py-0">
-                    <AiOutlineCalendar className="w-4 h-4" />
-                    Last 30 days
-                    <BiChevronDown className="w-4 h-4" />
-                  </button> */}
                   <select
                     onChange={(e) => {
                       const selectedValue = e.target.value;
@@ -84,10 +79,10 @@ const Table = ({
                   </div>
                 </div>
                 {allData ? (
-                  <>
+                  <div style={{ overflowX: "auto" }}>
                     {allData?.length > 0 ? (
                       <table className="w-full text-left">
-                        <thead>
+                        <thead className="">
                           <tr>{tableHeadData?.map((data) => data)}</tr>
                           <tr className="font-normal border-b border-gray-800"></tr>
                         </thead>
@@ -100,7 +95,7 @@ const Table = ({
                         </h2>
                       </div>
                     )}
-                  </>
+                  </div>
                 ) : (
                   <div className="min-h-[30vh] flex items-center">
                     <Loader />

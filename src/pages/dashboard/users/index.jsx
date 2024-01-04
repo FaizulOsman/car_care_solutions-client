@@ -132,34 +132,28 @@ const Users = () => {
         sortOrder={sortOrder}
         setSortOrder={setSortOrder}
         tableHeadData={[
-          <th key="image" className="sm:px-3 pt-0 pb-3 hidden md:table-cell">
+          <th key="image" className="px-3 pt-0 pb-3">
             Image
           </th>,
-          <th key="name" className="sm:px-3 pt-0 pb-3 hidden sm:table-cell">
+          <th key="name" className="px-3 pt-0 pb-3">
             Name
           </th>,
-          <th key="email" className="sm:px-3 pt-0 pb-3">
+          <th key="email" className="px-3 pt-0 pb-3">
             Email
           </th>,
-          <th key="isAdmin" className="sm:px-3 pt-0 pb-3">
+          <th key="isAdmin" className="px-3 pt-0 pb-3">
             Admin
           </th>,
-          <th key="delete" className="sm:px-3 pt-0 pb-3 hidden sm:table-cell">
+          <th key="delete" className="px-3 pt-0 pb-3">
             Delete
           </th>,
-          <th key="del." className="sm:px-3 pt-0 pb-3 sm:hidden table-cell">
-            Del.
-          </th>,
-          <th key="update" className="sm:px-3 pt-0 pb-3 hidden sm:table-cell">
+          <th key="update" className="px-3 pt-0 pb-3">
             Update
-          </th>,
-          <th key="up." className="sm:px-3 pt-0 pb-3 sm:hidden table-cell">
-            Up.
           </th>,
         ]}
         tableBodyData={allUsers?.map((data, index) => (
           <tr key={index} className="border-b border-gray-800">
-            <td className="sm:p-3 py-2 hidden md:table-cell">
+            <td className="px-3 py-2">
               <img
                 src={`https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(${
                   index + 1
@@ -170,12 +164,9 @@ const Users = () => {
                 height={50}
               />
             </td>
-            <td className="sm:p-3 py-2 hidden sm:table-cell">{data.name}</td>
-            <td className="sm:p-3 py-2 hidden sm:table-cell">{data.email}</td>
-            <td className="sm:p-3 py-2 sm:hidden table-cell">
-              {data.email.slice(0, -7)}...
-            </td>
-            <td className="sm:p-3 py-2">
+            <td className="px-3 py-2">{data.name}</td>
+            <td className="px-3 py-2">{data.email}</td>
+            <td className="px-3 py-2">
               <input
                 type="checkbox"
                 className="toggle toggle-xs sm:toggle-sm toggle-primary"
@@ -191,7 +182,7 @@ const Users = () => {
                 }
               />
             </td>
-            <td className="sm:p-3 py-2">
+            <td className="px-3 py-2">
               <div
                 disabled={
                   (data?.email === getMyProfile?.data?.email ? true : false) ||
@@ -246,7 +237,7 @@ const Users = () => {
                 />
               </div>
             </td>
-            <td className="sm:p-3 py-2 ">
+            <td className="px-3 py-2 ">
               <Link
                 href={
                   data?.email === getMyProfile?.data?.email ||
