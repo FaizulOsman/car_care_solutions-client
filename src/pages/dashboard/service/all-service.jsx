@@ -138,8 +138,8 @@ const AllServices = () => {
             </td>
             <td className="px-3 py-2 ">
               <Link href={`/dashboard/service/update/${data?.id}`}>
-                <button className="text-lg border-none text-primary hover:text-blue-600">
-                  <FaRegEdit />
+                <button className="text-lg border-none text-green-600 hover:text-green-500">
+                  <FaRegEdit className="w-4 h-4" />
                 </button>
               </Link>
             </td>

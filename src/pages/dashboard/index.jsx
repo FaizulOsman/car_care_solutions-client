@@ -10,6 +10,7 @@ import { useGetMyReviewsQuery } from "../../redux/review/reviewApi";
 import { useGetAllAddToCartQuery } from "../../redux/addToCart/addToCartApi";
 import CartPage from "./cart";
 import BookingsPage from "./bookings";
+import AllReviewsPage from "./reviews";
 
 const jwt = require("jsonwebtoken");
 
@@ -24,7 +25,10 @@ const DashboardPage = () => {
   const decodedToken = jwt.decode(accessToken);
 
   const { data: getAllUser } = useGetAllUsersQuery({ headers });
-  const { data: getAllServices } = useGetAllServiceQuery();
+  const { data: getAllServices } = useGetAllServiceQuery({
+    searchValue: "",
+    status: "",
+  });
   const { data: getMyBookings } = useGetMyBookingsQuery(headers);
   const { data: getReviews } = useGetMyReviewsQuery(headers);
   const { data: getAllAddToCart } = useGetAllAddToCartQuery(headers);
@@ -191,6 +195,7 @@ const DashboardPage = () => {
         ))}
       {decodedToken?.role === "user" && <CartPage />}
       <BookingsPage />
+      <AllReviewsPage />
       <MyProfile />
     </div>
   );

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { FaRegEdit } from "react-icons/fa";
@@ -253,7 +252,7 @@ const Users = () => {
                   data?.email === getMyProfile?.data?.email ||
                   data?.role === "super_admin"
                     ? "cursor-not-allowed text-green-400"
-                    : "cursor-pointer text-green-600"
+                    : "cursor-pointer text-green-600 hover:text-green-500"
                 }`}
               >
                 <FaRegEdit className="w-4 h-4" />
