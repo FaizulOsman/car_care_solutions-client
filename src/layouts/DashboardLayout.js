@@ -5,6 +5,7 @@ import {
   FaChartLine,
   FaQuestionCircle,
   FaBars,
+  FaHeart,
 } from "react-icons/fa";
 import { BiSearch, BiSolidUserPlus } from "react-icons/bi";
 import { BiCog } from "react-icons/bi";
@@ -96,8 +97,8 @@ const routes = [
   },
   {
     path: "/dashboard/cart",
-    name: "Cart",
-    icon: <AiOutlineShoppingCart />,
+    name: "Wishlist",
+    icon: <FaHeart />,
     permission1: "user",
     permission2: "admin",
     permission3: "super_admin",
