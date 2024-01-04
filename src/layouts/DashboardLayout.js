@@ -47,14 +47,6 @@ const routes = [
     permission3: "super_admin",
   },
   {
-    path: "/dashboard/my-profile",
-    name: "My Profile",
-    icon: <FaUser />,
-    permission1: "user",
-    permission2: "admin",
-    permission3: "super_admin",
-  },
-  {
     path: "/dashboard/add-new-admin",
     name: "Add new admin",
     icon: <BiSolidUserPlus />,
@@ -131,6 +123,14 @@ const routes = [
     name: "Feedbacks",
     icon: <FcFeedback />,
     permission1: "",
+    permission2: "admin",
+    permission3: "super_admin",
+  },
+  {
+    path: "/dashboard/my-profile",
+    name: "My Profile",
+    icon: <FaUser />,
+    permission1: "user",
     permission2: "admin",
     permission3: "super_admin",
   },
@@ -253,51 +253,54 @@ const DashboardLayout = ({ children }) => {
             </div>
           </div>
           <section className="flex flex-col gap-[5px]">
-            {routes.map((route, index) => (
-              <div key={index}>
-                {(route?.permission1 === myProfile?.role ||
+            {routes.map(
+              (route, index) =>
+                (route?.permission1 === myProfile?.role ||
                   route?.permission2 === myProfile?.role ||
                   route?.permission3 === myProfile?.role) && (
-                  <>
-                    {route.subRoutes ? (
-                      <SidebarMenu
-                        setIsOpen={setIsOpen}
-                        route={route}
-                        showAnimation={showAnimation}
-                        isOpen={isOpen}
-                      />
-                    ) : (
-                      <Link href={route.path} passHref>
-                        <div
-                          className={`flex items-center text-white gap-[10px] p-2 border-r-4 border-transparent border-solid transition duration-200 ease-in-out cubic-bezier(0.6, -0.28, 0.735, 0.045) hover:bg-[#2d3359] hover:border-r-4 hover:border-white hover:transition-[0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045)] ${
-                            route.path === router?.asPath
-                              ? "border-r-4 border-white bg-[#2d3359]"
-                              : ""
-                          }`}
-                        >
-                          <div className={`icon ${!isOpen && "mx-auto"}`}>
-                            {route.icon}
-                          </div>
-                          <AnimatePresence>
-                            {isOpen && (
-                              <motion.div
-                                variants={showAnimation}
-                                initial="hidden"
-                                animate="show"
-                                exit="hidden"
-                                className="whitespace-nowrap text-[15px]"
-                              >
-                                {route.name}
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </div>
-                      </Link>
-                    )}
-                  </>
-                )}
-              </div>
-            ))}
+                  <div key={index}>
+                    {
+                      <>
+                        {route.subRoutes ? (
+                          <SidebarMenu
+                            setIsOpen={setIsOpen}
+                            route={route}
+                            showAnimation={showAnimation}
+                            isOpen={isOpen}
+                          />
+                        ) : (
+                          <Link href={route.path} passHref>
+                            <div
+                              className={`flex items-center text-white gap-[10px] p-2 border-r-4 border-transparent border-solid transition duration-200 ease-in-out cubic-bezier(0.6, -0.28, 0.735, 0.045) hover:bg-[#2d3359] hover:border-r-4 hover:border-white hover:transition-[0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045)] ${
+                                route.path === router?.asPath
+                                  ? "border-r-4 border-white bg-[#2d3359]"
+                                  : ""
+                              }`}
+                            >
+                              <div className={`icon ${!isOpen && "mx-auto"}`}>
+                                {route.icon}
+                              </div>
+                              <AnimatePresence>
+                                {isOpen && (
+                                  <motion.div
+                                    variants={showAnimation}
+                                    initial="hidden"
+                                    animate="show"
+                                    exit="hidden"
+                                    className="whitespace-nowrap text-[15px]"
+                                  >
+                                    {route.name}
+                                  </motion.div>
+                                )}
+                              </AnimatePresence>
+                            </div>
+                          </Link>
+                        )}
+                      </>
+                    }
+                  </div>
+                )
+            )}
           </section>
         </motion.div>
 

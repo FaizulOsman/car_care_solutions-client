@@ -16,6 +16,7 @@ const nextConfig = {
       "avatars.githubusercontent.com",
       "i.ibb.co",
       "res.cloudinary.com",
+      "img.freepik.com",
     ],
   },
 };
