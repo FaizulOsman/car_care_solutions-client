@@ -9,6 +9,7 @@ import { useGetMyBookingsQuery } from "../../redux/booking/bookingApi";
 import { useGetMyReviewsQuery } from "../../redux/review/reviewApi";
 import { useGetAllAddToCartQuery } from "../../redux/addToCart/addToCartApi";
 import CartPage from "./cart";
+import BookingsPage from "./bookings";
 
 const jwt = require("jsonwebtoken");
 
@@ -189,6 +190,7 @@ const DashboardPage = () => {
           </>
         ))}
       {decodedToken?.role === "user" && <CartPage />}
+      <BookingsPage />
       <MyProfile />
     </div>
   );
