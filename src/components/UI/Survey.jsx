@@ -7,8 +7,7 @@ const Statistic = () => {
     <div
       className="statistic text-white mb-20 h-[540px] flex"
       style={{
-        backgroundImage:
-          'url("https://i.ibb.co/QkFMDj0/360-F-507626852-0-Cx-Os-URq-Wos-Gu-BBp-NLa6-El-At3hg1-AWL0.jpg")',
+        backgroundImage: 'url("https://i.ibb.co/YLxFpq7/image-012.jpg")',
         backgroundRepeat: "no-repeat",
         backgroundAttachment: "fixed",
         backgroundSize: "100% 100%",
