@@ -222,7 +222,7 @@ const DashboardLayout = ({ children }) => {
           }}
           className={`h-screen bg-[#00073d] text-white min-h-[100vh] overflow-y-auto absolute sm:static left-0 top-0 z-50`}
         >
-          <div className="flex items-center justify-between py-[6px]">
+          <div className="flex items-center justify-between py-[10px]">
             <AnimatePresence>
               {isOpen && (
                 <motion.h1
@@ -247,7 +247,7 @@ const DashboardLayout = ({ children }) => {
                 height={300}
               />
               {isOpen && (
-                <div className="sm:hidden flex justify-center w-[43px] cursor-pointer hover:text-blue-500 py-[10px]">
+                <div className="sm:hidden flex justify-center w-[43px] cursor-pointer hover:text-blue-500 py-[6px]">
                   <FaBars className="w-4 h-4" onClick={toggle} />
                 </div>
               )}
