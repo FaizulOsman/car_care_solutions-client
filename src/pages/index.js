@@ -14,11 +14,11 @@ const HomePage = () => {
       <Hero />
       <ServicesPage />
       {/* <UpcomingServicesPage /> */}
-      <ClientReviewsPage />
       {/* <Event /> */}
       <LatestNewsPage />
       <Survey />
       <CertifiedSection />
+      <ClientReviewsPage />
       <FAQPage />
       {/* <FeedbackPage /> */}
     </div>
