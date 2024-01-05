@@ -62,7 +62,7 @@ const ServicesPage = () => {
 
   useEffect(() => {
     if (createAddToCartIsSuccess) {
-      toast.success("Service added to cart successfully!");
+      toast.success("Service added to wishlist successfully!");
     }
   }, [createAddToCartIsSuccess]);
 
@@ -182,7 +182,7 @@ const ServicesPage = () => {
                       className="w-full btn border hover:bg-white hover:border-blue-500 hover:text-blue-500 bg-blue-500 text-white"
                       disabled={status === "upcoming" && true}
                     >
-                      Add To Cart
+                      Add To Wishlist
                     </button>
                   </div>
                 </div>
