@@ -11,6 +11,12 @@ import { useGetAllAddToCartQuery } from "../../redux/addToCart/addToCartApi";
 import CartPage from "./cart";
 import BookingsPage from "./bookings";
 import AllReviewsPage from "./reviews";
+import { SlCalender } from "react-icons/sl";
+import {
+  MdOutlineMiscellaneousServices,
+  MdOutlineRateReview,
+} from "react-icons/md";
+import { FaRegHeart } from "react-icons/fa";
 
 const jwt = require("jsonwebtoken");
 
@@ -66,21 +72,7 @@ const DashboardPage = () => {
         )}
         <div className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-900 font-medium group">
           <div className="flex justify-center items-center w-14 h-14 bg-blue-900 rounded-full transition-all duration-300 transform group-hover:rotate-12">
-            <svg
-              width="30"
-              height="30"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              className="stroke-current text-white transform transition-transform duration-500 ease-in-out"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-              ></path>
-            </svg>
+            <MdOutlineMiscellaneousServices className="text-white w-7 h-7" />
           </div>
           <div className="text-right">
             <p className="text-2xl">
@@ -93,21 +85,7 @@ const DashboardPage = () => {
           decodedToken?.role === "super_admin" || (
             <div className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-900 font-medium group">
               <div className="flex justify-center items-center w-14 h-14 bg-blue-900 rounded-full transition-all duration-300 transform group-hover:rotate-12">
-                <svg
-                  width="30"
-                  height="30"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  className="stroke-current text-white transform transition-transform duration-500 ease-in-out"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-                  ></path>
-                </svg>
+                <FaRegHeart className="text-white w-7 h-7" />
               </div>
               <div className="text-right">
                 <p className="text-2xl">
@@ -125,21 +103,7 @@ const DashboardPage = () => {
           )}
         <div className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-900 font-medium group">
           <div className="flex justify-center items-center w-14 h-14 bg-blue-900 rounded-full transition-all duration-300 transform group-hover:rotate-12">
-            <svg
-              width="30"
-              height="30"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              className="stroke-current text-white transform transition-transform duration-500 ease-in-out"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-              ></path>
-            </svg>
+            <SlCalender className="text-white w-7 h-7" />
           </div>
           <div className="text-right">
             <p className="text-2xl">
@@ -156,21 +120,7 @@ const DashboardPage = () => {
         </div>
         <div className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-900 font-medium group">
           <div className="flex justify-center items-center w-14 h-14 bg-blue-900 rounded-full transition-all duration-300 transform group-hover:rotate-12">
-            <svg
-              width="30"
-              height="30"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              className="stroke-current text-white transform transition-transform duration-500 ease-in-out"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-              ></path>
-            </svg>
+            <MdOutlineRateReview className="text-white w-7 h-7" />
           </div>
           <div className="text-right">
             <p className="text-2xl">
