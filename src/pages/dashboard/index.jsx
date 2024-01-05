@@ -17,6 +17,7 @@ import {
   MdOutlineRateReview,
 } from "react-icons/md";
 import { FaRegHeart } from "react-icons/fa";
+import Link from "next/link";
 
 const jwt = require("jsonwebtoken");
 
@@ -44,7 +45,10 @@ const DashboardPage = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 p-4 gap-4">
         {(decodedToken?.role === "admin" ||
           decodedToken?.role === "super_admin") && (
-          <div className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-900 font-medium group">
+          <Link
+            href="dashboard/users"
+            className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-900 font-medium group"
+          >
             <div className="flex justify-center items-center w-14 h-14 bg-blue-900 rounded-full transition-all duration-300 transform group-hover:rotate-12">
               <svg
                 width="30"
@@ -68,9 +72,12 @@ const DashboardPage = () => {
               </p>
               <p>Users</p>
             </div>
-          </div>
+          </Link>
         )}
-        <div className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-900 font-medium group">
+        <Link
+          href="dashboard/service/all-service"
+          className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-900 font-medium group"
+        >
           <div className="flex justify-center items-center w-14 h-14 bg-blue-900 rounded-full transition-all duration-300 transform group-hover:rotate-12">
             <MdOutlineMiscellaneousServices className="text-white w-7 h-7" />
           </div>
@@ -80,10 +87,13 @@ const DashboardPage = () => {
             </p>
             <p>Total Service</p>
           </div>
-        </div>
+        </Link>
         {decodedToken?.role === "admin" ||
           decodedToken?.role === "super_admin" || (
-            <div className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-900 font-medium group">
+            <Link
+              href="dashboard/cart"
+              className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-900 font-medium group"
+            >
               <div className="flex justify-center items-center w-14 h-14 bg-blue-900 rounded-full transition-all duration-300 transform group-hover:rotate-12">
                 <FaRegHeart className="text-white w-7 h-7" />
               </div>
@@ -99,9 +109,12 @@ const DashboardPage = () => {
                   Wishlists
                 </p>
               </div>
-            </div>
+            </Link>
           )}
-        <div className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-900 font-medium group">
+        <Link
+          href="dashboard/bookings"
+          className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-900 font-medium group"
+        >
           <div className="flex justify-center items-center w-14 h-14 bg-blue-900 rounded-full transition-all duration-300 transform group-hover:rotate-12">
             <SlCalender className="text-white w-7 h-7" />
           </div>
@@ -117,8 +130,11 @@ const DashboardPage = () => {
               Bookings
             </p>
           </div>
-        </div>
-        <div className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-900 font-medium group">
+        </Link>
+        <Link
+          href="dashboard/reviews"
+          className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-900 font-medium group"
+        >
           <div className="flex justify-center items-center w-14 h-14 bg-blue-900 rounded-full transition-all duration-300 transform group-hover:rotate-12">
             <MdOutlineRateReview className="text-white w-7 h-7" />
           </div>
@@ -134,7 +150,7 @@ const DashboardPage = () => {
               Reviews
             </p>
           </div>
-        </div>
+        </Link>
       </div>
       {decodedToken?.role === "admin" ||
         (decodedToken?.role === "super_admin" && (
