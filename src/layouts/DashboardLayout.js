@@ -2,23 +2,16 @@ import {
   FaHome,
   FaUser,
   FaUsers,
-  FaChartLine,
   FaQuestionCircle,
   FaBars,
   FaHeart,
+  FaCalendarAlt,
 } from "react-icons/fa";
-import { BiSearch, BiSolidUserPlus } from "react-icons/bi";
-import { BiCog } from "react-icons/bi";
-import {
-  AiOutlineShoppingCart,
-  AiTwotoneFileExclamation,
-} from "react-icons/ai";
-import { BsFillCartCheckFill } from "react-icons/bs";
 import { FcFaq, FcFeedback, FcServices } from "react-icons/fc";
 import {
   MdCreateNewFolder,
   MdOutlineMiscellaneousServices,
-  MdReviews,
+  MdRateReview,
 } from "react-icons/md";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -28,7 +21,7 @@ import Image from "next/image";
 import { removeFromLocalStorage } from "../utils/localstorage";
 import SidebarMenu from "../components/Dashboard/SidebarMenu";
 import DashboardHeader from "../components/Dashboard/DashboardHeader";
-import LOGO from "../../public/logo.png";
+import { RiUserAddFill } from "react-icons/ri";
 
 const routes = [
   {
@@ -50,7 +43,7 @@ const routes = [
   {
     path: "/dashboard/add-new-admin",
     name: "Add new admin",
-    icon: <BiSolidUserPlus />,
+    icon: <RiUserAddFill />,
     permission1: "",
     permission2: "",
     permission3: "super_admin",
@@ -106,7 +99,7 @@ const routes = [
   {
     path: "/dashboard/bookings",
     name: "Bookings",
-    icon: <BsFillCartCheckFill />,
+    icon: <FaCalendarAlt />,
     permission1: "user",
     permission2: "admin",
     permission3: "super_admin",
@@ -114,7 +107,7 @@ const routes = [
   {
     path: "/dashboard/reviews",
     name: "Reviews",
-    icon: <MdReviews />,
+    icon: <MdRateReview />,
     permission1: "user",
     permission2: "admin",
     permission3: "super_admin",
@@ -141,22 +134,6 @@ const DashboardLayout = ({ children }) => {
   const { router } = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-  const inputAnimation = {
-    hidden: {
-      width: 0,
-      padding: 0,
-      transition: {
-        duration: 0.2,
-      },
-    },
-    show: {
-      width: "80%",
-      padding: "0 10px",
-      transition: {
-        duration: 0.2,
-      },
-    },
-  };
 
   const showAnimation = {
     hidden: {
@@ -307,7 +284,6 @@ const DashboardLayout = ({ children }) => {
 
         <div
           className={`${
-            // isOpen ? "w-[calc(100vw-200px)]" : "w-full"
             isOpen ? "w-full sm:w-[calc(100vw-200px)]" : "w-full"
           } flex flex-col ml-[45px] sm:ml-0`}
         >
