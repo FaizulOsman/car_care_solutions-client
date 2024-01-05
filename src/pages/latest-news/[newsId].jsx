@@ -5,8 +5,8 @@ import SectionHeader from "../../components/UI/SectionHeader";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-const LatestNewsPage = () => {
-  const { route } = useRouter();
+const SingleNews = () => {
+  const { query } = useRouter();
 
   const newsData = [
     {
@@ -65,121 +65,78 @@ const LatestNewsPage = () => {
 
   return (
     <div className="w-11/12 max-w-[1200px] mx-auto mb-20">
-      <div data-aos="flip-left">
-        <SectionHeader
-          title="Latest News"
-          styles="text-2xl sm:text-3xl lg:text-4xl text-center pb-5"
-        />
-        <p className="max-w-[500px] mx-auto mb-5 leading-relaxed text-gray-600 text-center pb-5">
-          The sorts of machines, processes, and materials that are used in
-          industry, transport, and communication{" "}
-        </p>
-      </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {newsData?.map((news, index) => (
-          <div
-            key={index}
-            className="single-news border rounded-md flex flex-col sm:flex-row justify-between gap-4 p-3 hover:shadow-lg hover:scale-105 duration-200"
-          >
-            <div className="w-full sm:w-[50%] relative">
-              <div className="w-full h-full">
-                <img
-                  className="news-image w-full h-full"
-                  src={news?.image}
-                  alt=""
-                />
-              </div>
-              <div className="absolute bottom-0 right-0 flex text-white">
-                <span className="bg-blue-500 py-1 px-2">
-                  {news?.date?.slice(0, 2)}
-                </span>
-                <span className="bg-[#7a7a7a] py-1 px-2">
-                  {" "}
-                  {news?.date?.slice(3, 6)} {news?.date?.slice(7, 9)}
-                </span>
-              </div>
-            </div>
-            <div className="w-full sm:w-[50%] flex flex-col justify-between">
-              <div>
-                <div className="flex items-center gap-4 pb-4">
-                  <img
-                    className="w-[60px] h-[60px] border-2 border-white"
-                    src={`https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(${
-                      index + 1
-                    }).jpg`}
-                    alt="avatar"
-                  />
-                  <div>
-                    <p>by-</p>
-                    <h4 className="font-semibold">{news?.creator}</h4>
-                  </div>
-                </div>
-                <h5 className="font-semibold pb-2">{news?.title}</h5>
-                <p className="">{news?.description?.slice(0, 40)}...</p>
-              </div>
-              <div className="read-more rounded-md flex justify-between items-center mt-3">
-                <div class="next-button">
-                  <div class="link_wrapper">
-                    <Link
-                      href={`/latest-news/${news?.id}`}
-                      className="bg-blue-500 border-[3px] border-blue-500 text-white hover:border-[3px] hover:text-blue-500"
-                    >
-                      Read More
-                    </Link>
-                    <div class="icon">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 268.832 268.832"
-                        className="fill-blue-500"
-                      >
-                        <path d="M265.17 125.577l-80-80c-4.88-4.88-12.796-4.88-17.677 0-4.882 4.882-4.882 12.796 0 17.678l58.66 58.66H12.5c-6.903 0-12.5 5.598-12.5 12.5 0 6.903 5.597 12.5 12.5 12.5h213.654l-58.66 58.662c-4.88 4.882-4.88 12.796 0 17.678 2.44 2.44 5.64 3.66 8.84 3.66s6.398-1.22 8.84-3.66l79.997-80c4.883-4.882 4.883-12.796 0-17.678z" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-                <p className="text-sm command pr-2 hover:hidden">
-                  Command {news?.commands?.length}
-                </p>
-              </div>
-            </div>
+      <div className="flex flex-col sm:flex-row justify-between gap-4 p-3">
+        <div className="w-full sm:w-[50%] relative">
+          <div className="w-full h-full">
+            <img
+              className="news-image w-full h-full"
+              src={newsData[query?.newsId - 1]?.image}
+              alt=""
+            />
           </div>
-        ))}
+          <div className="absolute bottom-0 right-0 flex text-white">
+            <span className="bg-blue-500 py-1 px-2">
+              {newsData[query?.newsId - 1]?.date?.slice(0, 2)}
+            </span>
+            <span className="bg-[#7a7a7a] py-1 px-2">
+              {" "}
+              {newsData[query?.newsId - 1]?.date?.slice(3, 6)}{" "}
+              {newsData[query?.newsId - 1]?.date?.slice(7, 9)}
+            </span>
+          </div>
+        </div>
+        <div className="w-full sm:w-[50%] flex flex-col justify-between">
+          <div>
+            <SectionHeader
+              title={newsData[query?.newsId - 1]?.title}
+              styles="text-xl sm:text-2xl lg:text-3xl pb-5"
+            />
+            <p className="">{newsData[query?.newsId - 1]?.description}</p>
+          </div>
+
+          <div className="rounded-md flex justify-between items-center mt-3">
+            <div className="flex items-center gap-4 pb-4">
+              <img
+                className="w-[60px] h-[60px] border-2 border-white"
+                src={`https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(${
+                  newsData[query?.newsId - 1]?.id + 1
+                }).jpg`}
+                alt="avatar"
+              />
+              <div>
+                <p>by-</p>
+                <h4 className="font-semibold">
+                  {newsData[query?.newsId - 1]?.creator}
+                </h4>
+              </div>
+            </div>
+            <p className="text-sm">
+              Command {newsData[query?.newsId - 1]?.commands?.length}
+            </p>
+          </div>
+        </div>
       </div>
 
       <div className="mt-8">
         <h5 className="text-gray-400 text-sm font-semibold">Recent Articles</h5>
         <div className="px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-8 border-b-2 pb-6">
           {newsData?.map((data, index) => (
-            <h4
+            <Link
+              href={`/latest-news/${data?.id}`}
               key={index}
-              className="text-xl cursor-pointer hover:text-primary font-semibold text-gray-600"
+              className="text-lg md:text-xl cursor-pointer hover:text-primary font-semibold text-gray-600"
             >
               {data?.title}
-            </h4>
+            </Link>
           ))}
         </div>
-        {route === "/latest-news" || (
-          <div className="mt-4 text-center">
-            <div className="text-blue-500 font-bold cursor-pointer">
-              <Link
-                href="/latest-news"
-                className="flex gap-4 items-center justify-center"
-              >
-                <span className="mr-2 hover:tracking-wider duration-300">
-                  Read More Articles
-                </span>
-                <BsArrowRight />
-              </Link>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );
 };
 
-export default LatestNewsPage;
+export default SingleNews;
 
-LatestNewsPage.getLayout = function getLayout(page) {
+SingleNews.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
 };
