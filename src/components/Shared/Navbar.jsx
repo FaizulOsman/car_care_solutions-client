@@ -120,6 +120,13 @@ const Navbar = () => {
                 stickyNav ? "sticky-menu" : ""
               }`}
             >
+              <Link href="/latest-news">Latest News</Link>
+            </li>
+            <li
+              className={`left-menus__menu hidden lg:inline-block font-semibold ${
+                stickyNav ? "sticky-menu" : ""
+              }`}
+            >
               <Link href="/faq">FAQ</Link>
             </li>
           </div>
@@ -227,6 +234,14 @@ const Navbar = () => {
                     className="w-full block hover:bg-gray-200 px-2 p-1 rounded-md"
                   >
                     Feedback
+                  </Link>
+                </li>
+                <li onClick={() => setIsOpen(false)} className="body__menu">
+                  <Link
+                    href="/latest-news"
+                    className="w-full block hover:bg-gray-200 px-2 p-1 rounded-md"
+                  >
+                    Latest News
                   </Link>
                 </li>
                 <li onClick={() => setIsOpen(false)} className="body__menu">
