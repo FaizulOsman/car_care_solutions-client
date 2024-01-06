@@ -13,7 +13,7 @@ const LatestNewsPage = () => {
       id: 1,
       image:
         "https://di-uploads-pod5.s3.amazonaws.com/mccluskeychevy/uploads/2014/06/2013-Chevy-Volt.jpg",
-      creator: "Roni chowdhury",
+      creator: "Alan Walker",
       creatorImg: `https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(${1}).jpg`,
       title: "Finding the Best Value for Your Car",
       description:
@@ -25,7 +25,7 @@ const LatestNewsPage = () => {
       id: 2,
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzR874OEF2PMj9bPjgvrVESO0Z3blT6f-mwT3DFLa704ixSdFzbL8c421oj8IoRhBqnhI&usqp=CAU",
-      creator: "Shuvo Khan",
+      creator: "John Doe",
       creatorImg: `https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(${1}).jpg`,
       title: "How to Assess the Value of your Car",
       description:

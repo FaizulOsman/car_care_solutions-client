@@ -1,0 +1,9 @@
+.footer-common-title::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: -5px;
+  width: 40px;
+  height: 2px;
+  background-color: #eb3300;
+}
