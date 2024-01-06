@@ -99,19 +99,19 @@ const Login = () => {
                 <div className="">
                   <div className="relative bg-white border border-gray-400 rounded-lg">
                     <div className="text-gray-800 text-sm">
-                      <div className="text-sm text-gray-600 hover:bg-[#f3f4f9] block px-4 py-2 duration-300">
-                        <h4>Super Admin</h4>
+                      <div className="text-sm text-gray-600 hover:bg-gray-200 block px-4 py-2 duration-300">
+                        <strong>Super Admin</strong>
                         <p className="relative">
-                          Email: a@gmail.com
+                          <strong>Email:</strong> super-admin@gmail.com
                           <span className="absolute right-0 top-[6px]">
                             <CopyToClipboard
-                              text="a@gmail.com"
+                              text="super-admin@gmail.com"
                               styles="w-[10px] h-[10px] hover:text-blue-500"
                             />
                           </span>
                         </p>
                         <p className="relative">
-                          Password: 123456
+                          <strong>Password:</strong> 123456
                           <span className="absolute right-0 top-[6px]">
                             <CopyToClipboard
                               text="123456"
@@ -120,19 +120,19 @@ const Login = () => {
                           </span>
                         </p>
                       </div>
-                      <div className="text-gray-600 hover:bg-[#f3f4f9] block px-4 py-2 duration-300">
-                        <h4>User</h4>
+                      <div className="text-gray-600 hover:bg-gray-200 block px-4 py-2 duration-300">
+                        <strong>User</strong>
                         <p className="relative">
-                          Email: c@gmail.com
+                          <strong>Email:</strong> user@gmail.com
                           <span className="absolute right-0 top-[6px]">
                             <CopyToClipboard
-                              text="c@gmail.com"
+                              text="user@gmail.com"
                               styles="w-[10px] h-[10px] hover:text-blue-500"
                             />
                           </span>
                         </p>
                         <p className="relative">
-                          Password: 123456
+                          <strong>Password:</strong> 123456
                           <span className="absolute right-0 top-[6px]">
                             <CopyToClipboard
                               text="123456"
