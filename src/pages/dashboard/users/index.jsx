@@ -19,10 +19,9 @@ const jwt = require("jsonwebtoken");
 const Users = () => {
   const [allUsers, setAllUsers] = useState([]);
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(3);
+  const [limit, setLimit] = useState(5);
   const [meta, setMeta] = useState({});
   const [sortOrder, setSortOrder] = useState("desc");
-  const [id, setId] = useState("");
 
   const accessToken =
     typeof window !== "undefined" ? localStorage.getItem("access-token") : null;
@@ -54,12 +53,6 @@ const Users = () => {
 
   const totalPage = Math.ceil(parseInt(meta?.total) / parseInt(meta?.limit));
 
-  const handlePageChange = (newPage) => {
-    if (newPage >= 1 && newPage <= totalPage) {
-      setPage(newPage);
-    }
-  };
-
   const [
     deleteUser,
     {
@@ -68,12 +61,9 @@ const Users = () => {
       error: deleteErrMessage,
     },
   ] = useDeleteUserMutation();
+
   const handleDeleteUser = (user) => {
-    setId(user?.id);
-    const isConfirmed = window.confirm(`Do you want to delete ${user?.email}`);
-    if (isConfirmed) {
-      deleteUser({ id: user?.id, headers });
-    }
+    deleteUser({ id: user?.id, headers });
   };
 
   const handleSetRole = ({ user, e }) => {
@@ -169,7 +159,7 @@ const Users = () => {
               <input
                 type="checkbox"
                 className="toggle toggle-xs sm:toggle-sm toggle-primary"
-                checked={
+                defaultChecked={
                   data?.role === "admin" || data?.role === "super_admin"
                     ? true
                     : false
@@ -195,7 +185,14 @@ const Users = () => {
                 }`}
               >
                 <Modal
-                  Button={<MdDeleteOutline className={`w-5 h-5`} />}
+                  isDisabled={data?.role === "super_admin" ? true : false}
+                  Button={
+                    <MdDeleteOutline
+                      className={`w-5 h-5 ${
+                        data?.role === "super_admin" && "cursor-not-allowed"
+                      }`}
+                    />
+                  }
                   data={data}
                   modalBody={
                     <>

@@ -1,9 +1,12 @@
 import React from "react";
 
-const Modal = ({ styles, Button, data, modalBody }) => {
+const Modal = ({ styles, Button, data, modalBody, isDisabled }) => {
   return (
     <div className={`flex items-center ${styles}`}>
-      <button onClick={() => document.getElementById(data?.id).showModal()}>
+      <button
+        disabled={isDisabled ? isDisabled : false}
+        onClick={() => document.getElementById(data?.id).showModal()}
+      >
         {Button}
       </button>
       <dialog id={data?.id} className="modal">
