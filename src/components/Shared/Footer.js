@@ -5,8 +5,16 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col bg-[#161921] text-white items-center">
-      <div className="w-full border-b-2 border-[#252934] pb-10">
+    <footer className="relative flex flex-col bg-[#161921] text-white items-center">
+      <div
+        style={{
+          backgroundImage:
+            "url(https://themeholy.com/wordpress/malen/wp-content/uploads/2023/09/footer_shape_1.png)",
+          backgroundRepeat: "no-repeat",
+        }}
+        className="absolute top-0 left-0 w-full h-full z-10"
+      ></div>
+      <div className="w-full border-b-2 border-[#252934] pb-10 z-50">
         <div className="w-11/12 max-w-[1200px] mx-auto pt-5">
           <div className="flex flex-wrap px-6 pt-14">
             <div className="w-full sm:w-[50%] lg:w-[27%] pr-4 mb-6">
