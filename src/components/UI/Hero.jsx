@@ -4,6 +4,7 @@ import { useGetAllServiceQuery } from "../../redux/service/serviceApi";
 import DatePicker from "react-datepicker";
 import { useCreateBookingMutation } from "../../redux/booking/bookingApi";
 import toast from "react-hot-toast";
+import "react-datepicker/dist/react-datepicker.css";
 
 const jwt = require("jsonwebtoken");
 

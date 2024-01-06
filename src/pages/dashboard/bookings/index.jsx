@@ -214,11 +214,11 @@ const BookingsPage = () => {
                   modalBody={
                     <>
                       <h3 className="font-semibold text-md sm:text-lg text-white pb-5 text-center">
-                        Are you sure you want to cancel{" "}
+                        Are you sure you want to cancel booking{" "}
                         <span className="text-error font-bold">
                           {data?.type}
                         </span>{" "}
-                        booking ?
+                        ?
                       </h3>
                       <div className="py-4 text-center flex justify-around">
                         <button
@@ -343,7 +343,7 @@ const BookingsPage = () => {
                       document.getElementById(`status-${index}`).showModal()
                     }
                   >
-                    Update
+                    Status
                   </button>
                   <dialog id={`status-${index}`} className="modal">
                     <div className="modal-box bg-[#1d1836]">

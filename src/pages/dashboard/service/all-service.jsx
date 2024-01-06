@@ -27,7 +27,7 @@ const AllServices = () => {
     page,
     sortOrder,
   });
-  console.log(page, allService);
+
   const accessToken =
     typeof window !== "undefined" ? localStorage.getItem("access-token") : null;
   const decodedToken = jwt.decode(accessToken);
