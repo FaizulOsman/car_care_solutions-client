@@ -38,7 +38,7 @@ const ClientReviewsPage = () => {
         <div className="flex items-center justify-center flex-col">
           <SectionTopHeader
             title="OUR HAPPY CUSTOMERS"
-            styles="text-md sm:text-lg lg:text-xl text-center text-[#EB3300] pb-5"
+            styles="text-md sm:text-lg lg:text-xl text-center text-[#EB3300] pb-3"
           />
           <SectionHeader
             title="What Customer Says"
