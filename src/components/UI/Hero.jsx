@@ -1,7 +1,67 @@
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useGetAllServiceQuery } from "../../redux/service/serviceApi";
+import DatePicker from "react-datepicker";
+import { useCreateBookingMutation } from "../../redux/booking/bookingApi";
+import toast from "react-hot-toast";
+
+const jwt = require("jsonwebtoken");
 
 const Banner = () => {
+  const [startDate, setStartDate] = useState(new Date());
+
+  const accessToken =
+    typeof window !== "undefined" ? localStorage.getItem("access-token") : null;
+
+  const headers = {
+    authorization: accessToken,
+  };
+
+  const decodedToken = jwt.decode(accessToken);
+
+  const { data: getAllService } = useGetAllServiceQuery({
+    searchValue: "",
+    status: "ongoing",
+  });
+  const [
+    createBooking,
+    {
+      isSuccess: createBookingIsSuccess,
+      error: createBookingError,
+      isError: createBookingIsError,
+    },
+  ] = useCreateBookingMutation();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const findData = getAllService?.data?.find(
+      (data) => data?.type === e.target.type.value
+    );
+
+    const data = {
+      serviceId: findData?.id,
+      type: findData?.type,
+      price: findData?.price,
+      email: decodedToken?.email,
+      date: e.target.date.value,
+      timeSlot: e.target.time.value,
+      isAccepted: false,
+      isRejected: false,
+    };
+    console.log(data);
+    createBooking({ data, headers });
+  };
+
+  useEffect(() => {
+    if (createBookingIsSuccess) {
+      toast.success("Service booked successfully!");
+    }
+    if (createBookingIsError) {
+      toast.error(createBookingError?.data?.message || "Something went wrong");
+    }
+  }, [createBookingIsSuccess, createBookingError, createBookingIsError]);
+
   return (
     <div className="pb-20 -mt-14">
       <div
@@ -33,36 +93,53 @@ const Banner = () => {
           Tell us what you are looking for
         </h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-center mt-5 px-10 pb-10">
-          <select className="select select-bordered w-full">
-            <option>Select a Make</option>
-            <option>Ultimate Paint Correction</option>
-            <option>Executive</option>
-            <option>Deluxe</option>
-            <option>Premium</option>
-            <option>Classic</option>
-            <option>Basic</option>
-            <option>WAX</option>
-            <option>Interior Car Detailing</option>
+        <form
+          onSubmit={(e) => handleSubmit(e)}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-center mt-5 px-10 pb-10"
+        >
+          <select
+            name="type"
+            className="select select-bordered w-full"
+            required
+          >
+            <option>Select a Service</option>
+            {getAllService?.data?.map((data, index) => (
+              <option key={index} value={data?.type}>
+                {data?.type}
+              </option>
+            ))}
           </select>
-          <select disabled className="select select-bordered w-full">
-            <option>Select a Model</option>
-            <option>Han Solo</option>
-            <option>Greedo</option>
+          <div className="w-full">
+            <DatePicker
+              name="date"
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              dateFormat="MM-dd-yyyy"
+              className="border select select-bordered w-full"
+              required
+            />
+          </div>
+          <select
+            name="time"
+            className="select select-bordered w-full"
+            required
+          >
+            <option value="10:00AM-12:00PM" selected>
+              10:00AM - 12:00PM
+            </option>
+            <option value="12:00PM-02:00PM">12:00PM - 02:00PM</option>
+            <option value="02:00PM-04:00PM">02:00PM - 04:00PM</option>
+            <option value="04:00PM-06:00PM">04:00PM - 06:00PM</option>
           </select>
-          <input
-            type="text"
-            placeholder="Zip Code"
-            className="input input-bordered w-full"
-          />
-          <Link href="/services">
+          <div>
             <button
+              type="submit"
               className={`bg-gradient-to-r from-green-400 to-blue-400 hover:bg-gradient-to-r hover:from-blue-500 hover:to-green-500 text-white w-full px-8 py-3 font-semibold rounded-md bg-gray-900 hover:bg-gray-700 hover:text-white`}
             >
-              Let{"'"}s Go
+              Book Now
             </button>
-          </Link>
-        </div>
+          </div>
+        </form>
 
         <div className="border-t bg-gray-100 p-4 flex flex-wrap justify-around gap-3">
           <Link href="/services">
