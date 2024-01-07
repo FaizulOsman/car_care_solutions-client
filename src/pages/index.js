@@ -7,6 +7,7 @@ import CertifiedSection from "./certified";
 import ClientReviewsPage from "./client-reviews";
 import Survey from "../components/UI/Survey";
 import FAQPage from "./faq";
+import ContactUs from "./contact-us";
 
 const HomePage = () => {
   return (
@@ -20,7 +21,7 @@ const HomePage = () => {
       <CertifiedSection />
       <ClientReviewsPage />
       <FAQPage />
-      {/* <FeedbackPage /> */}
+      <ContactUs />
     </div>
   );
 };
