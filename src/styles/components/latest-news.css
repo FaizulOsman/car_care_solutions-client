@@ -26,7 +26,7 @@
   border: 3px solid transparent;
   position: absolute;
   transform: rotate(45deg);
-  right: 50%;
+  right: 55%;
   top: 0;
   z-index: -1;
   transition: all 0.35s;

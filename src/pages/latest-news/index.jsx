@@ -115,7 +115,7 @@ const LatestNewsPage = () => {
                     alt="avatar"
                   />
                   <div>
-                    <p>by-</p>
+                    <p>By-</p>
                     <h4 className="font-semibold">{news?.creator}</h4>
                   </div>
                 </div>
