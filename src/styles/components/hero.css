@@ -1,3 +1,104 @@
 .react-datepicker-wrapper {
   width: 100%;
 }
+
+/* ============ Read more Button ============ */
+
+.hero-bookNow {
+  transform: translate(0%, 0%);
+  height: 100%;
+}
+
+.hero-bookNow_wrapper {
+  height: 100%;
+  position: relative;
+}
+
+.hero-bookNow button {
+  width: 100%;
+  display: block;
+  padding: 9px;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.35s;
+  border-radius: 5px;
+}
+
+.hero-bookNow .icon {
+  width: 40px;
+  height: 40px;
+  border: 3px solid transparent;
+  position: absolute;
+  transform: rotate(45deg);
+  right: 55%;
+  top: 2px;
+  z-index: -1;
+  transition: all 0.35s;
+}
+
+.hero-bookNow .icon svg {
+  width: 25px;
+  position: absolute;
+  top: calc(50% - 10px);
+  left: calc(50% - 15px);
+  transform: rotate(-45deg);
+  transition: all 0.35s;
+}
+
+.hero-bookNow button:hover {
+  width: 85%;
+  background: transparent;
+  border-radius: 0;
+}
+
+.hero-bookNow button:hover + .icon {
+  border: 3px solid #2ecc71;
+  right: 6%;
+}
+
+@media screen and (min-width: 1280px) {
+  .hero-bookNow button:hover + .icon {
+    right: 2%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .hero-bookNow button:hover + .icon {
+    right: 1%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hero-bookNow button:hover {
+    width: 90%;
+  }
+  .hero-bookNow button:hover + .icon {
+    right: 4%;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .hero-bookNow button:hover {
+    width: 87%;
+  }
+  .hero-bookNow button:hover + .icon {
+    right: 6%;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .hero-bookNow button:hover {
+    width: 85%;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .hero-bookNow button:hover {
+    width: 82%;
+  }
+  .hero-bookNow button:hover + .icon {
+    right: 5%;
+  }
+}

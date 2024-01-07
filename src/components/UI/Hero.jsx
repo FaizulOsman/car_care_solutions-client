@@ -40,18 +40,25 @@ const Banner = () => {
       (data) => data?.type === e.target.type.value
     );
 
-    const data = {
-      serviceId: findData?.id,
-      type: findData?.type,
-      price: findData?.price,
-      email: decodedToken?.email,
-      date: e.target.date.value,
-      timeSlot: e.target.time.value,
-      isAccepted: false,
-      isRejected: false,
-    };
-    console.log(data);
-    createBooking({ data, headers });
+    if (!decodedToken?.email) {
+      toast.error("Please login first!");
+    } else {
+      if (!findData?.type) {
+        toast.error("Please select a service!");
+      } else {
+        const data = {
+          serviceId: findData?.id,
+          type: findData?.type,
+          price: findData?.price,
+          email: decodedToken?.email,
+          date: e.target.date.value,
+          timeSlot: e.target.time.value,
+          isAccepted: false,
+          isRejected: false,
+        };
+        createBooking({ data, headers });
+      }
+    }
   };
 
   useEffect(() => {
@@ -68,7 +75,6 @@ const Banner = () => {
       <div
         className="h-[260px] md:h-[300px] lg:h-[460px]"
         style={{
-          // background: `url(https://i.ibb.co/3S5dnds/banner.jpg)`,
           background: `url(https://used-carz.web.app/static/media/banner.991105296df5663f9e18.jpg)`,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -133,12 +139,26 @@ const Banner = () => {
             <option value="04:00PM-06:00PM">04:00PM - 06:00PM</option>
           </select>
           <div>
-            <button
-              type="submit"
-              className={`bg-gradient-to-r from-green-400 to-blue-400 hover:bg-gradient-to-r hover:from-blue-500 hover:to-green-500 text-white w-full px-8 py-3 font-semibold rounded-md bg-gray-900 hover:bg-gray-700 hover:text-white`}
-            >
-              Book Now
-            </button>
+            <div class="hero-bookNow">
+              <div class="hero-bookNow_wrapper">
+                <button
+                  href={`#`}
+                  type="submit"
+                  className="bg-[#2ecc71] border-[3px] border-[#2ecc71] text-white hover:border-[3px] hover:text-[#2ecc71]"
+                >
+                  Book Now
+                </button>
+                <div class="icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 268.832 268.832"
+                    className="fill-[#2ecc71]"
+                  >
+                    <path d="M265.17 125.577l-80-80c-4.88-4.88-12.796-4.88-17.677 0-4.882 4.882-4.882 12.796 0 17.678l58.66 58.66H12.5c-6.903 0-12.5 5.598-12.5 12.5 0 6.903 5.597 12.5 12.5 12.5h213.654l-58.66 58.662c-4.88 4.882-4.88 12.796 0 17.678 2.44 2.44 5.64 3.66 8.84 3.66s6.398-1.22 8.84-3.66l79.997-80c4.883-4.882 4.883-12.796 0-17.678z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
           </div>
         </form>
 
