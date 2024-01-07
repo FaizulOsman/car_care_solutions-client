@@ -51,10 +51,10 @@ const ContactUs = () => {
               </div>
               <div className="flex flex-col justify-between">
                 <h4 className="text-lg md:text-xl text-[#787878] font-semibold">
-                  Phone Call
+                  Email drop Us
                 </h4>
                 <h4 className="text-lg md:text-xl font-semibold hover:text-red-500">
-                  +123 (907) 555-101
+                  needhelprepair@gmail.com
                 </h4>
               </div>
             </div>
@@ -64,10 +64,10 @@ const ContactUs = () => {
               </div>
               <div className="flex flex-col justify-between">
                 <h4 className="text-lg md:text-xl text-[#787878] font-semibold">
-                  Phone Call
+                  Location
                 </h4>
                 <h4 className="text-lg md:text-xl font-semibold hover:text-red-500">
-                  +123 (907) 555-101
+                  Inglewood, Maine 98380
                 </h4>
               </div>
             </div>
@@ -79,7 +79,7 @@ const ContactUs = () => {
                 <Link
                   href="#!"
                   type="button"
-                  className="m-1 h-9 w-9 rounded-full border-2 border-gray-500 uppercase leading-normal transition duration-150 ease-in-out text-black hover:text-blue-600 focus:outline-none focus:ring-0"
+                  className="m-1 h-9 w-9 rounded-full border-2 border-gray-300 bg-gray-100 uppercase leading-normal transition duration-150 ease-in-out text-black hover:text-blue-600 focus:outline-none focus:ring-0"
                   data-te-ripple-init
                   data-te-ripple-color="light"
                 >
@@ -96,7 +96,7 @@ const ContactUs = () => {
                 <Link
                   href="#!"
                   type="button"
-                  className="m-1 h-9 w-9 rounded-full border-2 border-gray-500 uppercase leading-normal transition duration-150 ease-in-out text-black hover:text-blue-600 focus:outline-none focus:ring-0"
+                  className="m-1 h-9 w-9 rounded-full border-2 border-gray-300 bg-gray-100 uppercase leading-normal transition duration-150 ease-in-out text-black hover:text-blue-600 focus:outline-none focus:ring-0"
                   data-te-ripple-init
                   data-te-ripple-color="light"
                 >
@@ -113,7 +113,7 @@ const ContactUs = () => {
                 <Link
                   href="#!"
                   type="button"
-                  className="m-1 h-9 w-9 rounded-full border-2 border-gray-500 uppercase leading-normal transition duration-150 ease-in-out text-black hover:text-red-500 focus:outline-none focus:ring-0"
+                  className="m-1 h-9 w-9 rounded-full border-2 border-gray-300 bg-gray-100 uppercase leading-normal transition duration-150 ease-in-out text-black hover:text-red-500 focus:outline-none focus:ring-0"
                   data-te-ripple-init
                   data-te-ripple-color="light"
                 >
@@ -134,7 +134,7 @@ const ContactUs = () => {
                 <Link
                   href="#!"
                   type="button"
-                  className="m-1 h-9 w-9 rounded-full border-2 border-gray-500 uppercase leading-normal transition duration-150 ease-in-out text-black hover:text-[#f223d8] focus:outline-none focus:ring-0"
+                  className="m-1 h-9 w-9 rounded-full border-2 border-gray-300 bg-gray-100 uppercase leading-normal transition duration-150 ease-in-out text-black hover:text-[#f223d8] focus:outline-none focus:ring-0"
                   data-te-ripple-init
                   data-te-ripple-color="light"
                 >
@@ -151,7 +151,7 @@ const ContactUs = () => {
                 <Link
                   href="#!"
                   type="button"
-                  className="m-1 h-9 w-9 rounded-full border-2 border-gray-500 uppercase leading-normal transition duration-150 ease-in-out text-black hover:text-blue-600 focus:outline-none focus:ring-0"
+                  className="m-1 h-9 w-9 rounded-full border-2 border-gray-300 bg-gray-100 uppercase leading-normal transition duration-150 ease-in-out text-black hover:text-blue-600 focus:outline-none focus:ring-0"
                   data-te-ripple-init
                   data-te-ripple-color="light"
                 >
@@ -168,7 +168,7 @@ const ContactUs = () => {
                 <Link
                   href="#!"
                   type="button"
-                  className="m-1 h-9 w-9 rounded-full border-2 border-gray-500 uppercase leading-normal transition duration-150 ease-in-out text-black hover:text-black focus:outline-none focus:ring-0"
+                  className="m-1 h-9 w-9 rounded-full border-2 border-gray-300 bg-gray-100 uppercase leading-normal transition duration-150 ease-in-out text-black hover:text-black focus:outline-none focus:ring-0"
                   data-te-ripple-init
                   data-te-ripple-color="light"
                 >
