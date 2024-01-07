@@ -4,6 +4,7 @@ import RootLayout from "../../layouts/RootLayout";
 import SectionHeader from "../../components/UI/SectionHeader";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import SectionTopHeader from "../../components/UI/SectionTopHeader";
 
 const LatestNewsPage = () => {
   const { route } = useRouter();
@@ -65,7 +66,11 @@ const LatestNewsPage = () => {
 
   return (
     <div className="w-11/12 max-w-[1200px] mx-auto mb-20">
-      <div data-aos="flip-left">
+      <div className="flex items-center justify-center flex-col">
+        <SectionTopHeader
+          title="NEWS & UPDATES"
+          styles="text-md sm:text-lg lg:text-xl text-center text-[#EB3300] pb-3"
+        />
         <SectionHeader
           title="Latest News"
           styles="text-2xl sm:text-3xl lg:text-4xl text-center pb-5"
@@ -79,7 +84,7 @@ const LatestNewsPage = () => {
         {newsData?.map((news, index) => (
           <div
             key={index}
-            className="single-news border rounded-md flex flex-col sm:flex-row justify-between gap-4 p-3 hover:shadow-lg hover:scale-105 duration-200"
+            className="single-news bg-[#f3f1f2] shadow-md border rounded-md flex flex-col sm:flex-row justify-between gap-4 p-3 hover:shadow-lg hover:scale-105 duration-200"
           >
             <div className="w-full sm:w-[50%] relative">
               <div className="w-full h-full">
@@ -90,7 +95,7 @@ const LatestNewsPage = () => {
                 />
               </div>
               <div className="absolute bottom-0 right-0 flex text-white">
-                <span className="bg-blue-500 py-1 px-2">
+                <span className="bg-[#EB3300] py-1 px-2">
                   {news?.date?.slice(0, 2)}
                 </span>
                 <span className="bg-[#7a7a7a] py-1 px-2">
@@ -122,7 +127,7 @@ const LatestNewsPage = () => {
                   <div class="link_wrapper">
                     <Link
                       href={`/latest-news/${news?.id}`}
-                      className="bg-blue-500 border-[3px] border-blue-500 text-white hover:border-[3px] hover:text-blue-500"
+                      className="bg-[#EB3300] border-[3px] border-[#EB3300] text-white hover:border-[3px] hover:text-[#EB3300]"
                     >
                       Read More
                     </Link>
@@ -130,7 +135,7 @@ const LatestNewsPage = () => {
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 268.832 268.832"
-                        className="fill-blue-500"
+                        className="fill-[#EB3300]"
                       >
                         <path d="M265.17 125.577l-80-80c-4.88-4.88-12.796-4.88-17.677 0-4.882 4.882-4.882 12.796 0 17.678l58.66 58.66H12.5c-6.903 0-12.5 5.598-12.5 12.5 0 6.903 5.597 12.5 12.5 12.5h213.654l-58.66 58.662c-4.88 4.882-4.88 12.796 0 17.678 2.44 2.44 5.64 3.66 8.84 3.66s6.398-1.22 8.84-3.66l79.997-80c4.883-4.882 4.883-12.796 0-17.678z" />
                       </svg>
@@ -152,7 +157,7 @@ const LatestNewsPage = () => {
           {newsData?.map((data, index) => (
             <h4
               key={index}
-              className="text-xl cursor-pointer hover:text-primary font-semibold text-gray-600"
+              className="text-xl cursor-pointer hover:text-[#EB3300] font-semibold text-gray-600"
             >
               {data?.title}
             </h4>
@@ -160,7 +165,7 @@ const LatestNewsPage = () => {
         </div>
         {route === "/latest-news" || (
           <div className="mt-4 text-center">
-            <div className="text-blue-500 font-bold cursor-pointer">
+            <div className="text-[#EB3300] font-bold cursor-pointer">
               <Link
                 href="/latest-news"
                 className="flex gap-4 items-center justify-center"
