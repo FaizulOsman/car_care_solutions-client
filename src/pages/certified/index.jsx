@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import SectionHeader from "../../components/UI/SectionHeader";
+import SectionTopHeader from "../../components/UI/SectionTopHeader";
 
 const CertifiedSection = () => {
   const { route } = useRouter();
@@ -49,9 +50,13 @@ const CertifiedSection = () => {
   ];
   return (
     <div className="w-11/12 max-w-[1200px] mx-auto mb-20">
-      <div data-aos="flip-right">
+      <div className="flex items-center justify-center flex-col">
+        <SectionTopHeader
+          title="Quality Pre-Owned Selection"
+          styles="text-md sm:text-lg lg:text-xl text-center text-[#EB3300] pb-3"
+        />
         <SectionHeader
-          title="Certified Pre-Owned Cars"
+          title="Explore Certified Excellence"
           styles="text-2xl sm:text-3xl lg:text-4xl text-center pb-10"
         />
       </div>
