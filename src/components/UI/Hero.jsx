@@ -170,23 +170,28 @@ const Banner = () => {
 
         <div className="border-t bg-gray-100 p-4 flex flex-wrap justify-around gap-3">
           <Link href="/services">
-            <button className="p-2 border bg-white hover:text-[#eb3300] font-semibold">
-              Browse All Ongoing Services
+            <button className="p-2 border bg-white hover:text-[#eb3300] hover:border-[#eb3300] font-semibold">
+              Ongoing Services
             </button>
           </Link>
           <Link href="/services/upcoming-services">
-            <button className="p-2 border bg-white hover:text-[#eb3300] font-semibold">
+            <button className="p-2 border bg-white hover:text-[#eb3300] hover:border-[#eb3300] font-semibold">
               Upcoming Services
             </button>
           </Link>
-          <Link href="/faq">
-            <button className="p-2 border bg-white hover:text-[#eb3300] font-semibold">
-              See FAQ
+          <Link href="/latest-news">
+            <button className="p-2 border bg-white hover:text-[#eb3300] hover:border-[#eb3300] font-semibold">
+              Latest News
             </button>
           </Link>
-          <Link href="/latest-news">
-            <button className="p-2 border bg-white hover:text-[#eb3300] font-semibold">
-              Latest News
+          <Link href="/contact-us">
+            <button className="p-2 border bg-white hover:text-[#eb3300] hover:border-[#eb3300] font-semibold">
+              Contact Us
+            </button>
+          </Link>
+          <Link href="/faq">
+            <button className="p-2 border bg-white hover:text-[#eb3300] hover:border-[#eb3300] font-semibold">
+              See FAQ
             </button>
           </Link>
         </div>

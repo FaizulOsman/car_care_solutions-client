@@ -168,6 +168,11 @@ const Navbar = () => {
                   <li
                     className={`left-menus__menu hidden md:inline-block font-semibold`}
                   >
+                    <Link href="/">Home</Link>
+                  </li>
+                  <li
+                    className={`left-menus__menu hidden md:inline-block font-semibold`}
+                  >
                     <Link href="/services">Services</Link>
                   </li>
                   <li
