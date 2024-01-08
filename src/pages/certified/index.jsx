@@ -60,7 +60,11 @@ const CertifiedSection = () => {
           styles="text-2xl sm:text-3xl lg:text-4xl text-center pb-10"
         />
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 border-b-2 pb-6">
+      <div
+        className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 pb-6 ${
+          route === "/certified" || "border-b-2"
+        }`}
+      >
         {certifiedData.map((data, i) => (
           <div data-aos="fade-up" key={i}>
             <div className="border rounded-lg hover:bg-gray-100 hover:scale-110 duration-300 p-5 flex flex-col justify-center items-center">
@@ -71,7 +75,7 @@ const CertifiedSection = () => {
                 width={300}
                 height={300}
               />
-              <p className="text-primary font-bold">{data?.name}</p>
+              <p className="font-bold text-center">{data?.name}</p>
             </div>
           </div>
         ))}

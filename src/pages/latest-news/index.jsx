@@ -153,7 +153,11 @@ const LatestNewsPage = () => {
 
       <div className="mt-8">
         <h5 className="text-gray-400 text-sm font-semibold">Recent Articles</h5>
-        <div className="px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-8 border-b-2 pb-6">
+        <div
+          className={`px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-8 pb-6 ${
+            route === "/latest-news" || "border-b-2"
+          }`}
+        >
           {newsData?.map((data, index) => (
             <h4
               key={index}
