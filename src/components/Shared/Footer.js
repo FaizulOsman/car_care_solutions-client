@@ -29,9 +29,11 @@ const Footer = () => {
               <p className="text-[#8b8e95] mb-6">
                 Mon-Sat: 09.00 am to 6.30 pm
               </p>
-              <button className="text-md sm:text-lg bg-[#EB3300] hover:bg-[#d13509] duration-200 btn-md rounded-md">
-                CONTACT US
-              </button>
+              <Link href="/contact-us">
+                <button className="text-base bg-[#EB3300] hover:bg-[#d13509] duration-200 btn-md rounded-md">
+                  CONTACT US
+                </button>
+              </Link>
             </div>
             <div className="w-full sm:w-[50%] lg:w-[19%] pr-4 mb-6">
               <h3 className="footer-common-title relative text-xl sm:text-2xl font-semibold mb-5">
@@ -137,10 +139,7 @@ const Footer = () => {
                   placeholder="Email Address"
                   className="px-6 py-4 bg-[#252934] rounded-md"
                 />
-                <button
-                  type="submit"
-                  className="bg-[#EB3300] hover:bg-[#d13509] duration-200 text-center py-4 rounded-md"
-                >
+                <button className="bg-[#EB3300] hover:bg-[#d13509] duration-200 text-center py-4 rounded-md">
                   Subscribe
                 </button>
               </form>
@@ -148,14 +147,14 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="py-10 w-full">
+      <div className="py-10 w-full z-20">
         <div className="w-11/12 max-w-[1200px] mx-auto">
           <div className="sm:flex justify-between items-center px-6">
             <div className="text-center text-[#8b8e95] sm:text-start mb-4 sm:mb-0">
               © 2024 Copyright:
               <Link
                 href="/"
-                className="left-menus__menu text-white hover:text-blue-500"
+                className="left-menus__menu text-white hover:text-[#EB3300]"
                 target="_blank"
               >
                 Car Care Solutions
@@ -163,7 +162,7 @@ const Footer = () => {
               Online
               <Link
                 href="/services"
-                className="left-menus__menu text-white hover:text-blue-500"
+                className="left-menus__menu text-white hover:text-[#EB3300]"
               >
                 Service
               </Link>
@@ -172,7 +171,7 @@ const Footer = () => {
               <Link
                 href="#!"
                 type="button"
-                className="m-1 h-9 w-9 rounded-full border-2 border-gray-500 uppercase leading-normal transition duration-150 ease-in-out text-white hover:text-blue-600 focus:outline-none focus:ring-0"
+                className="m-1 h-9 w-9 rounded-full border-2 border-gray-500 hover:border-blue-600 uppercase leading-normal transition duration-150 ease-in-out text-white hover:text-blue-600 focus:outline-none focus:ring-0"
                 data-te-ripple-init
                 data-te-ripple-color="light"
               >
@@ -189,7 +188,7 @@ const Footer = () => {
               <Link
                 href="#!"
                 type="button"
-                className="m-1 h-9 w-9 rounded-full border-2 border-gray-500 uppercase leading-normal transition duration-150 ease-in-out text-white hover:text-blue-600 focus:outline-none focus:ring-0"
+                className="m-1 h-9 w-9 rounded-full border-2 border-gray-500 hover:border-blue-600 uppercase leading-normal transition duration-150 ease-in-out text-white hover:text-blue-600 focus:outline-none focus:ring-0"
                 data-te-ripple-init
                 data-te-ripple-color="light"
               >
@@ -206,7 +205,7 @@ const Footer = () => {
               <Link
                 href="#!"
                 type="button"
-                className="m-1 h-9 w-9 rounded-full border-2 border-gray-500 uppercase leading-normal transition duration-150 ease-in-out text-white hover:text-red-500 focus:outline-none focus:ring-0"
+                className="m-1 h-9 w-9 rounded-full border-2 border-gray-500 hover:border-red-600 uppercase leading-normal transition duration-150 ease-in-out text-white hover:text-red-500 focus:outline-none focus:ring-0"
                 data-te-ripple-init
                 data-te-ripple-color="light"
               >
@@ -227,7 +226,7 @@ const Footer = () => {
               <Link
                 href="#!"
                 type="button"
-                className="m-1 h-9 w-9 rounded-full border-2 border-gray-500 uppercase leading-normal transition duration-150 ease-in-out text-white hover:text-[#f223d8] focus:outline-none focus:ring-0"
+                className="m-1 h-9 w-9 rounded-full border-2 border-gray-500 hover:border-[#f223d8] uppercase leading-normal transition duration-150 ease-in-out text-white hover:text-[#f223d8] focus:outline-none focus:ring-0"
                 data-te-ripple-init
                 data-te-ripple-color="light"
               >
@@ -244,7 +243,7 @@ const Footer = () => {
               <Link
                 href="#!"
                 type="button"
-                className="m-1 h-9 w-9 rounded-full border-2 border-gray-500 uppercase leading-normal transition duration-150 ease-in-out text-white hover:text-blue-600 focus:outline-none focus:ring-0"
+                className="m-1 h-9 w-9 rounded-full border-2 border-gray-500 hover:border-blue-600 uppercase leading-normal transition duration-150 ease-in-out text-white hover:text-blue-600 focus:outline-none focus:ring-0"
                 data-te-ripple-init
                 data-te-ripple-color="light"
               >
@@ -261,7 +260,7 @@ const Footer = () => {
               <Link
                 href="#!"
                 type="button"
-                className="m-1 h-9 w-9 rounded-full border-2 border-gray-500 uppercase leading-normal transition duration-150 ease-in-out text-white hover:text-black focus:outline-none focus:ring-0"
+                className="m-1 h-9 w-9 rounded-full border-2 border-gray-500 hover:border-black uppercase leading-normal transition duration-150 ease-in-out text-white hover:text-black focus:outline-none focus:ring-0"
                 data-te-ripple-init
                 data-te-ripple-color="light"
               >
