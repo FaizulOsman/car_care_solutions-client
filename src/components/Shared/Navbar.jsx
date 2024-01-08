@@ -82,23 +82,25 @@ const Navbar = () => {
     <div className={`${scrollPosition > 150 && "mb-[102px] md:mb-[116px]"}`}>
       <div className="th-header header-layout4">
         <div className="header-top-area relative">
-          {screenWidth > 768 ? (
-            <img
-              className="absolute top-8 left-[5%] w-36 lg:w-40 h-[72px] lg:h-20 z-50"
-              src="https://i.ibb.co/cFVLjJ7/image-removebg-preview.png"
-              alt=""
-            />
-          ) : (
-            <img
-              className={`absolute rounded-full z-50 ${
-                screenWidth < 480
-                  ? "top-[40px] left-[5%] w-16 h-16"
-                  : "top-[35px] left-[5%] w-20 h-20"
-              }`}
-              src="https://i.ibb.co/njnzYtD/car-care-circle.jpg"
-              alt=""
-            />
-          )}
+          <Link href="/">
+            {screenWidth > 768 ? (
+              <img
+                className="absolute top-8 left-[5%] w-36 lg:w-40 h-[72px] lg:h-20 z-50"
+                src="https://i.ibb.co/cFVLjJ7/image-removebg-preview.png"
+                alt=""
+              />
+            ) : (
+              <img
+                className={`absolute rounded-full z-50 ${
+                  screenWidth < 480
+                    ? "top-[40px] left-[5%] w-16 h-16"
+                    : "top-[35px] left-[5%] w-20 h-20"
+                }`}
+                src="https://i.ibb.co/njnzYtD/car-care-circle.jpg"
+                alt=""
+              />
+            )}
+          </Link>
           <span className="absolute top-5 left-[15%] text-white">Car Care</span>
           <div className="header-top">
             <div className="w-11/12 max-w-[1200px] mx-auto">
@@ -171,17 +173,17 @@ const Navbar = () => {
                   <li
                     className={`left-menus__menu hidden md:inline-block font-semibold`}
                   >
-                    <Link href="/feedback">Feedback</Link>
-                  </li>
-                  <li
-                    className={`left-menus__menu hidden md:inline-block font-semibold`}
-                  >
                     <Link href="/latest-news">Latest News</Link>
                   </li>
                   <li
                     className={`left-menus__menu hidden md:inline-block font-semibold`}
                   >
                     <Link href="/faq">FAQ</Link>
+                  </li>
+                  <li
+                    className={`left-menus__menu hidden md:inline-block font-semibold`}
+                  >
+                    <Link href="/contact-us">Contact</Link>
                   </li>
                 </div>
                 {/* right side menu for large devices  */}
@@ -289,17 +291,6 @@ const Navbar = () => {
                         className="body__menu"
                       >
                         <Link
-                          href="/feedback"
-                          className="w-full block hover:text-[#eb3300] px-2 p-1 rounded-md"
-                        >
-                          Feedback
-                        </Link>
-                      </li>
-                      <li
-                        onClick={() => setIsOpen(false)}
-                        className="body__menu"
-                      >
-                        <Link
                           href="/latest-news"
                           className="w-full block hover:text-[#eb3300] px-2 p-1 rounded-md"
                         >
@@ -315,6 +306,28 @@ const Navbar = () => {
                           className="w-full block hover:text-[#eb3300] px-2 p-1 rounded-md"
                         >
                           FAQ
+                        </Link>
+                      </li>
+                      <li
+                        onClick={() => setIsOpen(false)}
+                        className="body__menu"
+                      >
+                        <Link
+                          href="/feedback"
+                          className="w-full block hover:text-[#eb3300] px-2 p-1 rounded-md"
+                        >
+                          Feedback
+                        </Link>
+                      </li>
+                      <li
+                        onClick={() => setIsOpen(false)}
+                        className="body__menu"
+                      >
+                        <Link
+                          href="/contact-us"
+                          className="w-full block hover:text-[#eb3300] px-2 p-1 rounded-md"
+                        >
+                          Contact Us
                         </Link>
                       </li>
                       {myProfile?.email ? (
