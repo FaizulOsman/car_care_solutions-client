@@ -187,7 +187,7 @@ const ContactUs = () => {
         </div>
         <div className="w-full sm:w-[55%] bg-[#f3f3f3] px-6 sm:px-10 py-10">
           <h2 className="text-2xl sm:text-3xl font-semibold mb-7">
-            Send A Massage
+            Send A Message
           </h2>
           <form className="flex flex-col gap-6">
             <div className="flex flex-col lg:flex-row gap-6">
