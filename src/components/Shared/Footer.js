@@ -14,7 +14,7 @@ const Footer = () => {
         }}
         className="absolute top-0 left-0 w-full h-full z-10"
       ></div>
-      <div className="w-full border-b-2 border-[#252934] pb-10 z-50">
+      <div className="w-full border-b-2 border-[#252934] pb-10 z-20">
         <div className="w-11/12 max-w-[1200px] mx-auto pt-5">
           <div className="flex flex-wrap px-6 pt-14">
             <div className="w-full sm:w-[50%] lg:w-[27%] pr-4 mb-6">

@@ -15,12 +15,16 @@ import { FaSquareFacebook, FaSquareTwitter } from "react-icons/fa6";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [stickyNav, setStickyNav] = useState(false);
   const [myProfile, setMyProfile] = useState({});
   const [screenWidth, setScreenWidth] = useState(0);
   const router = useRouter();
   const statePath = router.query.state?.path;
 
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  const handleScroll = () => {
+    setScrollPosition(window.pageYOffset);
+  };
   const handleResize = () => {
     setScreenWidth(window.innerWidth);
   };
@@ -56,10 +60,6 @@ const Navbar = () => {
     }
   };
 
-  const handleScroll = () => {
-    setStickyNav(window.pageYOffset > 5);
-  };
-
   useEffect(() => {
     fetchMyProfile();
     window.addEventListener("scroll", handleScroll);
@@ -67,7 +67,7 @@ const Navbar = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [scrollPosition]);
 
   useEffect(() => {
     setScreenWidth(window.innerWidth);
@@ -79,7 +79,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div>
+    <div className={`${scrollPosition > 150 && "mb-[102px] md:mb-[116px]"}`}>
       <div className="th-header header-layout4">
         <div className="header-top-area relative">
           {screenWidth > 768 ? (
@@ -154,42 +154,32 @@ const Navbar = () => {
         </div>
         <div className="sticky-wrapper">
           <div
-            className={`bg-[#070a10] z-50 border-b-1 border-solid border-blue-200 w-full ${
-              stickyNav ? "sticky shadow-md border-b-0" : ""
+            className={`bg-[#070a10] z-50 w-full ${
+              scrollPosition > 150
+                ? "sticky-top fixed top-0 shadow-md border-b-0"
+                : ""
             }`}
           >
             <div className="w-11/12 max-w-[1200px] mx-auto">
-              <div
-                className={`navbar-wrapper__body ${
-                  stickyNav ? "" : ""
-                } py-2 md:py-3`}
-              >
+              <div className={`navbar-wrapper__body py-[10px] md:py-3`}>
                 <div className="hidden md:flex md:items-center md:w-fit gap-4">
                   <li
-                    className={`left-menus__menu hidden md:inline-block font-semibold ${
-                      stickyNav ? "" : ""
-                    }`}
+                    className={`left-menus__menu hidden md:inline-block font-semibold`}
                   >
                     <Link href="/services">Services</Link>
                   </li>
                   <li
-                    className={`left-menus__menu hidden md:inline-block font-semibold ${
-                      stickyNav ? "" : ""
-                    }`}
+                    className={`left-menus__menu hidden md:inline-block font-semibold`}
                   >
                     <Link href="/feedback">Feedback</Link>
                   </li>
                   <li
-                    className={`left-menus__menu hidden md:inline-block font-semibold ${
-                      stickyNav ? "" : ""
-                    }`}
+                    className={`left-menus__menu hidden md:inline-block font-semibold`}
                   >
                     <Link href="/latest-news">Latest News</Link>
                   </li>
                   <li
-                    className={`left-menus__menu hidden md:inline-block font-semibold ${
-                      stickyNav ? "" : ""
-                    }`}
+                    className={`left-menus__menu hidden md:inline-block font-semibold`}
                   >
                     <Link href="/faq">FAQ</Link>
                   </li>
@@ -205,18 +195,12 @@ const Navbar = () => {
                           className="btn-link hover:no-underline"
                           href="/dashboard"
                         >
-                          <h6
-                            className={`btn-text text-white ${
-                              stickyNav ? "" : ""
-                            }`}
-                          >
-                            Dashboard
-                          </h6>
+                          <h6 className={`btn-text text-white`}>Dashboard</h6>
                         </Link>
                       </li>
                     </>
                   ) : (
-                    <li className="download flex items-center  rounded-lg bg-blue-700">
+                    <li className="flex items-center border-2 border-[#eb3300] rounded-lg bg-[#eb3300] hover:bg-transparent hover:border-white duration-300 py-[2px]">
                       <Link href="/login">
                         <h6 className="btn-text text-white px-2">
                           Login/SignUp
@@ -244,7 +228,7 @@ const Navbar = () => {
                       </Link>
                     </li>
                   ) : (
-                    <li className="flex items-center  rounded-lg bg-blue-700 px-3 py-[2px]">
+                    <li className="flex items-center border-2 border-[#eb3300] rounded-lg bg-[#eb3300] hover:bg-transparent hover:border-white duration-300 px-3 py-[1px]">
                       <Link href="/login">
                         <h6 className="btn-text text-white">Login/SignUp</h6>
                       </Link>
@@ -295,7 +279,7 @@ const Navbar = () => {
                       >
                         <Link
                           href="/services"
-                          className="w-full block hover:bg-gray-200 px-2 p-1 rounded-md"
+                          className="w-full block hover:text-[#eb3300] px-2 p-1 rounded-md"
                         >
                           Services
                         </Link>
@@ -306,7 +290,7 @@ const Navbar = () => {
                       >
                         <Link
                           href="/feedback"
-                          className="w-full block hover:bg-gray-200 px-2 p-1 rounded-md"
+                          className="w-full block hover:text-[#eb3300] px-2 p-1 rounded-md"
                         >
                           Feedback
                         </Link>
@@ -317,7 +301,7 @@ const Navbar = () => {
                       >
                         <Link
                           href="/latest-news"
-                          className="w-full block hover:bg-gray-200 px-2 p-1 rounded-md"
+                          className="w-full block hover:text-[#eb3300] px-2 p-1 rounded-md"
                         >
                           Latest News
                         </Link>
@@ -328,7 +312,7 @@ const Navbar = () => {
                       >
                         <Link
                           href="/faq"
-                          className="w-full block hover:bg-gray-200 px-2 p-1 rounded-md"
+                          className="w-full block hover:text-[#eb3300] px-2 p-1 rounded-md"
                         >
                           FAQ
                         </Link>
@@ -341,7 +325,7 @@ const Navbar = () => {
                           <Link
                             href="#"
                             onClick={() => handleSignOut()}
-                            className="w-full block hover:bg-gray-200 px-2 p-1 rounded-md"
+                            className="w-full block hover:text-[#eb3300] px-2 p-1 rounded-md"
                           >
                             Logout
                           </Link>
@@ -353,7 +337,7 @@ const Navbar = () => {
                         >
                           <Link
                             href="/login"
-                            className="w-full block bg-[#eb3300] hover:bg-[#eb3300] text-white px-2 p-1 rounded-md"
+                            className="w-full block border-2 border-[#eb3300] bg-[#eb3300] hover:bg-transparent hover:text-[#eb3300] duration-300 text-white px-2 p-1 rounded-md"
                           >
                             Login
                           </Link>
