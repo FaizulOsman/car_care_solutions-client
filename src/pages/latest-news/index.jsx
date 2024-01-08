@@ -84,7 +84,7 @@ const LatestNewsPage = () => {
         {newsData?.map((news, index) => (
           <div
             key={index}
-            className="single-news bg-[#f3f1f2] shadow-md border rounded-md flex flex-col sm:flex-row justify-between gap-4 p-3 hover:shadow-lg hover:scale-105 duration-200"
+            className="single-news bg- shadow-md border rounded-md flex flex-col sm:flex-row justify-between gap-4 p-3 hover:shadow-lg hover:scale-105 duration-200"
           >
             <div className="w-full sm:w-[50%] relative">
               <div className="w-full h-full">
@@ -120,7 +120,7 @@ const LatestNewsPage = () => {
                   </div>
                 </div>
                 <h5 className="font-semibold pb-2">{news?.title}</h5>
-                <p className="">{news?.description?.slice(0, 40)}...</p>
+                <p className="">{news?.description?.slice(0, 100)}...</p>
               </div>
               <div className="read-more rounded-md flex justify-between items-center mt-3">
                 <div class="next-button">
