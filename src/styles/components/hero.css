@@ -54,7 +54,7 @@
 }
 
 .hero-bookNow button:hover + .icon {
-  border: 3px solid #2ecc71;
+  border: 3px solid #eb3300;
   right: 6%;
 }
 

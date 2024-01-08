@@ -5,6 +5,7 @@ import DatePicker from "react-datepicker";
 import { useCreateBookingMutation } from "../../redux/booking/bookingApi";
 import toast from "react-hot-toast";
 import "react-datepicker/dist/react-datepicker.css";
+import SectionHeader from "./SectionHeader";
 
 const jwt = require("jsonwebtoken");
 
@@ -75,7 +76,8 @@ const Banner = () => {
       <div
         className="h-[260px] md:h-[300px] lg:h-[460px]"
         style={{
-          background: `url(https://used-carz.web.app/static/media/banner.991105296df5663f9e18.jpg)`,
+          // background: `url(https://used-carz.web.app/static/media/banner.991105296df5663f9e18.jpg)`,
+          background: `url(https://static.vecteezy.com/system/resources/previews/006/948/102/non_2x/banner-of-automobile-mechanic-man-and-team-checking-car-damage-broken-part-condition-diagnostic-and-repairing-vehicle-at-garage-automotive-motor-technician-maintenance-after-service-concept-free-photo.jpg)`,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "100% 100%",
@@ -94,11 +96,15 @@ const Banner = () => {
 
       <div
         data-aos="fade-up"
-        className="w-11/12 max-w-[1200px] mx-auto border-4 bg-base-100 mt-10 lg:-mt-24 rounded-lg"
+        className="w-11/12 max-w-[1200px] mx-auto border-2 border-[] bg-base-100 mt-10 lg:-mt-24 rounded-lg"
       >
-        <h3 className="text-3xl font-semibold text-center text-blue-500 mt-5">
+        {/* <h3 className="text-3xl font-semibold text-center text-blue-500 mt-5">
           Tell us what you are looking for
-        </h3>
+        </h3> */}
+        <SectionHeader
+          title="Tell us what you are looking for"
+          styles="text-2xl sm:text-3xl lg:text-4xl text-center pb-5 mt-5"
+        />
 
         <form
           onSubmit={(e) => handleSubmit(e)}
@@ -106,7 +112,7 @@ const Banner = () => {
         >
           <select
             name="type"
-            className="select select-bordered w-full"
+            className="select border-[#eb3300] w-full"
             required
           >
             <option>Select a Service</option>
@@ -122,13 +128,13 @@ const Banner = () => {
               selected={startDate}
               onChange={(date) => setStartDate(date)}
               dateFormat="MM-dd-yyyy"
-              className="border select select-bordered w-full"
+              className="select border-[#eb3300] w-full"
               required
             />
           </div>
           <select
             name="time"
-            className="select select-bordered w-full"
+            className="select border-[#eb3300] w-full"
             required
           >
             <option value="10:00AM-12:00PM" selected>
@@ -144,7 +150,7 @@ const Banner = () => {
                 <button
                   href={`#`}
                   type="submit"
-                  className="bg-[#2ecc71] border-[3px] border-[#2ecc71] text-white hover:border-[3px] hover:text-[#2ecc71]"
+                  className="bg-[#eb3300] border-[3px] border-[#eb3300] text-white hover:border-[3px] hover:text-[#eb3300]"
                 >
                   Book Now
                 </button>
@@ -152,7 +158,7 @@ const Banner = () => {
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 268.832 268.832"
-                    className="fill-[#2ecc71]"
+                    className="fill-[#eb3300]"
                   >
                     <path d="M265.17 125.577l-80-80c-4.88-4.88-12.796-4.88-17.677 0-4.882 4.882-4.882 12.796 0 17.678l58.66 58.66H12.5c-6.903 0-12.5 5.598-12.5 12.5 0 6.903 5.597 12.5 12.5 12.5h213.654l-58.66 58.662c-4.88 4.882-4.88 12.796 0 17.678 2.44 2.44 5.64 3.66 8.84 3.66s6.398-1.22 8.84-3.66l79.997-80c4.883-4.882 4.883-12.796 0-17.678z" />
                   </svg>
@@ -164,22 +170,22 @@ const Banner = () => {
 
         <div className="border-t bg-gray-100 p-4 flex flex-wrap justify-around gap-3">
           <Link href="/services">
-            <button className="p-2 border bg-white text-blue-400 font-semibold">
+            <button className="p-2 border bg-white hover:text-[#eb3300] font-semibold">
               Browse All Ongoing Services
             </button>
           </Link>
           <Link href="/services/upcoming-services">
-            <button className="p-2 border bg-white text-blue-400 font-semibold">
+            <button className="p-2 border bg-white hover:text-[#eb3300] font-semibold">
               Upcoming Services
             </button>
           </Link>
           <Link href="/faq">
-            <button className="p-2 border bg-white text-blue-400 font-semibold">
+            <button className="p-2 border bg-white hover:text-[#eb3300] font-semibold">
               See FAQ
             </button>
           </Link>
           <Link href="/latest-news">
-            <button className="p-2 border bg-white text-blue-400 font-semibold">
+            <button className="p-2 border bg-white hover:text-[#eb3300] font-semibold">
               Latest News
             </button>
           </Link>

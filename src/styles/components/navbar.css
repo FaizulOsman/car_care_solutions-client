@@ -11,11 +11,7 @@
   width: 100%;
   top: 0;
 }
-.sticky__body {
-  /* background: rgb(255, 253, 253) !important; */
-  transition: all 1s ease-in-out 0s;
-  color: black !important;
-}
+
 .navbar-wrapper__body {
   box-sizing: border-box;
   flex-direction: row;
@@ -28,9 +24,7 @@
   color: white;
   transition: all 1s ease-in-out 0s;
 }
-.sticky-menu a {
-  color: black !important;
-}
+
 .left-menus__menu {
   padding: 5px;
   min-width: fit-content;
@@ -51,7 +45,7 @@
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: #0087ca;
+  background-color: #eb3300;
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
 }
@@ -67,9 +61,7 @@
   list-style: none;
   font-size: 16px;
 }
-.sticky-menu {
-  background-color: transparent !important;
-}
+
 .right-menus__menu {
   height: 32px;
   width: 32px;
@@ -234,5 +226,92 @@
   100% {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+/* =============================== New =============================== */
+.th-header {
+  position: relative;
+  z-index: 41;
+}
+.header-top-area {
+  position: relative;
+  z-index: 2;
+}
+
+.header-layout4 .header-top {
+  background-color: var(--white-color);
+  padding: 13px 0;
+}
+
+.header-layout4 .header-social .social-title {
+  font-size: 16px;
+  color: var(--title-color);
+}
+
+.header-social .social-title {
+  font-weight: 500;
+  display: inline-block;
+  margin: 0 10px 0 0;
+}
+
+.header-layout4 .menu-top {
+  background-color: #161921;
+  /* padding: 23.5px 0; */
+}
+
+.header-top-area:before {
+  clip-path: polygon(0 0, 100% 0, calc(100% - 25px) 100%, 0% 100%);
+  z-index: 1;
+}
+
+.header-top-area:before,
+.header-top-area:after {
+  content: "";
+  height: 150px;
+  width: var(--shape-width);
+  background-color: var(--theme-color);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.elementor *,
+.elementor :after,
+.elementor :before {
+  box-sizing: border-box;
+}
+
+.header-top-area:after {
+  height: 50px;
+  width: calc(var(--shape-width) + 20px);
+  background-color: #c12901;
+  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 100%, 0% 100%);
+}
+
+.header-top-area:before {
+  background-color: #eb3300;
+  z-index: 1;
+}
+
+.elementor *,
+.elementor :after,
+.elementor :before {
+  box-sizing: border-box;
+}
+
+@media screen and (min-width: 1460px) {
+  .header-layout4 {
+    --main-container: 1354px;
+  }
+}
+@media screen and (max-width: 1599px) {
+  .header-top-area {
+    --shape-width: 30%;
+  }
+}
+@media screen and (min-width: 1599px) {
+  .header-top-area {
+    --shape-width: 25%;
   }
 }
