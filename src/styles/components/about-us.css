@@ -1,0 +1,25 @@
+#about-us-animation-left-right {
+  animation: leftRight 5s linear infinite alternate;
+}
+
+@keyframes leftRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(10%);
+  }
+}
+
+#about-us-animation-top-bottom {
+  animation: run 5s linear infinite alternate;
+}
+
+@keyframes run {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(10%);
+  }
+}

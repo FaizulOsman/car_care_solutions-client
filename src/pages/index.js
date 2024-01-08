@@ -8,11 +8,13 @@ import ClientReviewsPage from "./client-reviews";
 import Survey from "../components/UI/Survey";
 import FAQPage from "./faq";
 import ContactUs from "./contact-us";
+import AboutUs from "./about-us";
 
 const HomePage = () => {
   return (
     <div>
       <Hero />
+      <AboutUs />
       <ServicesPage />
       {/* <UpcomingServicesPage /> */}
       {/* <Event /> */}
