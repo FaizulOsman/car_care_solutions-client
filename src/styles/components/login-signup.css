@@ -1,0 +1,32 @@
+.box {
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+}
+
+.input-box {
+  padding: 7px 45px 0 20px;
+  background: rgba(224, 223, 223, 0.6);
+  backdrop-filter: blur(2px);
+}
+.input-box:focus ~ label,
+.input-box:valid ~ label {
+  top: 2px;
+  font-size: 10px;
+  color: #c12828;
+  font-weight: 500;
+}
+.input-submit {
+  box-shadow: 0px 4px 20px #3e090925;
+  transition: 0.4s;
+}
+.input-submit:hover {
+  box-shadow: 0px 4px 20px #3e090952;
+}
+.switch {
+  backdrop-filter: 10px;
+  box-shadow: 0px 2px 10px #0000001a;
+}
+
+.active {
+  background: #cccccd;
+}

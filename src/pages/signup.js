@@ -1,262 +1,112 @@
-// import { useSignUpMutation } from "../redux/user/userApi";
-// import { saveToLocalStorage } from "../utils/localstorage";
-// import Link from "next/link";
-// import { useRouter } from "next/router";
-// import React, { useEffect, useState } from "react";
-// import { toast } from "react-hot-toast";
-
-// const SignUp = () => {
-//   const [showPassword, setShowPassword] = useState(false);
-//   const [signUp, { data, isError, isLoading, isSuccess, error }] =
-//     useSignUpMutation();
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-
-//     const newData = {
-//       name: e.target.name.value,
-//       email: e.target.email.value,
-//       password: e.target.password.value,
-//       role: "user",
-//       phone: e.target.phone.value,
-//     };
-
-//     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-//     if (!emailPattern.test(newData?.email)) {
-//       toast.error("Please enter a valid email");
-//     }
-
-//     const passwordRegex =
-//       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$!%*?&])[A-Za-z\d@#$!%*?&]{8,}$/;
-//     if (!passwordRegex.test(newData?.password)) {
-//       toast.error(
-//         "Please enter valid password including: [a-z], [A-Z], [0-9], [@#$!%*?&]"
-//       );
-//     }
-
-//     if (
-//       emailPattern.test(newData?.email) &&
-//       passwordRegex.test(newData?.password)
-//     ) {
-//       if (e.target.password.value !== e.target.confirmPassword.value) {
-//         toast.error("Password doesn't matched!");
-//       } else {
-//         try {
-//           await signUp(newData);
-//           saveToLocalStorage("access-token", data?.data?.accessToken);
-//           saveToLocalStorage("user-info", JSON.stringify(data?.data?.userData));
-//         } catch (error) {
-//           toast.error(`${error?.data?.message}` || "Something went wrong");
-//         }
-//       }
-//     }
-//   };
-
-//   const router = useRouter();
-//   const state = router.query.state;
-//   useEffect(() => {
-//     if (isSuccess && !isLoading) {
-//       if (state?.path) {
-//         router.push(state?.path);
-//       } else {
-//         router.push("/");
-//       }
-//     }
-
-//     if (isError) {
-//       toast.error(`${error?.data?.message}` || "Something went wrong");
-//     }
-
-//     if (isSuccess) {
-//       toast.success("Successfully Registered! please login now.");
-//     }
-//   }, [isLoading, router, state, isSuccess, error, isError, data]);
-
-//   return (
-//     <div className="py-5 relative flex flex-col justify-center min-h-screen overflow-hidden mt-16">
-//       <div className="p-6 m-auto bg-white rounded-md shadow-xl shadow-rose-600/40 ring-2 ring-purple-600 min-w-sm lg:w-[50vw]">
-//         <h1 className="text-3xl font-semibold text-center text-purple-700 underline">
-//           Sign Up
-//         </h1>
-//         <form onSubmit={(e) => handleSubmit(e)} className="mt-6">
-//           <div className="mb-2">
-//             <input
-//               type="name"
-//               name="name"
-//               placeholder="Name"
-//               className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
-//               required
-//             />
-//           </div>
-//           <div className="mb-2">
-//             <input
-//               type="email"
-//               name="email"
-//               placeholder="Email"
-//               className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
-//               required
-//             />
-//           </div>
-//           <div className="mb-2">
-//             <input
-//               type="phone"
-//               name="phone"
-//               placeholder="Phone"
-//               className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
-//               required
-//             />
-//           </div>
-//           <div className="mb-2">
-//             <input
-//               type={showPassword ? "text" : "password"}
-//               name="password"
-//               placeholder="Password"
-//               className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
-//               required
-//             />
-//           </div>
-//           <div className="mb-2">
-//             <input
-//               type={showPassword ? "text" : "password"}
-//               name="confirmPassword"
-//               placeholder="Confirm Password"
-//               className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
-//               required
-//             />
-//           </div>
-//           <label className="cursor-pointer flex items-center gap-4">
-//             <input
-//               type="checkbox"
-//               onClick={() => setShowPassword(!showPassword)}
-//               className="checkbox checkbox-xs checkbox-primary"
-//             />
-//             <span className="label-text">Show Password</span>
-//           </label>
-//           <div className="mt-6">
-//             <button
-//               type="submit"
-//               className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600"
-//             >
-//               Sign Up
-//             </button>
-//           </div>
-//         </form>
-//         <div className="flex justify-center items-center">
-//           <div className="grid grid-cols-1 sm:grid-cols-2 px-4 pt-4 justify-between gap-4">
-//             <button
-//               className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-md text-white text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none border border-transparent hover:border-purple-600 h-8 py-1 px-2 flex items-center justify-between gap-2"
-//               onClick={() => toast.error("Try to login with your email.")}
-//               type="button"
-//             >
-//               <p>GitHub</p>
-//               <svg
-//                 fill="none"
-//                 stroke="currentColor"
-//                 strokeLinecap="round"
-//                 strokeLinejoin="round"
-//                 strokeWidth="2"
-//                 viewBox="0 0 24 24"
-//                 className="w-5 h-5"
-//               >
-//                 <path d="M9 19c-4.418 1.167-8-1.341-8-6 0-1.448.587-2.767 1.542-3.721C2.283 8.942 2 7.488 2 6c0-3.314 2.686-6 6-6s6 2.686 6 6c0 1.488-.283 2.942-.542 4.279C16.413 10.233 17 11.552 17 13c0 4.659-3.582 7.167-8 6zm0 0C3.582 17 0 14.492 0 10c0-5.523 4.477-10 10-10s10 4.477 10 10c0 4.492-3.582 7-9 7zm7.719-11.797C15.418 5.453 14.717 5 14 5c-1.658 0-3 .895-3 2s1.342 2 3 2c1.42 0 2.59-.938 2.914-2.215a1 1 0 00-1.86-.57zM7.586 7.586A1 1 0 106.172 9 1 1 0 007.586 7.586zM15 14a1 1 0 11-2 0 1 1 0 012 0zm-5 0a1 1 0 11-2 0 1 1 0 012 0zm1-7a1 1 0 110 2 1 1 0 010-2z" />
-//               </svg>
-//             </button>
-//             <button
-//               className="gap-2 bg-gradient-to-r from-red-600 to-yellow-500 hover:from-red-700 hover:to-yellow-600 rounded-md text-white text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none border border-transparent hover:border-red-600 h-8 py-1 px-2 flex items-center justify-between"
-//               onClick={() => toast.error("Try to login with your email.")}
-//               type="button"
-//             >
-//               <p>Google</p>
-//               <svg
-//                 fill="#FFC107"
-//                 stroke="currentColor"
-//                 strokeWidth="0"
-//                 version="1.1"
-//                 x="0px"
-//                 y="0px"
-//                 viewBox="0 0 48 48"
-//                 enableBackground="new 0 0 48 48"
-//                 className="w-5 h-5"
-//               >
-//                 <path
-//                   d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12
-//   c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24
-//   c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"
-//                 ></path>
-//                 <path
-//                   fill="#FF3D00"
-//                   d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657
-//   C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"
-//                 ></path>
-//                 <path
-//                   fill="#4CAF50"
-//                   d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36
-//   c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"
-//                 ></path>
-//                 <path
-//                   fill="#1976D2"
-//                   d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571
-//   c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
-//                 ></path>
-//               </svg>
-//             </button>
-//           </div>
-//         </div>
-//         <p className="mt-8 text-xs font-light text-center text-gray-700">
-//           Already have an account?{" "}
-//           <Link
-//             href="/login"
-//             className="font-medium text-purple-600 hover:underline"
-//           >
-//             Login
-//           </Link>
-//         </p>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default SignUp;
-
-import Link from "next/link";
+import React, { useState, useEffect } from "react";
+import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
+import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
 import { toast } from "react-hot-toast";
-import { useSignUpMutation } from "../redux/user/userApi";
 import { saveToLocalStorage } from "../utils/localstorage";
+import { useLoginMutation, useSignUpMutation } from "../redux/user/userApi";
+import CopyToClipboard from "../components/UI/CopyToClipboard";
 
-const SignUp = () => {
-  const [signUp, { data, isError, isLoading, isSuccess, error }] =
-    useSignUpMutation();
+const Login = () => {
+  const [isLoginActive, setLoginActive] = useState(false);
+  const [isDropdownOpen, setDropdownOpen] = useState(true);
+  const [isChecked, setIsChecked] = useState(false);
+  const router = useRouter();
 
-  const handleSubmit = async (e) => {
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
+
+  const toggleDropdown = () => {
+    setDropdownOpen((prev) => !prev);
+  };
+
+  const handleTabToggle = () => {
+    setLoginActive(!isLoginActive);
+  };
+
+  const [
+    login,
+    {
+      data: loginData,
+      isError: loginIsError,
+      isLoading: loginIsLoading,
+      isSuccess: loginIsSuccess,
+      error: loginError,
+    },
+  ] = useLoginMutation();
+
+  const [
+    signUp,
+    {
+      data: signUpData,
+      isError: signUpIsError,
+      isLoading: signUpIsLoading,
+      isSuccess: signUpIsSuccess,
+      error: signUpError,
+    },
+  ] = useSignUpMutation();
+
+  const handleSubmitLogin = (e) => {
+    e.preventDefault();
+    login({ email: e.target.email.value, password: e.target.password.value });
+  };
+
+  const handleSubmitSignUp = async (e) => {
     e.preventDefault();
 
-    if (e.target.password.value !== e.target.confirmPassword.value) {
-      toast.error("Password doesn't matched!");
-    } else {
-      const newData = {
-        name: e.target.name.value,
-        email: e.target.email.value,
-        password: e.target.password.value,
-        role: "user",
-        phone: e.target.phone.value,
-      };
+    const newData = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      password: e.target.password.value,
+      role: "user",
+      phone: e.target.phone.value,
+    };
 
-      try {
-        await signUp(newData);
-        saveToLocalStorage("access-token", data?.data?.accessToken);
-        saveToLocalStorage("user-info", JSON.stringify(data?.data?.userData));
-      } catch (error) {
-        toast.error(`${error?.data?.message}` || "Something went wrong");
-      }
+    try {
+      await signUp(newData);
+      saveToLocalStorage("access-token", loginData?.data?.accessToken);
+      saveToLocalStorage(
+        "user-info",
+        JSON.stringify(loginData?.data?.userData)
+      );
+    } catch (error) {
+      toast.error(`${error?.data?.message}` || "Something went wrong");
     }
   };
 
-  const router = useRouter();
   const state = router.query.state;
   useEffect(() => {
-    if (isSuccess && !isLoading) {
+    if (loginIsSuccess && !loginIsLoading) {
+      if (state?.path) {
+        router.push(state?.path);
+      } else {
+        router.push("/");
+      }
+      toast.success("You have logged in successfully.");
+      saveToLocalStorage("access-token", loginData?.data?.accessToken);
+      saveToLocalStorage(
+        "user-info",
+        JSON.stringify(loginData?.data?.userData)
+      );
+    }
+    if (loginIsError === true && loginError) {
+      if ("data" in loginError) {
+        toast.error(`${loginError?.data.message}`);
+      }
+    }
+  }, [
+    loginIsLoading,
+    router,
+    state,
+    loginIsSuccess,
+    loginError,
+    loginIsError,
+    loginData,
+  ]);
+
+  useEffect(() => {
+    if (signUpIsSuccess && !signUpIsLoading) {
       if (state?.path) {
         router.push(state?.path);
       } else {
@@ -264,92 +114,335 @@ const SignUp = () => {
       }
     }
 
-    if (isError) {
-      toast.error(`${error?.data?.message}` || "Something went wrong");
+    if (signUpIsError) {
+      toast.error(`${signUpError?.data?.message}` || "Something went wrong");
     }
 
-    if (isSuccess) {
+    if (signUpIsSuccess) {
       toast.success("Successfully registered, Please login now!");
     }
-  }, [isLoading, router, state, isSuccess, error, isError, data]);
+  }, [
+    signUpIsLoading,
+    router,
+    state,
+    signUpIsSuccess,
+    signUpError,
+    signUpIsError,
+    signUpData,
+  ]);
+
+  const [eyeShow, setEyeShow] = useState(true);
+  const handlePasswordToggle = (passwordType) => {
+    const passwordInput = document.getElementById(passwordType);
+
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+    } else {
+      passwordInput.type = "password";
+    }
+  };
 
   return (
     <div
-      className="py-20 min-h-screen flex items-center overflow-hidden"
       style={{
-        backgroundImage: `url(https://e1.pxfuel.com/desktop-wallpaper/143/944/desktop-wallpaper-car-service-car-repair.jpg)`,
+        background:
+          'url("https://i.ibb.co/PjGmgz3/istockphoto-931523622-170667a.jpg")',
+        backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        backgroundSize: "100% 100%",
-        backgroundColor: "rgba(0, 0, 0, 0.6)",
-        backgroundBlendMode: "overlay",
+        backgroundSize: "cover",
+        backgroundAttachment: "fixed",
       }}
     >
-      <div className="mx-auto bg-white border rounded-md shadow-lg p-8 flex w-full flex-col justify-center space-y-6 max-w-[350px]">
-        <h1 className="text-3xl font-semibold text-center text-blue-500">
-          Sign Up
-        </h1>
-        <form onSubmit={(e) => handleSubmit(e)} className="mt-6">
-          <div className="mb-2">
-            <input
-              type="name"
-              name="name"
-              placeholder="Name"
-              className="block w-full px-4 py-2 mt-2 text-blue-700 bg-white border border-gray-400 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-            />
+      <div className="flex justify-center items-center min-h-[100vh]">
+        <div
+          className={`bg-[#ffdcdc7b] box flex flex-row relative px-5 pb-7 ${
+            isLoginActive ? "h-[500px]" : "h-[570px]"
+          } w-[350px] rounded-[30px] border-[3px] border-[#ffffff33]`}
+        >
+          <div className="absolute -top-16 right-[44%] md:-right-16">
+            <div className="relative inline-block text-left">
+              <button
+                type="button"
+                className="border-[#ffdcdc68] bg-[#ffdcdc68] rounded-full flex items-center justify-center"
+                id="menu-button"
+                aria-expanded={isDropdownOpen}
+                aria-haspopup="true"
+                onClick={toggleDropdown}
+              >
+                <Image
+                  alt="avatar"
+                  className={`w-10 h-10 rounded-full p-[2px] bg-[#ffdcdc68] cursor-pointer`}
+                  src="https://i.ibb.co/nrtwzQd/avatar-boy.webp"
+                  decoding="async"
+                  loading="lazy"
+                  width={300}
+                  height={300}
+                />
+              </button>
+            </div>
+            {isDropdownOpen && (
+              <div
+                className="absolute -left-[65px] md:left-0 z-50 mt-2 w-44 origin-top-right rounded-lg bg-[#cfc1c1ec] md:bg-[#ffdcdc7e] shadow-lg border-2 border-[#ffffff33]"
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="menu-button"
+                tabIndex="-1"
+              >
+                <div className="rounded-lg">
+                  <div className="relative rounded-lg">
+                    <div className="text-[#1F2937] text-sm">
+                      <div className="text-sm hover:bg-[#fbdddd68] block px-4 py-2 duration-300">
+                        <strong>Super Admin</strong>
+                        <p className="relative">
+                          <strong>Email:</strong> super-admin@gmail.com
+                          <span className="absolute right-0 top-[6px]">
+                            <CopyToClipboard
+                              text="super-admin@gmail.com"
+                              styles="w-[10px] h-[10px] hover:text-blue-500 cursor-pointer"
+                            />
+                          </span>
+                        </p>
+                        <p className="relative">
+                          <strong>Password:</strong> 123456
+                          <span className="absolute right-0 top-[6px]">
+                            <CopyToClipboard
+                              text="123456"
+                              styles="w-[10px] h-[10px] hover:text-blue-500 cursor-pointer"
+                            />
+                          </span>
+                        </p>
+                      </div>
+                      <div className="hover:bg-[#fbdddd68] block px-4 py-2 duration-300">
+                        <strong>User</strong>
+                        <p className="relative">
+                          <strong>Email:</strong> user@gmail.com
+                          <span className="absolute right-0 top-[6px]">
+                            <CopyToClipboard
+                              text="user@gmail.com"
+                              styles="w-[10px] h-[10px] hover:text-blue-500 cursor-pointer"
+                            />
+                          </span>
+                        </p>
+                        <p className="relative">
+                          <strong>Password:</strong> 123456
+                          <span className="absolute right-0 top-[6px]">
+                            <CopyToClipboard
+                              text="123456"
+                              styles="w-[10px] h-[10px] hover:text-blue-500 cursor-pointer"
+                            />
+                          </span>
+                        </p>
+                      </div>
+                      <div className="absolute top-0 left-[48%] md:left-[20px] transform -translate-x-1/2 -translate-y-1/2 rotate-45 w-3 h-3 bg-[#cfc1c1ec] md:bg-[#897778] border-l border-t border-[#ffdcdc68]"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
-          <div className="mb-2">
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              className="block w-full px-4 py-2 mt-2 text-blue-700 bg-white border border-gray-400 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-            />
-          </div>
-          <div className="mb-2">
-            <input
-              type="phone"
-              name="phone"
-              placeholder="Phone"
-              className="block w-full px-4 py-2 mt-2 text-blue-700 bg-white border border-gray-400 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-            />
-          </div>
-          <div className="mb-2">
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              className="block w-full px-4 py-2 mt-2 text-blue-700 bg-white border border-gray-400 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-            />
-          </div>
-          <div className="mb-2">
-            <input
-              type="confirmPassword"
-              name="confirmPassword"
-              placeholder="Confirm Password"
-              className="block w-full px-4 py-2 mt-2 text-blue-700 bg-white border border-gray-400 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-            />
-          </div>
-          <div className="mt-6">
-            <button
-              type="submit"
-              className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
-            >
-              Sign Up
-            </button>
-          </div>
-        </form>
-        <p className="mt-8 text-xs font-light text-center text-gray-700">
-          Already have an account?{" "}
-          <Link
-            href="/login"
-            className="font-medium text-blue-600 hover:underline"
+          <div
+            className={`absolute w-[85%] left-[27px] ease-in-out duration-500`}
+            id={isLoginActive ? "login" : "register"}
           >
-            Login
-          </Link>
-        </p>
+            <div className="text-center mt-[30px] mb-5">
+              <h3 className="text-[22px] font-semibold mb-2">
+                {isLoginActive ? "Hello, Again!" : "Sign Up, Now!"}
+              </h3>
+              <small>
+                {isLoginActive
+                  ? "We are happy to have you back."
+                  : "We are happy to have you with us."}
+              </small>
+            </div>
+            <div className="flex flex-col w-full">
+              {isLoginActive ? (
+                <form onSubmit={(e) => handleSubmitLogin(e)}>
+                  <div className="my-3 relative">
+                    <input
+                      type="text"
+                      name="email"
+                      className="input-box w-full h-[50px] text-[15px] text-[#040404] border-none rounded-[10px] outline-none"
+                      id="logEmail"
+                      required
+                    />
+                    <label
+                      className="absolute left-[20px] top-[15px] text-[15px] ease-in-out duration-300"
+                      htmlFor="logEmail"
+                    >
+                      Email address
+                    </label>
+                  </div>
+                  <div className="my-3 relative">
+                    <input
+                      type="password"
+                      name="password"
+                      className="input-box w-full h-[50px] text-[15px] text-[#040404] border-none rounded-[10px] outline-none"
+                      id="logPassword"
+                      required
+                    />
+                    <label
+                      className="absolute left-[20px] top-[15px] text-[15px] ease-in-out duration-300"
+                      htmlFor="logPassword"
+                    >
+                      Password
+                    </label>
+                    <div className="absolute top-[15px] right-[25px]">
+                      <div
+                        className="flex justify-center items-center relative"
+                        onClick={() => {
+                          handlePasswordToggle("logPassword");
+                          setEyeShow(!eyeShow);
+                        }}
+                      >
+                        {eyeShow ? (
+                          <IoEyeOutline id="eye" className="cursor-pointer" />
+                        ) : (
+                          <IoEyeOffOutline
+                            id="eye-slash"
+                            className="cursor-pointer"
+                          />
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex text-[13px] text-[#000000] mt-[12px] mb-[20px]">
+                    <input
+                      type="checkbox"
+                      name="checkbox"
+                      id="formCheck"
+                      className="mr-2 w-[14px]"
+                      checked={isChecked}
+                      onChange={handleCheckboxChange}
+                    />
+                    <label htmlFor="formCheck">Remember Me</label>
+                  </div>
+                  <div className="my-3 relative">
+                    <input
+                      type="submit"
+                      className="input-submit w-full h-[50px] text-[15px] font-semibold border-none rounded-[10px] bg-[#bc6202] text-white cursor-pointer"
+                      value="Sign In"
+                      required
+                    />
+                  </div>
+                </form>
+              ) : (
+                <form onSubmit={(e) => handleSubmitSignUp(e)}>
+                  <div className="my-3 relative">
+                    <input
+                      type="text"
+                      name="name"
+                      className="input-box w-full h-[50px] text-[15px] text-[#040404] border-none rounded-[10px] outline-none"
+                      id="regUsername"
+                      required
+                    />
+                    <label
+                      className="absolute left-[20px] top-[15px] text-[15px] ease-in-out duration-300"
+                      htmlFor="regUsername"
+                    >
+                      Username
+                    </label>
+                  </div>
+                  <div className="my-3 relative">
+                    <input
+                      type="text"
+                      name="email"
+                      className="input-box w-full h-[50px] text-[15px] text-[#040404] border-none rounded-[10px] outline-none"
+                      id="regEmail"
+                      required
+                    />
+                    <label
+                      className="absolute left-[20px] top-[15px] text-[15px] ease-in-out duration-300"
+                      htmlFor="regEmail"
+                    >
+                      Email address
+                    </label>
+                  </div>
+                  <div className="my-3 relative">
+                    <input
+                      type="number"
+                      name="phone"
+                      className="input-box w-full h-[50px] text-[15px] text-[#040404] border-none rounded-[10px] outline-none"
+                      id="phone"
+                      required
+                    />
+                    <label
+                      className="absolute left-[20px] top-[15px] text-[15px] ease-in-out duration-300"
+                      htmlFor="phone"
+                    >
+                      Phone
+                    </label>
+                  </div>
+                  <div className="my-3 relative">
+                    <input
+                      type="password"
+                      name="password"
+                      className="input-box w-full h-[50px] text-[15px] text-[#040404] border-none rounded-[10px] outline-none"
+                      id="regPassword"
+                      defaultValue=""
+                      required
+                    />
+                    <label
+                      className="absolute left-[20px] top-[15px] text-[15px] ease-in-out duration-300"
+                      htmlFor="regPassword"
+                    >
+                      Password
+                    </label>
+                    <div className="absolute top-[15px] right-[25px]">
+                      <div
+                        className="flex justify-center items-center relative"
+                        onClick={() => {
+                          handlePasswordToggle("regPassword");
+                          setEyeShow(!eyeShow);
+                        }}
+                      >
+                        {eyeShow ? (
+                          <IoEyeOutline id="eye" className="cursor-pointer" />
+                        ) : (
+                          <IoEyeOffOutline
+                            id="eye-slash"
+                            className="cursor-pointer"
+                          />
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="my-3 relative">
+                    <input
+                      type="submit"
+                      className="input-submit w-full h-[50px] text-[15px] font-semibold border-none rounded-[10px] bg-[#bc6202] text-white cursor-pointer"
+                      value="Sign Up"
+                      required
+                    />
+                  </div>
+                </form>
+              )}
+            </div>
+          </div>
+
+          <div className="switch flex absolute bottom-[50px] left-[25px] w-[85%] h-[50px] bg-[#ffffff29] rounded-[10px] overflow-hidden">
+            <a
+              href="#"
+              className={`login ${
+                isLoginActive ? "active" : ""
+              } flex justify-center items-center text-[14px] font-semibold text-[#000] w-[50%] h-[50px] rounded-[10px] z-10`}
+              onClick={handleTabToggle}
+            >
+              Login
+            </a>
+            <a
+              href="#"
+              className={`register ${
+                isLoginActive ? "" : "active"
+              } flex justify-center items-center text-[14px] font-semibold text-[#000] w-[50%] h-[50px] rounded-[10px] z-10`}
+              onClick={handleTabToggle}
+            >
+              Register
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
-export default SignUp;
+export default Login;

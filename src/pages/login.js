@@ -1,77 +1,169 @@
+import React, { useState, useEffect } from "react";
+import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { saveToLocalStorage } from "../utils/localstorage";
-import { useLoginMutation } from "../redux/user/userApi";
+import { useLoginMutation, useSignUpMutation } from "../redux/user/userApi";
 import CopyToClipboard from "../components/UI/CopyToClipboard";
 
 const Login = () => {
-  const router = useRouter();
+  const [isLoginActive, setLoginActive] = useState(true);
   const [isDropdownOpen, setDropdownOpen] = useState(true);
+  const [isChecked, setIsChecked] = useState(false);
+  const router = useRouter();
+
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
 
   const toggleDropdown = () => {
     setDropdownOpen((prev) => !prev);
   };
 
-  const [login, { data, isError, isLoading, isSuccess, error }] =
-    useLoginMutation();
+  const handleTabToggle = () => {
+    setLoginActive(!isLoginActive);
+  };
 
-  const handleSubmit = (e) => {
+  const [
+    login,
+    {
+      data: loginData,
+      isError: loginIsError,
+      isLoading: loginIsLoading,
+      isSuccess: loginIsSuccess,
+      error: loginError,
+    },
+  ] = useLoginMutation();
+
+  const [
+    signUp,
+    {
+      data: signUpData,
+      isError: signUpIsError,
+      isLoading: signUpIsLoading,
+      isSuccess: signUpIsSuccess,
+      error: signUpError,
+    },
+  ] = useSignUpMutation();
+
+  const handleSubmitLogin = (e) => {
     e.preventDefault();
     login({ email: e.target.email.value, password: e.target.password.value });
   };
 
+  const handleSubmitSignUp = async (e) => {
+    e.preventDefault();
+
+    const newData = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      password: e.target.password.value,
+      role: "user",
+      phone: e.target.phone.value,
+    };
+
+    try {
+      await signUp(newData);
+      saveToLocalStorage("access-token", loginData?.data?.accessToken);
+      saveToLocalStorage(
+        "user-info",
+        JSON.stringify(loginData?.data?.userData)
+      );
+    } catch (error) {
+      toast.error(`${error?.data?.message}` || "Something went wrong");
+    }
+  };
+
   const state = router.query.state;
   useEffect(() => {
-    if (isSuccess && !isLoading) {
+    if (loginIsSuccess && !loginIsLoading) {
       if (state?.path) {
         router.push(state?.path);
       } else {
         router.push("/");
       }
       toast.success("You have logged in successfully.");
-      saveToLocalStorage("access-token", data?.data?.accessToken);
-      saveToLocalStorage("user-info", JSON.stringify(data?.data?.userData));
+      saveToLocalStorage("access-token", loginData?.data?.accessToken);
+      saveToLocalStorage(
+        "user-info",
+        JSON.stringify(loginData?.data?.userData)
+      );
     }
-    if (isError === true && error) {
-      if ("data" in error) {
-        toast.error(`${error?.data.message}`);
+    if (loginIsError === true && loginError) {
+      if ("data" in loginError) {
+        toast.error(`${loginError?.data.message}`);
       }
     }
-  }, [isLoading, router, state, isSuccess, error, isError, data]);
+  }, [
+    loginIsLoading,
+    router,
+    state,
+    loginIsSuccess,
+    loginError,
+    loginIsError,
+    loginData,
+  ]);
 
-  const copyToClipboard = (e) => {
-    const email = "a@gmail.com";
-    const password = "123456";
-    var textField = document.createElement("textarea");
-    textField.innerText = email + " " + password;
-    document.body.appendChild(textField);
-    textField.select();
-    document.execCommand("copy");
-    textField.remove();
+  useEffect(() => {
+    if (signUpIsSuccess && !signUpIsLoading) {
+      if (state?.path) {
+        router.push(state?.path);
+      } else {
+        router.push("/");
+      }
+    }
+
+    if (signUpIsError) {
+      toast.error(`${signUpError?.data?.message}` || "Something went wrong");
+    }
+
+    if (signUpIsSuccess) {
+      toast.success("Successfully registered, Please login now!");
+    }
+  }, [
+    signUpIsLoading,
+    router,
+    state,
+    signUpIsSuccess,
+    signUpError,
+    signUpIsError,
+    signUpData,
+  ]);
+
+  const [eyeShow, setEyeShow] = useState(true);
+  const handlePasswordToggle = (passwordType) => {
+    const passwordInput = document.getElementById(passwordType);
+
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+    } else {
+      passwordInput.type = "password";
+    }
   };
 
   return (
-    <>
-      <div
-        className="py-20 min-h-screen flex items-center overflow-hidden"
-        style={{
-          backgroundImage:
-            "url(https://e1.pxfuel.com/desktop-wallpaper/143/944/desktop-wallpaper-car-service-car-repair.jpg)",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "100% 100%",
-          backgroundColor: "rgba(0, 0, 0, 0.6)",
-          backgroundBlendMode: "overlay",
-        }}
-      >
-        <div className="relative bg-white mx-auto border rounded-md shadow-lg p-8 flex w-11/12 flex-col justify-center space-y-6 max-w-[350px]">
+    <div
+      style={{
+        background:
+          'url("https://t4.ftcdn.net/jpg/04/31/19/89/360_F_431198909_DwGgs82ot1BTZ7wu6dnvwpBRTKVDZROd.jpg")',
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundAttachment: "fixed",
+      }}
+    >
+      <div className="flex justify-center items-center min-h-[100vh]">
+        <div
+          className={`bg-[#ffdcdc68] box flex flex-row relative px-5 pb-7 ${
+            isLoginActive ? "h-[500px]" : "h-[570px]"
+          } w-[350px] rounded-[30px] border-[3px] border-[#ffffff33]`}
+        >
           <div className="absolute -top-16 right-[44%] md:-right-16">
             <div className="relative inline-block text-left">
               <button
                 type="button"
-                className="border-gray-800 rounded-full flex items-center justify-center"
+                className="border-[#ffdcdc68] bg-[#ffdcdc68] rounded-full flex items-center justify-center"
                 id="menu-button"
                 aria-expanded={isDropdownOpen}
                 aria-haspopup="true"
@@ -79,7 +171,7 @@ const Login = () => {
               >
                 <Image
                   alt="avatar"
-                  className={`w-10 h-10 rounded-full p-[2px] bg-white cursor-pointer`}
+                  className={`w-10 h-10 rounded-full p-[2px] bg-[#ffdcdc68] cursor-pointer`}
                   src="https://i.ibb.co/nrtwzQd/avatar-boy.webp"
                   decoding="async"
                   loading="lazy"
@@ -90,23 +182,23 @@ const Login = () => {
             </div>
             {isDropdownOpen && (
               <div
-                className="absolute -left-[65px] md:left-0 z-50 mt-2 w-44 origin-top-right rounded-md bg-gray-200 shadow-lg ring-1 ring-green-500 ring-opacity-5 focus:outline-none"
+                className="absolute -left-[65px] md:left-0 z-50 mt-2 w-44 origin-top-right rounded-lg bg-[#ffdcdc68] shadow-lg border-2 border-[#ffffff33]"
                 role="menu"
                 aria-orientation="vertical"
                 aria-labelledby="menu-button"
                 tabIndex="-1"
               >
-                <div className="">
-                  <div className="relative bg-white border border-gray-400 rounded-lg">
-                    <div className="text-gray-800 text-sm">
-                      <div className="text-sm text-gray-600 hover:bg-gray-200 block px-4 py-2 duration-300">
+                <div className="bg-[#7a6e70] rounded-lg">
+                  <div className="relative bg-[#ffdcdc68] rounded-lg">
+                    <div className="text-[#1F2937] text-sm">
+                      <div className="text-sm hover:bg-[#fbdddd68] block px-4 py-2 duration-300">
                         <strong>Super Admin</strong>
                         <p className="relative">
                           <strong>Email:</strong> super-admin@gmail.com
                           <span className="absolute right-0 top-[6px]">
                             <CopyToClipboard
                               text="super-admin@gmail.com"
-                              styles="w-[10px] h-[10px] hover:text-blue-500"
+                              styles="w-[10px] h-[10px] hover:text-blue-500 cursor-pointer"
                             />
                           </span>
                         </p>
@@ -115,19 +207,19 @@ const Login = () => {
                           <span className="absolute right-0 top-[6px]">
                             <CopyToClipboard
                               text="123456"
-                              styles="w-[10px] h-[10px] hover:text-blue-500"
+                              styles="w-[10px] h-[10px] hover:text-blue-500 cursor-pointer"
                             />
                           </span>
                         </p>
                       </div>
-                      <div className="text-gray-600 hover:bg-gray-200 block px-4 py-2 duration-300">
+                      <div className="hover:bg-[#fbdddd68] block px-4 py-2 duration-300">
                         <strong>User</strong>
                         <p className="relative">
                           <strong>Email:</strong> user@gmail.com
                           <span className="absolute right-0 top-[6px]">
                             <CopyToClipboard
                               text="user@gmail.com"
-                              styles="w-[10px] h-[10px] hover:text-blue-500"
+                              styles="w-[10px] h-[10px] hover:text-blue-500 cursor-pointer"
                             />
                           </span>
                         </p>
@@ -136,73 +228,220 @@ const Login = () => {
                           <span className="absolute right-0 top-[6px]">
                             <CopyToClipboard
                               text="123456"
-                              styles="w-[10px] h-[10px] hover:text-blue-500"
+                              styles="w-[10px] h-[10px] hover:text-blue-500 cursor-pointer"
                             />
                           </span>
                         </p>
                       </div>
-                      <div className="absolute top-0 left-[48%] md:left-[20px] transform -translate-x-1/2 -translate-y-1/2 rotate-45 w-3 h-3 bg-white border-l border-t border-gray-400"></div>
+                      <div className="absolute top-0 left-[48%] md:left-[20px] transform -translate-x-1/2 -translate-y-1/2 rotate-45 w-3 h-3 bg-[#b09b9c] border-l border-t border-[#ffdcdc68]"></div>
                     </div>
                   </div>
                 </div>
               </div>
             )}
           </div>
+          <div
+            className={`absolute w-[85%] left-[27px] ease-in-out duration-500`}
+            id={isLoginActive ? "login" : "register"}
+          >
+            <div className="text-center mt-[30px] mb-5">
+              <h3 className="text-[22px] font-semibold mb-2">
+                {isLoginActive ? "Hello, Again!" : "Sign Up, Now!"}
+              </h3>
+              <small>
+                {isLoginActive
+                  ? "We are happy to have you back."
+                  : "We are happy to have you with us."}
+              </small>
+            </div>
+            <div className="flex flex-col w-full">
+              {isLoginActive ? (
+                <form onSubmit={(e) => handleSubmitLogin(e)}>
+                  <div className="my-3 relative">
+                    <input
+                      type="text"
+                      name="email"
+                      className="input-box w-full h-[50px] text-[15px] text-[#040404] border-none rounded-[10px] outline-none"
+                      id="logEmail"
+                      required
+                    />
+                    <label
+                      className="absolute left-[20px] top-[15px] text-[15px] ease-in-out duration-300"
+                      htmlFor="logEmail"
+                    >
+                      Email address
+                    </label>
+                  </div>
+                  <div className="my-3 relative">
+                    <input
+                      type="password"
+                      name="password"
+                      className="input-box w-full h-[50px] text-[15px] text-[#040404] border-none rounded-[10px] outline-none"
+                      id="logPassword"
+                      required
+                    />
+                    <label
+                      className="absolute left-[20px] top-[15px] text-[15px] ease-in-out duration-300"
+                      htmlFor="logPassword"
+                    >
+                      Password
+                    </label>
+                    <div className="absolute top-[15px] right-[25px]">
+                      <div
+                        className="flex justify-center items-center relative"
+                        onClick={() => {
+                          handlePasswordToggle("logPassword");
+                          setEyeShow(!eyeShow);
+                        }}
+                      >
+                        {eyeShow ? (
+                          <IoEyeOutline id="eye" className="cursor-pointer" />
+                        ) : (
+                          <IoEyeOffOutline
+                            id="eye-slash"
+                            className="cursor-pointer"
+                          />
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex text-[13px] text-[#000000] mt-[12px] mb-[20px]">
+                    <input
+                      type="checkbox"
+                      name="checkbox"
+                      id="formCheck"
+                      className="mr-2 w-[14px]"
+                      checked={isChecked}
+                      onChange={handleCheckboxChange}
+                    />
+                    <label htmlFor="formCheck">Remember Me</label>
+                  </div>
+                  <div className="my-3 relative">
+                    <input
+                      type="submit"
+                      className="input-submit w-full h-[50px] text-[15px] font-semibold border-none rounded-[10px] bg-[#bc6202] text-white cursor-pointer"
+                      value="Sign In"
+                      required
+                    />
+                  </div>
+                </form>
+              ) : (
+                <form onSubmit={(e) => handleSubmitSignUp(e)}>
+                  <div className="my-3 relative">
+                    <input
+                      type="text"
+                      name="name"
+                      className="input-box w-full h-[50px] text-[15px] text-[#040404] border-none rounded-[10px] outline-none"
+                      id="regUsername"
+                      required
+                    />
+                    <label
+                      className="absolute left-[20px] top-[15px] text-[15px] ease-in-out duration-300"
+                      htmlFor="regUsername"
+                    >
+                      Username
+                    </label>
+                  </div>
+                  <div className="my-3 relative">
+                    <input
+                      type="text"
+                      name="email"
+                      className="input-box w-full h-[50px] text-[15px] text-[#040404] border-none rounded-[10px] outline-none"
+                      id="regEmail"
+                      required
+                    />
+                    <label
+                      className="absolute left-[20px] top-[15px] text-[15px] ease-in-out duration-300"
+                      htmlFor="regEmail"
+                    >
+                      Email address
+                    </label>
+                  </div>
+                  <div className="my-3 relative">
+                    <input
+                      type="number"
+                      name="phone"
+                      className="input-box w-full h-[50px] text-[15px] text-[#040404] border-none rounded-[10px] outline-none"
+                      id="phone"
+                      required
+                    />
+                    <label
+                      className="absolute left-[20px] top-[15px] text-[15px] ease-in-out duration-300"
+                      htmlFor="phone"
+                    >
+                      Phone
+                    </label>
+                  </div>
+                  <div className="my-3 relative">
+                    <input
+                      type="password"
+                      name="password"
+                      className="input-box w-full h-[50px] text-[15px] text-[#040404] border-none rounded-[10px] outline-none"
+                      id="regPassword"
+                      defaultValue=""
+                      required
+                    />
+                    <label
+                      className="absolute left-[20px] top-[15px] text-[15px] ease-in-out duration-300"
+                      htmlFor="regPassword"
+                    >
+                      Password
+                    </label>
+                    <div className="absolute top-[15px] right-[25px]">
+                      <div
+                        className="flex justify-center items-center relative"
+                        onClick={() => {
+                          handlePasswordToggle("regPassword");
+                          setEyeShow(!eyeShow);
+                        }}
+                      >
+                        {eyeShow ? (
+                          <IoEyeOutline id="eye" className="cursor-pointer" />
+                        ) : (
+                          <IoEyeOffOutline
+                            id="eye-slash"
+                            className="cursor-pointer"
+                          />
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="my-3 relative">
+                    <input
+                      type="submit"
+                      className="input-submit w-full h-[50px] text-[15px] font-semibold border-none rounded-[10px] bg-[#bc6202] text-white cursor-pointer"
+                      value="Sign Up"
+                      required
+                    />
+                  </div>
+                </form>
+              )}
+            </div>
+          </div>
 
-          <h1 className="text-3xl font-semibold text-center text-blue-500">
-            Sign in
-          </h1>
-          <form onSubmit={(e) => handleSubmit(e)} className="mt-6">
-            <div className="mb-2">
-              <label
-                htmlFor="email"
-                className="block text-sm font-semibold text-gray-800"
-              >
-                Email
-              </label>
-              <input
-                type="email"
-                name="email"
-                className="block w-full px-4 py-2 mt-2 text-blue-700 bg-white border border-gray-400 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-              />
-            </div>
-            <div className="mb-2">
-              <label
-                htmlFor="password"
-                className="block text-sm font-semibold text-gray-800"
-              >
-                Password
-              </label>
-              <input
-                type="password"
-                name="password"
-                className="block w-full px-4 py-2 mt-2 text-blue-700 bg-white border border-gray-400 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-              />
-            </div>
-            {/* <a href="#" className="text-xs text-blue-600 hover:underline">
-              Forget Password?
-            </a> */}
-            <div className="mt-6">
-              <button
-                type="submit"
-                className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
-              >
-                Login
-              </button>
-            </div>
-          </form>
-          <p className="mt-8 text-xs font-light text-center text-gray-700">
-            Dont have an account?{" "}
-            <Link
-              href="/signup"
-              className="font-medium text-blue-600 hover:underline"
+          <div className="switch flex absolute bottom-[50px] left-[25px] w-[85%] h-[50px] bg-[#ffffff29] rounded-[10px] overflow-hidden">
+            <a
+              href="#"
+              className={`login ${
+                isLoginActive ? "active" : ""
+              } flex justify-center items-center text-[14px] font-semibold text-[#000] w-[50%] h-[50px] rounded-[10px] z-10`}
+              onClick={handleTabToggle}
             >
-              Sign up
-            </Link>
-          </p>
+              Login
+            </a>
+            <a
+              href="#"
+              className={`register ${
+                isLoginActive ? "" : "active"
+              } flex justify-center items-center text-[14px] font-semibold text-[#000] w-[50%] h-[50px] rounded-[10px] z-10`}
+              onClick={handleTabToggle}
+            >
+              Register
+            </a>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

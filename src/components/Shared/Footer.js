@@ -171,7 +171,7 @@ const Footer = () => {
               <Link
                 href="#!"
                 type="button"
-                className="m-1 h-9 w-9 rounded-full border-2 border-gray-500 hover:border-blue-600 uppercase leading-normal transition duration-150 ease-in-out text-white hover:text-blue-600 focus:outline-none focus:ring-0"
+                className="m-1 h-9 w-9 rounded-full border-2 border-gray-500 hover:border-blue-600 hover:bg-white uppercase leading-normal transition duration-150 ease-in-out text-white hover:text-blue-600 focus:outline-none focus:ring-0"
                 data-te-ripple-init
                 data-te-ripple-color="light"
               >
@@ -188,7 +188,7 @@ const Footer = () => {
               <Link
                 href="#!"
                 type="button"
-                className="m-1 h-9 w-9 rounded-full border-2 border-gray-500 hover:border-blue-600 uppercase leading-normal transition duration-150 ease-in-out text-white hover:text-blue-600 focus:outline-none focus:ring-0"
+                className="m-1 h-9 w-9 rounded-full border-2 border-gray-500 hover:border-blue-600 hover:bg-white uppercase leading-normal transition duration-150 ease-in-out text-white hover:text-blue-600 focus:outline-none focus:ring-0"
                 data-te-ripple-init
                 data-te-ripple-color="light"
               >
@@ -205,7 +205,7 @@ const Footer = () => {
               <Link
                 href="#!"
                 type="button"
-                className="m-1 h-9 w-9 rounded-full border-2 border-gray-500 hover:border-red-600 uppercase leading-normal transition duration-150 ease-in-out text-white hover:text-red-500 focus:outline-none focus:ring-0"
+                className="m-1 h-9 w-9 rounded-full border-2 border-gray-500 hover:border-red-600 hover:bg-white uppercase leading-normal transition duration-150 ease-in-out text-white hover:text-red-500 focus:outline-none focus:ring-0"
                 data-te-ripple-init
                 data-te-ripple-color="light"
               >
@@ -226,7 +226,7 @@ const Footer = () => {
               <Link
                 href="#!"
                 type="button"
-                className="m-1 h-9 w-9 rounded-full border-2 border-gray-500 hover:border-[#f223d8] uppercase leading-normal transition duration-150 ease-in-out text-white hover:text-[#f223d8] focus:outline-none focus:ring-0"
+                className="m-1 h-9 w-9 rounded-full border-2 border-gray-500 hover:border-[#f223d8] hover:bg-white uppercase leading-normal transition duration-150 ease-in-out text-white hover:text-[#f223d8] focus:outline-none focus:ring-0"
                 data-te-ripple-init
                 data-te-ripple-color="light"
               >
@@ -243,7 +243,7 @@ const Footer = () => {
               <Link
                 href="#!"
                 type="button"
-                className="m-1 h-9 w-9 rounded-full border-2 border-gray-500 hover:border-blue-600 uppercase leading-normal transition duration-150 ease-in-out text-white hover:text-blue-600 focus:outline-none focus:ring-0"
+                className="m-1 h-9 w-9 rounded-full border-2 border-gray-500 hover:border-blue-600 hover:bg-white uppercase leading-normal transition duration-150 ease-in-out text-white hover:text-blue-600 focus:outline-none focus:ring-0"
                 data-te-ripple-init
                 data-te-ripple-color="light"
               >
@@ -260,7 +260,7 @@ const Footer = () => {
               <Link
                 href="#!"
                 type="button"
-                className="m-1 h-9 w-9 rounded-full border-2 border-gray-500 hover:border-black uppercase leading-normal transition duration-150 ease-in-out text-white hover:text-black focus:outline-none focus:ring-0"
+                className="m-1 h-9 w-9 rounded-full border-2 border-gray-500 hover:border-black hover:bg-white uppercase leading-normal transition duration-150 ease-in-out text-white hover:text-black focus:outline-none focus:ring-0"
                 data-te-ripple-init
                 data-te-ripple-color="light"
               >
