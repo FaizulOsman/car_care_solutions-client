@@ -160,7 +160,7 @@ const Login = () => {
         backgroundAttachment: "fixed",
       }}
     >
-      <div className="flex justify-center items-center min-h-[100vh]">
+      <div className="w-11/12 mx-auto flex justify-center items-center min-h-[100vh]">
         <div
           className={`bg-[#ffdcdc7b] box flex flex-row relative px-5 pb-7 ${
             isLoginActive ? "h-[500px]" : "h-[570px]"

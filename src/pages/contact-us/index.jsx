@@ -15,8 +15,8 @@ import { FaArrowRightLong } from "react-icons/fa6";
 const ContactUs = () => {
   return (
     <div className="w-11/12 max-w-[1200px] mx-auto pb-10">
-      <div className="flex flex-col sm:flex-row gap-6 md:gap-10">
-        <div className="w-full sm:w-[45%]">
+      <div className="flex flex-col md:flex-row gap-6 md:gap-10">
+        <div className="w-full md:w-[45%]">
           <div className="flex items-center flex-col">
             <SectionTopHeader
               title="CONTACT US"
@@ -185,7 +185,7 @@ const ContactUs = () => {
             </div>
           </div>
         </div>
-        <div className="w-full sm:w-[55%] bg-[#f3f3f3] px-6 sm:px-10 py-10">
+        <div className="w-full md:w-[55%] bg-[#f3f3f3] px-6 sm:px-10 py-10">
           <h2 className="text-2xl sm:text-3xl font-semibold mb-7">
             Send A Message
           </h2>

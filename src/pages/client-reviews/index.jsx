@@ -53,6 +53,10 @@ const ClientReviewsPage = () => {
               {getAllReview?.data?.length > 0 ? (
                 <Swiper
                   breakpoints={{
+                    320: {
+                      slidesPerView: 1,
+                      spaceBetween: 10,
+                    },
                     768: {
                       slidesPerView: 2,
                       spaceBetween: 15,
