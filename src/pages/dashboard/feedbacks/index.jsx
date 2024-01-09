@@ -133,7 +133,7 @@ const AllFeedbackPage = () => {
         tableBodyData={allFeedback?.data?.map((data, index) => (
           <tr key={index} className="border-b border-gray-800">
             <td className="px-3 py-2">{data?.email}</td>
-            <td className="px-3 py-2">{data?.message}</td>
+            <td className="px-3 py-2">{data?.message?.slice(0, 100)}...</td>
             <td className="px-3 py-2">
               <div className="cursor-pointer text-red-600">
                 <Modal
