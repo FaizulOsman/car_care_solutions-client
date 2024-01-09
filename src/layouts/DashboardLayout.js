@@ -217,7 +217,7 @@ const DashboardLayout = ({ children }) => {
               <Image
                 alt="Logo"
                 className={`w-7 h-7 mx-2 ${isOpen ? "hidden sm:block" : ""}`}
-                src="https://i.ibb.co/wsk3b5s/pngegg-2.png"
+                src="https://i.ibb.co/cFVLjJ7/image-removebg-preview.png"
                 decoding="async"
                 loading="lazy"
                 width={300}
