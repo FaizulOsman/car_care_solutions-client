@@ -2,8 +2,14 @@ import React from "react";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa";
 import Link from "next/link";
+import toast from "react-hot-toast";
 
 const Footer = () => {
+  const handleSubmitSubscribe = (e) => {
+    e.preventDefault();
+    toast.success("Successfully subscribed!");
+  };
+
   return (
     <footer className="relative flex flex-col bg-[#161921] text-white items-center">
       <div
@@ -132,14 +138,21 @@ const Footer = () => {
               <p className="text-[#8b8e95] mb-6">
                 Aplications prodize before front end vortals visualize front end
               </p>
-              <form className="flex flex-col gap-4">
+              <form
+                onSubmit={(e) => handleSubmitSubscribe(e)}
+                className="flex flex-col gap-4"
+              >
                 <input
                   type="text"
                   name="email"
                   placeholder="Email Address"
-                  className="px-6 py-4 bg-[#252934] rounded-md"
+                  className="px-6 py-4 bg-[#252934] rounded-md focus:outline-none focus:shadow-outline"
+                  required
                 />
-                <button className="bg-[#EB3300] hover:bg-[#d13509] duration-200 text-center py-4 rounded-md">
+                <button
+                  type="submit"
+                  className="bg-[#EB3300] hover:bg-[#d13509] duration-200 text-center py-4 rounded-md"
+                >
                   Subscribe
                 </button>
               </form>
