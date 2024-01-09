@@ -101,7 +101,9 @@ const ClientReviewsPage = () => {
                             </p>
                             <p className="mb-2">
                               {'"'}
-                              {review.review}
+                              {review.review?.length > 150
+                                ? `${review.review?.slice(0, 150)}...`
+                                : review.review}
                               {'"'}
                             </p>
                             <ul className="mb-8 flex justify-center">
