@@ -18,6 +18,7 @@ import {
 } from "react-icons/md";
 import { FaRegHeart } from "react-icons/fa";
 import Link from "next/link";
+import AllFeedbackPage from "./feedbacks";
 
 const jwt = require("jsonwebtoken");
 
@@ -162,6 +163,12 @@ const DashboardPage = () => {
       {decodedToken?.role === "user" && <CartPage />}
       <BookingsPage />
       <AllReviewsPage />
+      {decodedToken?.role === "admin" ||
+        (decodedToken?.role === "super_admin" && (
+          <>
+            <AllFeedbackPage />
+          </>
+        ))}
       <MyProfile />
     </div>
   );
