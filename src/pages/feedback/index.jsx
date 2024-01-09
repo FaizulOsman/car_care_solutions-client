@@ -51,8 +51,8 @@ const FeedbackPage = () => {
   }, [isError, error]);
 
   return (
-    <div className="w-11/12 max-w-[1200px] mx-auto pb-10">
-      <div className="w-full bg-[#f3f3f3] px-6 sm:px-10 py-10">
+    <div className="w-11/12 max-w-[1200px] mx-auto pb-20">
+      <div className="w-full bg-[#f3f3f3] px-6 sm:px-10 py-10 border shadow-lg hover:shadow-xl">
         <h2 className="text-2xl sm:text-3xl font-semibold mb-7 text-center">
           Send A Feedback
         </h2>
