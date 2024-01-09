@@ -85,8 +85,8 @@ const Navbar = () => {
           <Link href="/">
             {screenWidth > 768 ? (
               <img
-                className="absolute top-8 left-[5%] w-36 lg:w-40 h-[72px] lg:h-20 z-50"
-                src="https://i.ibb.co/cFVLjJ7/image-removebg-preview.png"
+                className="absolute top-8 left-[5%] w-[150px] lg:w-52 xl:w-60 h-[72px] lg:h-20 z-50"
+                src="https://i.ibb.co/z6g4fYV/car-service-logo-design-illustration-car-repair-logo-vector-removebg-preview.png"
                 alt=""
               />
             ) : (
