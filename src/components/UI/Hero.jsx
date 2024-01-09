@@ -98,9 +98,6 @@ const Banner = () => {
         data-aos="fade-up"
         className="w-11/12 max-w-[1200px] mx-auto border-2 border-[] bg-base-100 mt-10 lg:-mt-24 rounded-lg"
       >
-        {/* <h3 className="text-3xl font-semibold text-center text-blue-500 mt-5">
-          Tell us what you are looking for
-        </h3> */}
         <SectionHeader
           title="Tell us what you are looking for"
           styles="text-2xl sm:text-3xl lg:text-4xl text-center pb-5 mt-5"
