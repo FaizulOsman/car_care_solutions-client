@@ -22,6 +22,7 @@ import { removeFromLocalStorage } from "../utils/localstorage";
 import SidebarMenu from "../components/Dashboard/SidebarMenu";
 import DashboardHeader from "../components/Dashboard/DashboardHeader";
 import { RiUserAddFill } from "react-icons/ri";
+import SpeedometerLoader from "../components/UI/Loader/SpeedometerLoader";
 
 const routes = [
   {
@@ -134,6 +135,17 @@ const DashboardLayout = ({ children }) => {
   const { router } = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
+    };
+
+    fetchData();
+  }, []);
 
   const showAnimation = {
     hidden: {
@@ -184,6 +196,14 @@ const DashboardLayout = ({ children }) => {
   useEffect(() => {
     fetchMyProfile();
   }, []);
+
+  if (loading) {
+    return (
+      <div>
+        <SpeedometerLoader />
+      </div>
+    );
+  }
 
   return (
     <div className="">
