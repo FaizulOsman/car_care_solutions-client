@@ -259,6 +259,7 @@ const BookingsPage = () => {
                       onClick={() =>
                         document.getElementById(`review-${index}`).showModal()
                       }
+                      disabled={!data?.isAccepted}
                     >
                       Review
                     </button>
