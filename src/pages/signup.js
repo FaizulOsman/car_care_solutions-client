@@ -65,15 +65,22 @@ const Login = () => {
 
     try {
       await signUp(newData);
-      saveToLocalStorage("access-token", loginData?.data?.accessToken);
-      saveToLocalStorage(
-        "user-info",
-        JSON.stringify(loginData?.data?.userData)
-      );
     } catch (error) {
       toast.error(`${error?.data?.message}` || "Something went wrong");
     }
   };
+
+  useEffect(() => {
+    if (signUpIsSuccess && !signUpIsLoading) {
+      saveToLocalStorage("access-token", signUpData?.data?.accessToken);
+      saveToLocalStorage("user-info", JSON.stringify(signUpData?.data?.result));
+    }
+  }, [
+    signUpIsSuccess,
+    signUpIsLoading,
+    signUpData?.data?.accessToken,
+    signUpData?.data?.result,
+  ]);
 
   const state = router.query.state;
   useEffect(() => {
@@ -119,7 +126,7 @@ const Login = () => {
     }
 
     if (signUpIsSuccess) {
-      toast.success("Successfully registered, Please login now!");
+      toast.success("Successfully registered!");
     }
   }, [
     signUpIsLoading,
