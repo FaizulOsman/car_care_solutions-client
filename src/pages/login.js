@@ -146,7 +146,7 @@ const Login = () => {
     <div
       style={{
         background:
-          'url("https://t4.ftcdn.net/jpg/04/31/19/89/360_F_431198909_DwGgs82ot1BTZ7wu6dnvwpBRTKVDZROd.jpg")',
+          'url("https://i.ibb.co/PjGmgz3/istockphoto-931523622-170667a.jpg")',
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
@@ -155,7 +155,7 @@ const Login = () => {
     >
       <div className="flex justify-center items-center min-h-[100vh]">
         <div
-          className={`bg-[#ffdcdc68] box flex flex-row relative px-5 pb-7 ${
+          className={`bg-[#ffdcdc7b] box flex flex-row relative px-5 pb-7 ${
             isLoginActive ? "h-[500px]" : "h-[570px]"
           } w-[350px] rounded-[30px] border-[3px] border-[#ffffff33]`}
         >
@@ -182,14 +182,14 @@ const Login = () => {
             </div>
             {isDropdownOpen && (
               <div
-                className="absolute -left-[65px] md:left-0 z-50 mt-2 w-44 origin-top-right rounded-lg bg-[#ffdcdc68] shadow-lg border-2 border-[#ffffff33]"
+                className="absolute -left-[65px] md:left-0 z-50 mt-2 w-44 origin-top-right rounded-lg bg-[#cfc1c1ec] md:bg-[#ffdcdc7e] shadow-lg border-2 border-[#ffffff33]"
                 role="menu"
                 aria-orientation="vertical"
                 aria-labelledby="menu-button"
                 tabIndex="-1"
               >
-                <div className="bg-[#7a6e70] rounded-lg">
-                  <div className="relative bg-[#ffdcdc68] rounded-lg">
+                <div className="rounded-lg">
+                  <div className="relative rounded-lg">
                     <div className="text-[#1F2937] text-sm">
                       <div className="text-sm hover:bg-[#fbdddd68] block px-4 py-2 duration-300">
                         <strong>Super Admin</strong>
@@ -233,7 +233,7 @@ const Login = () => {
                           </span>
                         </p>
                       </div>
-                      <div className="absolute top-0 left-[48%] md:left-[20px] transform -translate-x-1/2 -translate-y-1/2 rotate-45 w-3 h-3 bg-[#b09b9c] border-l border-t border-[#ffdcdc68]"></div>
+                      <div className="absolute top-0 left-[48%] md:left-[20px] transform -translate-x-1/2 -translate-y-1/2 rotate-45 w-3 h-3 bg-[#cfc1c1ec] md:bg-[#897778] border-l border-t border-[#ffdcdc68]"></div>
                     </div>
                   </div>
                 </div>
