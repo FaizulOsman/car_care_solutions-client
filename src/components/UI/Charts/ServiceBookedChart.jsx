@@ -1,7 +1,15 @@
 import dynamic from "next/dynamic";
-const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
+import { useEffect, useState } from "react";
 
 const ServiceBookedChart = () => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
+
   const options = {
     chart: {
       type: "area",
@@ -35,12 +43,14 @@ const ServiceBookedChart = () => {
       <div className="flex items-center text-lg sm:text-2xl z-40 dark:text-white mb-5 border-l-4 pl-3">
         Service Booked
       </div>
-      <Chart
-        options={options}
-        series={options.series}
-        type={options.chart.type}
-        height={300}
-      />
+      {isClient && (
+        <Chart
+          options={options}
+          series={options.series}
+          type={options.chart.type}
+          height={300}
+        />
+      )}
     </div>
   );
 };

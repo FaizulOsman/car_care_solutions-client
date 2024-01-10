@@ -1,7 +1,17 @@
-import React from "react";
-import ReactApexChart from "react-apexcharts";
+import React, { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 
 const ServicePositionChart = () => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const ReactApexChart = dynamic(() => import("react-apexcharts"), {
+    ssr: false,
+  });
+
   const series = [68, 87, 75, 17, 15, 12];
 
   const options = {
@@ -69,15 +79,17 @@ const ServicePositionChart = () => {
       <div className="flex items-center text-lg sm:text-2xl z-40 dark:text-white mb-5 border-l-4 pl-3">
         Service Position
       </div>
-      <div className="flex items-center justify-center">
-        <div id="chart">
-          <ReactApexChart
-            options={{ ...options, labels: seriesNames }}
-            series={series}
-            type="donut"
-          />
+      {isClient && (
+        <div className="flex items-center justify-center">
+          <div id="chart">
+            <ReactApexChart
+              options={{ ...options, labels: seriesNames }}
+              series={series}
+              type="donut"
+            />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
