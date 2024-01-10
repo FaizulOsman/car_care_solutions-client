@@ -142,8 +142,8 @@ const Banner = () => {
             <option value="04:00PM-06:00PM">04:00PM - 06:00PM</option>
           </select>
           <div>
-            <div class="hero-bookNow">
-              <div class="hero-bookNow_wrapper">
+            <div className="hero-bookNow">
+              <div className="hero-bookNow_wrapper">
                 <button
                   href={`#`}
                   type="submit"
@@ -151,7 +151,7 @@ const Banner = () => {
                 >
                   Book Now
                 </button>
-                <div class="icon">
+                <div className="icon">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 268.832 268.832"

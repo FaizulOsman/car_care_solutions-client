@@ -123,15 +123,15 @@ const LatestNewsPage = () => {
                 <p className="">{news?.description?.slice(0, 100)}...</p>
               </div>
               <div className="read-more rounded-md flex justify-between items-center mt-3">
-                <div class="next-button">
-                  <div class="link_wrapper">
+                <div className="next-button">
+                  <div className="link_wrapper">
                     <Link
                       href={`/latest-news/${news?.id}`}
                       className="bg-[#EB3300] border-[3px] border-[#EB3300] text-white hover:border-[3px] hover:text-[#EB3300]"
                     >
                       Read More
                     </Link>
-                    <div class="icon">
+                    <div className="icon">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 268.832 268.832"
