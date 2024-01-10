@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-const SellChart = () => {
+const ServiceBookedChart = () => {
   const options = {
     chart: {
       type: "area",
@@ -45,4 +45,4 @@ const SellChart = () => {
   );
 };
 
-export default SellChart;
+export default ServiceBookedChart;

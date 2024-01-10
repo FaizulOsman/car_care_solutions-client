@@ -1,7 +1,7 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 
-const PiChart = () => {
+const ServiceRatingsChart = () => {
   const series = [79, 95, 81, 75, 65, 50];
 
   const options = {
@@ -117,4 +117,4 @@ const PiChart = () => {
   );
 };
 
-export default PiChart;
+export default ServiceRatingsChart;

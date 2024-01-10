@@ -19,9 +19,9 @@ import {
 import { FaRegHeart } from "react-icons/fa";
 import Link from "next/link";
 import AllFeedbackPage from "./feedbacks";
-import SellChart from "../../components/UI/Charts/SellChart";
-import BookingChart from "../../components/UI/Charts/BookingChart";
-import PiChart from "../../components/UI/Charts/PiChart";
+import ServiceRatingsChart from "../../components/UI/Charts/ServiceRatings";
+import ServicePositionChart from "../../components/UI/Charts/ServicePositionChart";
+import ServiceBookedChart from "../../components/UI/Charts/ServiceBookedChart";
 
 const jwt = require("jsonwebtoken");
 
@@ -157,10 +157,10 @@ const DashboardPage = () => {
         </Link>
       </div>
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 sm:px-7 px-4 pt-4 sm:pt-7">
-        <SellChart />
+        <ServiceBookedChart />
         <div className="flex flex-col sm:flex-row gap-4">
-          <BookingChart />
-          <PiChart />
+          <ServicePositionChart />
+          <ServiceRatingsChart />
         </div>
       </div>
       {decodedToken?.role === "admin" ||

@@ -1,7 +1,7 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 
-const BookingChart = () => {
+const ServicePositionChart = () => {
   const series = [68, 87, 75, 17, 15, 12];
 
   const options = {
@@ -82,4 +82,4 @@ const BookingChart = () => {
   );
 };
 
-export default BookingChart;
+export default ServicePositionChart;
