@@ -127,9 +127,7 @@ const CreateService = () => {
               name="status"
               className="select select-sm select-primary w-full bg-[#1d1836]"
             >
-              <option value="ongoing" selected>
-                Ongoing
-              </option>
+              <option value="ongoing">Ongoing</option>
               <option value="upcoming">Upcoming</option>
             </select>
             <input
@@ -178,22 +176,16 @@ const CreateService = () => {
             className="select select-sm select-primary w-full bg-[#1d1836]"
             required
           >
-            <option value="" selected>
-              Select one
+            <option value="">Select one</option>
+            <option value="Lights And Accessories">
+              Lights And Accessories
             </option>
-            <option value="Exterior Hand Wash">Exterior Hand Wash</option>
-            <option value="Rims + Tire Shine">Rims + Tire Shine</option>
-            <option value="Full Vacuum">Full Vacuum</option>
-            <option value="Shampoo Seats">Shampoo Seats</option>
-            <option value="Interior Wipe Down">Interior Wipe Down</option>
+            <option value="Maintenance Package">Maintenance Package</option>
+            <option value="Exhaust System Services">
+              Exhaust System Services
+            </option>
+            <option value="Brakes & Brake Repair">Brakes & Brake Repair</option>
             <option value="Deep Leather Cleaning">Deep Leather Cleaning</option>
-            <option value="Deluxe Wax Protection">Deluxe Wax Protection</option>
-            <option value="Executive Interior Detailing">
-              Executive Interior Detailing
-            </option>
-            <option value="Full exterior body clay treatment">
-              Full exterior body clay treatment
-            </option>
           </select>
           <button type="submit" className="btn btn-sm btn-primary">
             Add a Facility
