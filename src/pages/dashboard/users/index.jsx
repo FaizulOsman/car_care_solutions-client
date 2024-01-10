@@ -13,6 +13,7 @@ import {
 import Link from "next/link";
 import Table from "../../../components/UI/Table/Table";
 import Modal from "../../../components/UI/Modal/Modal";
+import Image from "next/image";
 
 const jwt = require("jsonwebtoken");
 
@@ -105,7 +106,7 @@ const Users = () => {
     isUpdateUserError,
     updateUserError,
   ]);
-
+  console.log(allUsers);
   return (
     <div>
       <Table
@@ -143,15 +144,25 @@ const Users = () => {
         tableBodyData={allUsers?.map((data, index) => (
           <tr key={index} className="border-b border-gray-800">
             <td className="px-3 py-2">
-              <img
-                src={`https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(${
-                  index + 1
-                }).jpg`}
-                alt="profile"
-                className="w-7 h-7 mr-2.5 border border-gray-800 rounded-full"
-                width={50}
-                height={50}
-              />
+              {data?.imageUrl ? (
+                <Image
+                  src={data?.imageUrl}
+                  alt="profile"
+                  className="w-7 h-7 mr-2.5 border border-gray-800 rounded-full"
+                  width={50}
+                  height={50}
+                />
+              ) : (
+                <img
+                  src={`https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(${
+                    index + 1
+                  }).jpg`}
+                  alt="profile"
+                  className="w-7 h-7 mr-2.5 border border-gray-800 rounded-full"
+                  width={50}
+                  height={50}
+                />
+              )}
             </td>
             <td className="px-3 py-2">{data.name}</td>
             <td className="px-3 py-2">{data.email}</td>
