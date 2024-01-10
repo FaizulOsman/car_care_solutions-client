@@ -78,19 +78,8 @@ const Users = () => {
   };
 
   useEffect(() => {
-    setAllUsers(getAllUsers?.data);
-    setMeta(getAllUsers?.meta);
-
-    if (isDeleteSuccess) {
-      toast.success("Successfully deleted user.");
-      setAllUsers(getAllUsers?.data);
-    }
-    if (isDeleteError) {
-      toast.error(deleteErrMessage?.message || "Something went wrong");
-    }
-
     if (isUpdateUserSuccess) {
-      toast.success("Successfully Updated User.");
+      toast.success("Successfully Updated User!");
       setAllUsers(getAllUsers?.data);
     }
     if (isUpdateUserError) {
@@ -99,14 +88,32 @@ const Users = () => {
   }, [
     getAllUsers,
     getAllUsers?.data,
-    isDeleteSuccess,
-    isDeleteError,
-    deleteErrMessage,
     isUpdateUserSuccess,
     isUpdateUserError,
     updateUserError,
   ]);
-  console.log(allUsers);
+
+  useEffect(() => {
+    if (isDeleteSuccess) {
+      toast.success("Successfully deleted user!");
+      setAllUsers(getAllUsers?.data);
+    }
+    if (isDeleteError) {
+      toast.error(deleteErrMessage?.message || "Something went wrong");
+    }
+  }, [
+    getAllUsers,
+    getAllUsers?.data,
+    isDeleteSuccess,
+    isDeleteError,
+    deleteErrMessage,
+  ]);
+
+  useEffect(() => {
+    setAllUsers(getAllUsers?.data);
+    setMeta(getAllUsers?.meta);
+  }, [getAllUsers, getAllUsers?.data, getAllUsers?.meta]);
+
   return (
     <div>
       <Table
