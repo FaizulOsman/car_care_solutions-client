@@ -133,7 +133,25 @@ const AllFeedbackPage = () => {
         tableBodyData={allFeedback?.data?.map((data, index) => (
           <tr key={index} className="border-b border-gray-800">
             <td className="px-3 py-2">{data?.email}</td>
-            <td className="px-3 py-2">{data?.message?.slice(0, 100)}...</td>
+            <td className="px-3 py-2">
+              <Modal
+                Button={
+                  <button className={`btn btn-xs btn-primary`}>Feedback</button>
+                }
+                data={data}
+                modalBody={
+                  <>
+                    <div className="flex justify-between">
+                      <h3 className="font-semibold text-lg text-white pb-3">
+                        Feedback
+                      </h3>
+                      <span className="text-green-500">{data?.email}</span>
+                    </div>
+                    <p className="text-gray-300">{data?.message}</p>
+                  </>
+                }
+              />
+            </td>
             <td className="px-3 py-2">
               <div className="cursor-pointer text-red-600">
                 <Modal
