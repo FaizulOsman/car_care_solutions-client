@@ -19,9 +19,11 @@ import {
 import { FaRegHeart } from "react-icons/fa";
 import Link from "next/link";
 import AllFeedbackPage from "./feedbacks";
-import ServiceRatingsChart from "../../components/UI/Charts/ServiceRatings";
+import ServiceRatingsChart from "../../components/UI/Charts/ServiceRatingsChart";
 import ServicePositionChart from "../../components/UI/Charts/ServicePositionChart";
 import ServiceBookedChart from "../../components/UI/Charts/ServiceBookedChart";
+import BlogAndMediaChart from "../../components/UI/Charts/BlogAndMediaChart";
+import ServiceProvidingTimeChart from "../../components/UI/Charts/ServiceProvidingTimeChart";
 
 const jwt = require("jsonwebtoken");
 
@@ -156,8 +158,14 @@ const DashboardPage = () => {
           </div>
         </Link>
       </div>
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 sm:px-7 px-4 pt-4 sm:pt-7">
+      <div className="lg:flex gap-4 sm:px-7 px-4 pt-4 sm:pt-7">
         <ServiceBookedChart />
+        <div className="w-full lg:w-1/3 pt-7 lg:pt-0">
+          <ServiceProvidingTimeChart />
+        </div>
+      </div>
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 sm:px-7 px-4 pt-4 sm:pt-7">
+        <BlogAndMediaChart />
         <div className="flex flex-col sm:flex-row gap-4">
           <ServicePositionChart />
           <ServiceRatingsChart />
@@ -165,10 +173,10 @@ const DashboardPage = () => {
       </div>
       {decodedToken?.role === "admin" ||
         (decodedToken?.role === "super_admin" && (
-          <>
+          <div className="pt-4 sm:pt-7">
             <Users />
             <AllServices />
-          </>
+          </div>
         ))}
       {decodedToken?.role === "user" && <CartPage />}
       <BookingsPage />

@@ -30,7 +30,29 @@ const ServicePositionChart = () => {
     },
     responsive: [
       {
-        breakpoint: 560,
+        breakpoint: 790,
+        options: {
+          chart: {
+            width: 250,
+          },
+          legend: {
+            position: "bottom",
+          },
+        },
+      },
+      {
+        breakpoint: 1280,
+        options: {
+          chart: {
+            width: 300,
+          },
+          legend: {
+            position: "bottom",
+          },
+        },
+      },
+      {
+        breakpoint: 1400,
         options: {
           chart: {
             width: 250,
@@ -44,7 +66,29 @@ const ServicePositionChart = () => {
         breakpoint: 1500,
         options: {
           chart: {
+            width: 280,
+          },
+          legend: {
+            position: "bottom",
+          },
+        },
+      },
+      {
+        breakpoint: 1600,
+        options: {
+          chart: {
             width: 300,
+          },
+          legend: {
+            position: "bottom",
+          },
+        },
+      },
+      {
+        breakpoint: 1700,
+        options: {
+          chart: {
+            width: 320,
           },
           legend: {
             position: "bottom",

@@ -36,6 +36,19 @@ const ServiceBookedChart = () => {
         data: [2, 7, 15, 12, 18, 25, 22, 35, 48, 41, 57, 59],
       },
     ],
+    responsive: [
+      {
+        breakpoint: 510,
+        options: {
+          chart: {
+            width: 410,
+          },
+          legend: {
+            position: "bottom",
+          },
+        },
+      },
+    ],
   };
 
   return (
@@ -44,12 +57,14 @@ const ServiceBookedChart = () => {
         Service Booked
       </div>
       {isClient && (
-        <Chart
-          options={options}
-          series={options.series}
-          type={options.chart.type}
-          height={300}
-        />
+        <div className="overflow-x-scroll sm:overflow-x-hidden overflow-y-hidden">
+          <Chart
+            options={options}
+            series={options.series}
+            type={options.chart.type}
+            height={300}
+          />
+        </div>
       )}
     </div>
   );
