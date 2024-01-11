@@ -58,12 +58,18 @@ const BlogAndMediaChart = () => {
       {
         title: {
           text: "Website Blog",
+          style: {
+            color: "#1e3a8a",
+          },
         },
       },
       {
         opposite: true,
         title: {
           text: "Social Media",
+          style: {
+            color: "#1e3a8a",
+          },
         },
       },
     ],
