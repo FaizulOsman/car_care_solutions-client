@@ -68,9 +68,20 @@ const AllFaq = () => {
                 : data?.question}
             </td>
             <td className="px-3 py-2">
-              {data?.answer?.length > 80
-                ? `${data?.answer?.slice(0, 80)}...`
-                : data?.answer}
+              <Modal
+                Button={
+                  <button className={`btn btn-xs btn-primary`}>Answer</button>
+                }
+                data={data}
+                modalBody={
+                  <>
+                    <h3 className="font-semibold text-lg text-white pb-3">
+                      {data?.question}
+                    </h3>
+                    <p className="text-gray-300">{data?.answer}</p>
+                  </>
+                }
+              />
             </td>
             <td className="px-3 py-2">
               <div className="cursor-pointer text-red-600">

@@ -121,7 +121,7 @@ const AllReviewsPage = () => {
             <td className="px-3 py-2">
               <Modal
                 Button={
-                  <button className={`btn btn-xs btn-primary`}>REVIEW</button>
+                  <button className={`btn btn-xs btn-primary`}>Review</button>
                 }
                 data={data}
                 modalBody={
