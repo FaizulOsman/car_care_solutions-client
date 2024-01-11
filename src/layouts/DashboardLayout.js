@@ -305,12 +305,12 @@ const DashboardLayout = ({ children }) => {
         <div
           className={`${
             isOpen ? "w-full sm:w-[calc(100vw-200px)]" : "w-full"
-          } flex flex-col ml-[45px] sm:ml-0`}
+          } flex flex-col`}
         >
           <div className="sticky top-0">
             <DashboardHeader toggle={toggle} handleLogOut={handleLogOut} />
           </div>
-          <div className="flex-grow overflow-y-auto">
+          <div className="ml-[45px] sm:ml-0 flex-grow overflow-y-auto">
             <div style={{ minHeight: "calc(100vh - 100px)" }}>{children}</div>
             <footer className="footer footer-center p-4 bg-[#00073d] text-white">
               <div>

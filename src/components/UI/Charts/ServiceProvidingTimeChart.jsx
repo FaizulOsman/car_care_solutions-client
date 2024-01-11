@@ -101,7 +101,7 @@ const ServiceProvidingTimeChart = () => {
         breakpoint: 1200,
         options: {
           chart: {
-            width: 300,
+            width: 270,
           },
           legend: {
             position: "bottom",

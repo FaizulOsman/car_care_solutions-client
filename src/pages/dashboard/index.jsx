@@ -47,7 +47,7 @@ const DashboardPage = () => {
   const { data: getAllAddToCart } = useGetAllAddToCartQuery(headers);
 
   return (
-    <div className="mr-10 sm:mr-0 py-4 sm:py-7">
+    <div className="py-4 sm:py-7">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:px-7 px-4">
         {(decodedToken?.role === "admin" ||
           decodedToken?.role === "super_admin") && (
