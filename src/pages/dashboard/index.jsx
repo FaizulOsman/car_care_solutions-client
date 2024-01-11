@@ -158,17 +158,17 @@ const DashboardPage = () => {
           </div>
         </Link>
       </div>
-      <div className="lg:flex gap-4 sm:px-7 px-4 pt-4 sm:pt-7">
-        <ServiceBookedChart />
-        <div className="w-full lg:w-1/3 pt-7 lg:pt-0">
-          <ServiceProvidingTimeChart />
-        </div>
-      </div>
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 sm:px-7 px-4 pt-4 sm:pt-7">
-        <BlogAndMediaChart />
+        <ServiceBookedChart />
         <div className="flex flex-col sm:flex-row gap-4">
           <ServicePositionChart />
           <ServiceRatingsChart />
+        </div>
+      </div>
+      <div className="lg:flex gap-4 sm:px-7 px-4 pt-4 sm:pt-7">
+        <BlogAndMediaChart />
+        <div className="w-full lg:w-1/3 pt-7 lg:pt-0">
+          <ServiceProvidingTimeChart />
         </div>
       </div>
       {/* {decodedToken?.role === "admin" ||
