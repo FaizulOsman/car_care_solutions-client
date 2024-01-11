@@ -33,7 +33,7 @@ const ServiceBookedChart = () => {
     series: [
       {
         name: "Sales",
-        data: [2, 7, 15, 12, 18, 25, 22, 35, 48, 41, 57, 59],
+        data: [2, 7, 15, 12, 18, 25, 22, 35, 48, 41, 52, 59],
       },
     ],
     responsive: [
