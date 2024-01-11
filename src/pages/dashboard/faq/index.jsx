@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import DashboardLayout from "../../../layouts/DashboardLayout";
 import { MdDeleteOutline } from "react-icons/md";
 import {
@@ -7,18 +7,20 @@ import {
 } from "../../../redux/faq/faqApi";
 import toast from "react-hot-toast";
 import Loader from "../../../components/UI/Loader";
+import Table from "../../../components/UI/Table/Table";
+import Modal from "../../../components/UI/Modal/Modal";
 
 const AllFaq = () => {
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(10);
+  const [meta, setMeta] = useState({});
+  const [sortOrder, setSortOrder] = useState("desc");
+
   const { data: allFaq } = useGetAllFaqQuery();
   const [deleteFaq, { isSuccess, isError, error }] = useDeleteFaqMutation();
 
   const handleDeleteFaq = (faq) => {
-    const isConfirm = window.confirm(
-      "Are you sure you want to delete this Faq?"
-    );
-    if (isConfirm) {
-      deleteFaq({ id: faq?.id });
-    }
+    deleteFaq({ id: faq?.id });
   };
 
   useEffect(() => {
@@ -35,43 +37,88 @@ const AllFaq = () => {
 
   return (
     <div>
-      <div className="my-10 w-full md:w-10/12 mx-auto">
-        <h1 className="text-2xl md:text-3xl font-semibold text-center my-8">
-          Frequently Asked Questions
-        </h1>
-        {allFaq?.data?.length > 0 ? (
-          <>
-            {allFaq?.data?.length > 0 ? (
-              <div className="mt-10 flex flex-col gap-5">
-                {allFaq?.data?.map((faq, index) => (
-                  <div
-                    key={index}
-                    className="flex justify-between items-center  bg-[#1d1836] p-2 rounded-md"
-                  >
-                    <div>
-                      <p>Question: {faq?.question}</p>
-                    </div>
-                    <div className="flex flex-col items-center justify-between gap-4">
-                      <button
-                        onClick={() => handleDeleteFaq(faq)}
-                        className="text-2xl border-none  text-red-500 hover:text-red-600"
-                      >
-                        <MdDeleteOutline />
-                      </button>
-                    </div>
-                  </div>
-                ))}
+      <Table
+        tableTitle={`All FAQ (${
+          allFaq?.data?.length > 0 ? allFaq?.data?.length : 0
+        })`}
+        page={page}
+        setPage={setPage}
+        limit={limit}
+        setLimit={setLimit}
+        meta={meta}
+        allData={allFaq?.data}
+        sortOrder={sortOrder}
+        setSortOrder={setSortOrder}
+        tableHeadData={[
+          <th key="question" className="px-3 pt-0 pb-3">
+            Question
+          </th>,
+          <th key="answer" className="px-3 pt-0 pb-3">
+            Answer
+          </th>,
+          <th key="delete" className="px-3 pt-0 pb-3">
+            Delete
+          </th>,
+        ]}
+        tableBodyData={allFaq?.data?.map((data, index) => (
+          <tr key={index} className="border-b border-gray-800">
+            <td className="px-3 py-2">
+              {data?.question?.length > 40
+                ? `${data?.question?.slice(0, 40)}...`
+                : data?.question}
+            </td>
+            <td className="px-3 py-2">
+              {data?.answer?.length > 80
+                ? `${data?.answer?.slice(0, 80)}...`
+                : data?.answer}
+            </td>
+            <td className="px-3 py-2">
+              <div className="cursor-pointer text-red-600">
+                <Modal
+                  Button={<MdDeleteOutline className={`w-5 h-5`} />}
+                  data={data}
+                  modalBody={
+                    <>
+                      <h3 className="font-semibold text-md sm:text-lg text-white pb-5 text-center">
+                        Are you sure you want to delete{" "}
+                        <span className="text-error font-bold">
+                          {data?.question}
+                        </span>
+                        ?
+                      </h3>
+                      <div className="py-4 text-center flex justify-around">
+                        <button
+                          onClick={() => {
+                            handleDeleteFaq(data);
+                            const modal = document.getElementById(data?.id);
+                            if (modal) {
+                              modal.close();
+                            }
+                          }}
+                          className="btn btn-error btn-xs sm:btn-sm text-white"
+                        >
+                          Yes
+                        </button>
+                        <button
+                          onClick={() => {
+                            const modal = document.getElementById(data?.id);
+                            if (modal) {
+                              modal.close();
+                            }
+                          }}
+                          className="btn btn-primary btn-xs sm:btn-sm"
+                        >
+                          No
+                        </button>
+                      </div>
+                    </>
+                  }
+                />
               </div>
-            ) : (
-              <h2 className="text-2xl font-bold text-red-500 text-center py-10">
-                No Data Found
-              </h2>
-            )}
-          </>
-        ) : (
-          <Loader />
-        )}
-      </div>
+            </td>
+          </tr>
+        ))}
+      />
     </div>
   );
 };
