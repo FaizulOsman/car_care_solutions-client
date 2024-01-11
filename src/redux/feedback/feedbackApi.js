@@ -12,10 +12,12 @@ const feedbackApi = apiSlice.injectEndpoints({
       invalidatesTags: ["carCare"],
     }),
     getAllFeedback: builder.query({
-      query: ({ limit, page, sortOrder }) =>
-        `/feedbacks?${limit > 0 && `limit=${limit}`}&${
+      query: ({ limit, page, sortOrder, headers }) => ({
+        url: `/feedbacks?${limit > 0 && `limit=${limit}`}&${
           page && `page=${page}`
         }&${sortOrder && `sortOrder=${sortOrder}`}`,
+        headers: headers,
+      }),
       providesTags: ["carCare"],
     }),
     getSingleFeedback: builder.query({

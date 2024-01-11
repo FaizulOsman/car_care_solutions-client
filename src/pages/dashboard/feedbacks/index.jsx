@@ -71,8 +71,12 @@ const AllFeedbackPage = () => {
   const [meta, setMeta] = useState({});
   const [sortOrder, setSortOrder] = useState("desc");
 
+  const jwt = require("jsonwebtoken");
+
   const accessToken =
     typeof window !== "undefined" ? localStorage.getItem("access-token") : null;
+
+  const decodedToken = jwt.decode(accessToken);
 
   const headers = {
     authorization: accessToken,
@@ -82,6 +86,7 @@ const AllFeedbackPage = () => {
     limit,
     page,
     sortOrder,
+    headers,
   });
 
   const [deleteFeedback, { isError, isSuccess, error }] =
@@ -108,14 +113,27 @@ const AllFeedbackPage = () => {
   return (
     <div>
       <Table
-        tableTitle={`All Feedbacks (${
-          allFeedback?.meta?.total > 0 ? allFeedback?.meta?.total : 0
+        tableTitle={`${
+          decodedToken?.role === "admin" || decodedToken?.role === "super_admin"
+            ? "All"
+            : "My"
+        } Feedbacks (${
+          decodedToken?.role === "admin" || decodedToken?.role === "super_admin"
+            ? allFeedback?.meta?.total > 0
+              ? allFeedback?.meta?.total
+              : 0
+            : allFeedback?.data?.length > 0
+            ? allFeedback?.data?.length
+            : 0
         })`}
         page={page}
         setPage={setPage}
         limit={limit}
         setLimit={setLimit}
-        meta={meta}
+        meta={
+          decodedToken?.role === "admin" ||
+          (decodedToken?.role === "super_admin" && meta)
+        }
         allData={allFeedback?.data}
         sortOrder={sortOrder}
         setSortOrder={setSortOrder}

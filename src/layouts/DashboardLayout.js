@@ -117,7 +117,7 @@ const routes = [
     path: "/dashboard/feedbacks",
     name: "Feedbacks",
     icon: <FcFeedback />,
-    permission1: "",
+    permission1: "user",
     permission2: "admin",
     permission3: "super_admin",
   },
