@@ -53,7 +53,7 @@ const AddNewAdmin = () => {
 
   return (
     <div>
-      <div className="w-11/12 md:w-10/12 lg:w-8/12 mx-auto mt-5 border rounded-lg border-blue-500 p-5">
+      <div className="w-full md:w-10/12 lg:w-8/12 mx-auto border rounded-lg border-blue-500 p-5">
         <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-center mb-5">
           Create An Admin
         </h3>

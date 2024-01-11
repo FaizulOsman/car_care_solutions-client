@@ -30,14 +30,14 @@ const Table = ({
       <div className="flex-grow overflow-hidden h-full flex flex-col">
         <div className="flex-grow flex overflow-x-hidden">
           <div className="flex-grow bg-[#080925] overflow-y-auto">
-            <div className="z-40 sm:px-7 sm:pt-7 px-4 pt-4 flex flex-col w-full border-b border-gray-800  sticky top-0">
+            <div className="z-40 flex flex-col w-full border-b border-gray-800  sticky top-0">
               <div className="flex w-full items-center">
                 <div className="flex items-center text-lg sm:text-2xl z-40 dark:text-white mb-5 border-l-4 pl-3">
                   {tableTitle}
                 </div>
               </div>
             </div>
-            <div className="sm:p-7 p-4 w-full">
+            <div className="w-full">
               <div className="flex w-full items-center mb-7">
                 {!!totalPage && (
                   <select

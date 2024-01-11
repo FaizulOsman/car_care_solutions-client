@@ -35,7 +35,7 @@ const AllFaq = () => {
 
   return (
     <div>
-      <div className="my-20 w-11/12 md:w-10/12 mx-auto">
+      <div className="my-10 w-full md:w-10/12 mx-auto">
         <h1 className="text-2xl md:text-3xl font-semibold text-center my-8">
           Frequently Asked Questions
         </h1>

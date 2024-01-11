@@ -311,7 +311,12 @@ const DashboardLayout = ({ children }) => {
             <DashboardHeader toggle={toggle} handleLogOut={handleLogOut} />
           </div>
           <div className="ml-[45px] sm:ml-0 flex-grow overflow-y-auto">
-            <div style={{ minHeight: "calc(100vh - 100px)" }}>{children}</div>
+            <div
+              style={{ minHeight: "calc(100vh - 100px)" }}
+              className="p-4 sm:p-7"
+            >
+              {children}
+            </div>
             <footer className="footer footer-center p-4 bg-[#00073d] text-white">
               <div>
                 <p>

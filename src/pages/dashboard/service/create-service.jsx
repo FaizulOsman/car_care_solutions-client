@@ -73,7 +73,7 @@ const CreateService = () => {
 
   return (
     <div className="my-5">
-      <div className="w-11/12 md:w-10/12 lg:w-8/12 mx-auto mt-5 border rounded-lg border-blue-500 p-5">
+      <div className="w-full md:w-10/12 lg:w-8/12 mx-auto border rounded-lg border-blue-500 p-5">
         <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-center mb-5">
           Service Data
         </h3>
@@ -113,9 +113,9 @@ const CreateService = () => {
         </div>
         <form
           onSubmit={(e) => handleAddServiceData(e)}
-          className="grid grid-cols-1 justify-between gap-6 mt-4"
+          className="grid grid-cols-1 justify-between gap-4 sm:gap-6 mt-4"
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <input
               type="text"
               name="type"
