@@ -53,9 +53,9 @@ const DashboardPage = () => {
           decodedToken?.role === "super_admin") && (
           <Link
             href="dashboard/users"
-            className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-900 font-medium group"
+            className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-info font-medium group"
           >
-            <div className="flex justify-center items-center w-14 h-14 bg-blue-900 rounded-full transition-all duration-300 transform group-hover:rotate-12">
+            <div className="flex justify-center items-center w-14 h-14 bg-info rounded-full transition-all duration-300 transform group-hover:rotate-12">
               <svg
                 width="30"
                 height="30"
@@ -73,22 +73,22 @@ const DashboardPage = () => {
               </svg>
             </div>
             <div className="text-right">
-              <p className="text-2xl">
+              <p className="text-2xl md:text-3xl font-bold text-info">
                 {getAllUser?.meta?.total ? getAllUser?.meta?.total : 0}
               </p>
-              <p>Users</p>
+              <p>TOTAL USERS</p>
             </div>
           </Link>
         )}
         <Link
           href="dashboard/service/all-service"
-          className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-900 font-medium group"
+          className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-secondary font-medium group"
         >
-          <div className="flex justify-center items-center w-14 h-14 bg-blue-900 rounded-full transition-all duration-300 transform group-hover:rotate-12">
+          <div className="flex justify-center items-center w-14 h-14 bg-secondary rounded-full transition-all duration-300 transform group-hover:rotate-12">
             <MdOutlineMiscellaneousServices className="text-white w-7 h-7" />
           </div>
           <div className="text-right">
-            <p className="text-2xl">
+            <p className="text-2xl md:text-3xl font-bold text-secondary">
               {getAllServices?.meta?.total ? getAllServices?.meta?.total : 0}
             </p>
             <p>Total Service</p>
@@ -98,13 +98,13 @@ const DashboardPage = () => {
           decodedToken?.role === "super_admin" || (
             <Link
               href="dashboard/cart"
-              className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-900 font-medium group"
+              className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-primary font-medium group"
             >
-              <div className="flex justify-center items-center w-14 h-14 bg-blue-900 rounded-full transition-all duration-300 transform group-hover:rotate-12">
+              <div className="flex justify-center items-center w-14 h-14 bg-primary rounded-full transition-all duration-300 transform group-hover:rotate-12">
                 <FaRegHeart className="text-white w-7 h-7" />
               </div>
               <div className="text-right">
-                <p className="text-2xl">
+                <p className="text-2xl md:text-3xl font-bold text-primary">
                   {getAllAddToCart?.data ? getAllAddToCart?.data?.length : 0}
                 </p>
                 <p>
@@ -119,13 +119,13 @@ const DashboardPage = () => {
           )}
         <Link
           href="dashboard/bookings"
-          className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-900 font-medium group"
+          className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-success font-medium group"
         >
-          <div className="flex justify-center items-center w-14 h-14 bg-blue-900 rounded-full transition-all duration-300 transform group-hover:rotate-12">
+          <div className="flex justify-center items-center w-14 h-14 bg-success rounded-full transition-all duration-300 transform group-hover:rotate-12">
             <SlCalender className="text-white w-7 h-7" />
           </div>
           <div className="text-right">
-            <p className="text-2xl">
+            <p className="text-2xl md:text-3xl font-bold text-success">
               {getMyBookings?.data ? getMyBookings?.data?.length : 0}
             </p>
             <p>
@@ -139,13 +139,13 @@ const DashboardPage = () => {
         </Link>
         <Link
           href="dashboard/reviews"
-          className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-900 font-medium group"
+          className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-warning font-medium group"
         >
-          <div className="flex justify-center items-center w-14 h-14 bg-blue-900 rounded-full transition-all duration-300 transform group-hover:rotate-12">
+          <div className="flex justify-center items-center w-14 h-14 bg-warning rounded-full transition-all duration-300 transform group-hover:rotate-12">
             <MdOutlineRateReview className="text-white w-7 h-7" />
           </div>
           <div className="text-right">
-            <p className="text-2xl">
+            <p className="text-2xl md:text-3xl font-bold text-warning">
               {getReviews?.data ? getReviews?.data?.length : 0}
             </p>
             <p>
