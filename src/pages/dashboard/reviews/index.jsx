@@ -119,23 +119,29 @@ const AllReviewsPage = () => {
               </div>
             </td>
             <td className="px-3 py-2">
-              <Modal
-                Button={
+              <div className={`flex items-center`}>
+                <button
+                  onClick={() =>
+                    document.getElementById(data?.id + 456).showModal()
+                  }
+                >
                   <button className={`btn btn-xs btn-primary`}>Review</button>
-                }
-                data={data}
-                modalBody={
-                  <>
+                </button>
+                <dialog id={data?.id + 456} className="modal">
+                  <div className="modal-box bg-[#1d1836]">
                     <div className="flex justify-between">
                       <h3 className="font-semibold text-lg text-white pb-3">
-                        Review
+                        Feedback
                       </h3>
                       <span className="text-green-500">{data?.email}</span>
                     </div>
                     <p className="text-gray-300">{data?.review}</p>
-                  </>
-                }
-              />
+                  </div>
+                  <form method="dialog" className="modal-backdrop">
+                    <button>close</button>
+                  </form>
+                </dialog>
+              </div>
             </td>
             <td className="px-3 py-2">
               <div className="cursor-pointer text-red-600">
