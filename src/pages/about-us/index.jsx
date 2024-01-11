@@ -5,8 +5,11 @@ import RootLayout from "../../layouts/RootLayout";
 import { FaArrowRightLong } from "react-icons/fa6";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const AboutUs = () => {
+  const { route } = useRouter();
+
   return (
     <div className="w-11/12 max-w-[1200px] mx-auto pt-10 pb-20">
       <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-10">
@@ -107,11 +110,13 @@ const AboutUs = () => {
               <h4 className="text-lg font-semibold">Years Experience</h4>
             </div>
           </div>
-          <Link href="/about-us">
-            <button className="w-44 mx-auto lg:mx-0 flex justify-center items-center gap-2 hover:gap-4 text-white bg-[#EB3300] hover:bg-[#d13509] duration-200 text-center py-[12px] sm:py-[14px] rounded-md">
-              <span>About More</span> <FaArrowRightLong />
-            </button>
-          </Link>
+          {route === "/about-us" || (
+            <Link href="/about-us">
+              <button className="w-44 mx-auto lg:mx-0 flex justify-center items-center gap-2 hover:gap-4 text-white bg-[#EB3300] hover:bg-[#d13509] duration-200 text-center py-[12px] sm:py-[14px] rounded-md">
+                <span>About More</span> <FaArrowRightLong />
+              </button>
+            </Link>
+          )}
         </div>
       </div>
     </div>
