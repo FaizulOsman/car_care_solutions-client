@@ -100,7 +100,7 @@ const ServicesPage = () => {
             onChange={(e) => {
               setStatus(e.target.value);
             }}
-            className="select select-bordered border border-gray-400 rounded px-3 text-gray-400 font-normal select-xs sm:select-sm max-w-xs"
+            className="select select-bordered border border-gray-400 rounded px-3 text-gray-400 font-normal select-sm min-w-[150px]"
           >
             <option value="ongoing">Filter By Status</option>
             <option value="ongoing">Ongoing</option>
