@@ -68,20 +68,26 @@ const AllFaq = () => {
                 : data?.question}
             </td>
             <td className="px-3 py-2">
-              <Modal
-                Button={
+              <div className={`flex items-center`}>
+                <button
+                  onClick={() =>
+                    document.getElementById(data?.id + 789).showModal()
+                  }
+                >
                   <button className={`btn btn-xs btn-primary`}>Answer</button>
-                }
-                data={data}
-                modalBody={
-                  <>
+                </button>
+                <dialog id={data?.id + 789} className="modal">
+                  <div className="modal-box bg-[#1d1836]">
                     <h3 className="font-semibold text-lg text-white pb-3">
                       {data?.question}
                     </h3>
                     <p className="text-gray-300">{data?.answer}</p>
-                  </>
-                }
-              />
+                  </div>
+                  <form method="dialog" className="modal-backdrop">
+                    <button>close</button>
+                  </form>
+                </dialog>
+              </div>
             </td>
             <td className="px-3 py-2">
               <div className="cursor-pointer text-red-600">
