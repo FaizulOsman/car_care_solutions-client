@@ -1,59 +1,3 @@
-// import React from "react";
-// import DashboardLayout from "../../../layouts/DashboardLayout";
-// import { useGetAllFeedbackQuery } from "../../../redux/feedback/feedbackApi";
-// import Loader from "../../../components/UI/Loader";
-
-// const AllFeedbackPage = () => {
-//   const { data } = useGetAllFeedbackQuery();
-
-//   return (
-//     <div>
-//       <div>
-//         <div className="my-20 w-11/12 md:w-10/12 mx-auto">
-//           <h1 className="text-3xl font-semibold text-center my-8">Feedbacks</h1>
-//           {data?.data?.length > 0 ? (
-//             <>
-//               {data?.data?.length > 0 ? (
-//                 <div className="mt-10 flex flex-col gap-5">
-//                   {data?.data?.map((feedback, index) => (
-//                     <div
-//                       key={index}
-//                       className="flex justify-between items-center  bg-[#1d1836] p-2 rounded-md"
-//                     >
-//                       <div>
-//                         <p>
-//                           <strong className="text-primary">Email: </strong>{" "}
-//                           {feedback?.email}
-//                         </p>
-//                         <p>
-//                           <strong className="text-primary">Message:</strong>{" "}
-//                           {feedback?.message}
-//                         </p>
-//                       </div>
-//                     </div>
-//                   ))}
-//                 </div>
-//               ) : (
-//                 <h2 className="text-2xl font-bold text-red-500 text-center py-10">
-//                   No Data Found
-//                 </h2>
-//               )}
-//             </>
-//           ) : (
-//             <Loader />
-//           )}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default AllFeedbackPage;
-
-// AllFeedbackPage.getLayout = function getLayout(page) {
-//   return <DashboardLayout>{page}</DashboardLayout>;
-// };
-
 import React, { useEffect, useState } from "react";
 import DashboardLayout from "../../../layouts/DashboardLayout";
 import {
@@ -152,13 +96,16 @@ const AllFeedbackPage = () => {
           <tr key={index} className="border-b border-gray-800">
             <td className="px-3 py-2">{data?.email}</td>
             <td className="px-3 py-2">
-              <Modal
-                Button={
+              <div className={`flex items-center`}>
+                <button
+                  onClick={() =>
+                    document.getElementById(data?.id + 123).showModal()
+                  }
+                >
                   <button className={`btn btn-xs btn-primary`}>Feedback</button>
-                }
-                data={data}
-                modalBody={
-                  <>
+                </button>
+                <dialog id={data?.id + 123} className="modal">
+                  <div className="modal-box bg-[#1d1836]">
                     <div className="flex justify-between">
                       <h3 className="font-semibold text-lg text-white pb-3">
                         Feedback
@@ -166,9 +113,12 @@ const AllFeedbackPage = () => {
                       <span className="text-green-500">{data?.email}</span>
                     </div>
                     <p className="text-gray-300">{data?.message}</p>
-                  </>
-                }
-              />
+                  </div>
+                  <form method="dialog" className="modal-backdrop">
+                    <button>close</button>
+                  </form>
+                </dialog>
+              </div>
             </td>
             <td className="px-3 py-2">
               <div className="cursor-pointer text-red-600">
@@ -178,11 +128,7 @@ const AllFeedbackPage = () => {
                   modalBody={
                     <>
                       <h3 className="font-semibold text-md sm:text-lg text-white pb-5 text-center">
-                        Are you sure you want to delete{" "}
-                        <span className="text-error font-bold">
-                          {data?.type}
-                        </span>
-                        ?
+                        Are you sure you want to delete this item?
                       </h3>
                       <div className="py-4 text-center flex justify-around">
                         <button
