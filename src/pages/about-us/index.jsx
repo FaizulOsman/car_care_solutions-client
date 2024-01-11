@@ -63,12 +63,13 @@ const AboutUs = () => {
           </div>
           <div className="flex justify-between items-center gap-8 mb-10 lg:mb-5 xl:mb-10">
             <div>
-              <div className="flex gap-6 items-center pb-5 mb-5 border-b">
+              <div className="flex gap-6 items-center pb-5 mb-5 border-b group">
                 <Image
                   src="https://i.ibb.co/kQPhysG/award.png"
                   height={60}
                   width={60}
                   alt=""
+                  className="group-hover:-mt-5 transition-all duration-300 transform"
                 />
                 <div className="hover:text-red-600">
                   <h3 className="text-xl font-bold mb-2">
@@ -79,12 +80,13 @@ const AboutUs = () => {
                   </p>
                 </div>
               </div>
-              <div className="flex gap-6 items-center">
+              <div className="flex gap-6 items-center group">
                 <Image
                   src="https://i.ibb.co/NWPYgX9/support.png"
                   height={60}
                   width={60}
                   alt=""
+                  className="group-hover:-mt-5 transition-all duration-300 transform"
                 />
                 <div className="hover:text-red-600">
                   <h3 className="text-xl font-bold mb-2">Friendly Support</h3>
