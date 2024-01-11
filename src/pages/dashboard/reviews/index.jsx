@@ -126,9 +126,12 @@ const AllReviewsPage = () => {
                 data={data}
                 modalBody={
                   <>
-                    <h3 className="font-semibold text-lg text-white pb-3">
-                      Review
-                    </h3>
+                    <div className="flex justify-between">
+                      <h3 className="font-semibold text-lg text-white pb-3">
+                        Review
+                      </h3>
+                      <span className="text-green-500">{data?.email}</span>
+                    </div>
                     <p className="text-gray-300">{data?.review}</p>
                   </>
                 }
