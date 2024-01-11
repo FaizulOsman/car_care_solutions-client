@@ -9,10 +9,15 @@ import Survey from "../components/UI/Survey";
 import FAQPage from "./faq";
 import ContactUs from "./contact-us";
 import AboutUs from "./about-us";
+import MetaData from "../components/Head/MetaData";
 
 const HomePage = () => {
   return (
     <div>
+      <MetaData
+        title="Car Care Solutions"
+        keywordContent="Regulars Package,Standard Package,Premium Package,regulars,standard,premium,car service,car care,car wash,car solution,car repair,car remake,car,wash,service"
+      />
       <Hero />
       <AboutUs />
       <ServicesPage />
