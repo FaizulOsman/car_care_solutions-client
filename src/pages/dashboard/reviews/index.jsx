@@ -119,9 +119,20 @@ const AllReviewsPage = () => {
               </div>
             </td>
             <td className="px-3 py-2">
-              {data?.review?.length > 25
-                ? `${data?.review?.slice(0, 25)} ...`
-                : data?.review}
+              <Modal
+                Button={
+                  <button className={`btn btn-xs btn-primary`}>REVIEW</button>
+                }
+                data={data}
+                modalBody={
+                  <>
+                    <h3 className="font-semibold text-lg text-white pb-3">
+                      Review
+                    </h3>
+                    <p className="text-gray-300">{data?.review}</p>
+                  </>
+                }
+              />
             </td>
             <td className="px-3 py-2">
               <div className="cursor-pointer text-red-600">
