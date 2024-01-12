@@ -33,7 +33,6 @@ const ServicesPage = ({ allService: initialServiceData }) => {
       try {
         const servicesRes = await fetch(apiUrl);
         const updatedServiceData = await servicesRes.json();
-        console.log(updatedServiceData);
 
         setAllService(updatedServiceData);
       } catch (error) {
