@@ -1,29 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import RootLayout from "../../layouts/RootLayout";
-import { useGetAllReviewQuery } from "../../redux/review/reviewApi";
 
 // import Swiper core and required modules
 import { Pagination, FreeMode } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
-import "swiper/css/free-mode";
 import SectionHeader from "../../components/UI/SectionHeader";
 import Loader from "../../components/UI/Loader";
 import SectionTopHeader from "../../components/UI/SectionTopHeader";
 
-const ClientReviewsPage = () => {
-  const accessToken =
-    typeof window !== "undefined" ? localStorage.getItem("access-token") : null;
+// Import Swiper styles
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+import "swiper/css/free-mode";
 
-  const headers = {
-    authorization: accessToken,
-  };
-
-  const { data: getAllReview } = useGetAllReviewQuery(headers);
+const ClientReviewsPage = ({ getAllReview }) => {
+  // const { data: getAllReview } = useGetAllReviewQuery(headers);
 
   return (
     <div
@@ -166,6 +158,29 @@ const ClientReviewsPage = () => {
 };
 
 export default ClientReviewsPage;
+
+export const getServerSideProps = async function () {
+  const accessToken =
+    typeof window !== "undefined" ? localStorage.getItem("access-token") : null;
+
+  const headers = {
+    authorization: accessToken,
+  };
+
+  const servicesRes = await fetch(
+    `https://car-care-solutions-server.vercel.app/api/v1/reviews`,
+    {
+      headers: headers,
+    }
+  );
+  const getAllReview = await servicesRes.json();
+
+  return {
+    props: {
+      getAllReview: getAllReview,
+    },
+  };
+};
 
 ClientReviewsPage.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;

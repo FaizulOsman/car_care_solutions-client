@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import { useGetAllServiceQuery } from "../../redux/service/serviceApi";
 import RootLayout from "../../layouts/RootLayout";
 import toast from "react-hot-toast";
 import { useCreateAddToCartMutation } from "../../redux/addToCart/addToCartApi";
