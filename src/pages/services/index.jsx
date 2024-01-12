@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useGetAllServiceQuery } from "../../redux/service/serviceApi";
+// import { useGetAllServiceQuery } from "../../redux/service/serviceApi";
 import RootLayout from "../../layouts/RootLayout";
 import toast from "react-hot-toast";
 import { useCreateAddToCartMutation } from "../../redux/addToCart/addToCartApi";
@@ -11,10 +11,11 @@ import { FaCheckCircle } from "react-icons/fa";
 
 const jwt = require("jsonwebtoken");
 
-const ServicesPage = () => {
+const ServicesPage = ({ allService: initialServiceData }) => {
   const [searchValue, setSearchValue] = useState("");
   const [status, setStatus] = useState("ongoing");
   const [limit, setLimit] = useState(6);
+  const [allService, setAllService] = useState(initialServiceData);
 
   const accessToken =
     typeof window !== "undefined" ? localStorage.getItem("access-token") : null;
@@ -25,11 +26,31 @@ const ServicesPage = () => {
     authorization: accessToken,
   };
 
-  const { data: allService } = useGetAllServiceQuery({
-    searchValue,
-    status,
-    limit,
-  });
+  // Watch for changes in searchValue, status, and limit
+  useEffect(() => {
+    const fetchData = async () => {
+      const apiUrl = `https://car-care-solutions-server.vercel.app/api/v1/services?searchTerm=${searchValue}&status=${status}&limit=${limit}`;
+
+      try {
+        const servicesRes = await fetch(apiUrl);
+        const updatedServiceData = await servicesRes.json();
+        console.log(updatedServiceData);
+
+        setAllService(updatedServiceData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    // Only fetch data if searchValue, status, or limit change
+    fetchData();
+  }, [searchValue, status, limit]);
+
+  // const { data: allService } = useGetAllServiceQuery({
+  //   searchValue,
+  //   status,
+  //   limit,
+  // });
 
   const [
     createAddToCart,
@@ -220,6 +241,19 @@ const ServicesPage = () => {
 };
 
 export default ServicesPage;
+
+export const getServerSideProps = async function () {
+  const servicesRes = await fetch(
+    `https://car-care-solutions-server.vercel.app/api/v1/services`
+  );
+  const allService = await servicesRes.json();
+
+  return {
+    props: {
+      allService: allService,
+    },
+  };
+};
 
 ServicesPage.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
