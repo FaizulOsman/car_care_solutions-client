@@ -339,7 +339,7 @@ const BookingsPage = () => {
               <td className="px-3 py-2 ">
                 <>
                   <button
-                    className="btn btn-primary btn-xs"
+                    className="btn bg-green-600 hover:bg-green-800 border-none text-white btn-xs"
                     onClick={() =>
                       document.getElementById(`status-${index}`).showModal()
                     }
