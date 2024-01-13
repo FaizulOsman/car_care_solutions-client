@@ -255,7 +255,7 @@ const BookingsPage = () => {
                 <td className="px-3 py-2">
                   {decodedToken?.email === data?.email && (
                     <button
-                      className="btn btn-primary btn-xs"
+                      className="btn bg-green-600 hover:bg-green-800 border-none text-white btn-xs"
                       onClick={() =>
                         document.getElementById(`review-${index}`).showModal()
                       }
@@ -265,7 +265,7 @@ const BookingsPage = () => {
                     </button>
                   )}
                   <dialog id={`review-${index}`} className="modal">
-                    <div className="modal-box bg-[#1d1836]">
+                    <div className="modal-box bg-[#2a2a31]">
                       <div className="flex justify-between items-center">
                         <h3 className="font-bold text-lg">{data?.type}</h3>
                         <p className="">${data?.price}</p>
@@ -312,7 +312,7 @@ const BookingsPage = () => {
                           }
                         >
                           <textarea
-                            className="textarea first-letter:input input-bordered input-primary input-sm w-full h-[100px] bg-[#1d1836] my-4"
+                            className="textarea first-letter:input input-sm w-full h-[100px] bg-[#161921] my-4"
                             name="review"
                             placeholder="Review"
                             required
@@ -320,7 +320,7 @@ const BookingsPage = () => {
                           <div className="text-center">
                             <button
                               type="submit"
-                              className="btn btn-primary btn-sm"
+                              className="btn bg-green-600 hover:bg-green-800 border-none text-white btn-sm"
                             >
                               Submit
                             </button>
