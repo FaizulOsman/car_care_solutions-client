@@ -74,13 +74,13 @@ const Banner = () => {
   return (
     <div className="pb-20 -mt-14">
       <div
-        className="h-[260px] md:h-[300px] lg:h-[460px]"
+        className="h-[260px] md:h-[300px] lg:h-[460px] xl:h-[480px]"
         style={{
           // background: `url(https://used-carz.web.app/static/media/banner.991105296df5663f9e18.jpg)`,
           background: `url(https://static.vecteezy.com/system/resources/previews/006/948/102/non_2x/banner-of-automobile-mechanic-man-and-team-checking-car-damage-broken-part-condition-diagnostic-and-repairing-vehicle-at-garage-automotive-motor-technician-maintenance-after-service-concept-free-photo.jpg)`,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          backgroundSize: "100% 100%",
+          backgroundSize: "cover",
         }}
       >
         <h3
