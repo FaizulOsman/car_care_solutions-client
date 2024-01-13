@@ -7,14 +7,15 @@ import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import SectionHeader from "../../components/UI/SectionHeader";
 import SectionTopHeader from "../../components/UI/SectionTopHeader";
 import { FaCheckCircle } from "react-icons/fa";
+import { useGetAllServiceQuery } from "../../redux/service/serviceApi";
 
 const jwt = require("jsonwebtoken");
 
-const ServicesPage = ({ allService: initialServiceData }) => {
+const ServicesPage = () => {
   const [searchValue, setSearchValue] = useState("");
   const [status, setStatus] = useState("ongoing");
   const [limit, setLimit] = useState(6);
-  const [allService, setAllService] = useState(initialServiceData);
+  // const [allService, setAllService] = useState(initialServiceData);
 
   const accessToken =
     typeof window !== "undefined" ? localStorage.getItem("access-token") : null;
@@ -25,30 +26,30 @@ const ServicesPage = ({ allService: initialServiceData }) => {
     authorization: accessToken,
   };
 
-  // Watch for changes in searchValue, status, and limit
-  useEffect(() => {
-    const fetchData = async () => {
-      const apiUrl = `https://car-care-solutions-server.vercel.app/api/v1/services?searchTerm=${searchValue}&status=${status}&limit=${limit}`;
+  // // Watch for changes in searchValue, status, and limit
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const apiUrl = `https://car-care-solutions-server.vercel.app/api/v1/services?searchTerm=${searchValue}&status=${status}&limit=${limit}`;
 
-      try {
-        const servicesRes = await fetch(apiUrl);
-        const updatedServiceData = await servicesRes.json();
+  //     try {
+  //       const servicesRes = await fetch(apiUrl);
+  //       const updatedServiceData = await servicesRes.json();
 
-        setAllService(updatedServiceData);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
+  //       setAllService(updatedServiceData);
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     }
+  //   };
 
-    // Only fetch data if searchValue, status, or limit change
-    fetchData();
-  }, [searchValue, status, limit]);
+  //   // Only fetch data if searchValue, status, or limit change
+  //   fetchData();
+  // }, [searchValue, status, limit]);
 
-  // const { data: allService } = useGetAllServiceQuery({
-  //   searchValue,
-  //   status,
-  //   limit,
-  // });
+  const { data: allService } = useGetAllServiceQuery({
+    searchValue,
+    status,
+    limit,
+  });
 
   const [
     createAddToCart,
@@ -159,7 +160,7 @@ const ServicesPage = ({ allService: initialServiceData }) => {
               {allService?.data?.map((service, index) => (
                 <div
                   key={index}
-                  className={`relative flex justify-between flex-col bg-clip-border border border-gray-200 rounded-sm shadow-gray-300 shadow-md hover:shadow-2xl w-full p-8 hover:scale-105 duration-300 ${
+                  className={`relative flex justify-between flex-col bg-clip-border border border-gray-200 rounded-md shadow-gray-300 shadow-md hover:shadow-2xl w-full p-8 hover:scale-105 duration-300 ${
                     service?.type === "Standard Package" &&
                     "bg-[#0a0a0a] text-white"
                   }`}
@@ -240,18 +241,18 @@ const ServicesPage = ({ allService: initialServiceData }) => {
 
 export default ServicesPage;
 
-export const getServerSideProps = async function () {
-  const servicesRes = await fetch(
-    `https://car-care-solutions-server.vercel.app/api/v1/services`
-  );
-  const allService = await servicesRes.json();
+// export const getServerSideProps = async function () {
+//   const servicesRes = await fetch(
+//     `https://car-care-solutions-server.vercel.app/api/v1/services`
+//   );
+//   const allService = await servicesRes.json();
 
-  return {
-    props: {
-      allService: allService,
-    },
-  };
-};
+//   return {
+//     props: {
+//       allService: allService,
+//     },
+//   };
+// };
 
 ServicesPage.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
