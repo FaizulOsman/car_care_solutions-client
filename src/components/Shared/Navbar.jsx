@@ -196,7 +196,7 @@ const Navbar = () => {
                   {myProfile?.email ? (
                     <>
                       <li
-                        className={`px-2 flex items-center border-2 hover:border-[#eb3300] rounded-lg hover:bg-[#eb3300] duration-300  `}
+                        className={`px-2 flex items-center border-2 hover:border-[#eb3300] rounded-md hover:bg-[#eb3300] duration-300  `}
                       >
                         <Link
                           className="btn-link hover:no-underline"
@@ -207,7 +207,7 @@ const Navbar = () => {
                       </li>
                     </>
                   ) : (
-                    <li className="flex items-center border-2 border-[#eb3300] rounded-lg bg-[#eb3300] hover:bg-transparent hover:border-white duration-300 py-[2px]">
+                    <li className="flex items-center border-2 border-[#eb3300] rounded-md bg-[#eb3300] hover:bg-transparent hover:border-white duration-300 py-[2px]">
                       <Link href="/login">
                         <h6 className="btn-text text-white px-2">
                           Login/SignUp
@@ -229,13 +229,13 @@ const Navbar = () => {
                 {/* left side menu for large devices  */}
                 <div className="md:hidden flex items-center w-full justify-between gap-4">
                   {myProfile?.email ? (
-                    <li className="flex items-center rounded-lg hover:bg-[#eb3300] border-2 hover:border-[#eb3300] border-white duration-300 px-3 py-[2px]">
+                    <li className="flex items-center rounded-md hover:bg-[#eb3300] border-2 hover:border-[#eb3300] border-white duration-300 px-3 py-[2px]">
                       <Link href="/dashboard">
                         <h6 className="btn-text text-white">Dashboard</h6>
                       </Link>
                     </li>
                   ) : (
-                    <li className="flex items-center border-2 border-[#eb3300] rounded-lg bg-[#eb3300] hover:bg-transparent hover:border-white duration-300 px-3 py-[1px]">
+                    <li className="flex items-center border-2 border-[#eb3300] rounded-md bg-[#eb3300] hover:bg-transparent hover:border-white duration-300 px-3 py-[1px]">
                       <Link href="/login">
                         <h6 className="btn-text text-white">Login/SignUp</h6>
                       </Link>
