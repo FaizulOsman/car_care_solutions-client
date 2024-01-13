@@ -115,7 +115,7 @@ const AllServices = () => {
                               modal.close();
                             }
                           }}
-                          className="btn btn-error btn-xs sm:btn-sm text-white"
+                          className="btn bg-[#eb3300] hover:bg-red-700 border-none btn-xs sm:btn-sm text-white"
                         >
                           Yes
                         </button>
@@ -126,7 +126,7 @@ const AllServices = () => {
                               modal.close();
                             }
                           }}
-                          className="btn btn-primary btn-xs sm:btn-sm"
+                          className="btn bg-green-600 hover:bg-green-800 border-none text-white btn-xs sm:btn-sm"
                         >
                           No
                         </button>
