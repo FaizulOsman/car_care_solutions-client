@@ -26,9 +26,9 @@ const Table = ({
   };
 
   return (
-    <div className="bg-[#080925] text-white flex overflow-hidden text-sm rounded-md">
+    <div className="bg-[#161921] text-white flex overflow-hidden text-sm rounded-md">
       <div className="flex-grow overflow-y-auto">
-        <div className="z-40 flex flex-col w-full border-b border-[#1e3a8a] sticky top-0 px-4 pt-4">
+        <div className="z-40 flex flex-col w-full border-b border-gray-700 sticky top-0 px-4 pt-4">
           <div className="flex w-full items-center">
             <div className="flex items-center text-lg sm:text-2xl z-40 mb-5 border-l-4 pl-3">
               {tableTitle}
@@ -43,7 +43,7 @@ const Table = ({
                   const selectedValue = e.target.value;
                   setSortOrder(selectedValue);
                 }}
-                className="select select-bordered border-gray-800 font-normal select-xs sm:select-sm max-w-xs bg-[#080925]"
+                className="select select-bordered border-gray-800 font-normal select-xs sm:select-sm max-w-xs bg-[#161921]"
               >
                 <option value="desc">Newest</option>
                 <option value="asc">Oldest</option>

@@ -156,7 +156,7 @@ const ServiceRatingsChart = () => {
   ];
 
   return (
-    <div className="w-full sm:w-1/2 border border-solid border-[#1e3a8a] shadow p-4 rounded-md">
+    <div className="w-full sm:w-1/2 bg-[#161921] shadow p-4 rounded-md">
       <div className="flex items-center text-lg sm:text-2xl z-40 dark:text-white mb-5 border-l-4 pl-3">
         Service Ratings (%)
       </div>

@@ -89,7 +89,7 @@ const BlogAndMediaChart = () => {
   };
 
   return (
-    <div className="flex-1 border border-solid border-[#1e3a8a] shadow p-4 rounded-md">
+    <div className="flex-1 bg-[#161921] shadow p-4 rounded-md">
       <div className="flex items-center text-lg sm:text-2xl z-40 dark:text-white mb-5 border-l-4 pl-3">
         Blog & Media Traffic
       </div>

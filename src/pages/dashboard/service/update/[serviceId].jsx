@@ -57,7 +57,7 @@ const UpdateService = () => {
 
   return (
     <div className="my-5">
-      <div className="w-11/12 md:w-10/12 lg:w-8/12 mx-auto mt-5 border rounded-lg border-blue-500 p-5">
+      <div className="w-11/12 md:w-10/12 lg:w-8/12 mx-auto mt-5 rounded-lg bg-[#161921] p-5">
         <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-center mb-5">
           Update Service
         </h3>
@@ -67,7 +67,7 @@ const UpdateService = () => {
         >
           <select
             name="status"
-            className="select select-sm select-primary w-full bg-[#1d1836]"
+            className="select select-sm w-full bg-[#2a2a31]"
           >
             <option
               value="ongoing"
@@ -86,7 +86,7 @@ const UpdateService = () => {
             type="text"
             name="type"
             placeholder="Type"
-            className="input input-bordered input-primary input-sm w-full bg-[#1d1836]"
+            className="input input-sm w-full bg-[#2a2a31]"
             defaultValue={getSingleService?.data?.type}
             required
           />
@@ -94,7 +94,7 @@ const UpdateService = () => {
             type="number"
             name="price"
             placeholder="Price"
-            className="input input-bordered input-primary input-sm w-full bg-[#1d1836]"
+            className="input input-sm w-full bg-[#2a2a31]"
             defaultValue={getSingleService?.data?.price}
             required
           />
@@ -102,20 +102,25 @@ const UpdateService = () => {
             type="text"
             name="location"
             placeholder="Location"
-            className="input input-bordered input-primary input-sm w-full bg-[#1d1836]"
+            className="input input-sm w-full bg-[#2a2a31]"
             defaultValue={getSingleService?.data?.location}
             required
           />
           <textarea
-            className="textarea first-letter:input input-bordered input-primary input-sm w-full h-[150px] bg-[#1d1836]"
+            className="textarea first-letter:input input-sm w-full h-[150px] bg-[#2a2a31]"
             name="description"
             placeholder="Description"
             defaultValue={getSingleService?.data?.description}
             required
           ></textarea>
-          <button type="submit" className="btn btn-sm btn-primary">
-            Update Service
-          </button>
+          <div className="text-center">
+            <button
+              type="submit"
+              className="w-full md:w-80 btn btn-sm bg-green-600 hover:bg-green-800 text-white border-none"
+            >
+              Update Service
+            </button>
+          </div>
         </form>
       </div>
     </div>

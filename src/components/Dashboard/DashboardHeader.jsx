@@ -6,7 +6,7 @@ import { HiOutlineHome, HiOutlineLogout } from "react-icons/hi";
 const DashboardHeader = ({ toggle, handleLogOut }) => {
   return (
     <div className="">
-      <div className="flex items-center justify-between px-6 bg-[#00073d] text-white h-12 border-l">
+      <div className="flex items-center justify-between px-6 bg-[#161921] text-white h-12 border-l">
         <div className="ml-[45px] sm:ml-0 w-[30px] cursor-pointer">
           <FaBars onClick={toggle} />
         </div>

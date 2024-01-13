@@ -53,46 +53,50 @@ const AddNewAdmin = () => {
 
   return (
     <div>
-      <div className="w-full md:w-10/12 lg:w-8/12 mx-auto border rounded-lg border-blue-500 p-5">
+      <div className="w-full md:w-10/12 lg:w-8/12 mx-auto rounded-lg bg-[#161921] px-5 py-5 lg:py-10">
         <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-center mb-5">
           Create An Admin
         </h3>
 
-        <form
-          onSubmit={(e) => handleCreateAdmin(e)}
-          className="grid grid-cols-1 justify-between gap-6 mt-4"
-        >
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            className="input input-bordered input-primary input-sm w-full bg-[#1d1836]"
-            required
-          />
-          <input
-            type="text"
-            name="email"
-            placeholder="Email"
-            className="input input-bordered input-primary input-sm w-full bg-[#1d1836]"
-            required
-          />
-          <input
-            type="text"
-            name="phone"
-            placeholder="Phone"
-            className="input input-bordered input-primary input-sm w-full bg-[#1d1836]"
-            required
-          />
-          <input
-            type="text"
-            name="password"
-            placeholder="Password"
-            className="input input-bordered input-primary input-sm w-full bg-[#1d1836]"
-            required
-          />
-          <button type="submit" className="btn btn-sm btn-primary">
-            Create Admin
-          </button>
+        <form onSubmit={(e) => handleCreateAdmin(e)}>
+          <div className="grid grid-cols-1 md:grid-cols-2 justify-between gap-6 my-6">
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              className="input input-bordered input-sm lg:input-md w-full bg-[#2a2a31]"
+              required
+            />
+            <input
+              type="text"
+              name="email"
+              placeholder="Email"
+              className="input input-bordered input-sm lg:input-md w-full bg-[#2a2a31]"
+              required
+            />
+            <input
+              type="text"
+              name="phone"
+              placeholder="Phone"
+              className="input input-bordered input-sm lg:input-md w-full bg-[#2a2a31]"
+              required
+            />
+            <input
+              type="text"
+              name="password"
+              placeholder="Password"
+              className="input input-bordered input-sm lg:input-md w-full bg-[#2a2a31]"
+              required
+            />
+          </div>
+          <div className="text-center">
+            <button
+              type="submit"
+              className="w-40 md:w-80 btn btn-sm lg:btn-md bg-green-600 hover:bg-green-800 text-white border-none"
+            >
+              Create Admin
+            </button>
+          </div>
         </form>
       </div>
     </div>

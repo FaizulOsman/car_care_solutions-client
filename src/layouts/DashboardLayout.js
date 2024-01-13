@@ -86,7 +86,7 @@ const DashboardLayout = ({ children }) => {
 
   return (
     <div className="">
-      <div className="flex bg-[#080925] text-white h-screen overflow-hidden">
+      <div className="flex bg-[#2a2a31] text-white h-screen overflow-hidden">
         <motion.div
           animate={{
             width: isOpen ? "200px" : "45px",
@@ -96,7 +96,7 @@ const DashboardLayout = ({ children }) => {
               damping: 10,
             },
           }}
-          className={`h-screen bg-[#00073d] text-white min-h-[100vh] overflow-y-auto absolute sm:static left-0 top-0 z-50`}
+          className={`h-screen bg-[#161921] text-white min-h-[100vh] overflow-y-auto absolute sm:static left-0 top-0 z-50`}
         >
           <div className="flex items-center justify-between py-[10px]">
             <AnimatePresence>
@@ -148,9 +148,9 @@ const DashboardLayout = ({ children }) => {
                         ) : (
                           <Link href={route.path} passHref>
                             <div
-                              className={`flex items-center text-white gap-[10px] p-2 border-r-4 border-transparent border-solid transition duration-200 ease-in-out cubic-bezier(0.6, -0.28, 0.735, 0.045) hover:bg-[#2d3359] hover:border-r-4 hover:border-white hover:transition-[0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045)] ${
+                              className={`flex items-center text-white gap-[10px] p-2 border-r-4 border-transparent border-solid transition duration-200 ease-in-out cubic-bezier(0.6, -0.28, 0.735, 0.045) hover:bg-[#2a2a31] hover:border-r-4 hover:border-white hover:transition-[0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045)] ${
                                 route.path === router?.asPath
-                                  ? "border-r-4 border-white bg-[#2d3359]"
+                                  ? "border-r-4 border-white bg-[#2a2a31]"
                                   : ""
                               }`}
                             >
@@ -196,7 +196,7 @@ const DashboardLayout = ({ children }) => {
             >
               {children}
             </div>
-            <footer className="footer footer-center p-4 bg-[#00073d] text-white">
+            <footer className="footer footer-center p-4 bg-[#161921] text-white">
               <div>
                 <p>
                   Copyright © 2024 - All right reserved by Car Care Solutions

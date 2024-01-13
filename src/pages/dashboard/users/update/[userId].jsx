@@ -81,7 +81,7 @@ const UpdateUser = () => {
   return (
     <div className="py-7">
       <div>
-        <div className="w-11/12 md:w-10/12 lg:w-8/12 mx-auto border rounded-lg border-blue-500 p-5">
+        <div className="w-11/12 md:w-10/12 lg:w-8/12 mx-auto rounded-md bg-[#161921] p-5">
           <h3 className="text-xl sm:text-2xl font-bold text-center my-5">
             Update User
           </h3>
@@ -95,7 +95,7 @@ const UpdateUser = () => {
                         ? user?.imageUrl
                         : "https://i.ibb.co/nrtwzQd/avatar-boy.webp"
                     }
-                    className="w-16 h-16 mx-auto border border-gray-800 rounded-full mb-10"
+                    className="w-16 h-16 mx-auto-gray-800 rounded-full mb-10"
                     width="150"
                     height="150"
                     alt="Profile Image"
@@ -103,7 +103,7 @@ const UpdateUser = () => {
                   <div>
                     <p
                       className="absolute bottom-0 left-0 w-full flex justify-center items-center h-1/2 hover:bg-gray-400 hover:bg-opacity-50 hover:text-blue-700"
-                      style={{ borderRadius: "0 0 30px 30px" }}
+                      style={{ Radius: "0 0 30px 30px" }}
                     >
                       <FaRegEdit />
                     </p>
@@ -139,14 +139,14 @@ const UpdateUser = () => {
                     type="text"
                     id="name"
                     name="name"
-                    className="input-sm input-primary w-full py-3 px-4 border rounded-lg focus:outline-none focus:border-blue-500 bg-[#1d1836]"
+                    className="input-sm lg:input-md w-full py-3 px-4 rounded-md focus:outline-none focus:border-blue-500 bg-[#2a2a31]"
                     autoComplete="off"
                     defaultValue={user?.name}
                     disabled={true}
                   />
                   <label
                     htmlFor="name"
-                    className="absolute text-sm left-6 -top-3 bg-[#1d1836] rounded-lg px-2 text-primary transition-all duration-300"
+                    className="absolute text-sm left-6 -top-3 bg-[#2a2a31] rounded-md px-2 text-gray-400 transition-all duration-300"
                   >
                     Name
                   </label>
@@ -156,14 +156,14 @@ const UpdateUser = () => {
                     type="text"
                     id="email"
                     name="email"
-                    className="input-sm input-primary w-full py-3 px-4 border rounded-lg focus:outline-none focus:border-blue-500 bg-[#1d1836]"
+                    className="input-sm lg:input-md w-full py-3 px-4 rounded-md focus:outline-none focus:border-blue-500 bg-[#2a2a31]"
                     autoComplete="off"
                     defaultValue={user?.email}
                     disabled={true}
                   />
                   <label
                     htmlFor="email"
-                    className="absolute text-sm left-6 -top-3 bg-[#1d1836] rounded-lg px-2 text-primary transition-all duration-300"
+                    className="absolute text-sm left-6 -top-3 bg-[#2a2a31] rounded-md px-2 text-gray-400 transition-all duration-300"
                   >
                     Email
                   </label>
@@ -173,13 +173,13 @@ const UpdateUser = () => {
                     type="text"
                     id="phone"
                     name="phone"
-                    className="input-sm input-primary w-full py-3 px-4 border rounded-lg focus:outline-none focus:border-blue-500 bg-[#1d1836]"
+                    className="input-sm lg:input-md w-full py-3 px-4 rounded-md focus:outline-none focus:border-blue-500 bg-[#2a2a31]"
                     autoComplete="off"
                     defaultValue={user?.phone}
                   />
                   <label
                     htmlFor="phone"
-                    className="absolute text-sm left-6 -top-3 bg-[#1d1836] rounded-lg px-2 text-primary transition-all duration-300"
+                    className="absolute text-sm left-6 -top-3 bg-[#2a2a31] rounded-md px-2 text-gray-400 transition-all duration-300"
                   >
                     Phone
                   </label>
@@ -189,18 +189,23 @@ const UpdateUser = () => {
                     type="text"
                     id="address"
                     name="address"
-                    className="input-sm input-primary w-full py-3 px-4 border rounded-lg focus:outline-none focus:border-blue-500 bg-[#1d1836]"
+                    className="input-sm lg:input-md w-full py-3 px-4 rounded-md focus:outline-none focus:border-blue-500 bg-[#2a2a31]"
                     autoComplete="off"
                     defaultValue={user?.address}
                   />
                   <label
                     htmlFor="address"
-                    className="absolute text-sm left-6 -top-3 bg-[#1d1836] rounded-lg px-2 text-primary transition-all duration-300"
+                    className="absolute text-sm left-6 -top-3 bg-[#2a2a31] rounded-md px-2 text-gray-400 transition-all duration-300"
                   >
                     address
                   </label>
                 </div>
-                <button type="submit" className="btn btn-sm w-full btn-primary">
+              </div>
+              <div className="mt-8 text-center">
+                <button
+                  type="submit"
+                  className="w-full md:w-80 btn btn-sm lg:btn-md bg-green-600 hover:bg-green-800 border-none text-white"
+                >
                   Update Profile
                 </button>
               </div>

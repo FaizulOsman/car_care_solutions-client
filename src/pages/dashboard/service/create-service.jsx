@@ -73,7 +73,7 @@ const CreateService = () => {
 
   return (
     <div className="my-5">
-      <div className="w-full md:w-10/12 lg:w-8/12 mx-auto border rounded-lg border-blue-500 p-5">
+      <div className="w-full md:w-10/12 lg:w-8/12 mx-auto rounded-lg bg-[#161921] p-5">
         <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-center mb-5">
           Service Data
         </h3>
@@ -120,12 +120,12 @@ const CreateService = () => {
               type="text"
               name="type"
               placeholder="Type"
-              className="input input-bordered input-primary input-sm w-full bg-[#1d1836]"
+              className="input input-sm w-full bg-[#2a2a31]"
               required
             />
             <select
               name="status"
-              className="select select-sm select-primary w-full bg-[#1d1836]"
+              className="select select-sm w-full bg-[#2a2a31]"
             >
               <option value="ongoing">Ongoing</option>
               <option value="upcoming">Upcoming</option>
@@ -134,29 +134,34 @@ const CreateService = () => {
               type="number"
               name="price"
               placeholder="Price"
-              className="input input-bordered input-primary input-sm w-full bg-[#1d1836]"
+              className="input input-sm w-full bg-[#2a2a31]"
               required
             />
             <input
               type="text"
               name="location"
               placeholder="Location"
-              className="input input-bordered input-primary input-sm w-full bg-[#1d1836]"
+              className="input input-sm w-full bg-[#2a2a31]"
               required
             />
           </div>
           <textarea
-            className="textarea first-letter:input input-bordered input-primary input-sm w-full h-[150px] bg-[#1d1836]"
+            className="textarea first-letter:input input-sm w-full h-[150px] bg-[#2a2a31]"
             name="description"
             placeholder="Description"
             required
           ></textarea>
-          <button type="submit" className="btn btn-sm btn-primary">
-            Add Service Data
-          </button>
+          <div className="text-center">
+            <button
+              type="submit"
+              className="w-40 md:w-80 btn btn-sm bg-green-600 hover:bg-green-800 text-white border-none"
+            >
+              Add Service Data
+            </button>
+          </div>
         </form>
       </div>
-      <div className="w-11/12 md:w-10/12 lg:w-8/12 mx-auto mt-5 border rounded-lg border-blue-500 p-5">
+      <div className="w-11/12 md:w-10/12 lg:w-8/12 mx-auto mt-5 rounded-lg bg-[#161921] p-5">
         <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-center mb-5">
           Add facilities
         </h3>
@@ -173,7 +178,7 @@ const CreateService = () => {
         >
           <select
             name="facility"
-            className="select select-sm select-primary w-full bg-[#1d1836]"
+            className="select select-sm w-full bg-[#2a2a31]"
             required
           >
             <option value="">Select one</option>
@@ -187,15 +192,20 @@ const CreateService = () => {
             <option value="Brakes & Brake Repair">Brakes & Brake Repair</option>
             <option value="Deep Leather Cleaning">Deep Leather Cleaning</option>
           </select>
-          <button type="submit" className="btn btn-sm btn-primary">
-            Add a Facility
-          </button>
+          <div className="text-center">
+            <button
+              type="submit"
+              className="w-40 md:w-80 btn btn-sm bg-green-600 hover:bg-green-800 text-white border-none"
+            >
+              Add a Facility
+            </button>
+          </div>
         </form>
       </div>
       <div className="w-11/12 md:w-10/12 lg:w-8/12 mx-auto mt-5">
         <button
           onClick={() => handleCreateService()}
-          className="btn btn-sm btn-primary my-5 w-full"
+          className="btn btn-md bg-green-600 hover:bg-green-800 text-white border-none my-5 w-full"
         >
           Create Service
         </button>

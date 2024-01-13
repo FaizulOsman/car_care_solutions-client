@@ -139,7 +139,7 @@ const CartPage = () => {
                               modal.close();
                             }
                           }}
-                          className="btn btn-error btn-xs sm:btn-sm text-white"
+                          className="btn bg-[#eb3300] hover:bg-red-700 border-none btn-xs sm:btn-sm text-white"
                         >
                           Yes
                         </button>
@@ -150,7 +150,7 @@ const CartPage = () => {
                               modal.close();
                             }
                           }}
-                          className="btn btn-primary btn-xs sm:btn-sm"
+                          className="btn bg-green-600 hover:bg-green-800 border-none text-white btn-xs sm:btn-sm"
                         >
                           No
                         </button>
@@ -162,7 +162,7 @@ const CartPage = () => {
             </td>
             <td className="px-3 py-2 ">
               <button
-                className="btn btn-primary btn-xs"
+                className="btn bg-green-600 hover:bg-green-800 border-none text-white btn-xs"
                 onClick={() =>
                   document.getElementById(`book-${index}`).showModal()
                 }
@@ -170,7 +170,7 @@ const CartPage = () => {
                 Book
               </button>
               <dialog id={`book-${index}`} className="modal">
-                <div className="modal-box bg-[#1d1836]">
+                <div className="modal-box bg-[#2a2a31]">
                   <div className="flex justify-between items-center">
                     <h3 className="font-bold text-lg">{data?.type}</h3>
                     <p className="">${data?.price}</p>
@@ -182,13 +182,13 @@ const CartPage = () => {
                           selected={startDate}
                           onChange={(date) => setStartDate(date)}
                           dateFormat="MM-dd-yyyy"
-                          className="bg-[#1d1836] border border-primary w-full select mb-4"
+                          className="bg-[#2a2a31] border border-gray-500 w-full select mb-4"
                         />
                       </div>
 
                       <select
                         onChange={(e) => setTimeSlot(e.target.value)}
-                        className="select select-primary w-full sm:w-1/2 bg-[#1d1836]"
+                        className="select border border-gray-500 w-full sm:w-1/2 bg-[#2a2a31]"
                       >
                         <option disabled selected>
                           Select A Time Slot
@@ -209,7 +209,7 @@ const CartPage = () => {
                     </div>
                     <div className="text-center">
                       <button
-                        className="btn btn-primary btn-sm"
+                        className="btn bg-green-600 hover:bg-green-800 border-none text-white btn-sm"
                         onClick={() => handleBookService(data)}
                       >
                         Book Now

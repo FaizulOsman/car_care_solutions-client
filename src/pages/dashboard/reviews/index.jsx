@@ -125,10 +125,14 @@ const AllReviewsPage = () => {
                     document.getElementById(data?.id + 456).showModal()
                   }
                 >
-                  <button className={`btn btn-xs btn-primary`}>Review</button>
+                  <button
+                    className={`btn btn-xs bg-green-600 hover:bg-green-800 text-white border-none`}
+                  >
+                    Review
+                  </button>
                 </button>
                 <dialog id={data?.id + 456} className="modal">
-                  <div className="modal-box bg-[#1d1836]">
+                  <div className="modal-box bg-[#2a2a31]">
                     <div className="flex justify-between">
                       <h3 className="font-semibold text-lg text-white pb-3">
                         Feedback
@@ -151,11 +155,7 @@ const AllReviewsPage = () => {
                   modalBody={
                     <>
                       <h3 className="font-semibold text-md sm:text-lg text-white pb-5 text-center">
-                        Are you sure you want to delete{" "}
-                        <span className="text-error font-bold">
-                          {data?.type}
-                        </span>
-                        ?
+                        Are you sure you want to delete this item?
                       </h3>
                       <div className="py-4 text-center flex justify-around">
                         <button
@@ -166,7 +166,7 @@ const AllReviewsPage = () => {
                               modal.close();
                             }
                           }}
-                          className="btn btn-error btn-xs sm:btn-sm text-white"
+                          className="btn bg-[#eb3300] hover:bg-red-700 border-none btn-xs sm:btn-sm text-white"
                         >
                           Yes
                         </button>
@@ -177,7 +177,7 @@ const AllReviewsPage = () => {
                               modal.close();
                             }
                           }}
-                          className="btn btn-primary btn-xs sm:btn-sm"
+                          className="btn bg-green-600 hover:bg-green-800 text-white border-none btn-xs sm:btn-sm"
                         >
                           No
                         </button>

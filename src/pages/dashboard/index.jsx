@@ -53,7 +53,7 @@ const DashboardPage = () => {
           decodedToken?.role === "super_admin") && (
           <Link
             href="dashboard/users"
-            className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-info font-medium group"
+            className="bg-[#161921] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-info font-medium group"
           >
             <div className="flex justify-center items-center w-14 h-14 bg-info rounded-full transition-all duration-300 transform group-hover:rotate-12">
               <svg
@@ -82,7 +82,7 @@ const DashboardPage = () => {
         )}
         <Link
           href="dashboard/service/all-service"
-          className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-secondary font-medium group"
+          className="bg-[#161921] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-secondary font-medium group"
         >
           <div className="flex justify-center items-center w-14 h-14 bg-secondary rounded-full transition-all duration-300 transform group-hover:rotate-12">
             <MdOutlineMiscellaneousServices className="text-white w-7 h-7" />
@@ -98,7 +98,7 @@ const DashboardPage = () => {
           decodedToken?.role === "super_admin" || (
             <Link
               href="dashboard/cart"
-              className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-error font-medium group"
+              className="bg-[#161921] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-error font-medium group"
             >
               <div className="flex justify-center items-center w-14 h-14 bg-error rounded-full transition-all duration-300 transform group-hover:rotate-12">
                 <FaRegHeart className="text-white w-7 h-7" />
@@ -119,7 +119,7 @@ const DashboardPage = () => {
           )}
         <Link
           href="dashboard/bookings"
-          className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-success font-medium group"
+          className="bg-[#161921] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-success font-medium group"
         >
           <div className="flex justify-center items-center w-14 h-14 bg-success rounded-full transition-all duration-300 transform group-hover:rotate-12">
             <SlCalender className="text-white w-7 h-7" />
@@ -139,7 +139,7 @@ const DashboardPage = () => {
         </Link>
         <Link
           href="dashboard/reviews"
-          className="bg-[#1d1836] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-warning font-medium group"
+          className="bg-[#161921] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-warning font-medium group"
         >
           <div className="flex justify-center items-center w-14 h-14 bg-warning rounded-full transition-all duration-300 transform group-hover:rotate-12">
             <MdOutlineRateReview className="text-white w-7 h-7" />

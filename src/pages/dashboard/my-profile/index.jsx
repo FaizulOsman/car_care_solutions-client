@@ -73,7 +73,7 @@ const MyProfile = () => {
   }, [getMyProfile?.data]);
 
   return (
-    <div className="w-full md:w-10/12 lg:w-8/12 mx-auto border rounded-lg border-blue-500 p-5">
+    <div className="w-full md:w-10/12 lg:w-8/12 mx-auto rounded-md bg-[#161921] p-5">
       <h2 className={`text-3xl font-semibold pb-10 text-white text-center`}>
         My Profile
       </h2>
@@ -87,7 +87,7 @@ const MyProfile = () => {
                     ? MyProfile?.imageUrl
                     : "https://i.ibb.co/nrtwzQd/avatar-boy.webp"
                 }
-                className="w-16 h-16 mx-auto border border-gray-800 rounded-full mb-10"
+                className="w-16 h-16 mx-auto border-gray-800 rounded-full mb-10"
                 width="150"
                 height="150"
                 alt="Profile Image"
@@ -131,14 +131,14 @@ const MyProfile = () => {
                 type="text"
                 id="name"
                 name="name"
-                className="input-sm input-primary w-full py-3 px-4 border rounded-lg focus:outline-none focus:border-blue-500 bg-[#1d1836]"
+                className="input-sm lg:input-md w-full py-3 px-4 rounded-md focus:outline-none focus:border-blue-500 bg-[#2a2a31]"
                 autoComplete="off"
                 defaultValue={MyProfile?.name}
                 disabled={true}
               />
               <label
                 htmlFor="name"
-                className="absolute text-sm left-6 -top-3 bg-[#1d1836] rounded-lg px-2 text-primary transition-all duration-300"
+                className="absolute text-sm left-6 -top-3 bg-[#2a2a31] rounded-md px-2 text-gray-400 transition-all duration-300"
               >
                 Name
               </label>
@@ -148,14 +148,14 @@ const MyProfile = () => {
                 type="text"
                 id="email"
                 name="email"
-                className="input-sm input-primary w-full py-3 px-4 border rounded-lg focus:outline-none focus:border-blue-500 bg-[#1d1836]"
+                className="input-sm lg:input-md w-full py-3 px-4 rounded-md focus:outline-none focus:border-blue-500 bg-[#2a2a31]"
                 autoComplete="off"
                 defaultValue={MyProfile?.email}
                 disabled={true}
               />
               <label
                 htmlFor="email"
-                className="absolute text-sm left-6 -top-3 bg-[#1d1836] rounded-lg px-2 text-primary transition-all duration-300"
+                className="absolute text-sm left-6 -top-3 bg-[#2a2a31] rounded-md px-2 text-gray-400 transition-all duration-300"
               >
                 Email
               </label>
@@ -165,13 +165,13 @@ const MyProfile = () => {
                 type="text"
                 id="phone"
                 name="phone"
-                className="input-sm input-primary w-full py-3 px-4 border rounded-lg focus:outline-none focus:border-blue-500 bg-[#1d1836]"
+                className="input-sm lg:input-md w-full py-3 px-4 rounded-md focus:outline-none focus:border-blue-500 bg-[#2a2a31]"
                 autoComplete="off"
                 defaultValue={MyProfile?.phone}
               />
               <label
                 htmlFor="phone"
-                className="absolute text-sm left-6 -top-3 bg-[#1d1836] rounded-lg px-2 text-primary transition-all duration-300"
+                className="absolute text-sm left-6 -top-3 bg-[#2a2a31] rounded-md px-2 text-gray-400 transition-all duration-300"
               >
                 Phone
               </label>
@@ -181,18 +181,23 @@ const MyProfile = () => {
                 type="text"
                 id="address"
                 name="address"
-                className="input-sm input-primary w-full py-3 px-4 border rounded-lg focus:outline-none focus:border-blue-500 bg-[#1d1836]"
+                className="input-sm lg:input-md w-full py-3 px-4 rounded-md focus:outline-none focus:border-blue-500 bg-[#2a2a31]"
                 autoComplete="off"
                 defaultValue={MyProfile?.address}
               />
               <label
                 htmlFor="address"
-                className="absolute text-sm left-6 -top-3 bg-[#1d1836] rounded-lg px-2 text-primary transition-all duration-300"
+                className="absolute text-sm left-6 -top-3 bg-[#2a2a31] rounded-md px-2 text-gray-400 transition-all duration-300"
               >
                 address
               </label>
             </div>
-            <button type="submit" className="btn btn-sm w-full btn-primary">
+          </div>
+          <div className="text-center mt-8">
+            <button
+              type="submit"
+              className="w-full md:w-80 btn btn-sm lg:btn-md bg-green-600 hover:bg-green-800 text-white border-none"
+            >
               Update Profile
             </button>
           </div>

@@ -39,7 +39,7 @@ const CreateFaq = () => {
 
   return (
     <div>
-      <div className="w-full md:w-10/12 lg:w-8/12 mx-auto border rounded-lg border-blue-500 p-5">
+      <div className="w-full md:w-10/12 lg:w-8/12 mx-auto rounded-lg bg-[#161921] p-5">
         <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-center mb-5">
           Create FAQ
         </h3>
@@ -52,18 +52,23 @@ const CreateFaq = () => {
             type="text"
             name="question"
             placeholder="Question"
-            className="input input-bordered input-primary input-sm w-full bg-[#1d1836]"
+            className="input input-sm w-full bg-[#2a2a31]"
             required
           />
           <textarea
-            className="textarea first-letter:input input-bordered input-primary input-sm w-full h-[150px] bg-[#1d1836]"
+            className="textarea first-letter:input input-sm w-full h-[150px] bg-[#2a2a31]"
             name="answer"
             placeholder="Answer"
             required
           ></textarea>
-          <button type="submit" className="btn btn-sm btn-primary">
-            Create
-          </button>
+          <div className="text-center">
+            <button
+              type="submit"
+              className="w-full md:w-80 btn btn-sm bg-green-600 hover:bg-green-800 text-white border-none"
+            >
+              Create
+            </button>
+          </div>
         </form>
       </div>
     </div>

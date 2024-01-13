@@ -10,7 +10,7 @@ const Modal = ({ styles, Button, data, modalBody, isDisabled }) => {
         {Button}
       </button>
       <dialog id={data?.id} className="modal">
-        <div className="modal-box bg-[#1d1836]">{modalBody}</div>
+        <div className="modal-box bg-[#2a2a31]">{modalBody}</div>
         <form method="dialog" className="modal-backdrop">
           <button>close</button>
         </form>

@@ -229,7 +229,7 @@ const BookingsPage = () => {
                               modal.close();
                             }
                           }}
-                          className="btn btn-error btn-xs sm:btn-sm text-white"
+                          className="btn bg-[#eb3300] hover:bg-red-700 border-none btn-xs sm:btn-sm text-white"
                         >
                           Yes
                         </button>
@@ -240,7 +240,7 @@ const BookingsPage = () => {
                               modal.close();
                             }
                           }}
-                          className="btn btn-primary btn-xs sm:btn-sm"
+                          className="btn bg-green-600 hover:bg-green-800 text-white border-none btn-xs sm:btn-sm"
                         >
                           No
                         </button>
@@ -347,7 +347,7 @@ const BookingsPage = () => {
                     Status
                   </button>
                   <dialog id={`status-${index}`} className="modal">
-                    <div className="modal-box bg-[#1d1836]">
+                    <div className="modal-box bg-[#2a2a31]">
                       <div className="flex justify-between items-center">
                         <h3 className="font-bold text-lg">{data?.type}</h3>
                         <p className="">${data?.price}</p>
@@ -361,7 +361,7 @@ const BookingsPage = () => {
                             onClick={() =>
                               handleUpdateBookingStatus(true, data)
                             }
-                            className="btn btn-sm btn-primary"
+                            className="btn btn-sm bg-green-600 hover:bg-green-800 text-white border-none"
                           >
                             Yes
                           </button>
@@ -369,7 +369,7 @@ const BookingsPage = () => {
                             onClick={() =>
                               handleUpdateBookingStatus(false, data)
                             }
-                            className="btn btn-sm btn-error text-white"
+                            className="btn btn-sm bg-[#eb3300] hover:bg-red-700 border-none text-white"
                           >
                             No
                           </button>

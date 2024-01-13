@@ -74,10 +74,14 @@ const AllFaq = () => {
                     document.getElementById(data?.id + 789).showModal()
                   }
                 >
-                  <button className={`btn btn-xs btn-primary`}>Answer</button>
+                  <button
+                    className={`btn btn-xs bg-green-600 hover:bg-green-800 border-none text-white`}
+                  >
+                    Answer
+                  </button>
                 </button>
                 <dialog id={data?.id + 789} className="modal">
-                  <div className="modal-box bg-[#1d1836]">
+                  <div className="modal-box bg-[#2a2a31]">
                     <h3 className="font-semibold text-lg text-white pb-3">
                       {data?.question}
                     </h3>
@@ -112,7 +116,7 @@ const AllFaq = () => {
                               modal.close();
                             }
                           }}
-                          className="btn btn-error btn-xs sm:btn-sm text-white"
+                          className="btn bg-[#eb3300] hover:bg-red-700 border-none btn-xs sm:btn-sm text-white"
                         >
                           Yes
                         </button>
@@ -123,7 +127,7 @@ const AllFaq = () => {
                               modal.close();
                             }
                           }}
-                          className="btn btn-primary btn-xs sm:btn-sm"
+                          className="btn bg-green-600 hover:bg-green-800 border-none text-white btn-xs sm:btn-sm"
                         >
                           No
                         </button>

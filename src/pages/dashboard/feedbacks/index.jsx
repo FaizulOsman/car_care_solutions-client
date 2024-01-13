@@ -102,10 +102,14 @@ const AllFeedbackPage = () => {
                     document.getElementById(data?.id + 123).showModal()
                   }
                 >
-                  <button className={`btn btn-xs btn-primary`}>Feedback</button>
+                  <button
+                    className={`btn btn-xs bg-green-600 hover:bg-green-800 text-white border-none`}
+                  >
+                    Feedback
+                  </button>
                 </button>
                 <dialog id={data?.id + 123} className="modal">
-                  <div className="modal-box bg-[#1d1836]">
+                  <div className="modal-box bg-[#2a2a31]">
                     <div className="flex justify-between">
                       <h3 className="font-semibold text-lg text-white pb-3">
                         Feedback
@@ -139,7 +143,7 @@ const AllFeedbackPage = () => {
                               modal.close();
                             }
                           }}
-                          className="btn btn-error btn-xs sm:btn-sm text-white"
+                          className="btn bg-[#eb3300] hover:bg-red-700 border-none btn-xs sm:btn-sm text-white"
                         >
                           Yes
                         </button>
@@ -150,7 +154,7 @@ const AllFeedbackPage = () => {
                               modal.close();
                             }
                           }}
-                          className="btn btn-primary btn-xs sm:btn-sm"
+                          className="btn bg-green-600 hover:bg-green-800 text-white border-none btn-xs sm:btn-sm"
                         >
                           No
                         </button>
