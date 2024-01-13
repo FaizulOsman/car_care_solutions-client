@@ -326,7 +326,7 @@ const Login = () => {
                   <div className="my-3 relative">
                     <input
                       type="submit"
-                      className="input-submit w-full h-[50px] text-[15px] font-semibold border-none rounded-[10px] bg-[#bc6202] text-white cursor-pointer"
+                      className="input-submit w-full h-[50px] text-[15px] font-semibold border-none rounded-[10px] bg-[#e97e0a] hover:bg-[#bc6202] text-white cursor-pointer"
                       value="Sign In"
                       required
                     />
@@ -416,7 +416,7 @@ const Login = () => {
                   <div className="my-3 relative">
                     <input
                       type="submit"
-                      className="input-submit w-full h-[50px] text-[15px] font-semibold border-none rounded-[10px] bg-[#bc6202] text-white cursor-pointer"
+                      className="input-submit w-full h-[50px] text-[15px] font-semibold border-none rounded-[10px] bg-[#e97e0a] hover:bg-[#bc6202] text-white cursor-pointer"
                       value="Sign Up"
                       required
                     />
