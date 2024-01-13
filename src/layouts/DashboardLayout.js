@@ -11,7 +11,7 @@ import SpeedometerLoader from "../components/UI/Loader/SpeedometerLoader";
 import { routes } from "../constants/dashboardConstants";
 
 const DashboardLayout = ({ children }) => {
-  const { router } = useRouter();
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const [loading, setLoading] = useState(true);

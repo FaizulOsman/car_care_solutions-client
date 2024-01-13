@@ -7,7 +7,7 @@ const DashboardHeader = ({ toggle, handleLogOut }) => {
   return (
     <div className="">
       <div className="flex items-center justify-between px-6 bg-[#161921] text-white h-12 border-l">
-        <div className="ml-[45px] sm:ml-0 w-[30px] cursor-pointer">
+        <div className="ml-[45px] sm:ml-0 w-[30px] cursor-pointer hover:text-blue-600">
           <FaBars onClick={toggle} />
         </div>
         <div className="flex items-center justify-end">
