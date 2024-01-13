@@ -109,7 +109,7 @@ const Banner = () => {
         >
           <select
             name="type"
-            className="select border-[#eb3300] w-full"
+            className="select border-[#eb3300] w-full rounded-md"
             required
           >
             <option>Select a Service</option>
@@ -125,13 +125,13 @@ const Banner = () => {
               selected={startDate}
               onChange={(date) => setStartDate(date)}
               dateFormat="MM-dd-yyyy"
-              className="select border-[#eb3300] w-full"
+              className="select border-[#eb3300] w-full rounded-md"
               required
             />
           </div>
           <select
             name="time"
-            className="select border-[#eb3300] w-full"
+            className="select border-[#eb3300] w-full rounded-md"
             required
           >
             <option value="10:00AM-12:00PM" selected>
@@ -147,7 +147,7 @@ const Banner = () => {
                 <button
                   href={`#`}
                   type="submit"
-                  className="bg-[#eb3300] border-[3px] border-[#eb3300] text-white hover:border-[3px] hover:text-[#eb3300]"
+                  className="bg-[#eb3300] border-[3px] border-[#eb3300] text-white hover:border-[3px] hover:text-[#eb3300] rounded-md"
                 >
                   Book Now
                 </button>
@@ -167,27 +167,27 @@ const Banner = () => {
 
         <div className="border-t bg-gray-100 p-4 flex flex-wrap justify-around gap-3">
           <Link href="/services">
-            <button className="p-2 border bg-white hover:text-[#eb3300] hover:border-[#eb3300] font-semibold">
+            <button className="p-2 border bg-white hover:text-[#eb3300] hover:border-[#eb3300] font-semibold rounded-md">
               Ongoing Services
             </button>
           </Link>
           <Link href="/services/upcoming-services">
-            <button className="p-2 border bg-white hover:text-[#eb3300] hover:border-[#eb3300] font-semibold">
+            <button className="p-2 border bg-white hover:text-[#eb3300] hover:border-[#eb3300] font-semibold rounded-md">
               Upcoming Services
             </button>
           </Link>
           <Link href="/latest-news">
-            <button className="p-2 border bg-white hover:text-[#eb3300] hover:border-[#eb3300] font-semibold">
+            <button className="p-2 border bg-white hover:text-[#eb3300] hover:border-[#eb3300] font-semibold rounded-md">
               Latest News
             </button>
           </Link>
           <Link href="/contact-us">
-            <button className="p-2 border bg-white hover:text-[#eb3300] hover:border-[#eb3300] font-semibold">
+            <button className="p-2 border bg-white hover:text-[#eb3300] hover:border-[#eb3300] font-semibold rounded-md">
               Contact Us
             </button>
           </Link>
           <Link href="/faq">
-            <button className="p-2 border bg-white hover:text-[#eb3300] hover:border-[#eb3300] font-semibold">
+            <button className="p-2 border bg-white hover:text-[#eb3300] hover:border-[#eb3300] font-semibold rounded-md">
               See FAQ
             </button>
           </Link>

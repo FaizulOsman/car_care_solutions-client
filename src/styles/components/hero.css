@@ -50,7 +50,7 @@
 .hero-bookNow button:hover {
   width: 85%;
   background: transparent;
-  border-radius: 0;
+  border-radius: 6px 0 0 6px;
 }
 
 .hero-bookNow button:hover + .icon {
