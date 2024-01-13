@@ -164,7 +164,7 @@ const Login = () => {
         <div
           className={`bg-[#ffdcdc7b] box flex flex-row relative px-5 pb-7 ${
             isLoginActive ? "h-[500px]" : "h-[570px]"
-          } w-[350px] rounded-[30px] border-[3px] border-[#ffffff33]`}
+          } w-[350px] rounded-lg border-[3px] border-[#ffffff33]`}
         >
           <div className="absolute -top-16 right-[44%] md:-right-16">
             <div className="relative inline-block text-left">
