@@ -95,11 +95,11 @@ const DashboardLayout = ({ children }) => {
                 </motion.h1>
               )}
             </AnimatePresence>
-            <div className="cursor-pointer">
+            <div className="cursor-pointer" onClick={toggle}>
               <Image
                 alt="Logo"
                 className={`w-7 h-7 mx-2 ${isOpen ? "hidden sm:block" : ""}`}
-                src="https://i.ibb.co/cFVLjJ7/image-removebg-preview.png"
+                src="https://i.ibb.co/X3V212V/car-care-circle-logo.png"
                 decoding="async"
                 loading="lazy"
                 width={300}
