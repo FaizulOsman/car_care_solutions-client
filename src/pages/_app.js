@@ -13,6 +13,7 @@ import "../styles/components/hero.css";
 import "../styles/components/latest-news.css";
 import "../styles/components/login-signup.css";
 import "../styles/components/charts.css";
+import "../styles/components/placeholderLoader.css";
 
 export default function App({ Component, pageProps }) {
   const getLayout = Component.getLayout || ((page) => page);
