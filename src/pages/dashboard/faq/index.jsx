@@ -9,12 +9,23 @@ import toast from "react-hot-toast";
 import Loader from "../../../components/UI/Loader";
 import Table from "../../../components/UI/Table/Table";
 import Modal from "../../../components/UI/Modal/Modal";
+import useProtectedRoute from "../../../hooks/useProtectedRoute";
+
+const jwt = require("jsonwebtoken");
 
 const AllFaq = () => {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
   const [meta, setMeta] = useState({});
   const [sortOrder, setSortOrder] = useState("desc");
+
+  const accessToken =
+    typeof window !== "undefined" ? localStorage.getItem("access-token") : null;
+
+  const decodedToken = jwt.decode(accessToken);
+
+  // Protect Route
+  useProtectedRoute(decodedToken?.role || "guest");
 
   const { data: allFaq } = useGetAllFaqQuery();
   const [deleteFaq, { isSuccess, isError, error }] = useDeleteFaqMutation();
