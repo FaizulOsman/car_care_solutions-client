@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 import DashboardLayout from "../../../../layouts/DashboardLayout";
 import { useCreateFaqMutation } from "../../../../redux/faq/faqApi";
 import toast from "react-hot-toast";
+import useProtectedRoute from "../../../../hooks/useProtectedRoute";
+
+const jwt = require("jsonwebtoken");
 
 const CreateFaq = () => {
   const accessToken =
@@ -10,6 +13,11 @@ const CreateFaq = () => {
   const headers = {
     authorization: accessToken,
   };
+
+  const decodedToken = jwt.decode(accessToken);
+
+  // Protect Route
+  useProtectedRoute(decodedToken?.role || "guest");
 
   const [createFaq, { isSuccess, isError, error }] = useCreateFaqMutation();
 
