@@ -24,6 +24,7 @@ import ServicePositionChart from "../../components/UI/Charts/ServicePositionChar
 import ServiceBookedChart from "../../components/UI/Charts/ServiceBookedChart";
 import BlogAndMediaChart from "../../components/UI/Charts/BlogAndMediaChart";
 import ServiceProvidingTimeChart from "../../components/UI/Charts/ServiceProvidingTimeChart";
+import useProtectedRoute from "../../hooks/useProtectedRoute";
 
 const jwt = require("jsonwebtoken");
 
@@ -36,6 +37,9 @@ const DashboardPage = () => {
   };
 
   const decodedToken = jwt.decode(accessToken);
+
+  // Protect Route
+  useProtectedRoute(decodedToken?.role || "guest");
 
   const { data: getAllUser } = useGetAllUsersQuery({ headers });
   const { data: getAllServices } = useGetAllServiceQuery({
