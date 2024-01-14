@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Loader from "./Loader";
+import BoxLoader from "./Loader/BoxLoader";
 
 const ImageUpload = ({ handleUploadImage }) => {
   const [imageSrc, setImageSrc] = useState();
@@ -53,7 +54,7 @@ const ImageUpload = ({ handleUploadImage }) => {
   return (
     <>
       {isLoading ? (
-        <Loader />
+        <BoxLoader />
       ) : (
         <form
           method="post"

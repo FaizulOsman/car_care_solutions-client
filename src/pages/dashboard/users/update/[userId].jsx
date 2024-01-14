@@ -97,14 +97,14 @@ const UpdateUser = () => {
                           ? user?.imageUrl
                           : "https://i.ibb.co/nrtwzQd/avatar-boy.webp"
                       }
-                      className="w-16 h-16 mx-auto-gray-800 rounded-full mb-10"
+                      className="w-16 h-16 mx-auto-gray-800 rounded-full border border-[#2a2a31] p-1 mb-10"
                       width="150"
                       height="150"
                       alt="Profile Image"
                     />
                     <div>
                       <p
-                        className="absolute bottom-0 left-0 w-full flex justify-center items-center h-1/2 hover:bg-gray-400 hover:bg-opacity-50 hover:text-blue-700"
+                        className="absolute bottom-0 left-0 w-full flex justify-center items-center h-1/2 rounded-b-full hover:bg-gray-400 hover:bg-opacity-50 hover:text-blue-700"
                         style={{ Radius: "0 0 30px 30px" }}
                       >
                         <FaRegEdit />

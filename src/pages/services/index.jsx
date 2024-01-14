@@ -8,6 +8,7 @@ import SectionHeader from "../../components/UI/SectionHeader";
 import SectionTopHeader from "../../components/UI/SectionTopHeader";
 import { FaCheckCircle } from "react-icons/fa";
 import { useGetAllServiceQuery } from "../../redux/service/serviceApi";
+import BoxLoader from "../../components/UI/Loader/BoxLoader";
 
 const jwt = require("jsonwebtoken");
 
@@ -233,7 +234,7 @@ const ServicesPage = () => {
           )}
         </>
       ) : (
-        <Loader />
+        <BoxLoader />
       )}
     </div>
   );
