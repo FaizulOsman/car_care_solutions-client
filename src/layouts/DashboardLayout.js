@@ -79,7 +79,7 @@ const DashboardLayout = ({ children }) => {
               damping: 10,
             },
           }}
-          className={`h-screen bg-[#161921] text-white min-h-[100vh] overflow-y-auto absolute sm:static left-0 top-0 z-50`}
+          className={`h-screen bg-[#161921] drop-shadow-lg text-white min-h-[100vh] overflow-y-auto absolute sm:static left-0 top-0 z-50`}
         >
           <div className="flex items-center justify-between py-[10px]">
             <AnimatePresence>
