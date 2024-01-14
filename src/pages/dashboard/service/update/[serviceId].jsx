@@ -7,6 +7,7 @@ import {
 import DashboardLayout from "../../../../layouts/DashboardLayout";
 import useProtectedRoute from "../../../../hooks/useProtectedRoute";
 import { useRouter } from "next/router";
+import PlaceholderLoader from "../../../../components/UI/Loader/PlaceholderLoader";
 
 const jwt = require("jsonwebtoken");
 
@@ -61,67 +62,71 @@ const UpdateService = () => {
         <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-center mb-5">
           Update Service
         </h3>
-        <form
-          onSubmit={(e) => handleUpdateService(e)}
-          className="grid grid-cols-1 justify-between gap-6 mt-4"
-        >
-          <select
-            name="status"
-            className="select select-sm w-full bg-[#2a2a31]"
+        {getSingleService?.data ? (
+          <form
+            onSubmit={(e) => handleUpdateService(e)}
+            className="grid grid-cols-1 justify-between gap-6 mt-4"
           >
-            <option
-              value="ongoing"
-              selected={getSingleService?.data?.status === "ongoing" && true}
+            <select
+              name="status"
+              className="select select-sm w-full bg-[#2a2a31]"
             >
-              Ongoing
-            </option>
-            <option
-              value="upcoming"
-              selected={getSingleService?.data?.status === "upcoming" && true}
-            >
-              Upcoming
-            </option>
-          </select>
-          <input
-            type="text"
-            name="type"
-            placeholder="Type"
-            className="input input-sm w-full bg-[#2a2a31]"
-            defaultValue={getSingleService?.data?.type}
-            required
-          />
-          <input
-            type="number"
-            name="price"
-            placeholder="Price"
-            className="input input-sm w-full bg-[#2a2a31]"
-            defaultValue={getSingleService?.data?.price}
-            required
-          />
-          <input
-            type="text"
-            name="location"
-            placeholder="Location"
-            className="input input-sm w-full bg-[#2a2a31]"
-            defaultValue={getSingleService?.data?.location}
-            required
-          />
-          <textarea
-            className="textarea first-letter:input input-sm w-full h-[150px] bg-[#2a2a31]"
-            name="description"
-            placeholder="Description"
-            defaultValue={getSingleService?.data?.description}
-            required
-          ></textarea>
-          <div className="text-center">
-            <button
-              type="submit"
-              className="w-full md:w-80 btn btn-sm bg-green-600 hover:bg-green-800 text-white border-none"
-            >
-              Update Service
-            </button>
-          </div>
-        </form>
+              <option
+                value="ongoing"
+                selected={getSingleService?.data?.status === "ongoing" && true}
+              >
+                Ongoing
+              </option>
+              <option
+                value="upcoming"
+                selected={getSingleService?.data?.status === "upcoming" && true}
+              >
+                Upcoming
+              </option>
+            </select>
+            <input
+              type="text"
+              name="type"
+              placeholder="Type"
+              className="input input-sm w-full bg-[#2a2a31]"
+              defaultValue={getSingleService?.data?.type}
+              required
+            />
+            <input
+              type="number"
+              name="price"
+              placeholder="Price"
+              className="input input-sm w-full bg-[#2a2a31]"
+              defaultValue={getSingleService?.data?.price}
+              required
+            />
+            <input
+              type="text"
+              name="location"
+              placeholder="Location"
+              className="input input-sm w-full bg-[#2a2a31]"
+              defaultValue={getSingleService?.data?.location}
+              required
+            />
+            <textarea
+              className="textarea first-letter:input input-sm w-full h-[150px] bg-[#2a2a31]"
+              name="description"
+              placeholder="Description"
+              defaultValue={getSingleService?.data?.description}
+              required
+            ></textarea>
+            <div className="text-center">
+              <button
+                type="submit"
+                className="w-full md:w-80 btn btn-sm bg-green-600 hover:bg-green-800 text-white border-none"
+              >
+                Update Service
+              </button>
+            </div>
+          </form>
+        ) : (
+          <PlaceholderLoader />
+        )}
       </div>
     </div>
   );

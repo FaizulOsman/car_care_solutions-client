@@ -2,6 +2,7 @@ import React from "react";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import Loader from "../Loader";
 import DashboardLayout from "../../../layouts/DashboardLayout";
+import PlaceholderLoader from "../Loader/PlaceholderLoader";
 
 const Table = ({
   tableTitle,
@@ -100,7 +101,7 @@ const Table = ({
             </div>
           ) : (
             <div className="min-h-[30vh] flex items-center">
-              <Loader />
+              <PlaceholderLoader />
             </div>
           )}
           {!!totalPage && (
