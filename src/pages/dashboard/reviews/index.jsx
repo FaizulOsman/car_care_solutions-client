@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import Table from "../../../components/UI/Table/Table";
 import Modal from "../../../components/UI/Modal/Modal";
 import { MdDeleteOutline } from "react-icons/md";
+import useProtectedRoute from "../../../hooks/useProtectedRoute";
 
 const jwt = require("jsonwebtoken");
 
@@ -25,6 +26,9 @@ const AllReviewsPage = () => {
   };
 
   const decodedToken = jwt.decode(accessToken);
+
+  // Protect Route
+  useProtectedRoute(decodedToken?.role || "guest");
 
   const { data: getAllReviews } = useGetMyReviewsQuery(headers);
   const [deleteReview, { isSuccess, isError, error }] =
