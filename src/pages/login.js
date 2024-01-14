@@ -6,6 +6,7 @@ import { toast } from "react-hot-toast";
 import { saveToLocalStorage } from "../utils/localstorage";
 import { useLoginMutation, useSignUpMutation } from "../redux/user/userApi";
 import CopyToClipboard from "../components/UI/CopyToClipboard";
+import loginBg from "../assets/images/login-bg.jpg";
 
 const Login = () => {
   const [isLoginActive, setLoginActive] = useState(true);
@@ -150,17 +151,22 @@ const Login = () => {
   };
 
   return (
-    <div
-      style={{
-        background:
-          'url("https://i.ibb.co/PjGmgz3/istockphoto-931523622-170667a.jpg")',
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        backgroundAttachment: "fixed",
-      }}
-    >
-      <div className="w-11/12 mx-auto flex justify-center items-center min-h-[100vh] py-20">
+    <div style={{ position: "relative" }}>
+      <Image
+        alt="background"
+        className="w-full h-full object-cover"
+        src={loginBg}
+        layout="fill"
+        priority={true}
+        loading="eager"
+      />
+      <div
+        className="w-11/12 mx-auto flex justify-center items-center min-h-[100vh] py-20"
+        style={{
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
         <div
           className={`bg-[#ffdcdc7b] box flex flex-row relative px-5 pb-7 ${
             isLoginActive ? "h-[500px]" : "h-[570px]"
