@@ -13,14 +13,19 @@ import { IoMailOpenOutline } from "react-icons/io5";
 import { RiCustomerService2Line } from "react-icons/ri";
 import { FaSquareFacebook, FaSquareTwitter } from "react-icons/fa6";
 
+const jwt = require("jsonwebtoken");
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [myProfile, setMyProfile] = useState({});
   const [screenWidth, setScreenWidth] = useState(0);
+  const [scrollPosition, setScrollPosition] = useState(0);
   const router = useRouter();
   const statePath = router.query.state?.path;
 
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const accessToken =
+    typeof window !== "undefined" ? localStorage.getItem("access-token") : null;
+
+  const decodedToken = jwt.decode(accessToken);
 
   const handleScroll = () => {
     setScrollPosition(window.pageYOffset);
@@ -36,32 +41,9 @@ const Navbar = () => {
     removeFromLocalStorage("user-info");
     removeFromLocalStorage("access-token");
     toast.success("Successfully Signed Out!");
-    setMyProfile({});
-  };
-
-  const fetchMyProfile = async () => {
-    const accessToken = getFromLocalStorage("access-token");
-    if (accessToken) {
-      try {
-        const url =
-          "https://car-care-solutions-server.vercel.app/api/v1/users/my-profile";
-        const options = {
-          headers: {
-            authorization: accessToken,
-          },
-        };
-        const res = await fetch(url, options);
-        const data = await res.json();
-
-        setMyProfile(data?.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    }
   };
 
   useEffect(() => {
-    fetchMyProfile();
     window.addEventListener("scroll", handleScroll);
 
     return () => {
@@ -193,7 +175,7 @@ const Navbar = () => {
                 </div>
                 {/* right side menu for large devices  */}
                 <div className="body__right-menus hidden md:flex md:items-center gap-4">
-                  {myProfile?.email ? (
+                  {decodedToken?.email ? (
                     <>
                       <li
                         className={`px-2 flex items-center border-2 hover:border-[#eb3300] rounded-md hover:bg-[#eb3300] duration-300  `}
@@ -228,7 +210,7 @@ const Navbar = () => {
                 </div>
                 {/* left side menu for large devices  */}
                 <div className="md:hidden flex items-center w-full justify-between gap-4">
-                  {myProfile?.email ? (
+                  {decodedToken?.email ? (
                     <li className="flex items-center rounded-md hover:bg-[#eb3300] border-2 hover:border-[#eb3300] border-white duration-300 px-3 py-[2px]">
                       <Link href="/dashboard">
                         <h6 className="btn-text text-white">Dashboard</h6>
@@ -335,7 +317,7 @@ const Navbar = () => {
                           Contact Us
                         </Link>
                       </li>
-                      {myProfile?.email ? (
+                      {decodedToken?.email ? (
                         <li
                           onClick={() => setIsOpen(false)}
                           className="body__menu"
