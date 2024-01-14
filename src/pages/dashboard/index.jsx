@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import DashboardLayout from "../../layouts/DashboardLayout";
 import { useGetAllUsersQuery } from "../../redux/user/userApi";
 import { useGetAllServiceQuery } from "../../redux/service/serviceApi";
@@ -18,10 +18,13 @@ import ServiceBookedChart from "../../components/UI/Charts/ServiceBookedChart";
 import BlogAndMediaChart from "../../components/UI/Charts/BlogAndMediaChart";
 import ServiceProvidingTimeChart from "../../components/UI/Charts/ServiceProvidingTimeChart";
 import useProtectedRoute from "../../hooks/useProtectedRoute";
+import PlaceholderLoader from "../../components/UI/Loader/PlaceholderLoader";
 
 const jwt = require("jsonwebtoken");
 
 const DashboardPage = () => {
+  const [showChart, setShowChart] = useState(false);
+
   const accessToken =
     typeof window !== "undefined" ? localStorage.getItem("access-token") : null;
 
@@ -42,6 +45,16 @@ const DashboardPage = () => {
   const { data: getMyBookings } = useGetMyBookingsQuery(headers);
   const { data: getReviews } = useGetMyReviewsQuery(headers);
   const { data: getAllAddToCart } = useGetAllAddToCartQuery(headers);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setTimeout(() => {
+        setShowChart(true);
+      }, 3000);
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div>
@@ -156,16 +169,16 @@ const DashboardPage = () => {
         </Link>
       </div>
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 pt-4 sm:pt-7">
-        <ServiceBookedChart />
+        {showChart ? <ServiceBookedChart /> : <PlaceholderLoader />}
         <div className="flex flex-col sm:flex-row gap-4">
-          <ServicePositionChart />
-          <ServiceRatingsChart />
+          {showChart ? <ServicePositionChart /> : <PlaceholderLoader />}
+          {showChart ? <ServiceRatingsChart /> : <PlaceholderLoader />}
         </div>
       </div>
       <div className="lg:flex gap-4 pt-4 sm:pt-7">
-        <BlogAndMediaChart />
+        {showChart ? <BlogAndMediaChart /> : <PlaceholderLoader />}
         <div className="w-full lg:w-1/3 pt-7 lg:pt-0">
-          <ServiceProvidingTimeChart />
+          {showChart ? <ServiceProvidingTimeChart /> : <PlaceholderLoader />}
         </div>
       </div>
       {/* {decodedToken?.role === "admin" ||
