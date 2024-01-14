@@ -8,6 +8,9 @@ import Modal from "../../../components/UI/Modal/Modal";
 import { MdDeleteOutline } from "react-icons/md";
 import Table from "../../../components/UI/Table/Table";
 import toast from "react-hot-toast";
+import useProtectedRoute from "../../../hooks/useProtectedRoute";
+
+const jwt = require("jsonwebtoken");
 
 const AllFeedbackPage = () => {
   const [page, setPage] = useState(1);
@@ -15,16 +18,17 @@ const AllFeedbackPage = () => {
   const [meta, setMeta] = useState({});
   const [sortOrder, setSortOrder] = useState("desc");
 
-  const jwt = require("jsonwebtoken");
-
   const accessToken =
     typeof window !== "undefined" ? localStorage.getItem("access-token") : null;
-
-  const decodedToken = jwt.decode(accessToken);
 
   const headers = {
     authorization: accessToken,
   };
+
+  const decodedToken = jwt.decode(accessToken);
+
+  // Protect Route
+  useProtectedRoute(decodedToken?.role || "guest");
 
   const { data: allFeedback } = useGetAllFeedbackQuery({
     limit,
