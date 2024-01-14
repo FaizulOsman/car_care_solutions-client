@@ -19,7 +19,7 @@ const SpeedometerLoader = () => {
           <div className="loader-circle-2"></div>
         </div>
         <div className="needle"></div>
-        <div className="speedometer-loading">Grace</div>
+        <div className="speedometer-loading">Loading</div>
       </div>
     </div>
   );

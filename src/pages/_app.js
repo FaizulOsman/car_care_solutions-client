@@ -15,6 +15,7 @@ import "../styles/components/login-signup.css";
 import "../styles/components/charts.css";
 import "../styles/components/placeholderLoader.css";
 import "../styles/components/boxLoader.css";
+import "../styles/components/loader.css";
 
 export default function App({ Component, pageProps }) {
   const getLayout = Component.getLayout || ((page) => page);

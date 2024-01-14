@@ -4,7 +4,6 @@ import { useGetAllFaqQuery } from "../../redux/faq/faqApi";
 import Loader from "../../components/UI/Loader";
 import SectionHeader from "../../components/UI/SectionHeader";
 import SectionTopHeader from "../../components/UI/SectionTopHeader";
-import BoxLoader from "../../components/UI/Loader/BoxLoader";
 
 const FAQPage = () => {
   const { data: allFaq } = useGetAllFaqQuery();
@@ -48,7 +47,7 @@ const FAQPage = () => {
           )}
         </>
       ) : (
-        <BoxLoader />
+        <Loader />
       )}
     </div>
   );
