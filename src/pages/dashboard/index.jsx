@@ -1,16 +1,10 @@
 import React from "react";
 import DashboardLayout from "../../layouts/DashboardLayout";
-import Users from "./users";
-import AllServices from "./service/all-service";
-import MyProfile from "./my-profile";
 import { useGetAllUsersQuery } from "../../redux/user/userApi";
 import { useGetAllServiceQuery } from "../../redux/service/serviceApi";
 import { useGetMyBookingsQuery } from "../../redux/booking/bookingApi";
 import { useGetMyReviewsQuery } from "../../redux/review/reviewApi";
 import { useGetAllAddToCartQuery } from "../../redux/addToCart/addToCartApi";
-import CartPage from "./cart";
-import BookingsPage from "./bookings";
-import AllReviewsPage from "./reviews";
 import { SlCalender } from "react-icons/sl";
 import {
   MdOutlineMiscellaneousServices,
@@ -18,7 +12,6 @@ import {
 } from "react-icons/md";
 import { FaRegHeart } from "react-icons/fa";
 import Link from "next/link";
-import AllFeedbackPage from "./feedbacks";
 import ServiceRatingsChart from "../../components/UI/Charts/ServiceRatingsChart";
 import ServicePositionChart from "../../components/UI/Charts/ServicePositionChart";
 import ServiceBookedChart from "../../components/UI/Charts/ServiceBookedChart";
