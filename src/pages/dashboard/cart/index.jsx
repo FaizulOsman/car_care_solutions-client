@@ -12,6 +12,7 @@ import toast from "react-hot-toast";
 import Table from "../../../components/UI/Table/Table";
 import Modal from "../../../components/UI/Modal/Modal";
 import { MdDeleteOutline } from "react-icons/md";
+import useProtectedRoute from "../../../hooks/useProtectedRoute";
 
 const jwt = require("jsonwebtoken");
 
@@ -31,6 +32,9 @@ const CartPage = () => {
   };
 
   const decodedToken = jwt.decode(accessToken);
+
+  // Protect Route
+  useProtectedRoute(decodedToken?.role || "guest");
 
   const { data: getAllAddToCart } = useGetAllAddToCartQuery(headers);
   const [
