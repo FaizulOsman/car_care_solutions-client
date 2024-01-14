@@ -13,6 +13,7 @@ import { useGetMyProfileQuery } from "../../../redux/user/userApi";
 import Modal from "../../../components/UI/Modal/Modal";
 import Table from "../../../components/UI/Table/Table";
 import { MdDeleteOutline } from "react-icons/md";
+import useProtectedRoute from "../../../hooks/useProtectedRoute";
 
 const jwt = require("jsonwebtoken");
 
@@ -28,6 +29,9 @@ const BookingsPage = () => {
     typeof window !== "undefined" ? localStorage.getItem("access-token") : null;
 
   const decodedToken = jwt.decode(accessToken);
+
+  // Protect Route
+  useProtectedRoute(decodedToken?.role || "guest");
 
   const headers = {
     authorization: accessToken,
