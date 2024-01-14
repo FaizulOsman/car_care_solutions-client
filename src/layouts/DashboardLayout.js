@@ -9,12 +9,23 @@ import SidebarMenu from "../components/Dashboard/SidebarMenu";
 import DashboardHeader from "../components/Dashboard/DashboardHeader";
 import SpeedometerLoader from "../components/UI/Loader/SpeedometerLoader";
 import { routes } from "../constants/dashboardConstants";
+import useProtectedRoute from "../hooks/useProtectedRoute";
+
+const jwt = require("jsonwebtoken");
 
 const DashboardLayout = ({ children }) => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const [loading, setLoading] = useState(true);
+
+  const accessToken =
+    typeof window !== "undefined" ? localStorage.getItem("access-token") : null;
+
+  const decodedToken = jwt.decode(accessToken);
+
+  // Protect Route
+  useProtectedRoute(decodedToken?.role || "guest");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,34 +58,6 @@ const DashboardLayout = ({ children }) => {
     removeFromLocalStorage("user-info");
     removeFromLocalStorage("access-token");
   };
-
-  const [myProfile, setMyProfile] = useState({});
-  const fetchMyProfile = async () => {
-    const accessToken =
-      typeof window !== "undefined"
-        ? localStorage.getItem("access-token")
-        : null;
-    if (accessToken) {
-      try {
-        const url =
-          "https://car-care-solutions-server.vercel.app/api/v1/users/my-profile";
-        const options = {
-          headers: {
-            authorization: accessToken,
-          },
-        };
-        const res = await fetch(url, options);
-        const data = await res.json();
-        setMyProfile(data?.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    }
-  };
-
-  useEffect(() => {
-    fetchMyProfile();
-  }, []);
 
   if (loading) {
     return (
@@ -132,9 +115,9 @@ const DashboardLayout = ({ children }) => {
           <section className="flex flex-col gap-[5px]">
             {routes?.map(
               (route, index) =>
-                (route?.permission1 === myProfile?.role ||
-                  route?.permission2 === myProfile?.role ||
-                  route?.permission3 === myProfile?.role) && (
+                (route?.permission1 === decodedToken?.role ||
+                  route?.permission2 === decodedToken?.role ||
+                  route?.permission3 === decodedToken?.role) && (
                   <div key={index}>
                     {
                       <>
