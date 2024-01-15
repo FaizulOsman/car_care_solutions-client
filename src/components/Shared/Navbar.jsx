@@ -170,6 +170,11 @@ const Navbar = () => {
                   <li
                     className={`left-menus__menu hidden md:inline-block font-semibold`}
                   >
+                    <Link href="/about-us">About Us</Link>
+                  </li>
+                  <li
+                    className={`left-menus__menu hidden md:inline-block font-semibold`}
+                  >
                     <Link href="/contact-us">Contact</Link>
                   </li>
                 </div>
@@ -304,6 +309,17 @@ const Navbar = () => {
                           className="w-full block hover:text-[#eb3300] px-2 p-1 rounded-md"
                         >
                           Feedback
+                        </Link>
+                      </li>
+                      <li
+                        onClick={() => setIsOpen(false)}
+                        className="body__menu"
+                      >
+                        <Link
+                          href="/about-us"
+                          className="w-full block hover:text-[#eb3300] px-2 p-1 rounded-md"
+                        >
+                          About Us
                         </Link>
                       </li>
                       <li

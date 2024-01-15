@@ -23,3 +23,13 @@
     transform: translateY(10%);
   }
 }
+
+/* Partners And Support */
+.partnersAndSupports-hr {
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  background: lightgray;
+  top: calc(50% + 0.5px);
+  z-index: 0;
+}

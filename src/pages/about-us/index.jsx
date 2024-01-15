@@ -6,6 +6,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import PartnersAndSupports from "../../components/UI/PartnersAndSupports";
 
 const AboutUs = () => {
   const { route } = useRouter();
@@ -119,6 +120,7 @@ const AboutUs = () => {
           )}
         </div>
       </div>
+      {route === "/about-us" && <PartnersAndSupports />}
     </div>
   );
 };
