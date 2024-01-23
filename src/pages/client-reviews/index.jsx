@@ -5,15 +5,9 @@ import SectionHeader from "../../components/UI/SectionHeader";
 import Loader from "../../components/UI/Loader";
 import SectionTopHeader from "../../components/UI/SectionTopHeader";
 
-// import Swiper core and required modules
-import { Pagination, FreeMode } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
-import "swiper/css/free-mode";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const ClientReviewsPage = () => {
   const accessToken =
@@ -25,6 +19,32 @@ const ClientReviewsPage = () => {
 
   const { data: getAllReview } = useGetAllReviewQuery(headers);
 
+  const settings = {
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 1000,
+    speed: 2000,
+    cssEase: "ease",
+    dots: true,
+    responsive: [
+      {
+        breakpoint: 1024, // Medium devices and above
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 768, // Small devices
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
   return (
     <div
       style={{
@@ -32,7 +52,7 @@ const ClientReviewsPage = () => {
         backgroundRepeat: "no-repeat",
         backgroundPosition: "top right",
       }}
-      className="bg-[#f5f5f5] py-14"
+      className="bg-[#f5f5f5] pt-14 pb-20"
     >
       <div className="w-11/12 max-w-[1200px] mx-auto">
         <div className="flex items-center justify-center flex-col">
@@ -51,31 +71,10 @@ const ClientReviewsPage = () => {
           {getAllReview ? (
             <>
               {getAllReview?.data?.length > 0 ? (
-                <Swiper
-                  breakpoints={{
-                    320: {
-                      slidesPerView: 1,
-                      spaceBetween: 10,
-                    },
-                    768: {
-                      slidesPerView: 2,
-                      spaceBetween: 15,
-                    },
-                    1024: {
-                      slidesPerView: 3,
-                      spaceBetween: 15,
-                    },
-                  }}
-                  freeMode={true}
-                  pagination={{
-                    clickable: true,
-                  }}
-                  modules={[FreeMode, Pagination]}
-                  className="max-w-[100%]"
-                >
-                  {getAllReview?.data.map((review, index) => (
-                    <SwiperSlide key={index}>
-                      <div className="relative bg-white hover:bg-gray-50 border flex flex-col mb-20 group shadow-lg rounded-xl px-6 pt-8 pb-10 cursor-pointer">
+                <Slider {...settings} className="max-w-[90%] mx-auto mt-14">
+                  {getAllReview?.data?.map((review, index) => (
+                    <div key={index}>
+                      <div className="w-[96%] mx-auto relative bg-white hover:bg-gray-50 border flex flex-col mb-20 group shadow-lg rounded-xl px-6 pt-8 pb-10 cursor-pointer">
                         <div
                           className="absolute inset-0 bg-cover bg-center"
                           style={{
@@ -147,9 +146,9 @@ const ClientReviewsPage = () => {
                           </div>
                         </div>
                       </div>
-                    </SwiperSlide>
+                    </div>
                   ))}
-                </Swiper>
+                </Slider>
               ) : (
                 <h2 className="text-2xl font-bold text-red-500 text-center py-10">
                   No Data Found

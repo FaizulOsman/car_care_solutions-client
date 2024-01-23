@@ -125,6 +125,14 @@ a {
 }
 
 /* ================ slider button color ================ */
-.swiper-pagination-bullet-active {
-  background-color: #eb3300 !important;
+.slick-dots li.slick-active button:before {
+  opacity: 0.75;
+  color: #eb3300 !important;
+  border: 1px solid #eb3300 !important;
+  border-radius: 100%;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: #eb3300 !important;
 }
