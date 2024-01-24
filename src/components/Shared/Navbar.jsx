@@ -138,10 +138,10 @@ const Navbar = () => {
         </div>
         <div className="sticky-wrapper">
           <div
-            className={`bg-[#070a10] z-50 w-full ${
+            className={`z-50 w-full ${
               scrollPosition > 150
-                ? "sticky-top fixed top-0 shadow-md border-b-0"
-                : ""
+                ? "sticky-top fixed top-0 shadow-md border-b-0 bg-[#161921]"
+                : "bg-[#070a10]"
             }`}
           >
             <div className="w-11/12 max-w-[1200px] mx-auto">
