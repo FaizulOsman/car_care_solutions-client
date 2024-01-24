@@ -2,6 +2,7 @@ import { SessionProvider } from "next-auth/react";
 import { Provider } from "react-redux";
 import { Toaster } from "react-hot-toast";
 import { store } from "../redux/store";
+
 // Imported Styles
 import "../styles/globals.css";
 import "../styles/components/navbar.css";
@@ -16,6 +17,7 @@ import "../styles/components/charts.css";
 import "../styles/components/placeholderLoader.css";
 import "../styles/components/boxLoader.css";
 import "../styles/components/loader.css";
+import "../styles/components/services.css";
 
 export default function App({ Component, pageProps }) {
   const getLayout = Component.getLayout || ((page) => page);

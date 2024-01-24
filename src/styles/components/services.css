@@ -1,0 +1,15 @@
+.resume-btn-blinking {
+  animation: blinking 1.5s infinite 1.5s;
+}
+
+@keyframes blinking {
+  0% {
+    box-shadow: 0 0 0 0 #db7154, 0 0 0 0 #deb7ac;
+  }
+  80% {
+    box-shadow: 0 0 0 7px #fff0, 0 0 0 14px #fff0;
+  }
+  100% {
+    box-shadow: 0 0 0 0 #fff0, 0 0 0 0 #fff0;
+  }
+}

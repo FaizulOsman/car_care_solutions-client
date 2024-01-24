@@ -181,7 +181,7 @@ const ServicesPage = () => {
                         ${service?.price}
                       </h1>
                       {service?.type === "Standard Package" && (
-                        <span className="bg-[#EB3300] text-white px-3 pb-[2px] rounded-full ">
+                        <span className="bg-[#EB3300] mr-3 resume-btn-blinking text-white px-3 pb-[2px] rounded-full ">
                           25% Save
                         </span>
                       )}
