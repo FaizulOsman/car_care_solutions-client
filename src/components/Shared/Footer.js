@@ -94,7 +94,7 @@ const Footer = () => {
               </h3>
               <div className="flex gap-4 mb-5">
                 <img
-                  className="w-[72px] h-[72px]"
+                  className="w-[72px] h-[72px] rounded-md"
                   src="https://di-uploads-pod5.s3.amazonaws.com/mccluskeychevy/uploads/2014/06/2013-Chevy-Volt.jpg"
                   alt=""
                 />
@@ -113,7 +113,7 @@ const Footer = () => {
               </div>
               <div className="flex gap-4 mb-5">
                 <img
-                  className="w-[72px] h-[72px]"
+                  className="w-[72px] h-[72px] rounded-md"
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzR874OEF2PMj9bPjgvrVESO0Z3blT6f-mwT3DFLa704ixSdFzbL8c421oj8IoRhBqnhI&usqp=CAU"
                   alt=""
                 />
