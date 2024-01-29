@@ -117,7 +117,7 @@ const Navbar = () => {
                     <div className="flex flex-col gap-[6px]">
                       <p className="text-sm text-gray-400">Call Us 24/7</p>
                       <h4 className="text-base font-semibold hover:text-[#eb3300] duration-300 cursor-pointer">
-                        +0123456789
+                        +8801234567890
                       </h4>
                     </div>
                   </div>
