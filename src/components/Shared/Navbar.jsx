@@ -108,7 +108,7 @@ const Navbar = () => {
                     <div className="flex flex-col gap-[6px]">
                       <p className="text-sm text-gray-400">Make An Email</p>
                       <h4 className="text-base font-semibold hover:text-[#eb3300] duration-300 cursor-pointer">
-                        info@malen.com
+                        info@carcare.com
                       </h4>
                     </div>
                   </div>
