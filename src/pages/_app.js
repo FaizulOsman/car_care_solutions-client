@@ -3,6 +3,9 @@ import { Provider } from "react-redux";
 import { Toaster } from "react-hot-toast";
 import { store } from "../redux/store";
 
+// Global Styles (Sass)
+import "../styles/_global.scss";
+
 // Imported Styles
 import "../styles/globals.css";
 import "../styles/components/navbar.css";
