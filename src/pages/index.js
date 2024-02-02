@@ -10,6 +10,7 @@ import FAQPage from "./faq";
 import ContactUs from "./contact-us";
 import AboutUs from "./about-us";
 import MetaData from "../components/Head/MetaData";
+import ScrollSection from "../components/UI/ScrollSection";
 
 const HomePage = () => {
   return (
@@ -26,6 +27,7 @@ const HomePage = () => {
       <Survey />
       <CertifiedSection />
       <ClientReviewsPage />
+      <ScrollSection />
       <FAQPage />
       <ContactUs />
     </div>
