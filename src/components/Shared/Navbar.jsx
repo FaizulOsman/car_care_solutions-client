@@ -126,7 +126,7 @@ const Navbar = () => {
                     <div className="flex flex-col gap-[6px]">
                       <p className="text-sm text-gray-400">Office Hours</p>
                       <h4 className="text-base font-semibold hover:text-[#eb3300] duration-300 cursor-pointer">
-                        Sat-Thu 8am-6pm
+                        Sat-Thu (8am-6pm)
                       </h4>
                     </div>
                   </div>
